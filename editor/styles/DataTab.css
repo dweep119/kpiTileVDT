@@ -1,0 +1,95 @@
+/* -----------------------------VDTn - data-------------------------- */
+
+.vdt-data{
+    display: flex;
+    flex-direction: column;
+}
+
+.vdt-data-view{
+    display: flex;
+    flex-direction: column;
+}
+
+.vdt-data-view .view-footer-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.vdt-data-view .view-footer-btn>.back-button {
+    margin-right: 10px;
+}
+
+.vdt-data-menu{
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:1px solid #d4d4d4;
+    padding: 10px 0 10PX 10PX;
+}
+.vdt-data-subMenu{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.vdt-data-menu-img{
+    display: flex;
+    align-items: center;
+    padding: 0  20px 0px 10px;
+}
+.vdt-data-menu-img .vdt-img{
+    height: 30px;
+    width: 30px;
+}
+
+.vdt-data-menu-name{
+    display: flex;
+    flex-direction: column;
+}
+.vdt-data-menu-title{
+    text-align: start;
+    font-weight: 500;
+    font-size: 14px;
+}
+.vdt-data-menu-description{
+    text-align: start;
+    font-size: 12px;
+}
+.vdt-data-menu-front-img{
+    display: flex;
+    align-items: center;
+}
+.vdt-data-menu-front-img .vdt-front-logo{
+    height: 20px;
+    width: 20px;
+    padding: 0px;
+}
+.vdt-data-menu {
+    border-bottom: 1px solid #eaeaea !important;
+}
+.vdt-data-menu-img .icon {
+    font-size: 27px;
+}
+.vdt-data-menu-front-img .icon {
+    color: #0078d4;
+    font-size: 14px;
+}
+.color-indicator-input{
+    width:100px;
+}
+.color-indicator-input .form-input {
+    margin-right: 6px;
+}
+
+.menu-data-view {
+    bottom: 50px;
+    top: 64px;
+    overflow-y: auto;
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    padding: 0px 16px;
+}

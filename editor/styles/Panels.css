@@ -1,0 +1,25 @@
+.vdt-editor-panel {
+    overflow-x: hidden;
+}
+.vdt-editor-panel .select-header {
+    font-weight: 400;
+    font-size: 1rem;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    padding-left: 27px;
+    margin-block-start: 12px;
+    background-image: url('../assets/logo.png');
+    background-position: left;
+    background-repeat: no-repeat;
+}
+.vdt-editor-panel .continue{
+    position: absolute;
+    right: 15px;
+    bottom: 50px;
+}
+.vdt-editor-panel .export-panel-btn {
+    position: absolute;
+    right: 15px;
+    bottom: 0px;
+}

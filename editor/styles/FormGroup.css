@@ -1,0 +1,48 @@
+.bf-editor-form-group.form-group {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 8px;
+}
+
+.bf-editor-form-group.form-group.horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.bf-editor-form-group .form-label-container {
+  color: #C8C8C8;
+  flex-shrink: 0;
+}
+
+.bf-editor-form-group.horizontal .form-label-container {
+  padding-right: 8px;
+  flex-grow: 1;
+}
+
+.bf-editor-form-group .form-label {
+  font-size: 0.6rem;
+  font-weight: 400;
+  line-height: 0.9rem;
+  color: #282828;
+  padding-right: 4px;
+}
+
+.bf-editor-form-group .form-label-container .popover {
+  margin-top: -2px;
+}
+
+.bf-editor-form-group .form-label-container .popover .popover-container {
+  width: 200px;
+}
+
+.bf-editor-form-group .form-label-container .popover .popover-container .card .card-body {
+  font-size: 0.6rem;
+  color: #484848;
+  padding: 8px;
+}
+
+.bf-editor-form-group .form-input-hint {
+  margin-bottom: 0;
+  font-size: 0.5rem;
+}

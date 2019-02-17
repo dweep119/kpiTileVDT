@@ -1,0 +1,81 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v41/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+}
+.list-style{
+  background-color: aliceblue;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  margin: 8px 0px;
+  width: 235px;
+}
+.todoListMain .header select {
+  padding: 5px;
+  margin: 0px 30px 0px 0px;
+  font-size: 16px;
+  border: 1px solid #000;
+  width: 160px;
+  border-radius: 3px;
+  background-color: white;
+}
+.todoListMain .header button {
+  background: #5755d9;
+  border: none;
+  color: #fff;
+  padding: 5px;
+  width: 45px;
+  font-size: 16px;
+  border-radius: 3px;
+/* 
+  padding: 5px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  margin: 10px;
+  margin-right: 0px;
+  background-color: #5755d9;
+  color: #FFF;
+  border: 2px solid #0066FF; */
+}
+.todoListMain .header button:hover {
+  background-color: #003399;
+  /* border: 2px solid #003399; */
+  cursor: pointer;
+}
+.todoListMain .theList {
+  list-style: none;
+  padding-left: 0;
+  width: 250px;
+}
+  
+.todoListMain .theList li {
+  color: #333;
+  background-color: rgba(255,255,255,.5);
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  transition: background-color .2s ease-out;
+}
+.todoListMain .theList li:hover {
+  background-color: pink;
+  cursor: pointer;
+}

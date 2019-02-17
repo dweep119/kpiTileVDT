@@ -1,0 +1,225 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Category Data",
+            "name": "category",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Measure Data",
+            "name": "measure",
+            "kind": "Measure"
+        }
+    ],
+    "objects": {
+        "dataPoint": {
+            "displayName": "Data colors",
+            "properties": {
+                "defaultColor": {
+                    "displayName": "Default color",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "showAllDataPoints": {
+                    "displayName": "Show all",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "fill": {
+                    "displayName": "Fill",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "fillRule": {
+                    "displayName": "Color saturation",
+                    "type": {
+                        "fill": {}
+                    }
+                },
+                 "fontSize": {
+                    "displayName": "Text Size",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                }
+            }
+        },
+        "editor": {
+            "displayName": "Editor",
+            "properties": {
+                "treeConfig": {
+                    "displayName": "Tree Config",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "navPanel": {
+                    "displayName": "navPanel",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "nodeMapProps": {
+                    "displayName": "nodeMapProps",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "dataSeries": {
+                    "displayName": "dataSeries",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "periodAgg": {
+                    "displayName": "periodAgg",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "primarySec": {
+                    "displayName": "primarySec",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "visualization": {
+                    "displayName": "visualization",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "statusBar": {
+                    "displayName": "statusBar",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "general": {
+                    "displayName": "general",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "colors": {
+                    "displayName": "colors",
+                    "type": {
+                        "text": true
+                    }
+                }
+            }
+        },
+        "bifrostSection": {
+            "displayName": "Hidden Props",
+            "properties": {
+                "bifrost": {
+                    "displayName": "Hidden Prop",
+                    "type": {
+                        "text": true
+                    }
+                }
+            }
+        },
+        "kpisettings": {
+            "displayName": "KPITile Settings",
+            "properties": {
+                "draggable": {
+                    "displayName": "Draggable",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "resize": {
+                    "displayName": "Resizeable",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "horizontalMargins": {
+                    "displayName": "Horizontal Margins",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "verticalMargins": {
+                    "displayName": "Vertical Margins",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "maxRows": {
+                    "displayName": "Max no. of Rows",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "height": {
+                    "displayName": "Height",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "width": {
+                    "displayName": "Width",
+                    "type": {
+                        "numeric": true
+                    }
+                }
+                
+            }
+        },
+        "license": {
+            "displayName": "License",
+            "properties": {
+                "customer": {
+                    "displayName": "Licensed To",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "key": {
+                    "displayName": "License Key",
+                    "type": {
+                        "text": true
+                    }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "categorical": {
+                "categories": {
+                    "for": {
+                        "in": "category"
+                    },
+                    "dataReductionAlgorithm": {
+                        "top": {}
+                    }
+                },
+                "values": {
+                    "select": [
+                        {
+                            "bind": {
+                                "to": "measure"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

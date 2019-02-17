@@ -1,0 +1,41 @@
+/* CSS for Accordion Component (based on Spectre.css) */
+.bf-editor-accordion.accordion {
+  margin-bottom: 16px;
+}
+.bf-editor-accordion.accordion .accordion-header {  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 42px;
+  background-color: #f7f7f7;
+}
+.bf-editor-accordion.accordion .accordion-header h3 {
+  font-size: 11px;
+  font-weight: 600;
+  color: #5755d9;
+  text-transform: uppercase;
+  padding-left: 4px;
+  margin: 0;
+}
+.bf-editor-accordion.accordion .accordion-header .accordion-title i.icon {
+  font-size: 10px;
+  color: #5755d9;
+}
+.bf-editor-accordion.accordion .accordion-header .accordion-action i.icon {
+  font-size: 10px;
+}
+.bf-editor-accordion.accordion .accordion-header .accordion-action .btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+.bf-editor-accordion.accordion .accordion-header .accordion-action .btn:hover {
+  opacity: 0.8;
+}
+.bf-editor-accordion.accordion input:checked~.accordion-header .accordion-action .icon, .accordion[open] .accordion-header .accordion-action .icon {
+  transform: rotate(0deg);
+}
+
+.bf-editor-accordion.accordion .accordion-body {
+  border-bottom: 1px #DDD solid;
+}
+

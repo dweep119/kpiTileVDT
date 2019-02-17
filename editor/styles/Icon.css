@@ -1,0 +1,405 @@
+/* 
+  Icon.scss 
+  - Includes all basic icons
+*/
+@font-face {
+  font-family: 'FabricMDL2Icons';
+  src: url("../fonts/fabric-icons.woff") format("woff"); }
+
+.icon {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: 'FabricMDL2Icons';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  color: #707070; }
+  .icon--Appearance:before {
+    content: "\F3F9";
+  }
+  .icon--Data:before {
+    content: "\E9EC";
+  }
+.icon--Nodes:before {
+  content: "\F7DD";
+}
+.icon--Export:before {
+    content: "\EFB8";
+  }
+.icon--Navigation:before {
+    content: "\E816";
+  }
+.icon--DataSource:before {
+  content: "\EFC7";
+}
+.icon--Calculator:before {
+  content: "\E8EF";
+}
+.icon--Enum:before {
+  content: "\EEBF";
+}
+.icon--Divide::before {
+  content: "\F4FC";
+  display: inline-block;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.icon--Custom:before {
+  content: "\E929";
+}
+.icon--Expand:before {
+    content: "\F164";
+  }
+
+.icon--Collapse:before {
+    content: "\F165";
+  }
+.icon--PageAdd:before{
+  content: "\EA1A";
+}
+
+.icon--SampleData:before{
+  content: "\E9F9";
+}
+
+.icon--DynamicTree:before{
+  content: "\E74C";
+}
+
+.icon--Import:before{
+  content: "\E898";
+}
+
+.icon--NodeMapping:before {
+  content: "\E707"; }
+
+.icon--DataSeries:before {
+    content: "\ECDC"; }
+
+.icon--PeriodsAggregation:before {
+    content: "\EC92"; }
+
+.icon--PrimandSec:before {
+    content: "\E81E"; }
+
+.icon--General:before {
+    content: "\E713"; }
+
+.icon--StatusBar:before {
+    content: "\F35C"; }
+
+.icon--Visualization:before {
+    content: "\EB3C"; }
+
+.icon--Colors:before {
+    content: "\E790"; }
+.icon--FullTree:before {
+  content: "\EA52";
+}
+.icon--TreeSettings:before {
+  content: "\EEBF";
+}
+.icon--GlobalNavButton:before {
+  content: "\E700"; }
+
+.icon--Brightness:before {
+  content: "\E706"; }
+
+.icon--QuickNote:before {
+  content: "\E70B"; }
+
+.icon--ChevronDown:before {
+  content: "\E70D"; }
+
+.icon--ChevronUp:before {
+  content: "\E70E"; }
+
+.icon--Edit:before {
+  content: "\E70F"; }
+
+.icon--Add:before {
+  content: "\E710"; }
+
+.icon--Cancel:before {
+  content: "\E711"; 
+cursor: pointer;}
+
+.icon--More:before {
+  content: "\E712"; }
+
+.icon--Settings:before {
+  content: "\E713"; }
+
+.icon--Mail:before {
+  content: "\E715"; }
+
+.icon--People:before {
+  content: "\E716"; }
+
+.icon--Stop:before {
+  content: "\E71A"; }
+
+.icon--Filter:before {
+  content: "\E71C"; }
+
+.icon--AllApps:before {
+  content: "\E71D"; }
+
+.icon--Zoom:before {
+  content: "\E71E"; }
+
+.icon--ZoomOut:before {
+  content: "\E71F"; }
+
+.icon--Search:before {
+  content: "\E721"; }
+
+.icon--Attach:before {
+  content: "\E723"; }
+
+.icon--Send:before {
+  content: "\E724"; }
+
+.icon--Forward:before {
+  content: "\E72A"; }
+
+.icon--Back:before {
+  content: "\E72B"; }
+
+.icon--Refresh:before {
+  content: "\E72C"; }
+
+.icon--Lock:before {
+  content: "\E72E"; }
+
+.icon--Blocked:before {
+  content: "\E733"; }
+
+.icon--FavoriteStar:before {
+  content: "\E734"; }
+
+.icon--FavoriteStarFill:before {
+  content: "\E735"; }
+
+.icon--Checkbox:before {
+  content: "\E739"; }
+
+.icon--CheckboxComposite:before {
+  content: "\E73A"; }
+
+.icon--CheckboxFill:before {
+  content: "\E73B"; }
+
+.icon--CheckboxCompositeReversed:before {
+  content: "\E73D"; }
+
+.icon--CheckMark:before {
+  content: "\E73E"; }
+
+.icon--BackToWindow:before {
+  content: "\E73F"; }
+
+.icon--FullScreen:before {
+  content: "\E740"; }
+
+.icon--Print:before {
+  content: "\E749"; }
+
+.icon--Up:before {
+  content: "\E74A"; }
+
+.icon--Down:before {
+  content: "\E74B"; }
+
+.icon--Delete:before {
+  content: "\E74D"; }
+
+.icon--Save:before {
+  content: "\E74E"; }
+
+.icon--ReturnKey:before {
+  content: "\E751"; }
+
+.icon--Cloud:before {
+  content: "\E753"; }
+
+.icon--Sad:before {
+  content: "\E757"; }
+
+.icon--PageLeft:before {
+  content: "\E760"; }
+
+.icon--PageRight:before {
+  content: "\E761"; }
+
+.icon--KeyboardClassic:before {
+  content: "\E765"; }
+
+.icon--Play:before {
+  content: "\E768"; }
+
+.icon--Pause:before {
+  content: "\E769"; }
+
+.icon--ChevronLeft:before {
+  content: "\E76B"; }
+
+.icon--ChevronRight:before {
+  content: "\E76C"; }
+
+.icon--Emoji2:before {
+  content: "\E76E"; }
+
+.icon--Globe:before {
+  content: "\E774"; }
+
+.icon--Contact:before {
+  content: "\E77B"; }
+
+.icon--Unlock:before {
+  content: "\E785"; }
+
+.icon--AutoEnhanceOn:before {
+  content: "\E78D"; }
+
+.icon--Light:before {
+  content: "\E793"; }
+
+.icon--Redo:before {
+  content: "\E7A6"; }
+
+.icon--Undo:before {
+  content: "\E7A7"; }
+
+.icon--Crop:before {
+  content: "\E7A8"; }
+
+.icon--Warning:before {
+  content: "\E7BA"; }
+
+.icon--Flag:before {
+  content: "\E7C1"; }
+
+.icon--Page:before {
+  content: "\E7C3"; }
+
+.icon--Tab:before {
+  content: "\E7E9"; }
+
+.icon--Pinned:before {
+  content: "\E840"; }
+
+.icon--RevToggleKey:before {
+  content: "\E845"; }
+
+.icon--Previous:before {
+  content: "\E892"; }
+
+.icon--Next:before {
+  content: "\E893"; }
+
+.icon--Clear:before {
+  content: "\E894"; }
+
+.icon--Sync:before {
+  content: "\E895"; }
+
+.icon--Download:before {
+  content: "\E896"; }
+
+.icon--Help:before {
+  content: "\E897"; }
+
+.icon--OpenInNewWindow:before {
+  content: "\E8A7"; }
+
+.icon--Switch:before {
+  content: "\E8AB"; }
+
+.icon--ChromeClose:before {
+  content: "\E8BB"; }
+
+.icon--Message:before {
+  content: "\E8BD"; }
+
+.icon--Copy:before {
+  content: "\E8C8"; }
+
+.icon--Like:before {
+  content: "\E8E1"; }
+
+.icon--AddFriend:before {
+  content: "\E8FA"; }
+
+.icon--Accept:before {
+  content: "\E8FB"; }
+
+.icon--Comment:before {
+  content: "\E90A"; }
+
+.icon--Repair:before {
+  content: "\E90F"; }
+
+.icon--FullCircleMask:before {
+  content: "\E91F"; }
+
+.icon--LocationFill:before {
+  content: "\E920"; }
+
+.icon--FlickDown:before {
+  content: "\E935"; }
+
+.icon--FlickUp:before {
+  content: "\E936"; }
+
+.icon--FlickLeft:before {
+  content: "\E937"; }
+
+.icon--FlickRight:before {
+  content: "\E938"; }
+
+.icon--Code:before {
+  content: "\E943"; }
+
+.icon--Info:before {
+  content: "\E946"; }
+
+.icon--CalculatorMultiply:before {
+  content: "\E947"; }
+
+.icon--CalculatorAddition:before {
+  content: "\E948"; }
+
+.icon--CalculatorSubtract:before {
+  content: "\E949"; }
+
+.icon--CalculatorEqualTo:before {
+  content: "\E94E"; }
+
+.icon--ChevronUpSmall:before {
+  content: "\E96D"; }
+
+.icon--ChevronDownSmall:before {
+  content: "\E96E"; }
+
+.icon--ChevronLeftSmall:before {
+  content: "\E96F"; }
+
+.icon--ChevronRightSmall:before {
+  content: "\E970"; }
+
+.icon--ChevronUpMed:before {
+  content: "\E971"; }
+
+.icon--ChevronDownMed:before {
+  content: "\E972"; }
+
+.icon--ChevronLeftMed:before {
+  content: "\E973"; }
+
+.icon--ChevronRightMed:before {
+  content: "\E974"; }

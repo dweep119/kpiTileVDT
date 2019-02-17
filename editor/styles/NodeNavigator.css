@@ -1,0 +1,306 @@
+.vdt-tree-format{
+    padding-top: 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.vdt-tree-buttons{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+.vdt-tree-view {
+    bottom: 36px;
+    top: 120px;
+    left: 0;
+    right: 0;
+    padding: 0 16px;
+    position: absolute;
+}
+
+.icon-node-buttons{
+    padding:0px 5px;
+    
+}
+.icon-node-buttons:hover{
+    cursor: pointer;
+}
+
+.button-img{
+    height: 10px;
+    width: 10px;
+}
+
+.rstcustom__rowContents  {
+    padding-left: 35px;
+   
+}
+
+.rst__rowContents{
+    width: auto !important;
+    min-width: auto !important;
+}
+
+.rst__rowWrapper {
+    padding: 5px 10px 5px 0 !important;
+}
+.rstcustom__rowWrapper>.rstcustom__row{
+    padding-left: 1px !important;
+}
+
+.vdt-tree-buttons {
+    width: auto !important;
+}
+
+.root-node-create .btn{
+    margin-right: 10px !important;
+    font-size: 14px;
+}
+
+.rst__moveHandle {
+    background-image: none !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    width: 30px !important;
+    border: none !important;
+}
+
+.rst__rowContents {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    background-color: #f4f4f4;
+    border: none !important;
+}
+
+.rst__rowTitle {
+    font-weight: 400 !important;
+    font-size: 14px;
+    color: #515151;
+}
+
+
+.rst__rowTitle {
+    cursor: pointer;
+}
+.vdt-tree-format{
+    padding-top: 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.icon-node-buttons{
+    padding:0px 5px;
+    
+}
+
+.button-img{
+    height: 10px;
+    width: 10px;
+}
+
+.rstcustom__rowContents  {
+    padding-left: 35px;
+   
+}
+
+.rst__rowContents{
+    width: auto !important;
+    min-width: auto !important;
+    border-radius: 0 !important;
+}
+
+.rst__rowWrapper {
+    padding: 5px 10px 5px 0 !important;
+}
+.rstcustom__rowWrapper>.rstcustom__row{
+    padding-left: 1px !important;
+}
+
+.rst__rowLandingPad::before,
+.rst__rowCancelPad::before {
+  background-color: #DDD !important;
+  border: none;
+    
+}
+
+.rst__collapseButton:hover:not(:active), .rst__expandButton:hover:not(:active) {
+    background-size: 12px;
+    height: 10px;
+    width: 10px;
+}
+
+.rst__collapseButton, .rst__expandButton, .rst__collapseButton:focus, .rst__expandButton:focus {
+    box-shadow: 0 0 0 1px #c6c6c6;
+    border-radius: initial;
+    background-size: 12px;
+    height: 10px;
+    width: 10px;
+}
+
+.node-toolbar {
+    background-color: #f4f4f4 !important;
+    width: 100%;
+    padding-left: 14px;
+}
+
+.node-toolbar .btn-clear {
+    background-color: #f4f4f4 !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    color: #333333;
+    line-height: 21px;
+    margin-right: 21px;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.node-toolbar .btn-clear .icon {
+    color: #0078d4;
+    margin-right: 10px;
+}
+
+.node-toolbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-weight: 400 !important;
+    margin-bottom: 0px;
+}
+.reset-tree {
+    display: inline;
+}
+
+.vdt-tree-buttons {
+    width: auto !important;
+}
+
+.root-node-create .btn{
+    margin-right: 10px !important;
+    font-size: 14px;
+}
+
+.rst__moveHandle {
+    background-image: none !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    width: 30px !important;
+    border: none !important;
+}
+
+.rst__rowTitle {
+    font-weight: 400 !important;
+}
+
+.rst__moveHandle:before {
+    background-color: #d9d9d9 ;
+    font-family: 'FabricMDL2Icons';
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    content: "\E7C3";
+}
+.rst__moveHandle:hover:before {
+    content: "\E7C2";
+    font-family: 'FabricMDL2Icons';
+    position: absolute;
+    top: 10px;
+    left: 8px;
+}
+.rst__rowTitle {
+    cursor: pointer;
+}
+.rst__rowLabel{
+    padding-right: 10px !important;
+}
+/*
+.vdt-tree-view .rst__collapseButton , .vdt-tree-view .rst__expandButton {
+    /* background: #e0e0e0 none !important;
+    border: none;
+    border-radius: 0;
+    border: 1px solid #9a9a9a;
+    border-radius: 0;
+    height: 10px;
+    width: 10px;
+} */
+
+.vdt-tree-view .rst__lineHalfHorizontalRight::before, .rst__lineFullVertical::after, .rst__lineHalfVerticalTop::after, .rst__lineChildren::after, .rst__lineHalfVerticalBottom::after {
+    background-color: #989898 !important;
+}
+
+.vdt-tree-active-node .rst__rowContents {
+    background-color: #0078d4;   
+}
+
+.vdt-tree-active-node .rst__rowTitle {
+    color: white;
+}
+
+.vdt-tree-active-node .rst__toolbarButton .icon {
+    color: white;
+}
+
+.vdt-tree-active-node .rst__toolbarButton .icon:hover {
+    opacity: 0.7;
+}
+
+.vdt-tree-active-node .rst__moveHandle, .vdt-tree-active-node .rst__moveHandle:before {
+    background-color: #006abb;
+    color: white;
+}
+
+.vdt-tree-view .vdt-tree-node-title {
+    text-overflow: ellipsis;
+    width: 120px;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+/* ... button css in node navigator */
+.dropdown-button {
+    position: relative;
+    display: inline-block; 
+    cursor: pointer;
+}
+.ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    top:15px;    
+    background-color: white;
+    font-weight:bold;
+    position: absolute;
+
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.li a {
+    color: #000;
+    text-decoration: none;
+}
+.li {
+    padding: 8px 16px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.li:last-child {
+    border-bottom: none;
+}
+
+.button{
+    width:10px;
+    height:10px;
+    border-radius:5px;
+    font-weight:bold;
+  
+}
+.node-menu-icon{
+    padding-right: 5px;
+}
+
+/* End */

@@ -1,0 +1,14 @@
+{
+  "name": "examplechart",
+  "dependencies": {
+    "@types/jquery": "^3.3.22",
+    "@visualbi/bifrost-powerbi": "0.0.35",
+    "coords": "0.0.0",
+    "dsmorse-gridster": "^0.7.0",
+    "highcharts": "^6.2.0",
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.11",
+    "powerbi-visuals-utils-dataviewutils": "1.2.0",
+    "powerbi-visuals-utils-formattingutils": "^3.1.0"
+  }
+}

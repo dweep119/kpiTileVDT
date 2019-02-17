@@ -1,0 +1,79 @@
+.tab {
+  align-items: center;
+  display: flex;
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0 0 .15rem 0;
+  padding: 0;
+}
+
+.tab .tab-item {
+  margin-top: 0;
+}
+
+.tab .tab-item button {
+  border: 0;
+  outline: 0;
+  border-bottom: .1rem solid transparent;
+  color: #a6a6a6;
+  display: block;
+  margin: 0 .4rem 0 0;
+  padding: 0 .2rem .3rem .2rem;
+  text-decoration: none;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-size: 14px !important;
+}
+
+.tab .tab-item button:focus,
+.tab .tab-item button:hover {
+  color: #333;
+}
+
+.tab .tab-item.active button,
+.tab .tab-item button.active {
+  border-bottom-color: #0078d4;
+  color: #333;
+}
+
+.tab .tab-item.tab-action {
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  text-align: right;
+}
+
+.tab .tab-item .btn-clear {
+  margin-top: -.2rem;
+}
+
+.tab.tab-block .tab-item {
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  text-align: center;
+}
+
+.tab.tab-block .tab-item button {
+  margin: 0;
+}
+
+.tab.tab-block .tab-item .badge[data-badge]::after {
+  position: absolute;
+  right: .1rem;
+  top: .1rem;
+  transform: translate(0, 0);
+}
+
+.tab:not(.tab-block) .badge {
+  padding-right: 0;
+}
+
+
+.tab .tab-item button:focus{
+    box-shadow: none;
+}
+.tab .tab-item button:hover{
+    color:black;
+}

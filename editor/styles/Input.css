@@ -1,0 +1,13 @@
+.bf-editor-form-input .form-input {
+  height: 1.6rem;
+  font-size: 0.6rem;
+}
+.bf-editor-form-input i.icon {
+  font-size: 0.6rem;
+  height: 0.6rem;
+  width: 0.6rem;
+}
+.bf-editor-form-input .form-input:not(:placeholder-shown):invalid:focus {
+  box-shadow: none;
+  background-color: #fffaf7;
+}

@@ -1,0 +1,207 @@
+/*Form related overrides*/
+.form-group:not(:last-child) {
+    margin-bottom: 18px !important;
+}
+.form-label label {
+    font-size: 14px !important;
+    /* margin-bottom: 10px; */
+    font-weight: 600;
+}
+.select-primarySec .main-label {
+    font-weight: 600;
+}
+.form-label:not(:first-child){
+    margin-top: 0 !important;
+}
+.form-input-container {
+    font-size: 12px !important;
+}
+.form-radio {
+    margin: 0 !important;
+}
+.formGroup-section {
+    margin-bottom: 24px;
+}
+
+.form-radio span {
+    font-weight: 500;
+}
+/* input {
+    margin-bottom: 6px !important;
+} */
+.inline-label {
+    width: calc(100% - 9px) !important;
+    border: 1px solid #a6a6a6 !important;
+}
+.sublabel {
+    font-size: 12px;
+}
+.first-section {
+    margin-top: 18px;
+}
+.main-label {
+    font-size: 14px;
+}
+.dropdown {
+    width: 150px !important;
+    margin-bottom: 5px !important;
+}
+.primValue {
+    width: 100px !important;
+    margin-bottom: 5px !important;
+}
+.menu-note{
+    font-size: 12px;
+    color:#615c5c;
+    margin-top: 2px;
+}
+.form-input {
+    margin-top: 6px !important;
+}
+.theme {
+    border: 1px solid #eaeaea;
+    padding: 10px;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    width: 132px;
+    cursor: pointer;
+}
+.theme:last-of-type {
+    margin-left: 10px;
+}
+.theme-selection .bf-editor-flex {
+    flex-wrap: wrap !important;
+}
+.theme-selection h3 {
+    width: 100%;
+}
+.theme-selection .menu-note {
+    width: 100%;
+}
+.selected-theme {
+    border: 1px solid #666666;
+}
+.light-preview {
+    margin-top: 10px;
+    height: 68px;
+    background-color: #ddd;
+    background-position: center;
+    background-image: url('../assets/Nodes-light.png');
+    background-repeat: no-repeat;
+}
+.dark-preview{
+    margin-top: 10px;
+    background-color: #ddd;
+    height: 68px;
+    background-position: center;
+    background-image: url('../assets/Nodes-dark.png');
+    background-repeat: no-repeat;
+}
+
+/*Fix modal form to allow forms containing 2 fields*/
+.modal-container .form {
+    display: flex;
+    flex-wrap: wrap;
+}
+.modal-container .form .form-group {
+    width: 100%;
+}
+.modal-container .form .range-form {
+    width: 48%;
+}
+.modal-container .form .end {
+    margin-left: 12px !important;
+    margin-top: 24px !important;
+}
+
+.modal-container .toggle-switch .form-switch>span {
+    font-size: 14px !important;
+    font-weight: 600;
+}
+
+/*Fix calculation configuration*/
+.operand-selection {
+    margin-top: 10px;
+}
+/*Fix data and appearance forms*/
+.menu-data-view .section-header {
+    font-size: 16px;
+    position: absolute;
+    top: -12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.menu-data-view .node-separator {
+    margin-top: 0px !important;
+    margin-bottom: 10px;
+}
+.menu-data-view .node-separator-section {
+    margin-bottom: 0 !important;
+}
+.menu-data-view .form-label {
+    margin-top: 0 !important;
+}
+.menu-data-view .section-note {
+    margin-top: 14px;
+}
+/*Temporary css to make data and appearance tabs looks nice for this release due to inconsistency in components implementation and I don't want to modify components now*/
+.menu-data-view .periods {
+    margin-bottom: 0 !important;
+}
+.menu-data-view .periods {
+    margin-top: 18px;
+}
+.menu-data-view .form-group-zero-bot-margin {
+    margin-bottom: 0 !important;
+}
+.menu-data-view .sublabel-dropdown{
+    font-size: 12px;
+    font-weight: 500;
+}
+.menu-data-view .secondary-value-section {
+    margin: 18px 0 0 0 !important;
+}
+.menu-data-view .section-label {
+    font-weight: 500 !important;
+}
+.menu-data-view .checkbox-group {
+    margin-bottom: 0 !important;
+}
+.menu-data-view .suffix-labels label{
+    font-weight: 400;
+}
+
+.settings-menu-temp-fix {
+    margin-top: 5px;
+}
+.menu-data-view .export-panel{
+    margin-top: 5px;
+}
+.export label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/** Multi Select */
+/* .form-multi-select {
+    height: 65px !important;
+} */
+
+.form-multi-select ul.menu {
+    max-height: 200px;
+    overflow-y: auto;
+    top: auto;
+    margin-top: 5px;
+}
+
+.form-multi-select .selected {
+    flex-wrap: wrap;
+    height: 100%;
+    overflow: auto;
+    align-items: flex-start !important;
+}
+
+.form-multi-select .chip {
+    margin-bottom: 2px;
+}

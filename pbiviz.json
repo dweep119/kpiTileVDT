@@ -1,0 +1,36 @@
+{
+  "visual": {
+    "name": "kpiTileVDT",
+    "displayName": "kpiTileVDT",
+    "guid": "kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662",
+    "visualClassName": "ExampleChart",
+    "version": "1.0.0",
+    "description": "",
+    "supportUrl": "",
+    "gitHubUrl": ""
+  },
+  "apiVersion": "2.3.0",
+  "author": {
+    "name": "",
+    "email": ""
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": [
+    "node_modules/powerbi-visuals-utils-dataviewutils/lib/index.js",
+    "node_modules/highcharts/highcharts.js",
+    "node_modules/lodash/lodash.min.js",
+    "node_modules/jquery/dist/jquery.js",
+    "node_modules/globalize/lib/globalize.js",
+    "node_modules/dsmorse-gridster/dist/jquery.gridster.js", 
+    "node_modules/globalize/lib/cultures/globalize.culture.en-US.js",
+    "node_modules/powerbi-visuals-utils-typeutils/lib/index.js",
+    "node_modules/powerbi-visuals-utils-formattingutils/lib/index.js",
+    "external/bifrostEditor.js"
+  ],
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "dependencies": "dependencies.json",
+  "stringResources": []
+}

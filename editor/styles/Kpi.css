@@ -1,0 +1,82 @@
+/* .kpiButton{
+  height: 100px;
+  width: 100px;
+  background:transparent;
+  border:none;
+  margin-right: 10px;
+}
+
+.kpiButton:hover{
+  background:transparent;
+  
+} */
+.select-style{
+  /* font-size: 0.6rem;
+  height: 0.6rem;
+  width: 0.6rem; */
+}
+.add-btn-style{
+  background: #5755d9;
+  border-color: #4b48d6;
+  color: #fff;
+  height: 1.4rem;
+  padding: .05rem .3rem;
+  font-size: 0.6rem;
+}
+
+.kpi-preview-style{
+  margin: 4px;
+  height: 100px;
+}
+
+.kpi-proceed-btn{
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 10px;
+  margin-top: 40px;
+}
+.kpi-proceed-btn .btn.btn-primary{
+  background: #f3c907;
+  border-color: #f3c907;
+  color:black;
+ 
+}
+
+.bf-editor-vdt-selection{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+}
+.bf-editor-vdt-selection-item{
+  display: flex;
+  flex-direction: row;
+  border:1px solid #80808040;
+  /* border:1px solid #f3c907; */
+  justify-content:start;
+  border-radius: 0px;
+  margin: 10px;
+  padding: 0px;
+  position: relative;
+}
+.bf-editor-vdt-selection-item-active{
+  display: flex;
+  flex-direction: row;
+  /* border:1px solid #80808040; */
+  border:1px solid black;
+  justify-content:start;
+  border-radius: 6px;
+  margin: 10px;
+  padding: 0px;
+  position: relative;
+}
+.zoom-button {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  right: 10px;
+  top: 10px;
+  background: #d6d6d687;
+  padding: 3px 4px 4px 4px;
+  border-radius: 2px;
+}
