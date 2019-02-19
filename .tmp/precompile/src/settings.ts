@@ -27,18 +27,6 @@
 module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  {
     "use strict";
 
-    const nodeMapProps = {};
-    const dataSeries = {};
-    const periodAgg = {};
-    const primarySec = {};
-    const visualization = {};
-    const statusBar = {};
-    const general = {};
-    const colors = {};
-    const nav = {};
-
-
-
     import DataViewObjectsParser = powerbi.extensibility.utils.dataview.DataViewObjectsParser;
 
     export class VisualSettings extends DataViewObjectsParser {
@@ -63,21 +51,8 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
      }
 
      export class Editor {
-      public treeConfig: string = "[]";
-    // data
-    public nodeMapProps:string= JSON.stringify(nodeMapProps);
-    public dataSeries:string= JSON.stringify(dataSeries);
-    public periodAgg: string= JSON.stringify(periodAgg);
-    public primarySec:string = JSON.stringify(primarySec);
-
-    // Appearance
-    public visualization :string= JSON.stringify(visualization);
-    public statusBar:string= JSON.stringify(statusBar);
-    public general:string= JSON.stringify(general);
-    public colors:string= JSON.stringify(colors);
-
-    //Settings
-    public navPanel:string = JSON.stringify(nav);
+      public kpitile: string = "";
+      public kpieditor: string = "";
     }
 
     export class BifrostSection {

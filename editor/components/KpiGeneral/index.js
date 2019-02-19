@@ -4,7 +4,7 @@ import {inject, observer} from 'mobx-react';
 import Form from '@visualbi/bifrost-editor/dist/forms/Form';
 import Input from '@visualbi/bifrost-editor/dist/forms/Input';
 import Select from '@visualbi/bifrost-editor/dist/forms/Select';
-import Button from '@visualbi/bifrost-editor/dist/elements/Button';
+import Button from '@visualbi/bifrost-editor/dist/forms/Button';
 import _ from 'lodash';
 
 const panelConfig = {

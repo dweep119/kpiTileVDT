@@ -24826,9 +24826,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _visualbi_bifrost_editor_dist_core_Editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/core/Editor */ "./node_modules/@visualbi/bifrost-editor/dist/core/Editor.js");
 /* harmony import */ var _visualbi_bifrost_editor_dist_core_Editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_core_Editor__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _panels_DataPanel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./panels/DataPanel */ "./panels/DataPanel.jsx");
-/* harmony import */ var _panels_AppearancePanel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./panels/AppearancePanel */ "./panels/AppearancePanel.jsx");
-/* harmony import */ var _panels_TodoList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./panels/TodoList */ "./panels/TodoList.jsx");
+/* harmony import */ var _panels_TodoList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./panels/TodoList */ "./panels/TodoList.jsx");
 
 
 
@@ -24852,13 +24850,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
- // import VDTEditor from './panels/VDTEditor';
 
-
-
- // import NodePanel from './panels/NodePanel';
-// import KpiPanel from './panels/KpiPanel';
-// import ValueDriverTree from './store/ValueDriverTree'
 
 var App =
 /*#__PURE__*/
@@ -24871,10 +24863,6 @@ function (_Component) {
     _classCallCheck(this, App);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
-    _this.nodeMapProps = {};
-    _this.dataSeries = {};
-    _this.periodAgg = {};
-    _this.primarySec = {};
     _this.kpitile = [{
       name: 'Test',
       color: '#FFAA22',
@@ -24895,69 +24883,20 @@ function (_Component) {
           listener = _this$props.listener,
           configurations = _this$props.configurations;
       var panels = [{
-        key: 'sample-kpi',
-        component: _panels_DataPanel__WEBPACK_IMPORTED_MODULE_5__["default"],
-        props: {
-          className: 'vdt-editor-panel'
-        }
-      }, {
         key: 'edit-kpi',
-        component: _panels_TodoList__WEBPACK_IMPORTED_MODULE_7__["default"],
+        component: _panels_TodoList__WEBPACK_IMPORTED_MODULE_5__["default"],
         props: {
-          className: 'vdt-editor-panel'
-        }
-      }, {
-        key: 'vdt-kpi',
-        component: _panels_AppearancePanel__WEBPACK_IMPORTED_MODULE_6__["default"],
-        props: {
-          className: 'vdt-editor-panel'
+          className: 'vdt-editor-panel',
+          dataView: this.props.dataView
         }
       }];
       var nav = [{
-        label: 'Sample KPI',
-        type: 'panel',
-        icon: 'Data',
-        panelKey: 'sample-kpi'
-      }, {
         label: 'Edit KPI',
         type: 'panel',
         icon: 'Data',
         panelKey: 'edit-kpi'
-      }, {
-        label: 'KPI',
-        type: 'panel',
-        icon: 'Data',
-        panelKey: 'vdt-kpi'
       }];
       var store = [{
-        name: 'nodeMapProps',
-        meta: {
-          propertyId: 'nodeMapProps',
-          sectionId: 'editor'
-        },
-        defaultValue: this.nodeMapProps
-      }, {
-        name: 'dataSeries',
-        meta: {
-          propertyId: 'dataSeries',
-          sectionId: 'editor'
-        },
-        defaultValue: this.dataSeries
-      }, {
-        name: 'periodAgg',
-        meta: {
-          propertyId: 'periodAgg',
-          sectionId: 'editor'
-        },
-        defaultValue: this.periodAgg
-      }, {
-        name: 'primarySec',
-        meta: {
-          propertyId: 'primarySec',
-          sectionId: 'editor'
-        },
-        defaultValue: this.primarySec
-      }, {
         name: 'kpitile',
         meta: {
           propertyId: 'kpitile',
@@ -24990,6 +24929,7 @@ var loadEditor = function loadEditor(element, options) {
   react_dom__WEBPACK_IMPORTED_MODULE_3___default.a.render(react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(App, {
     configurations: options.configurations,
     options: options,
+    dataView: options.bifrostData,
     listener: options.listener,
     getPropertyValue: options.getPropertyValue
   }), element);
@@ -24997,2059 +24937,6 @@ var loadEditor = function loadEditor(element, options) {
 var removeEditor = function removeEditor(element) {
   react_dom__WEBPACK_IMPORTED_MODULE_3___default.a.unmountComponentAtNode(element);
 };
-
-/***/ }),
-
-/***/ "./assets/Nodes-dark.png":
-/*!*******************************!*\
-  !*** ./assets/Nodes-dark.png ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAAA3CAYAAABq65bCAAAACXBIWXMAAAsSAAALEgHS3X78AAAJcUlEQVR4nO2cbWxNWxrHHwxTg3F0lDaXSavGJYyXjKgrI7cknJ1B4uWDG4Np4ksnQhwh0/ClM4J2mNlufVARrob5IDF14232IdetCNEQvTqSaWbOQUZRhtJcnSgpk9+as5rV3XOqb7fO3tc/Odln7732OrvPetbz/rTP27dv5QPeD37gN7o31RZbz6N/+uNvP//lkCR4nfbwhe+I/+p+ccGPUuTnvfFbkydPltu3b8uLFy8kOztbotGozJ8/X86dOyfz5s2T8+fPq3GzZs2S69evy6tXr8zHf9K3N17SrygsLJSRI0eqv27JkiWyatUqyc/PV4vCYgDub9q0SYYNG9aGCr4m/uDBg1uI8F3g0aNHan64fcyYMXLkyBH1K1wbPXq0OkJ4dsayZcvUOBO+Ezsm2Pp8+vTpI5cvX5YpU6Yo0ZCamioYGoiMY8eOdXn+HTt2yL179xShmW/AgAFy+vRpuXLliro/fvx4OXjwoPrdpqamNs/7ztr5tjK1QkQ+/U1xruJ8LY/hUkQAR9C/f39FLH3+HlDia86H8ABuN8+TBb4ifigUCqz71dCUtB83dPrZQCAgz58/b3Ndy22sFcTLzZs3pbGxUVk0Jvbt26fOkPs8w5GdhqWDMq6oqJBnz57JiRMnWp7yjcKNRCIpIvJ1tC4j0Nlns7KyZNGiRXHvsVsg2NWrV9UO0taNG9y/du2asmrMHTZhwgSlA7RJasI3nB+JRGaKyM2Z42oyReTjzjxbUFAgRUVFce+hNyA43As3a2XqRllZWZtr6BOUMjsHayg3N7fF9hc/cX44HM4VkcOdfW7u3LnqeOfOnbj3Bw0apAgP3KZiR8AziB5EFgtpwk8yP9227YpvK9tyoAYi4OnTp/L48eOWa8uXL2/X3KyurpbVq1erRUDWdxboBnYL1hUmrglfEN9xnKnZ2dl18e4hzydOnKiOyF28T0xMTYxbt27JhQsXEs6NrY7nyliIyCLAySdPnpTjx4+3jNu/f7+kpaWphURMlZSUqOuIm927d0tDQ4N6Rlte4hfih8PhL4PB4GL39XXr1smkSZMUQfbu3duluWtqamTnzp2tOB8F7IrTyIEDB5TD5RYtLDjER/4zhwnPO1mhUEjJetu2UbQ4WXlEDHGyRowY0UrEJBl84WQVisgefTIkp/7w9b9m/RRdmsSEB//yNOeHQqF8EVmMyLEs62USvFKn4FnOD4VCiBncyiwvEl48bucjbsps276bBO/SJSjOf1Fckl61/9Df7aljhif5+/6+vLy80HEcQglYN1OT4J26DMX5jcUlW1Oam3tdBOH1geHDhyvbmw/XUlJSlH3NeTxEIpHPRKTIy1wvhswf/I5xPQ7cbtz2zZs3y4oVKxShcU6wpYmH4I0uXLhQ2chuRKPRqbZtb+jtd+5pxOX27du3y8WLF5VTQBYGohBKxYHAQ5s+fbps3bq1W6+iI4Sm40HgaunSpSoyiBeJa09QChed7wY6HblMRiRUuCtXrlSEJwyKW63zlRJLCncXzEcCmiO/Yc4J4VkcnCS+sws0QqFQXjAY/MYPxFd2/qPUsV/8e8jAxTt/8TPFUVrWEv8AL1++lH79+rW42H379lXXegrM+/r1a+Wy653ALtMuOb/V3NzMe32ekZFhrV27Nnfs2LFxYzleQlyxo+MWZvyCP94dz+gpmNFC/d19BGlpaVg4h/1AeOkpJ8sdQ0FUIEYQU4gUuJhglBnRYwzyHCDWTMXKdT0WxUwFwI0bN9hxATOU4HV0y8kiEbFt2zYVEzehxZauDIDQ7oieWUngvoe4g+joHMaweG/evCFquMe27baJVo+iS5w/Y8YMWb9+veJ26lQuXbrU6j6cjIjS4dUzZ86ocKsJ0mlYMBB31KhRre4xnlCshntxvlfEJ0mQk5OjiARRHz58KBs3bkwYrsUUXbBggRqbnp6u7HY3EEc6oUzM3ARZ/l27dimTk8Xl/OzZs8y10nGcLy3L8q+1o0EiYs6cOTJu3Dg5evSoVFZWdmhS7a1q64hF6KyyZtfo53lHjkOHDj0WCARm6ti91xGX8yE2BZ8o0lOnTsmhQ4c6lb8kVYdtDmcjt+vq6pR44aOz/6ZSBqbC5R6pO5wu3oPfp+6loaGhJhAIpDuOk2tZVoUviU/6Deukvdxme4BrdcYfwLk6848HKzGFC5FZDBbLhFbYjHGn5YhmUqngB+IrsVO/6Ne/i1ZXF2ixg7WB09NV4JDxMedBfiO7tfjRYkli4588edLyawTWBg4cqHYbY3gmtvNUVDMUCpUGg8ENXo3jayjOTz31l+K/TfnkIxGp57w7hJeYQ+Z2ytwFqe3pATxa7UG7xihuDwaDTjgcLrUsK69bL/qe4ck0ouM4gXA4/IwslpfDyp7MZFmWhaNVFstmeRaeTaCTzaJeB1Fk23arQsv//PPPsy5UfRQ/E5M8qPV69QIGAmJnMaWC4qrbSXKUeLpQNhbn2eMSP72mhDGR45jCHYbnq5Rt24bwmY7jjE80RtdnakJxdHcHJsoXtwfdjch8+Cy6EYJzesE0ElU3+6JWk6KpSCQCxxe470FUvGX8iGnTpqlQNaY0aVEWBRMYolFr6Q4Qvgu6OwVzmDnwwpkTzz4z8/8REM7x0u/fv6/MZzOs7puGOBwv27bzzYY4DThRN8DpDJk+144cBOtKCbjEwiEEE3EiCZewsDqXUVpaKuXl5eoaXZHslhhKfEN8x3HywuFw5h8+K8t1E/+7hhZjWnTB3ZTAsCN0F6ReWKM1yFfdiHD8N41NKbcG/bB3ow5meFzDzF8kajf1DfEty7obDoeLqu9m5X3y8T96bF6Kt9asWSNVVVUye/ZsFaGtra1VqU0TdCMivkgE6eYIGiPQN0R40ScPHjxo1Y3o6ybongJiBRGiC7t0uYsJFgmZry0qMwfNd55B+RoNdf5ugpZYCpKWoI4AuexujENxajOyvW5EnY1zixgsIgoC6uvrVTei+bzviU9CyJ3gTwQI7ya+7kaEqHBxIuIngu5G1BV/Jj6InXcAKwbu50MXOueIHpL/plLFqdJNc4zR5Y0sHgkkxJSZyfteiJ3uApNxy5YtinAoThQu3IxDpTsOAUpZV1nD4Zr4LJrO6ul/CaPxgfM7ADOZLzFuRgGjYDVwssxuRHeBmC59NAp+fcn5lJV82pMTuu34eP+9BJEkCWz6RHrCd8QfklO/4d5XGf+FQZPgdRJDpOJ/CAnBB/zTaesAAAAASUVORK5CYII="
-
-/***/ }),
-
-/***/ "./assets/Nodes-light.png":
-/*!********************************!*\
-  !*** ./assets/Nodes-light.png ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAAA3CAYAAABq65bCAAAACXBIWXMAAAsSAAALEgHS3X78AAAJ00lEQVR4nO1cfUhU2xZfZdY1NdO+jIznq6lrcU0Db1ZSiX3MvOjRBxeSS6VRRJ8wA8WTkjIfhVIxr/pHIkLpi+pVryCcyXqZ9xJORVmSRY5lZWVWPnXG/KR5/NY7e95xZrTx46rn0A8O+5y9z55zXHudtfZev70c4HA46Dv6BoPUJPemiswfmt9mbhwUlLDFL+Kf/f1v20HQfLUcdYXB8XWFwY764vj/OHoBeXl5zoeUlJQ4amtrnXUXL150tsnPZUhWleb3Jp4+fUpHjx6lGTNm0LBhwygnJ4fevn1LgYGBXApzfunSJdq/fz+tWLHC7e0Gqlc8xELA8Udg5MiR/Ns2m42FW1dXR9u2beMnWSwWevToEQ8QBgXIyMjgazlUrfn79u1joQwYMIBmzZpFpaWlNGTIEK4DEhMTae7cuV367eDgYLpy5QqNGzeOFi9eTK9eveLzOXPm0JQpU1j4nz59or1799KNGzf4fvFcAVXNdmyWkHgiuuXjH1Uz9Kdbw8UfCw2dMGECvXjxggUEQDDQXpiMPsJaVWu+EKwooZGubX0JVQm/oCRSM3dqcZf64ivxNCAHDx6kiRMn0ps3b+jLly9OMzV79mznPR8+fKBNmzbRmDFjaNGiRbR8+XKuv3PnDvdfvXo1lZWVUUBAAG3cuNHZTzUO12QyhRWUTNttb/DrSl96/vy5x7Zp06ZRREQEz2qmTp3KTtPf39/tvoSEBIqJiWnThnPUwbTjd2D35VCT5v8SMe71sQC/hr93ppPVaqXbt29Tenq6x3b4CWi23W5nrcZX4Apo/NatW93qo6Ki+H5of0tLCzU3N9PKlSud7aoRvtlsjk5P/C27s/2g9fPmzSNfX1+P7ZWVlfT48WM+Dw0N9Sj8jnDq1CnuD82H6ZJDTZrf2FEjNA9/PGY9AtB6zITWrVvXbr/t27dzCa0dPHhwp18KNn7VqlXcH+8ghyqEbzAY0rRabT5RTpt6/LGYf0PINTU1NHr0aHry5Am3ff36lZ49e0Zr1qwhP7/2/URWVhZVV1ez8KKjo6mkpITrlyxZ4nS6cKZXr16lBw8e8EpWOFwACzAMenh4ODU0NFBaWpqzTfHzfIPBEE5ERVqtNjQu+NeZYp7v++P14bt37+Z5vU6nI41G06Xfh60nF82HH4ATln8JmNnAJGEg5DMhXJPkfKuqqtj8SFirBuHDztcYjUa9zRIynIjyffyj/oRFFjQ2JCSkH7ylRyh7kSVpfRIR/RnXgbHVNVjlDvT70QQf0I8FD1QqVvgmk+kHIoLWrzUajeWiHgNARDP79u28g2IXWWazOQWl0Wjs9PSyv0DJZkdPRMv6wXt0Gaz59swj0c2/W+B5+/uBqCVMTjQRlRuNxnxFSl0CC78+80inluQ9gaamJifRUVFRwSWmcKjHqhLn7cFqtf6i1WqTe/udexrC5gf09oMPHTrENBywZcsWZnzWr1/PJISPjw/t2bPHjfkRKCsrC9DpdEW9/c49DTeHe/fuXV5uY2W2dOlSvo6Li2PhbN68maN0KLsLLH4gXIRywS4haoiFC4CVJ+oLCgooJSWFPn786HyawWCA6alRprjbot3ZDohfkA8ghEGNkcQIAbGxsd1+8IIFC5jXBAcqSGeSTBAGBbF1DDwoOBceVv+/UIIKgBVuZfDEW02/FTo3NTQ2Njqqqqq4FAcg6ux2e4/uy6iuruYSWy/Ec3Aunt3S0sL1Z8+ezdDr9YWlpaWD1LDdxeNUE2Zg1KhRbvWiDu09CUEyCCbJ07MRlLJYLH/Dalaj0bSqQfF7ZJ7vSsGdO3eOTUdkZCS9fPmSwsLCOAoIGk3g5MmTdPnyZa5buHAhU20Cu3btYt9C0n2HDx+m9+/f04gRI8ypqanlHl9CgejyCheaCCICDNDDhw/btCGCB/ZHq9VyVO/8+fNtBE9StA8MEKKG9+/fd2uD0NFOUmQRDjk1NTVDLYJneLL530J+fr5Dr9c7jh8/7igtLXW7u6mpyWGz2fgc5evXr93usVqtfKAdW+3kuHfvHtfjwD34PQnxatre6JXZwWyjuLiYtR3H5MmTeSraHglx8+ZN/hoQAwfkBIKAnI6Tb+kgSdN37NhB48eP569g586dPPe/cOFCSmRkZKFOp+uQtVIKOhQ+pno4wAglJSV5HRufP38+T09heoTp6AxARgibj98QA1VbWxuKgJpOp3MfTbUIH1p+5swZFjbI5enTp7dLMHsCbDhIYyF4OMuxY8fytWB5YNOh1bgPtJvc4V6/fp2uXbtG9fX17D+g+fgKli1blnH69Oksk8n0D51Op/iFlpvDheDhSLHKxacPR9cZwQPgLIXTxIH+KKHFAmhH/AYD4upwIXSSUXiijImJqSSif4kAm+IhOdyzwuE2Nzc7Wltbu7VoQn84yc+fP3MpPxfANRwx6rCokgOOFu3ikL1PfG5u7nC9Xn9UDQ6XOVx75pHQIQlzUnx/nt7fP2UQJ+XYrQCuVukhZUVqTG5ubrxer89XuuYrlUYsJKJoKcKpWCh264jJZJppNpuzQKq4xvZba//9l0FBCQ1993Ze4Zmi9+0YDAawWWlGozFc1NksIdk+/lFLsW+nb9/um1ir6C3iYueCNAgiMyWpt54PrqE7UMP+fNZ+aR+PGxAaQYQV3DBJEVhAzo655kp5A5GNiL44RxIc2D4MCK7FwKC9vUFS/EZZTDexZdBqtSbG/Uxu4eaioiIOkWAhh9U1BiM5OZmFhTZkmmCxh1U2NsJ6C9Cg4n7wGxAwYlTHjh2jDRs28AZdAAOCwRg6dChNmjSpDVehmoQ4DEB6Yk62PCFOtEH7BOcA4UNI0HwkxaEOgmwvLcgbQMAYQCTYYaBBkeIa29HxrOzsbH4udjAjRiZBVQlxNRWfRwaEjfjk1gChuibHQQPlWtidBDkImyQTBwGDkwY3TdIXggN1rlCN8EGqX/jdvtXw14u9/myRXipKchlMeb0cqhG+RqMxFRW2bENCXJB7vlqXAd4CpgMbuWCqYLuxxx75WQIIEiIIiQisPDkC0dkTJ05weFzs7xeZLqT2JOie+E1EVEGBohTRVgjZlRaFU0UIXp4cgT55eXnMUZO0I0+eHKH6f3yBBAkc3gDCcyWMkNAGYXeUjUgyNk5OHonNAfJsxAMHDjjbVS985GNhBuINwF3gkOOPzEb8bna+AeRagQxqbGxkzhraiy8BCW5BQUHcGV8FkqjfvXvHgyPnpNEfA4gvCvdhC40E9Zud7gJOU2g+HCmECUYOycwioRm2HNmIuA90qFz46C/nsmXC/67538L3bEQvYbOEcFqoj3+UQwlRTVWZncDY6nKbJSSGaCD+kcL/I2f9EUQl/wX2KKaMZZaCjAAAAABJRU5ErkJggg=="
-
-/***/ }),
-
-/***/ "./components/Appearance/AppearanceMenu.jsx":
-/*!**************************************************!*\
-  !*** ./components/Appearance/AppearanceMenu.jsx ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es7.symbol.async-iterator */ "./node_modules/core-js/modules/es7.symbol.async-iterator.js");
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/elements/Button */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Button.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _General__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./General */ "./components/Appearance/General.jsx");
-/* harmony import */ var _StatusBar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./StatusBar */ "./components/Appearance/StatusBar.jsx");
-/* harmony import */ var _Visualization__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Visualization */ "./components/Appearance/Visualization.jsx");
-/* harmony import */ var _Colors__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Colors */ "./components/Appearance/Colors.jsx");
-/* harmony import */ var _Shared_MenuList__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Shared/MenuList */ "./components/Shared/MenuList.jsx");
-/* harmony import */ var _styles_DataTab_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../styles/DataTab.css */ "./styles/DataTab.css");
-/* harmony import */ var _styles_DataTab_css__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_styles_DataTab_css__WEBPACK_IMPORTED_MODULE_12__);
-
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-
-
-
-
-
-
-var dataMenu = [{
-  id: 1,
-  title: 'General',
-  description: 'Basic tree display settings',
-  icon: 'icon icon--General',
-  storeKey: 'general'
-}, {
-  id: 2,
-  title: 'Status Bar',
-  description: 'Define status bars display and meaning',
-  icon: 'icon icon--StatusBar',
-  storeKey: 'statusBar'
-}, {
-  id: 3,
-  title: 'Visualization',
-  description: 'Define status bars meaning',
-  icon: 'icon icon--Visualization',
-  storeKey: 'visualization'
-}, {
-  id: 4,
-  title: 'Colors',
-  description: 'Manage all color settings',
-  icon: 'icon icon--Colors',
-  storeKey: 'colors'
-}]; //  Select menu and update data in Appearance settings
-
-var AppearanceMenu =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(AppearanceMenu, _Component);
-
-  function AppearanceMenu(props) {
-    var _this;
-
-    _classCallCheck(this, AppearanceMenu);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(AppearanceMenu).call(this, props));
-    _this.state = {
-      view: 'first',
-      storeKey: ''
-    };
-    _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
-    _this.onBack = _this.onBack.bind(_assertThisInitialized(_this));
-    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(AppearanceMenu, [{
-    key: "onClick",
-    value: function onClick(view, menuItem) {
-      var ValueDriverTree = this.props.ValueDriverTree;
-      ValueDriverTree.setAppearanceMenuItem(menuItem);
-      var storeKey = dataMenu[menuItem - 1].storeKey;
-      this.setState({
-        view: view,
-        storeKey: storeKey
-      });
-    }
-  }, {
-    key: "onSubmit",
-    value: function onSubmit() {
-      var _this$props = this.props,
-          ValueDriverTree = _this$props.ValueDriverTree,
-          store = _this$props.store;
-      var storeKey = this.state.storeKey;
-      var appearance = ValueDriverTree.appearance;
-      var menuData = appearance[storeKey];
-      ValueDriverTree.setAppearance(appearance);
-      store.set(storeKey, menuData);
-      this.onBack();
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this$props2 = this.props,
-          store = _this$props2.store,
-          ValueDriverTree = _this$props2.ValueDriverTree;
-      var appearance = {
-        visualization: Object(mobx__WEBPACK_IMPORTED_MODULE_6__["toJS"])(store.get('visualization')),
-        statusBar: Object(mobx__WEBPACK_IMPORTED_MODULE_6__["toJS"])(store.get('statusBar')),
-        general: Object(mobx__WEBPACK_IMPORTED_MODULE_6__["toJS"])(store.get('general')),
-        colors: Object(mobx__WEBPACK_IMPORTED_MODULE_6__["toJS"])(store.get('colors'))
-      };
-      ValueDriverTree.setInitialAppearance(appearance);
-      ValueDriverTree.toggleNodeConfigModal(false);
-    } // Rendering Form according to menu selected
-
-  }, {
-    key: "renderMenu",
-    value: function renderMenu(appearanceMenuItem, store) {
-      if (appearanceMenuItem === 1) {
-        return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_General__WEBPACK_IMPORTED_MODULE_7__["default"], {
-          store: store
-        });
-      }
-
-      if (appearanceMenuItem === 2) {
-        return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_StatusBar__WEBPACK_IMPORTED_MODULE_8__["default"], {
-          store: store
-        });
-      }
-
-      if (appearanceMenuItem === 3) {
-        return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Visualization__WEBPACK_IMPORTED_MODULE_9__["default"], {
-          store: store
-        });
-      }
-
-      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Colors__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        store: store
-      });
-    }
-  }, {
-    key: "onBack",
-    value: function onBack() {
-      this.setState({
-        view: 'first'
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var view = this.state.view;
-      var _this$props3 = this.props,
-          ValueDriverTree = _this$props3.ValueDriverTree,
-          store = _this$props3.store;
-      var appearanceMenuItem = ValueDriverTree.appearanceMenuItem;
-      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-        className: "vdt-data-view"
-      }, view === 'first' && dataMenu.map(function (data) {
-        return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Shared_MenuList__WEBPACK_IMPORTED_MODULE_11__["default"], {
-          data: data,
-          onClick: _this2.onClick
-        });
-      }), view === 'second' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_4___default.a, {
-        flexDirection: "column",
-        className: "menu-data-view"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_4___default.a, {
-        alignItems: "center",
-        className: "menu-data-view-img"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
-        onClick: this.onBack
-      }, "Back"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
-        className: "icon icon--ChevronLeft",
-        onClick: this.onBack,
-        style: {
-          height: '20px',
-          width: '20px',
-          marginRight: '5px'
-        }
-      })), this.renderMenu(appearanceMenuItem, store)), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-        className: "view-footer-btn"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
-        disabled: true,
-        size: "sm",
-        className: "back-button",
-        onClick: this.onBack
-      }, "Back"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
-        secondary: true,
-        size: "sm",
-        className: "finish-button",
-        onClick: this.onSubmit
-      }, "Finish"))));
-    }
-  }]);
-
-  return AppearanceMenu;
-}(react__WEBPACK_IMPORTED_MODULE_2__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["inject"])('ValueDriverTree')(Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(AppearanceMenu)));
-
-/***/ }),
-
-/***/ "./components/Appearance/Colors.jsx":
-/*!******************************************!*\
-  !*** ./components/Appearance/Colors.jsx ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es7.symbol.async-iterator */ "./node_modules/core-js/modules/es7.symbol.async-iterator.js");
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom.iterable */ "./node_modules/core-js/modules/web.dom.iterable.js");
-/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es6.array.iterator */ "./node_modules/core-js/modules/es6.array.iterator.js");
-/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es6.object.keys */ "./node_modules/core-js/modules/es6.object.keys.js");
-/* harmony import */ var core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../styles/FormElements.css */ "./styles/FormElements.css");
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_styles_FormElements_css__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Box */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Box.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/FormGroup */ "./node_modules/@visualbi/bifrost-editor/dist/forms/FormGroup.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_10__);
-
-
-
-
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-
-
-
-var Colors =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Colors, _Component);
-
-  function Colors(props) {
-    var _this;
-
-    _classCallCheck(this, Colors);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Colors).call(this, props));
-
-    _defineProperty(_assertThisInitialized(_this), "onClick", function (theme) {
-      var ValueDriverTree = _this.props.ValueDriverTree;
-      var themeColors = _this.palettes[theme];
-      Object.keys(themeColors).map(function (key) {
-        ValueDriverTree.appearance.colors[key] = themeColors[key];
-      });
-
-      _this.setState({
-        selectedTheme: theme
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "isActive", function (value) {
-      return 'theme ' + (value === _this.state.selectedTheme ? 'selected-theme' : '');
-    });
-
-    var _ValueDriverTree = _this.props.ValueDriverTree;
-    var colors = _ValueDriverTree.appearance.colors;
-    _this.palettes = {
-      light: {
-        colorNodePrimaryFont: '#000000',
-        colorNodeSecondaryFont: '#777777',
-        colorSim: '#2E8AB8',
-        colorNodeBg: '#FFFFFF',
-        opacityNodeBg: '0.9',
-        colorNodeBorder: '#000000',
-        opacityNodeBorder: '0.2',
-        colorNodeBgDerived: '#FFFFFF',
-        opacityNodeBgDerived: '0.3',
-        colorLinks: '#666666',
-        colorNodeBorderFocus: '#2E8AB8',
-        colorCanvasBase: '#E2E8EF',
-        colorCanvas1: '#C5DADC',
-        colorCanvas2: '#91ABBF',
-        colorCanvas3: '#CFDDE7'
-      },
-      contrast: {
-        colorNodePrimaryFont: '#000000',
-        colorNodeSecondaryFont: '#777777',
-        colorSim: '#2E8AB8',
-        colorNodeBg: '#FFFFFF',
-        opacityNodeBg: '0.9',
-        colorNodeBorder: '#FFFFFF',
-        opacityNodeBorder: '0.9',
-        colorNodeBgDerived: '#FFFFFF',
-        opacityNodeBgDerived: '0.3',
-        colorLinks: '#FFFFFF',
-        colorNodeBorderFocus: '#FFFF00',
-        colorCanvasBase: '#A2C4D2',
-        colorCanvas1: '#152124',
-        colorCanvas2: '#FBFDFD',
-        colorCanvas3: '#B8CBD3'
-      },
-      dark: {
-        colorNodePrimaryFont: '#FFFFFF',
-        colorNodeSecondaryFont: '#DDDDDD',
-        colorSim: '#7DBFDF',
-        colorNodeBg: '#000000',
-        opacityNodeBg: '0.3',
-        colorNodeBorder: '#000000',
-        opacityNodeBorder: '0',
-        colorNodeBgDerived: '#000000',
-        opacityNodeBgDerived: '0.15',
-        colorLinks: '#666666',
-        colorNodeBorderFocus: '#2E8AB8',
-        colorCanvasBase: '#E2E8EF',
-        colorCanvas1: '#93C8B6',
-        colorCanvas2: '#95CCD0',
-        colorCanvas3: '#B8CBD3'
-      }
-    };
-    _this.state = {
-      selectedTheme: colors.colorNodeBg === '#FFFFFF' ? 'light' : 'dark'
-    };
-    return _this;
-  }
-
-  _createClass(Colors, [{
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_8___default.a, {
-        flexDirection: "column"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", {
-        className: "section-header"
-      }, "Theme Manager"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_10___default.a, null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "menu-note section-note"
-      }, "Select a standard theme color")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_9___default.a, {
-        className: "theme-selection"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_8___default.a, {
-        "flex-direction": "column"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_9___default.a, {
-        className: this.isActive('light')
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        onClick: function onClick() {
-          return _this2.onClick('light');
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_9___default.a, null, "Light Theme"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "light-preview"
-      }))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_9___default.a, {
-        className: this.isActive('dark')
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        onClick: function onClick() {
-          return _this2.onClick('dark');
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_9___default.a, null, "Dark Theme"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "dark-preview"
-      }))))));
-    }
-  }]);
-
-  return Colors;
-}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(mobx_react__WEBPACK_IMPORTED_MODULE_6__["inject"])('TreeStore')(Object(mobx_react__WEBPACK_IMPORTED_MODULE_6__["inject"])('ValueDriverTree')(Object(mobx_react__WEBPACK_IMPORTED_MODULE_6__["observer"])(Colors))));
-
-/***/ }),
-
-/***/ "./components/Appearance/General.jsx":
-/*!*******************************************!*\
-  !*** ./components/Appearance/General.jsx ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es7.symbol.async-iterator */ "./node_modules/core-js/modules/es7.symbol.async-iterator.js");
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es6.function.name */ "./node_modules/core-js/modules/es6.function.name.js");
-/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/web.dom.iterable */ "./node_modules/core-js/modules/web.dom.iterable.js");
-/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es6.array.iterator */ "./node_modules/core-js/modules/es6.array.iterator.js");
-/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es6.object.keys */ "./node_modules/core-js/modules/es6.object.keys.js");
-/* harmony import */ var core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Input */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Input.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Select */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Select.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Form */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Form.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../styles/FormElements.css */ "./styles/FormElements.css");
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_styles_FormElements_css__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _Shared_InputNote__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../Shared/InputNote */ "./components/Shared/InputNote.jsx");
-/* harmony import */ var _Shared_SelectNote__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../Shared/SelectNote */ "./components/Shared/SelectNote.jsx");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/FormGroup */ "./node_modules/@visualbi/bifrost-editor/dist/forms/FormGroup.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_16__);
-
-
-
-
-
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-
-
-
-
-
-
-var scaling = [{
-  key: '0.0b',
-  label: '0.0b'
-}, {
-  key: '0.00b',
-  label: '0.00b'
-}, {
-  key: '0m',
-  label: '0m'
-}, {
-  key: '0.0m',
-  label: '0.0m'
-}, {
-  key: '0.00m',
-  label: '0.00m'
-}, {
-  key: '0k',
-  label: '0k'
-}, {
-  key: '0',
-  label: '0'
-}];
-var zeroDisplayOptions = [{
-  key: '',
-  label: 'None'
-}, {
-  key: '-',
-  label: '-'
-}, {
-  key: '0',
-  label: '0'
-}];
-var negativeDisplayOptions = [{
-  key: '(0)',
-  label: '(0)'
-}, {
-  key: '-0',
-  label: '-0'
-}, {
-  key: '0-',
-  label: '0-'
-}]; //  General Apperance form Component
-
-var General =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(General, _Component);
-
-  function General(props) {
-    var _this;
-
-    _classCallCheck(this, General);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(General).call(this, props));
-    _this.onError = _this.onError.bind(_assertThisInitialized(_this));
-    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(General, [{
-    key: "onError",
-    value: function onError(errors) {
-      console.log('Errors', errors);
-    }
-  }, {
-    key: "onChange",
-    value: function onChange(changed) {
-      var property = Object.keys(changed)[0];
-      var value = changed[property].value;
-      this.props.ValueDriverTree.appearance.general[property] = value;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          ValueDriverTree = _this$props.ValueDriverTree,
-          TreeStore = _this$props.TreeStore;
-      var appearance = ValueDriverTree.appearance;
-      var general = appearance.general;
-
-      var suffixLabel = function suffixLabel() {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-          className: "menu-note"
-        });
-      };
-
-      var nodeDataSet = Object(mobx__WEBPACK_IMPORTED_MODULE_11__["toJS"])(TreeStore.getFlatData);
-
-      var listNode = function listNode() {
-        var array = [];
-        array.push({
-          key: '',
-          label: 'First Node'
-        });
-        nodeDataSet.map(function (data) {
-          array.push({
-            key: data.name,
-            label: "".concat(data.name, ": ").concat(data.title)
-          });
-        });
-        return array;
-      };
-
-      var formFields = [{
-        name: 'PeriodColumn',
-        label: 'Active Period From',
-        control: _Shared_InputNote__WEBPACK_IMPORTED_MODULE_14__["default"],
-        defaultValue: general.PeriodColumn || 0,
-        controlProps: {
-          type: 'number',
-          placeholder: 'To',
-          min: 0,
-          note: 'Apply only specific periods, such as Jan-July'
-        } // rules: [{   required: true,   message: 'Font Family is required', }]
-
-      }, {
-        name: 'PeriodToColumn',
-        label: 'Active Period To',
-        control: _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_8___default.a,
-        defaultValue: general.PeriodToColumn || 0,
-        controlProps: {
-          type: 'number',
-          placeholder: 'From'
-        } // rules: [{   required: true,   message: 'Font Family is required', }]
-
-      }, {
-        name: 'activeTopNode',
-        label: 'Top Node',
-        description: 'Top Node details',
-        defaultValue: general.activeTopNode || '',
-        control: _Shared_SelectNote__WEBPACK_IMPORTED_MODULE_15__["default"],
-        controlProps: {
-          options: listNode(),
-          note: 'Root node at the lowest level with no parent note'
-        } // rules: [{   required: true,   message: 'Font Color is required', }],
-
-      }, {
-        name: 'dispLevels',
-        label: 'Show Levels',
-        defaultValue: general.dispLevels || 0,
-        control: _Shared_InputNote__WEBPACK_IMPORTED_MODULE_14__["default"],
-        controlProps: {
-          type: 'number',
-          note: 'Starting with top node at level 0'
-        } // rules: [{   required: true,   message: 'Font Family is required', }]
-
-      }, {
-        name: 'zoom',
-        label: 'Zoom (%)',
-        defaultValue: general.zoom || 0,
-        // tooltip: 'Set a custom font family for your visualization',
-        control: _Shared_InputNote__WEBPACK_IMPORTED_MODULE_14__["default"],
-        controlProps: {
-          type: 'number',
-          note: 'Set default zoom ratio'
-        } // rules: [{   required: true,   message: 'Font Family is required', }]
-
-      }, {
-        name: 'scale',
-        label: 'Auto Scale',
-        control: _Shared_SelectNote__WEBPACK_IMPORTED_MODULE_15__["default"],
-        defaultValue: general.scale || '0',
-        controlProps: {
-          options: scaling,
-          note: 'Select data format to be displayed in tree widget'
-        }
-      }, {
-        name: 'label',
-        label: 'Scale Suffix',
-        defaultValue: '',
-        // tooltip: 'Set a custom font family for your visualization',
-        control: suffixLabel,
-        className: 'form-group-zero-bot-margin',
-        controlProps: {} // rules: [{   required: true,   message: 'Font Family is required', }]
-
-      }, {
-        name: 'scaleSuffixK',
-        label: 'Thousands',
-        defaultValue: general.scaleSuffixK,
-        // tooltip: 'Set a custom font family for your visualization',
-        control: _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_8___default.a,
-        className: 'suffix-labels',
-        controlProps: {} // rules: [{   required: true,   message: 'Font Family is required', }]
-
-      }, {
-        name: 'scaleSuffixM',
-        label: 'Millions',
-        defaultValue: general.scaleSuffixM,
-        // tooltip: 'Set a custom font family for your visualization',
-        control: _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_8___default.a,
-        className: 'suffix-labels',
-        controlProps: {} // rules: [{   required: true,   message: 'Font Family is required', }]
-
-      }, {
-        name: 'scaleSuffixB',
-        label: 'Billions',
-        defaultValue: general.scaleSuffixB,
-        // tooltip: 'Set a custom font family for your visualization',
-        control: _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_8___default.a,
-        className: 'suffix-labels',
-        controlProps: {} // rules: [{   required: true,   message: 'Font Family is required', }]
-
-      }, {
-        name: 'zeroDisplay',
-        label: 'Display as Zero',
-        control: _visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_9___default.a,
-        defaultValue: general.zeroDisplay || '',
-        controlProps: {
-          placeholder: 'Choose a font weight',
-          options: zeroDisplayOptions
-        }
-      }, {
-        name: 'negativeDisplay',
-        label: 'Display negative value as',
-        control: _visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_9___default.a,
-        defaultValue: general.negativeDisplay || '(0)',
-        controlProps: {
-          placeholder: 'Choose a font weight',
-          options: negativeDisplayOptions
-        }
-      }, {
-        name: 'decimalSeparator',
-        label: 'Decimal Seprator',
-        control: _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_8___default.a,
-        defaultValue: general.decimalSeparator,
-        controlProps: {}
-      }, {
-        name: 'thousandSeparator',
-        label: 'Thousand seperator',
-        control: _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_8___default.a,
-        defaultValue: general.thousandSeparator,
-        controlProps: {}
-      },,
-      /* {
-      name: 'isEditModeAllowed',
-      label: 'Tree editing at runtime',
-      description: 'Enable font scaling for better rendering',
-      control: Checkbox,
-      defaultValue: general.isEditModeAllowed == 'X',
-      horizontal: true,
-      props: {}
-      } */
-      {
-        name: 'hint',
-        label: 'Hint',
-        description: 'Top Node details',
-        control: _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_8___default.a,
-        defaultValue: general.hint,
-        controlProps: {
-          placeholder: 'Hint?'
-        } // rules: [{   required: true,   message: 'Font Color is required', }],
-
-      }];
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_7___default.a, {
-        flexDirection: "column"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
-        className: "section-header"
-      }, "General"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_16___default.a, null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "section-note menu-note"
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_12___default.a, {
-        fields: formFields,
-        showSubmitButton: false,
-        onError: this.onError,
-        onFieldsChange: this.onChange
-      }));
-    }
-  }]);
-
-  return General;
-}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
-
-_defineProperty(General, "defaultProps", {
-  ValueDriverTree: {},
-  onClick: function onClick() {},
-  store: []
-});
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(mobx_react__WEBPACK_IMPORTED_MODULE_10__["inject"])("TreeStore")(Object(mobx_react__WEBPACK_IMPORTED_MODULE_10__["inject"])("ValueDriverTree")(Object(mobx_react__WEBPACK_IMPORTED_MODULE_10__["observer"])(General))));
-
-/***/ }),
-
-/***/ "./components/Appearance/StatusBar.jsx":
-/*!*********************************************!*\
-  !*** ./components/Appearance/StatusBar.jsx ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es7.symbol.async-iterator */ "./node_modules/core-js/modules/es7.symbol.async-iterator.js");
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom.iterable */ "./node_modules/core-js/modules/web.dom.iterable.js");
-/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es6.array.iterator */ "./node_modules/core-js/modules/es6.array.iterator.js");
-/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es6.object.keys */ "./node_modules/core-js/modules/es6.object.keys.js");
-/* harmony import */ var core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Input */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Input.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Form */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Form.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/FormGroup */ "./node_modules/@visualbi/bifrost-editor/dist/forms/FormGroup.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Box */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Box.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _Shared_RadioGroup__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Shared/RadioGroup */ "./components/Shared/RadioGroup.jsx");
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../styles/FormElements.css */ "./styles/FormElements.css");
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_styles_FormElements_css__WEBPACK_IMPORTED_MODULE_13__);
-
-
-
-
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-
-
-
-
-var Status = [{
-  name: 'V',
-  label: 'Variance'
-}, {
-  name: 'I',
-  label: 'Simulation Impact'
-}, {
-  name: 'H',
-  label: 'Hidden'
-}];
-
-var StatusBar =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(StatusBar, _Component);
-
-  function StatusBar(props) {
-    var _this;
-
-    _classCallCheck(this, StatusBar);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(StatusBar).call(this, props));
-    _this.onError = _this.onError.bind(_assertThisInitialized(_this));
-    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
-    _this.formFeilds = _this.formFeilds.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(StatusBar, [{
-    key: "formFeilds",
-    value: function formFeilds() {
-      var ValueDriverTree = this.props.ValueDriverTree;
-      var appearance = ValueDriverTree.appearance;
-      var statusBar = appearance.statusBar;
-
-      var ColorLabel = function ColorLabel() {
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_10___default.a, {
-          label: "Color Indicator"
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-          className: "menu-note"
-        }, "Status bar color change accordingly to percentage of deviant from intial value"));
-      };
-
-      var DisplayLabel = function DisplayLabel() {
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_10___default.a, null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-          className: "menu-note section-note"
-        }, "Each node may have a status bar to indicate whether the trend of values is favourable"));
-      };
-
-      var ColorIndicator = function ColorIndicator(props) {
-        var label = props.label,
-            _onChange = props.onChange,
-            height = props.height,
-            color = props.color,
-            type = props.type,
-            value = props.value;
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_6___default.a, {
-          justifyContent: "space-between",
-          alignItems: "center"
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11___default.a, {
-          style: {
-            width: '30px'
-          }
-        }, label), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_6___default.a, {
-          alignItems: "center",
-          className: "color-indicator-input"
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_7___default.a, {
-          type: type,
-          value: value,
-          onChange: function onChange(e) {
-            _onChange(e);
-          }
-        }), "%"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11___default.a, {
-          style: {
-            height: height,
-            width: height,
-            background: color,
-            marginLeft: '10px'
-          }
-        }));
-      };
-
-      return [{
-        name: 'a',
-        label: '',
-        // tooltip: 'Set a custom font family for your visualization',
-        control: DisplayLabel,
-        defaultValue: statusBar.nodeStatus,
-        controlProps: {}
-      }, {
-        name: 'nodeStatus',
-        label: 'Display status bar when there is a change in',
-        // tooltip: 'Set a custom font family for your visualization',
-        control: _Shared_RadioGroup__WEBPACK_IMPORTED_MODULE_12__["default"],
-        defaultValue: statusBar.nodeStatus,
-        controlProps: {
-          items: Status,
-          horizontal: false
-        }
-      }, {
-        name: 'as',
-        label: '',
-        // tooltip: 'Set a custom font family for your visualization',
-        control: ColorLabel,
-        defaultValue: 'V',
-        controlProps: {}
-      }, {
-        name: 'PctVarRed',
-        label: '',
-        // tooltip: 'Set a custom font family for your visualization',
-        control: ColorIndicator,
-        defaultValue: statusBar.PctVarRed || 10,
-        controlProps: {
-          type: 'number',
-          label: 'From',
-          height: '1.8rem',
-          color: 'red'
-        }
-      }, {
-        name: 'PctVarAmber',
-        label: '',
-        // tooltip: 'Set a custom font family for your visualization',
-        control: ColorIndicator,
-        defaultValue: statusBar.PctVarAmber || 10,
-        controlProps: {
-          type: 'number',
-          label: 'to',
-          height: '1.8rem',
-          color: '#FFC200'
-        }
-      }, {
-        name: 'PctVarGreen',
-        label: '',
-        // tooltip: 'Set a custom font family for your visualization',
-        control: ColorIndicator,
-        defaultValue: statusBar.PctVarGreen || 10,
-        controlProps: {
-          type: 'number',
-          label: 'to',
-          height: '1.8rem',
-          color: 'green'
-        }
-      }];
-    }
-  }, {
-    key: "onError",
-    value: function onError(errors) {// console.log('Errors', errors);
-    }
-  }, {
-    key: "onChange",
-    value: function onChange(changed) {
-      var property = Object.keys(changed)[0];
-      var value = changed[property].value;
-      this.props.ValueDriverTree.appearance.statusBar[property] = value;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_6___default.a, {
-        flexDirection: "column"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", {
-        className: "section-header"
-      }, "Status Bar"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_9___default.a, {
-        fields: this.formFeilds(),
-        showSubmitButton: false,
-        onError: this.onError,
-        onFieldsChange: this.onChange
-      }));
-    }
-  }]);
-
-  return StatusBar;
-}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(mobx_react__WEBPACK_IMPORTED_MODULE_8__["inject"])('ValueDriverTree')(Object(mobx_react__WEBPACK_IMPORTED_MODULE_8__["observer"])(StatusBar)));
-
-/***/ }),
-
-/***/ "./components/Appearance/Visualization.jsx":
-/*!*************************************************!*\
-  !*** ./components/Appearance/Visualization.jsx ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es7.symbol.async-iterator */ "./node_modules/core-js/modules/es7.symbol.async-iterator.js");
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es7_array_includes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es7.array.includes */ "./node_modules/core-js/modules/es7.array.includes.js");
-/* harmony import */ var core_js_modules_es7_array_includes__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_array_includes__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/web.dom.iterable */ "./node_modules/core-js/modules/web.dom.iterable.js");
-/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es6.array.iterator */ "./node_modules/core-js/modules/es6.array.iterator.js");
-/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es6.object.keys */ "./node_modules/core-js/modules/es6.object.keys.js");
-/* harmony import */ var core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Form */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Form.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Checkbox__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Checkbox */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Checkbox.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Checkbox__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Checkbox__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Box */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Box.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../styles/FormElements.css */ "./styles/FormElements.css");
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_styles_FormElements_css__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/FormGroup */ "./node_modules/@visualbi/bifrost-editor/dist/forms/FormGroup.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_13__);
-
-
-
-
-
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-
-
-
-var Status = [{
-  name: 'V',
-  label: 'Variance'
-}, {
-  name: 'I',
-  label: 'Simulation Impact'
-}, {
-  name: 'H',
-  label: 'Hidden'
-}];
-
-var Visualization =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Visualization, _Component);
-
-  function Visualization(props) {
-    var _this;
-
-    _classCallCheck(this, Visualization);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Visualization).call(this, props));
-    _this.onError = _this.onError.bind(_assertThisInitialized(_this));
-    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
-    _this.formFeilds = _this.formFeilds.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(Visualization, [{
-    key: "formFeilds",
-    value: function formFeilds() {
-      var ValueDriverTree = this.props.ValueDriverTree;
-      var appearance = ValueDriverTree.appearance;
-      var visualization = appearance.visualization;
-
-      var Title = function Title() {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11___default.a, {
-          className: "section-label"
-        }, "Contents");
-      };
-
-      var NodeStyle = function NodeStyle(props) {
-        var value = props.value,
-            onChange = props.onChange;
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11___default.a, null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_7___default.a, {
-          flexDirection: "column"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11___default.a, {
-          className: "nodeStyle".concat(value == 'F' ? ' active' : '')
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11___default.a, {
-          style: {
-            paddingLeft: '10px',
-            paddingTop: '10px'
-          }
-        }, " Standard"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-          className: "standard",
-          onClick: function onClick() {
-            return onChange('F');
-          }
-        })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11___default.a, {
-          className: "nodeStyle".concat(value == 'S' ? ' active' : '')
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11___default.a, {
-          style: {
-            paddingLeft: '10px',
-            paddingTop: '10px'
-          }
-        }, " Compact"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-          className: "compact",
-          onClick: function onClick() {
-            onChange('S');
-          }
-        })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11___default.a, {
-          className: "nodeStyle".concat(value == 'M' ? ' active' : '')
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_11___default.a, {
-          style: {
-            paddingLeft: '10px',
-            paddingTop: '10px'
-          }
-        }, " Minimal"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-          className: "minimal",
-          onClick: function onClick() {
-            return onChange('M');
-          }
-        }))));
-      };
-
-      return [{
-        name: 'nodeStyle',
-        label: 'Default Node Style',
-        // tooltip: 'Set a custom font family for your visualization',
-        control: NodeStyle,
-        defaultValue: visualization.nodeStyle || 'S',
-        controlProps: {}
-      }, {
-        name: 'content',
-        label: '',
-        control: Title,
-        defaultValue: '',
-        controlProps: {}
-      }, {
-        name: 'nodeVar',
-        label: '',
-        control: _visualbi_bifrost_editor_dist_forms_Checkbox__WEBPACK_IMPORTED_MODULE_10___default.a,
-        defaultValue: visualization.nodeVar == 'X' || visualization.nodeVar == true,
-        className: 'checkbox-group',
-        controlProps: {
-          label: 'Variance'
-        }
-      }, {
-        name: 'nodeTrend',
-        label: '',
-        control: _visualbi_bifrost_editor_dist_forms_Checkbox__WEBPACK_IMPORTED_MODULE_10___default.a,
-        defaultValue: visualization.nodeTrend == 'X' || visualization.nodeTrend == true,
-        className: 'checkbox-group',
-        controlProps: {
-          label: 'Trend spark line'
-        }
-      }, {
-        name: 'nodeSecVal',
-        label: '',
-        control: _visualbi_bifrost_editor_dist_forms_Checkbox__WEBPACK_IMPORTED_MODULE_10___default.a,
-        defaultValue: visualization.nodeSecVal == 'X' || visualization.nodeSecVal == true,
-        className: 'checkbox-group',
-        controlProps: {
-          label: 'Secondary value/variance'
-        }
-      }, {
-        name: 'nodeOperand',
-        label: '',
-        control: _visualbi_bifrost_editor_dist_forms_Checkbox__WEBPACK_IMPORTED_MODULE_10___default.a,
-        defaultValue: visualization.nodeOperand == 'X' || visualization.nodeOperand == true,
-        className: 'checkbox-group',
-        controlProps: {
-          label: 'Node Operand'
-        }
-      }];
-    }
-  }, {
-    key: "onChange",
-    value: function onChange(changed) {
-      var propsWithX = ['nodeVar', 'nodeSecVal', 'nodeOperand', 'nodeTrend']; // properties to be replaced with 'X' for true
-
-      var property = Object.keys(changed)[0];
-      var value = changed[property].value;
-
-      if (propsWithX.includes(property)) {
-        value = value ? 'X' : '';
-      }
-
-      this.props.ValueDriverTree.appearance.visualization[property] = value;
-    }
-  }, {
-    key: "onError",
-    value: function onError(errors) {
-      console.log('Errors', errors);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_7___default.a, {
-        flexDirection: "column"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
-        className: "section-header"
-      }, "Visualization"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_13___default.a, null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "section-note menu-note"
-      }, "Customize tree widget styles and element(s)")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_9___default.a, {
-        fields: this.formFeilds(),
-        showSubmitButton: false,
-        onError: this.onError,
-        onFieldsChange: this.onChange
-      }));
-    }
-  }]);
-
-  return Visualization;
-}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(mobx_react__WEBPACK_IMPORTED_MODULE_8__["inject"])('ValueDriverTree')(Object(mobx_react__WEBPACK_IMPORTED_MODULE_8__["observer"])(Visualization)));
-
-/***/ }),
-
-/***/ "./components/Data/DataMenu.jsx":
-/*!**************************************!*\
-  !*** ./components/Data/DataMenu.jsx ***!
-  \**************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es7.symbol.async-iterator */ "./node_modules/core-js/modules/es7.symbol.async-iterator.js");
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/elements/Button */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Button.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _Shared_MenuList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Shared/MenuList */ "./components/Shared/MenuList.jsx");
-/* harmony import */ var _NodeMapping__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./NodeMapping */ "./components/Data/NodeMapping.jsx");
-/* harmony import */ var _DataSeries__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./DataSeries */ "./components/Data/DataSeries.jsx");
-/* harmony import */ var _PeriodAgg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./PeriodAgg */ "./components/Data/PeriodAgg.jsx");
-/* harmony import */ var _PrimarySec__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./PrimarySec */ "./components/Data/PrimarySec.jsx");
-/* harmony import */ var _styles_DataTab_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../styles/DataTab.css */ "./styles/DataTab.css");
-/* harmony import */ var _styles_DataTab_css__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_styles_DataTab_css__WEBPACK_IMPORTED_MODULE_12__);
-
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-
-
-
-
-
-
-var dataMenu = [{
-  id: 1,
-  title: 'Node Mapping',
-  description: 'Map existing data source to tree',
-  icon: 'icon icon--NodeMapping',
-  storeKey: 'nodeMapProps'
-}, {
-  id: 2,
-  title: 'Data Series',
-  description: 'Set up baseline values for simulation',
-  icon: 'icon icon--DataSeries',
-  storeKey: 'dataSeries'
-}, {
-  id: 3,
-  title: 'Periods aggregation',
-  description: 'Label time interval of interest',
-  icon: 'icon icon--PeriodsAggregation',
-  storeKey: 'periodAgg'
-}, {
-  id: 4,
-  title: 'Primary and secondary values',
-  description: 'Determine value to be displayed',
-  icon: 'icon icon--PrimandSec',
-  storeKey: 'primarySec'
-}]; //  Select menu and  update data in Data settings
-
-var Data =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Data, _Component);
-
-  function Data(props) {
-    var _this;
-
-    _classCallCheck(this, Data);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Data).call(this, props));
-    _this.state = {
-      view: 'first',
-      storeKey: ''
-    };
-    _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
-    _this.onBack = _this.onBack.bind(_assertThisInitialized(_this));
-    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(Data, [{
-    key: "onClick",
-    value: function onClick(view, menuItem) {
-      var ValueDriverTree = this.props.ValueDriverTree;
-      ValueDriverTree.setDataMenuItem(menuItem);
-      var storeKey = dataMenu[menuItem - 1].storeKey;
-      this.setState({
-        view: view,
-        storeKey: storeKey
-      });
-    }
-  }, {
-    key: "onBack",
-    value: function onBack() {
-      this.setState({
-        view: 'first'
-      });
-    }
-  }, {
-    key: "onSubmit",
-    value: function onSubmit() {
-      var _this$props = this.props,
-          ValueDriverTree = _this$props.ValueDriverTree,
-          store = _this$props.store;
-      var storeKey = this.state.storeKey;
-      var data = ValueDriverTree.data;
-      var menuData = data[storeKey];
-      ValueDriverTree.setData(data);
-      store.set(storeKey, menuData);
-      this.onBack();
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this$props2 = this.props,
-          store = _this$props2.store,
-          ValueDriverTree = _this$props2.ValueDriverTree;
-      var data = {
-        nodeMapProps: Object(mobx__WEBPACK_IMPORTED_MODULE_6__["toJS"])(store.get('nodeMapProps')),
-        dataSeries: Object(mobx__WEBPACK_IMPORTED_MODULE_6__["toJS"])(store.get('dataSeries')),
-        periodAgg: Object(mobx__WEBPACK_IMPORTED_MODULE_6__["toJS"])(store.get('periodAgg')),
-        primarySec: Object(mobx__WEBPACK_IMPORTED_MODULE_6__["toJS"])(store.get('primarySec'))
-      };
-      ValueDriverTree.setInitialData(data);
-      ValueDriverTree.toggleNodeConfigModal(false);
-    } //  render component according to menu selected
-
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var view = this.state.view;
-      var _this$props3 = this.props,
-          ValueDriverTree = _this$props3.ValueDriverTree,
-          store = _this$props3.store;
-      var dataMenuItem = ValueDriverTree.dataMenuItem;
-      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-        className: "vdt-data-view"
-      }, view === 'first' && dataMenu.map(function (data) {
-        return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Shared_MenuList__WEBPACK_IMPORTED_MODULE_7__["default"], {
-          data: data,
-          onClick: _this2.onClick
-        });
-      }), view === 'second' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_4___default.a, {
-        flexDirection: "column",
-        className: "menu-data-view"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_4___default.a, {
-        alignItems: "center",
-        className: "menu-data-view-img"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
-        onClick: this.onBack
-      }, "Back"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
-        onClick: this.onBack,
-        className: "icon icon--ChevronLeft",
-        style: {
-          height: '20px',
-          width: '20px',
-          marginRight: '5px'
-        }
-      })), dataMenuItem === 1 ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_NodeMapping__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        store: store
-      }) : null, dataMenuItem === 2 ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_DataSeries__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        store: store
-      }) : null, dataMenuItem === 3 ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_PeriodAgg__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        store: store
-      }) : null, dataMenuItem === 4 ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_PrimarySec__WEBPACK_IMPORTED_MODULE_11__["default"], {
-        store: store
-      }) : null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-        className: "view-footer-btn"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
-        disabled: true,
-        size: "sm",
-        className: "back-button",
-        onClick: this.onBack
-      }, "Back"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
-        secondary: true,
-        size: "sm",
-        className: "finish-button",
-        onClick: this.onSubmit
-      }, "Finish"))));
-    }
-  }]);
-
-  return Data;
-}(react__WEBPACK_IMPORTED_MODULE_2__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["inject"])('ValueDriverTree')(Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(Data)));
-
-/***/ }),
-
-/***/ "./components/Data/DataSeries.jsx":
-/*!****************************************!*\
-  !*** ./components/Data/DataSeries.jsx ***!
-  \****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/FormGroup */ "./node_modules/@visualbi/bifrost-editor/dist/forms/FormGroup.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Input */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Input.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Checkbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Checkbox */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Checkbox.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Checkbox__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Checkbox__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-/* harmony import */ var _Shared_RadioGroup__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Shared/RadioGroup */ "./components/Shared/RadioGroup.jsx");
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../styles/FormElements.css */ "./styles/FormElements.css");
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_styles_FormElements_css__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _Shared_InputNote__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Shared/InputNote */ "./components/Shared/InputNote.jsx");
-
-
-
-
-
-
-
-
-
- // Update Dataseries value for VDT
-
-var DataSeries = function DataSeries(props) {
-  var dataSeries = props.ValueDriverTree.data.dataSeries;
-  var seriesGenOptions = [{
-    name: 'PERIOD_PARTITION',
-    label: 'Period Partitioning'
-  }, {
-    name: 'MEASURE_PARTITION',
-    label: 'Measure Partitioning'
-  }];
-
-  var _onChange = function onChange(property, value) {
-    props.ValueDriverTree.data.dataSeries[property] = value;
-  };
-
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    className: "section-header"
-  }, "Data Series"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "menu-note section-note"
-  }, "Data series includes values of one or more periods (equal time interval such as Jan, Feb, Mar)")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    label: "Primary series label",
-    value: dataSeries.pVerTitle,
-    onChange: function onChange(e) {
-      _onChange('pVerTitle', e);
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shared_InputNote__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    note: "Baseline data series for simulation"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Checkbox__WEBPACK_IMPORTED_MODULE_4___default.a, {
-    label: "Include comparison data series",
-    value: dataSeries.withComparison === 'X' || dataSeries.withComparison === true,
-    onChange: function onChange(e) {
-      _onChange('withComparison', e ? 'X' : '');
-    }
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    label: "Comparision data series label",
-    value: dataSeries.cVerTitle,
-    onChange: function onChange(e) {
-      _onChange('cVerTitle', e);
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shared_InputNote__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    note: "This series can be used to compare against primary series. For example, primary series are forecasted values for each period, while comparison series are budgeted values"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    label: "Period(s) per data series",
-    value: dataSeries.periods,
-    onChange: function onChange(e) {
-      _onChange('periods', e);
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shared_InputNote__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    type: "number",
-    note: "The number of values in the series. For example, a series with Jan, Febn and Mar periods would have 3 periods"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    label: "Period Label(s)",
-    value: dataSeries.periodsLabels,
-    onChange: function onChange(e) {
-      _onChange('periodsLabels', e);
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shared_InputNote__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    note: "Separate each label by a comma (i.e. Jan, Feb, Mar...). Add labels for all periods. If left blank, it will be derived from primary data series in data source"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    label: "Series Generation Method ",
-    value: dataSeries.seriesGenerationMethod,
-    onChange: function onChange(e) {
-      _onChange('seriesGenerationMethod', e);
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shared_RadioGroup__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    horizontal: false,
-    items: seriesGenOptions
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "menu-note"
-  }, "Select method to split Primary and Comparison series in your data selection:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "menu-note"
-  }, "- Period Partition - Splits the periods based on specified number of periods (otherwise defaults to = period columns/2), where first set will be considered as Primary and the second set as Comparison."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "menu-note"
-  }, "- Measure partition - 1st measure will be considered as Primary and the second as Comparison."));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(mobx_react__WEBPACK_IMPORTED_MODULE_5__["inject"])('ValueDriverTree')(Object(mobx_react__WEBPACK_IMPORTED_MODULE_5__["observer"])(DataSeries)));
-
-/***/ }),
-
-/***/ "./components/Data/NodeMapping.jsx":
-/*!*****************************************!*\
-  !*** ./components/Data/NodeMapping.jsx ***!
-  \*****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Box */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Box.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/FormGroup */ "./node_modules/@visualbi/bifrost-editor/dist/forms/FormGroup.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Input */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Input.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Radio__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Radio */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Radio.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Radio__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Radio__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../styles/FormElements.css */ "./styles/FormElements.css");
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_styles_FormElements_css__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Switch__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Switch */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Switch.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Switch__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Switch__WEBPACK_IMPORTED_MODULE_8__);
-
-
-
-
-
-
-
-
- // Update NodeMapping value for VDT
-
-var NodeMapping = function NodeMapping(props) {
-  var ValueDriverTree = props.ValueDriverTree;
-  var data = ValueDriverTree.data;
-
-  var _onChange = function onChange(property, value) {
-    props.ValueDriverTree.data.nodeMapProps[property] = value;
-  };
-
-  var nodeMapProps = data.nodeMapProps;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_2___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    className: "section-header"
-  }, "Node Mapping"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_3___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    label: "Select node mapping methods"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    className: "form-group radio-select",
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Radio__WEBPACK_IMPORTED_MODULE_6___default.a, {
-    label: "Automatic based on key",
-    value: nodeMapProps.nodeMapping === 'key',
-    onChange: function onChange() {
-      _onChange('nodeMapping', 'key');
-    }
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    className: "menu-note"
-  }, "Select if data source keys match nodes unique id")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Radio__WEBPACK_IMPORTED_MODULE_6___default.a, {
-    label: "Automatic based on text",
-    value: nodeMapProps.nodeMapping === 'text',
-    onChange: function onChange() {
-      _onChange('nodeMapping', 'text');
-    }
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    className: "menu-note"
-  }, "Select if data source keys match part of description"), nodeMapProps.nodeMapping === 'text' && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    label: "Node ID seperator",
-    className: "node-separator-section"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_4___default.a, {
-    className: "node-separator",
-    value: nodeMapProps.nodeMappingSep,
-    onChange: function onChange(e) {
-      _onChange('nodeMappingSep', e);
-    }
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Radio__WEBPACK_IMPORTED_MODULE_6___default.a, {
-    label: "Manual",
-    value: nodeMapProps.nodeMapping === '',
-    onChange: function onChange() {
-      _onChange('nodeMapping', '');
-    }
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    className: "menu-note"
-  }, "Map each node manually (not recommended)")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_3___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Switch__WEBPACK_IMPORTED_MODULE_8___default.a, {
-    label: "Use Manual Data as defaults if sourced nodes not available in result set",
-    value: nodeMapProps.useConstants,
-    onChange: function onChange(e) {
-      return _onChange('useConstants', e);
-    }
-  }))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(mobx_react__WEBPACK_IMPORTED_MODULE_5__["inject"])('ValueDriverTree')(Object(mobx_react__WEBPACK_IMPORTED_MODULE_5__["observer"])(NodeMapping)));
-
-/***/ }),
-
-/***/ "./components/Data/PeriodAgg.jsx":
-/*!***************************************!*\
-  !*** ./components/Data/PeriodAgg.jsx ***!
-  \***************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/FormGroup */ "./node_modules/@visualbi/bifrost-editor/dist/forms/FormGroup.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Input */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Input.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../styles/FormElements.css */ "./styles/FormElements.css");
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_styles_FormElements_css__WEBPACK_IMPORTED_MODULE_5__);
-
-
-
-
-
- // Update Period aggregation value for VDT
-
-var PeriodAgg = function PeriodAgg(props) {
-  var ValueDriverTree = props.ValueDriverTree;
-  var data = ValueDriverTree.data;
-
-  var _onChange = function onChange(property, value) {
-    props.ValueDriverTree.data.periodAgg[property] = value;
-  };
-
-  var periodAgg = data.periodAgg;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    className: "section-header"
-  }, "Periods Aggregation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    label: "Active periods",
-    className: "periods"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "sublabel"
-  }, "Label"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    className: "inline-label",
-    value: periodAgg.valTextLper,
-    onChange: function onChange(e) {
-      _onChange('valTextLper', e);
-    }
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "sublabel"
-  }, "3 letter abbreviation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    className: "inline-label",
-    onChange: function onChange(e) {
-      _onChange('valTextSper', e.substring(0, 3));
-    },
-    value: periodAgg.valTextSper
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "menu-note"
-  }, "Only one period of interest"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    label: "Total to period",
-    className: "periods"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "sublabel"
-  }, "Label"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    className: "inline-label",
-    value: periodAgg.valTextLptd,
-    onChange: function onChange(e) {
-      _onChange('valTextLptd', e);
-    }
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "sublabel"
-  }, "3 letter abbreviation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    className: "inline-label",
-    value: periodAgg.valTextSptd,
-    onChange: function onChange(e) {
-      _onChange('valTextSptd', e);
-    }
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "menu-note"
-  }, "Total value from beginning to a specific period"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    label: "Total of periods",
-    className: "periods"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "sublabel"
-  }, "Label"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    className: "inline-label",
-    value: periodAgg.valTextLtotal,
-    onChange: function onChange(e) {
-      _onChange('valTextLtotal', e);
-    }
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "sublabel"
-  }, "3 letter abbreviation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    className: "inline-label",
-    value: periodAgg.valTextStotal,
-    onChange: function onChange(e) {
-      _onChange('valTextStotal', e);
-    }
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "menu-note"
-  }, "Total value of all periods in the series"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    label: "Selected interval",
-    className: "periods"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "sublabel"
-  }, "Label"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    className: "inline-label",
-    value: periodAgg.valTextLsel,
-    onChange: function onChange(e) {
-      _onChange('valTextLsel', e);
-    }
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "sublabel"
-  }, "3 letter abbreviation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    className: "inline-label",
-    value: periodAgg.valTextSsel,
-    onChange: function onChange(e) {
-      _onChange('valTextSsel', e);
-    }
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "menu-note"
-  }, "A specific set of continuous periods"));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(mobx_react__WEBPACK_IMPORTED_MODULE_4__["inject"])('ValueDriverTree')(Object(mobx_react__WEBPACK_IMPORTED_MODULE_4__["observer"])(PeriodAgg)));
-
-/***/ }),
-
-/***/ "./components/Data/PrimarySec.jsx":
-/*!****************************************!*\
-  !*** ./components/Data/PrimarySec.jsx ***!
-  \****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Select */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Select.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/FormGroup */ "./node_modules/@visualbi/bifrost-editor/dist/forms/FormGroup.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../styles/FormElements.css */ "./styles/FormElements.css");
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_styles_FormElements_css__WEBPACK_IMPORTED_MODULE_5__);
-
-
-
-
-
-
-var scaling = [{
-  key: 'ptd',
-  label: 'Total to Period'
-}, {
-  key: 'total',
-  label: 'Total of Periods'
-}, {
-  key: 'sel',
-  label: 'Selected simulation Interval'
-}];
-var interval = [{
-  key: 'per',
-  label: 'Active Period'
-}, {
-  key: 'ptd',
-  label: 'Total to Periods'
-}, {
-  key: 'total',
-  label: 'Total of Periods'
-}]; // Update Primary and secordary display value for VDT
-
-var PrimarySec = function PrimarySec(props) {
-  var ValueDriverTree = props.ValueDriverTree;
-  var data = ValueDriverTree.data;
-
-  var _onChange = function onChange(property, value) {
-    props.ValueDriverTree.data.primarySec[property] = value;
-  };
-
-  var primarySec = data.primarySec;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    className: "section-header"
-  }, "Values display"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    className: "form-group-zero-bot-margin"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "menu-note section-note"
-  }, "Determine how values are displayed based on periods aggregation")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    justifyContent: "space-between",
-    alignItems: "center",
-    className: "select-primarySec"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "main-label",
-    style: {
-      width: '200px'
-    }
-  }, " Primary Value"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    className: "dropdown",
-    value: primarySec.primaryDisplayValue,
-    options: scaling,
-    onChange: function onChange(e) {
-      return _onChange('primaryDisplayValue', e);
-    }
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    className: "secondary-value-section",
-    label: "Secondary Value"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    flexDirection: "column",
-    className: "select-primarySec"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    justifyContent: "space-between",
-    alignItems: "center"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      width: '200px; font-size:12px'
-    },
-    className: "sublabel-dropdown"
-  }, " Active period"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    className: "dropdown",
-    value: primarySec.secValDispper,
-    options: scaling,
-    onChange: function onChange(e) {
-      return _onChange('secValDispper', e);
-    }
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    justifyContent: "space-between",
-    alignItems: "center",
-    className: "select-primarySec"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      width: '200px; font-size:12px'
-    },
-    className: "sublabel-dropdown"
-  }, " Total of period"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    className: "dropdown",
-    value: primarySec.secValDispptd,
-    options: scaling,
-    onChange: function onChange(e) {
-      return _onChange('secValDispptd', e);
-    }
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    justifyContent: "space-between",
-    alignItems: "center",
-    className: "select-primarySec"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      width: '200px; font-size:12px'
-    },
-    className: "sublabel-dropdown"
-  }, " Total to period"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    className: "dropdown",
-    value: primarySec.secValDisptotal,
-    options: scaling,
-    onChange: function onChange(e) {
-      return _onChange('secValDisptotal', e);
-    }
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    justifyContent: "space-between",
-    alignItems: "center",
-    className: "select-primarySec"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      width: '200px; font-size:12px'
-    },
-    className: "sublabel-dropdown"
-  }, " Selected interval"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    className: "dropdown",
-    value: primarySec.secValDispsel,
-    options: interval,
-    onChange: function onChange(e) {
-      return _onChange('secValDispsel', e);
-    }
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "menu-note"
-  }, "Determine how secondary value is displayed for each type of periods aggregation"));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(mobx_react__WEBPACK_IMPORTED_MODULE_4__["inject"])('ValueDriverTree')(Object(mobx_react__WEBPACK_IMPORTED_MODULE_4__["observer"])(PrimarySec)));
 
 /***/ }),
 
@@ -27088,8 +24975,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var _visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Select */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Select.js");
 /* harmony import */ var _visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/elements/Button */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Button.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Button__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Button */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Button.js");
+/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Button__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Button__WEBPACK_IMPORTED_MODULE_14__);
 /* harmony import */ var _visualbi_bifrost_editor_dist_forms_ColorPicker__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/ColorPicker */ "./node_modules/@visualbi/bifrost-editor/dist/forms/ColorPicker.js");
 /* harmony import */ var _visualbi_bifrost_editor_dist_forms_ColorPicker__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_ColorPicker__WEBPACK_IMPORTED_MODULE_15__);
 
@@ -27385,7 +25272,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_11___default.a, {
         fields: _.flattenDeep(result[0]),
         onSubmit: this.onSubmit,
-        submitButton: react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_14___default.a, null, "Next"),
+        submitButton: react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Button__WEBPACK_IMPORTED_MODULE_14___default.a, null, "Next"),
         onError: this.onError,
         onFieldsChange: this.onFieldsChange,
         onClear: function onClear() {} // showClearButton={true}
@@ -27869,8 +25756,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var _visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Select */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Select.js");
 /* harmony import */ var _visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/elements/Button */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Button.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Button__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Button */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Button.js");
+/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Button__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Button__WEBPACK_IMPORTED_MODULE_14__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_15__);
 
@@ -28136,7 +26023,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_11___default.a, {
         fields: lodash__WEBPACK_IMPORTED_MODULE_15___default.a.flattenDeep(result[0]),
         onSubmit: this.onSubmit,
-        submitButton: react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_14___default.a, null, "Next"),
+        submitButton: react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Button__WEBPACK_IMPORTED_MODULE_14___default.a, null, "Next"),
         onError: this.onError,
         onFieldsChange: this.onFieldsChange,
         onClear: function onClear() {} // showClearButton={true}
@@ -28149,344 +26036,6 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(mobx_react__WEBPACK_IMPORTED_MODULE_10__["inject"])('dataStore')(Object(mobx_react__WEBPACK_IMPORTED_MODULE_10__["observer"])(KpiGeneral)));
-
-/***/ }),
-
-/***/ "./components/Shared/InputNote.jsx":
-/*!*****************************************!*\
-  !*** ./components/Shared/InputNote.jsx ***!
-  \*****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es7.symbol.async-iterator */ "./node_modules/core-js/modules/es7.symbol.async-iterator.js");
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Box */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Box.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Input */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Input.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../styles/FormElements.css */ "./styles/FormElements.css");
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_styles_FormElements_css__WEBPACK_IMPORTED_MODULE_5__);
-
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-var InputNote =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(InputNote, _Component);
-
-  function InputNote() {
-    _classCallCheck(this, InputNote);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(InputNote).apply(this, arguments));
-  }
-
-  _createClass(InputNote, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          value = _this$props.value,
-          _onChange = _this$props.onChange,
-          type = _this$props.type;
-      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_3___default.a, null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_4___default.a, {
-        value: value,
-        onChange: function onChange(e) {
-          return _onChange(e);
-        },
-        type: type
-      }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-        className: "menu-note"
-      }, this.props.note));
-    }
-  }]);
-
-  return InputNote;
-}(react__WEBPACK_IMPORTED_MODULE_2__["Component"]);
-
-InputNote.defaultProps = {
-  onChange: function onChange() {},
-  type: 'text',
-  value: ''
-};
-/* harmony default export */ __webpack_exports__["default"] = (InputNote);
-
-/***/ }),
-
-/***/ "./components/Shared/MenuList.jsx":
-/*!****************************************!*\
-  !*** ./components/Shared/MenuList.jsx ***!
-  \****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-
-
-
-var MenuList = function MenuList(props) {
-  var data = props.data;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "vdt-data-menu",
-    onClick: function onClick() {
-      return props.onClick('second', data.id);
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "vdt-data-subMenu"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "vdt-data-menu-img"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: data.icon
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "vdt-data-menu-name"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "vdt-data-menu-title"
-  }, data.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "vdt-data-menu-description"
-  }, data.description))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "vdt-data-menu-front-img"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "icon icon--ChevronRight"
-  })));
-};
-
-MenuList.defaultProps = {
-  data: {},
-  onClick: function onClick() {}
-};
-MenuList.propTypes = {
-  data: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.element,
-  onClick: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
-};
-/* harmony default export */ __webpack_exports__["default"] = (MenuList);
-
-/***/ }),
-
-/***/ "./components/Shared/RadioGroup.jsx":
-/*!******************************************!*\
-  !*** ./components/Shared/RadioGroup.jsx ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es7.symbol.async-iterator */ "./node_modules/core-js/modules/es7.symbol.async-iterator.js");
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es6.function.name */ "./node_modules/core-js/modules/es6.function.name.js");
-/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Radio__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Radio */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Radio.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Radio__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Radio__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Box */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Box.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_7__);
-
-
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-
-var RadioGroup =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(RadioGroup, _Component);
-
-  function RadioGroup() {
-    _classCallCheck(this, RadioGroup);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(RadioGroup).apply(this, arguments));
-  }
-
-  _createClass(RadioGroup, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          horizontal = _this$props.horizontal,
-          items = _this$props.items,
-          _onChange = _this$props.onChange,
-          value = _this$props.value;
-      return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_7___default.a, null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_4___default.a, {
-        flexDirection: horizontal ? 'row' : 'column'
-      }, items.map(function (data) {
-        return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Radio__WEBPACK_IMPORTED_MODULE_5___default.a, {
-          name: data.name,
-          label: data.label,
-          value: value === data.name,
-          onChange: function onChange() {
-            _onChange(data.name);
-          }
-        });
-      })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-        className: "menu-note"
-      }, this.props.note));
-    }
-  }], [{
-    key: "propTypes",
-    get: function get() {
-      return {
-        horizontal: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool,
-        items: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.shape,
-        onChange: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-        value: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string
-      };
-    }
-  }]);
-
-  return RadioGroup;
-}(react__WEBPACK_IMPORTED_MODULE_3__["Component"]);
-
-RadioGroup.defaultProps = {
-  horizontal: true,
-  items: [],
-  onChange: function onChange() {},
-  value: ''
-};
-/* harmony default export */ __webpack_exports__["default"] = (RadioGroup);
-
-/***/ }),
-
-/***/ "./components/Shared/SelectNote.jsx":
-/*!******************************************!*\
-  !*** ./components/Shared/SelectNote.jsx ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es7.symbol.async-iterator */ "./node_modules/core-js/modules/es7.symbol.async-iterator.js");
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Select */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Select.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Box */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Box.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../styles/FormElements.css */ "./styles/FormElements.css");
-/* harmony import */ var _styles_FormElements_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_styles_FormElements_css__WEBPACK_IMPORTED_MODULE_5__);
-
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-var SelectNote =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(SelectNote, _Component);
-
-  function SelectNote(props) {
-    _classCallCheck(this, SelectNote);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(SelectNote).call(this, props));
-  }
-
-  _createClass(SelectNote, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          value = _this$props.value,
-          _onChange = _this$props.onChange;
-      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_4___default.a, null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_3___default.a, {
-        options: this.props.options,
-        value: value,
-        onChange: function onChange(e) {
-          return _onChange(e);
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-        className: "menu-note"
-      }, this.props.note));
-    }
-  }]);
-
-  return SelectNote;
-}(react__WEBPACK_IMPORTED_MODULE_2__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (SelectNote);
 
 /***/ }),
 
@@ -28621,426 +26170,6 @@ module.exports = "data:font/woff;base64,d09GRgABAAAAABdsAA4AAAAAKhAAAyuFAAAAAAAA
 
 /***/ }),
 
-/***/ "./node_modules/@visualbi/bifrost-editor/css/Box.css":
-/*!***********************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/css/Box.css ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../css-loader!./Box.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Box.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/css/Button.css":
-/*!**************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/css/Button.css ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../css-loader!./Button.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Button.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/css/Checkbox.css":
-/*!****************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/css/Checkbox.css ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../css-loader!./Checkbox.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Checkbox.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/css/ColorPicker.css":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/css/ColorPicker.css ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../css-loader!./ColorPicker.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/ColorPicker.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/css/Drawer.css":
-/*!**************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/css/Drawer.css ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../css-loader!./Drawer.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Drawer.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/css/Editor.css":
-/*!**************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/css/Editor.css ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../css-loader!./Editor.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Editor.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/css/Form.css":
-/*!************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/css/Form.css ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../css-loader!./Form.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Form.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/css/FormGroup.css":
-/*!*****************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/css/FormGroup.css ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../css-loader!./FormGroup.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/FormGroup.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/css/Input.css":
-/*!*************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/css/Input.css ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../css-loader!./Input.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Input.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/css/Navigation.css":
-/*!******************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/css/Navigation.css ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../css-loader!./Navigation.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Navigation.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/css/Panel.css":
-/*!*************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/css/Panel.css ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../css-loader!./Panel.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Panel.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/css/Radio.css":
-/*!*************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/css/Radio.css ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../css-loader!./Radio.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Radio.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/css/Select.css":
-/*!**************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/css/Select.css ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../css-loader!./Select.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Select.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/css/Switch.css":
-/*!**************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/css/Switch.css ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../css-loader!./Switch.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Switch.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
 /***/ "./node_modules/@visualbi/bifrost-editor/dist/core/Drawer.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/@visualbi/bifrost-editor/dist/core/Drawer.js ***!
@@ -29058,15 +26187,7 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-__webpack_require__(/*! ../../css/Drawer.css */ "./node_modules/@visualbi/bifrost-editor/css/Drawer.css");
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
+__webpack_require__(/*! ../styles/Drawer.css */ "./node_modules/@visualbi/bifrost-editor/dist/styles/Drawer.css");
 
 function _interopRequireWildcard(obj) {
   if (obj && obj.__esModule) {
@@ -29227,19 +26348,16 @@ function (_Component) {
       var _this$props = this.props,
           open = _this$props.open,
           panel = _this$props.panel,
-          onClose = _this$props.onClose,
-          className = _this$props.className;
+          onClose = _this$props.onClose;
 
       var _ref = panel || {},
           component = _ref.component,
           props = _ref.props;
 
-      var panelClassName = panel.props;
-      var resolvedClassName = ('off-canvas', 'bf-editor-drawer', className, panelClassName);
       return _react.default.createElement("div", {
-        className: resolvedClassName
+        class: "off-canvas bf-editor-drawer"
       }, _react.default.createElement("div", {
-        className: "off-canvas-sidebar ".concat(open ? 'active' : '')
+        class: "off-canvas-sidebar ".concat(open ? 'active' : '')
       }, open && _react.default.createElement(component, _objectSpread({
         onClose: onClose
       }, props))));
@@ -29266,19 +26384,19 @@ exports.default = Drawer;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.Editor = void 0;
 
 var React = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var _mobxReact = __webpack_require__(/*! mobx-react */ "./node_modules/@visualbi/bifrost-editor/node_modules/mobx-react/index.module.js");
 
-var _Navigation = _interopRequireDefault(__webpack_require__(/*! ./Navigation */ "./node_modules/@visualbi/bifrost-editor/dist/core/Navigation.js"));
+var _Navigation = __webpack_require__(/*! ./Navigation */ "./node_modules/@visualbi/bifrost-editor/dist/core/Navigation.js");
 
 var _Drawer = _interopRequireDefault(__webpack_require__(/*! ./Drawer */ "./node_modules/@visualbi/bifrost-editor/dist/core/Drawer.js"));
 
 var _PropertyStore = _interopRequireDefault(__webpack_require__(/*! ../store/PropertyStore */ "./node_modules/@visualbi/bifrost-editor/dist/store/PropertyStore.js"));
 
-__webpack_require__(/*! ../../css/Editor.css */ "./node_modules/@visualbi/bifrost-editor/css/Editor.css");
+__webpack_require__(/*! ../styles/Editor.css */ "./node_modules/@visualbi/bifrost-editor/dist/styles/Editor.css");
 
 var _Router = _interopRequireDefault(__webpack_require__(/*! ../store/Router */ "./node_modules/@visualbi/bifrost-editor/dist/store/Router.js"));
 
@@ -29431,9 +26549,7 @@ function (_React$Component) {
         router: this.router
       }, React.createElement("div", {
         className: "bf-editor"
-      }, React.createElement(_Navigation.default, {
-        store: this.store,
-        router: this.router,
+      }, React.createElement(_Navigation.Navigation, {
         nav: nav
       }), React.createElement(_PanelManager.default, {
         panels: panels
@@ -29445,8 +26561,7 @@ function (_React$Component) {
 }(React.Component);
 
 var Editor = (0, _mobxReact.observer)(EditorComponent);
-var _default = Editor;
-exports.default = _default;
+exports.Editor = Editor;
 
 /***/ }),
 
@@ -29463,17 +26578,15 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.Navigation = void 0;
 
 var React = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var _mobxReact = __webpack_require__(/*! mobx-react */ "./node_modules/@visualbi/bifrost-editor/node_modules/mobx-react/index.module.js");
 
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+__webpack_require__(/*! ../styles/Navigation.css */ "./node_modules/@visualbi/bifrost-editor/dist/styles/Navigation.css");
 
-var _Icon = _interopRequireDefault(__webpack_require__(/*! ../elements/Icon */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Icon.js"));
-
-__webpack_require__(/*! ../../css/Navigation.css */ "./node_modules/@visualbi/bifrost-editor/css/Navigation.css");
+var _Search = _interopRequireDefault(__webpack_require__(/*! ./Search */ "./node_modules/@visualbi/bifrost-editor/dist/core/Search.js"));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
@@ -29647,55 +26760,30 @@ function (_React$Component) {
     value: function renderMenuItem(item) {
       var _this2 = this;
 
-      var _this$props = this.props,
-          store = _this$props.store,
-          router = _this$props.router;
-
-      switch (item.type) {
-        case 'panel':
-          return React.createElement("button", {
+      if (item.type === 'panel') {
+        return React.createElement("button", {
+          onClick: function onClick() {
+            return _this2.onNavigate(item.panelKey);
+          },
+          className: "btn btn-link"
+        }, item.label);
+      } else if (item.type === 'menu') {
+        return React.createElement("div", {
+          class: "dropdown"
+        }, React.createElement("button", {
+          class: "btn btn-link dropdown-toggle"
+        }, item.label), React.createElement("ul", {
+          class: "menu"
+        }, (item.nav || []).map(function (subNavItem) {
+          return React.createElement("li", {
+            class: "menu-item"
+          }, React.createElement("a", {
+            href: "#",
             onClick: function onClick() {
-              return _this2.onNavigate(item.panelKey);
+              return _this2.onNavigate(subNavItem.panelKey);
             }
-          }, item.icon && React.createElement(_Icon.default, {
-            icon: item.icon
-          }), React.createElement("span", null, item.label));
-
-        case 'button':
-          return React.createElement("button", {
-            onClick: function onClick() {
-              return item.onClick({
-                store: store,
-                router: router
-              });
-            }
-          }, item.icon && React.createElement(_Icon.default, {
-            icon: item.icon
-          }), React.createElement("span", null, item.label));
-
-        case 'menu':
-          return React.createElement("div", {
-            className: "dropdown"
-          }, React.createElement("button", {
-            className: "dropdown-toggle"
-          }, item.icon && React.createElement(_Icon.default, {
-            icon: item.icon
-          }), React.createElement("span", null, item.label)), React.createElement("ul", {
-            className: "menu"
-          }, (item.nav || []).map(function (subNavItem) {
-            return React.createElement("li", {
-              className: "menu-item"
-            }, React.createElement("button", {
-              onClick: function onClick() {
-                return _this2.onNavigate(subNavItem.panelKey);
-              }
-            }, subNavItem.icon && React.createElement(_Icon.default, {
-              icon: subNavItem.icon
-            }), React.createElement("span", null, subNavItem.label)));
-          })));
-
-        default:
-          break;
+          }, subNavItem.label));
+        })));
       }
     }
   }, {
@@ -29703,16 +26791,23 @@ function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      var _this$props2 = this.props,
-          nav = _this$props2.nav,
-          className = _this$props2.className;
-      var resolvedClassName = (0, _classnames.default)('navigation', 'bf-editor-navigation', className);
+      var nav = this.props.nav;
       console.log(this.menuItems);
       return React.createElement("div", {
-        className: resolvedClassName
-      }, nav.map(function (navItem) {
+        className: "bf-editor-navigation"
+      }, React.createElement("header", {
+        className: "navbar"
+      }, React.createElement("section", {
+        className: "navbar-section"
+      }, React.createElement("button", {
+        className: "btn btn-link"
+      }, React.createElement("img", {
+        src: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAZCAYAAAA14t7uAAADHElEQVRIS6WVXUiTURjHn+edU3MzNRcFGu6iTIUIoisdqeBNIn6UChIRXkUktTYHXcRaRnizSUpBd0EgiF/kNLoIUlG7iuwimIKBE7Uuhiveqfmx94lz8Ly++3BTPFfnfc7//J7//ue87xCOMV4WdxHbbvXZMBoTUzhMn+7irgYCGI7WahscGSxcxjNwLHBPoeeyosPvEWCCsHXOlsJq7pmKt+1lE62Hciw7C3oyO/wPtDBXiSs1m05uAdAdq8/+rnPKkqOX9GsE2Oco+9ySFBx6auYHZHy2iDRp4nPQQR5aAquikXu68hcgnGXPScH9TaCrLjHvis0R4L0ilgfQPVMxCoA1QkdATxxlEy8SOpad5veIUBfjOAJcOQUAliOBhXjDVdCW4fK/UqPQgqcrgoCYLbT20nEJESjC8fb8dUq9+JHXApl2AgLFFPLoVDci4wPA7WXjKo9PaLkhd2f9XwAkPaRe8O6D93/fpinkyeDacUgBybTD5jzj6YogSdjlKB1/njfckEuwa1m9MTrCIcHZ+myDYTcIUhqknh+KBQOASfbguqvgq8Hlvxrv5cgbrA0hokFBpV4FxxPyKDSDgcXVA4ItY8diuljOH6pTtSq45ko3L66Rzvxlts0vxAnBeyJ2BfMG62REMKoelHDlctPYBAqwWBj79lA9gKDx/rUwpk+ytQjHCcAKkGX1pncmLthd6LZIYem37adtQRuHGoUGnD9YuwmIPBYiUFYaR/gtigv2FHqqdTr8wMVAbY989tdsvu40LxHCOdGMRSHARHRvpdH7RqzFBXcVuR9LKHXuu6UfVp/9kniWneYJRCgX4OVG7wm2ltncSxDeLpaHWufUPEXWLOODwAFzEYUVspxZmp/RRpRT1Z+1e2rnD69Fg7XCWDD0WX22FgZW3xkCx2n/nNvY3PsJAarU/YnATBT1TxED5jdlcQ6NTb07iMA/8mxsk3Jha+D2QtLv8V6DQ4Nl0qfBQPN2UrA2Im0UwjE/sL0hb4YMMHp3g1837cbDzLVwFoUAy/23IlhHBovmrAEDQ1N/Fgw0/4029R+OmY8p04mwNAAAAABJRU5ErkJggg==",
+        alt: "Visualbi",
+        className: "bf-editor-logo"
+      })), nav.map(function (navItem) {
         return _this3.renderMenuItem(navItem);
-      }));
+      }))));
     }
   }]);
 
@@ -29720,8 +26815,7 @@ function (_React$Component) {
 }(React.Component);
 
 var Navigation = (0, _mobxReact.inject)('router')(NavigationComponent);
-var _default = Navigation;
-exports.default = _default;
+exports.Navigation = Navigation;
 
 /***/ }),
 
@@ -29916,6 +27010,241 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "./node_modules/@visualbi/bifrost-editor/dist/core/Search.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/dist/core/Search.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _Flex = _interopRequireDefault(__webpack_require__(/*! ../layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js"));
+
+__webpack_require__(/*! ../styles/Search.css */ "./node_modules/@visualbi/bifrost-editor/dist/styles/Search.css");
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+function _interopRequireWildcard(obj) {
+  if (obj && obj.__esModule) {
+    return obj;
+  } else {
+    var newObj = {};
+
+    if (obj != null) {
+      for (var key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+          var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};
+
+          if (desc.get || desc.set) {
+            Object.defineProperty(newObj, key, desc);
+          } else {
+            newObj[key] = obj[key];
+          }
+        }
+      }
+    }
+
+    newObj.default = obj;
+    return newObj;
+  }
+}
+
+function _typeof(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+var Search =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Search, _Component);
+
+  function Search(props) {
+    var _this;
+
+    _classCallCheck(this, Search);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Search).call(this, props));
+    _this.state = {
+      isOpen: false
+    };
+    _this.toggleModal = _this.toggleModal.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(Search, [{
+    key: "toggleModal",
+    value: function toggleModal(e) {
+      e.preventDefault();
+      var isOpen = this.state.isOpen;
+      this.setState({
+        isOpen: !isOpen
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var isOpen = this.state.isOpen;
+      return _react.default.createElement("div", {
+        className: "bf-editor-navigation-search"
+      }, _react.default.createElement("button", {
+        onClick: this.toggleModal,
+        className: "btn btn-link"
+      }, _react.default.createElement(_Flex.default, {
+        justifyContent: "flex-start",
+        alignItems: "center"
+      }, _react.default.createElement("i", {
+        class: "icon icon-search"
+      }), _react.default.createElement("span", null, "Search"))), _react.default.createElement("div", {
+        class: "modal modal-sm ".concat(isOpen ? 'active' : '')
+      }, _react.default.createElement("a", {
+        onClick: this.toggleModal,
+        href: "#close",
+        class: "modal-overlay",
+        "aria-label": "Close"
+      }), _react.default.createElement("div", {
+        class: "modal-container"
+      }, _react.default.createElement("div", {
+        class: "modal-header"
+      }, _react.default.createElement(_Flex.default, {
+        justifyContent: "space-between",
+        alignItems: "center"
+      }, _react.default.createElement(_Flex.default, {
+        alignItems: "center"
+      }, _react.default.createElement("i", {
+        class: "icon icon-search"
+      }), _react.default.createElement("input", {
+        autoFocus: this.isOpen,
+        type: "text",
+        placeholder: "Enter keywords here"
+      })), _react.default.createElement("button", {
+        onClick: this.toggleModal,
+        class: "btn btn-clear",
+        "aria-label": "Close"
+      }))), _react.default.createElement("div", {
+        class: "modal-body"
+      }, _react.default.createElement("div", {
+        class: "content"
+      }, _react.default.createElement("p", {
+        class: "search-hint"
+      }, "Use the search to quickly jump through settings & options for the component")), _react.default.createElement("div", {
+        class: "search-results"
+      }, _react.default.createElement("div", {
+        class: "tile tile-centered"
+      }, _react.default.createElement("div", {
+        class: "tile-content"
+      }, _react.default.createElement("div", {
+        class: "tile-title"
+      }, "General \xB7 Chart Title"), _react.default.createElement("p", {
+        class: "tile-subtitle text-gray"
+      }, "Set the title displayed on the visualization.")), _react.default.createElement("div", {
+        class: "tile-action"
+      }, _react.default.createElement("button", {
+        class: "btn btn-link"
+      }, _react.default.createElement("i", {
+        class: "icon icon-arrow-right"
+      })))))))));
+    }
+  }]);
+
+  return Search;
+}(_react.Component);
+
+exports.default = Search;
+
+/***/ }),
+
 /***/ "./node_modules/@visualbi/bifrost-editor/dist/core/withPanel.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@visualbi/bifrost-editor/dist/core/withPanel.js ***!
@@ -29935,15 +27264,9 @@ var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_mo
 
 var _mobxReact = __webpack_require__(/*! mobx-react */ "./node_modules/@visualbi/bifrost-editor/node_modules/mobx-react/index.module.js");
 
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-var _reactResizable = __webpack_require__(/*! react-resizable */ "./node_modules/react-resizable/index.js");
-
 var _Flex = _interopRequireDefault(__webpack_require__(/*! ../layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js"));
 
-__webpack_require__(/*! ../../css/Panel.css */ "./node_modules/@visualbi/bifrost-editor/css/Panel.css");
-
-var _Icon = _interopRequireDefault(__webpack_require__(/*! ../elements/Icon */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Icon.js"));
+__webpack_require__(/*! ../styles/Panel.css */ "./node_modules/@visualbi/bifrost-editor/dist/styles/Panel.css");
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
@@ -30078,13 +27401,10 @@ function _setPrototypeOf(o, p) {
 }
 
 function withPanel(WrappedComponent) {
-  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
-    options: {}
-  },
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
       title = _ref.title,
       properties = _ref.properties,
-      schema = _ref.schema,
-      options = _ref.options;
+      schema = _ref.schema;
 
   var withPanelWrapped =
   /*#__PURE__*/
@@ -30103,26 +27423,20 @@ function withPanel(WrappedComponent) {
         var props = this.props;
         var store = props.store,
             router = props.router,
-            onClose = props.onClose,
-            className = props.className;
-        var resolvedClassName = (0, _classnames.default)('bf-editor-panel', className);
-
-        var WrappedPanel = _react.default.createElement("div", {
-          className: "panel-container"
+            onClose = props.onClose;
+        return _react.default.createElement("div", {
+          class: "bf-editor-panel"
         }, _react.default.createElement("div", {
-          className: "panel-header"
+          class: "panel-header"
         }, _react.default.createElement(_Flex.default, {
           justifyContent: "space-between",
           alignItems: "center"
         }, _react.default.createElement("h2", null, title), _react.default.createElement("button", {
           onClick: onClose,
-          "aria-label": "Close",
-          className: "btn-close"
-        }, _react.default.createElement(_Icon.default, {
-          icon: "Cancel",
-          fontSize: 12
-        })))), _react.default.createElement("div", {
-          className: "panel-body"
+          class: "btn btn-clear",
+          "aria-label": "Close"
+        }))), _react.default.createElement("div", {
+          class: "panel-body"
         }, _react.default.createElement(WrappedComponent, _extends({
           properties: properties,
           schema: schema,
@@ -30130,19 +27444,6 @@ function withPanel(WrappedComponent) {
           store: store,
           router: router
         }, props))));
-
-        if (options.resizable) {
-          return _react.default.createElement(_reactResizable.ResizableBox, {
-            axis: "x",
-            width: 320,
-            className: resolvedClassName,
-            minConstraints: [320, 0]
-          }, WrappedPanel);
-        }
-
-        return _react.default.createElement("div", {
-          className: resolvedClassName
-        }, WrappedPanel);
       }
     }]);
 
@@ -30157,10 +27458,10 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ "./node_modules/@visualbi/bifrost-editor/dist/elements/Button.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/dist/elements/Button.js ***!
-  \***********************************************************************/
+/***/ "./node_modules/@visualbi/bifrost-editor/dist/forms/Button.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/dist/forms/Button.js ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30174,9 +27475,7 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-__webpack_require__(/*! ../../css/Button.css */ "./node_modules/@visualbi/bifrost-editor/css/Button.css");
+__webpack_require__(/*! ../styles/Button.css */ "./node_modules/@visualbi/bifrost-editor/dist/styles/Button.css");
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
@@ -30187,290 +27486,16 @@ function _interopRequireDefault(obj) {
 var Button = function Button(props) {
   var className = props.className,
       onClick = props.onClick,
-      title = props.title,
-      children = props.children,
-      primary = props.primary,
-      secondary = props.secondary,
-      disabled = props.disabled,
-      size = props.size,
-      success = props.success,
-      error = props.error;
-  var resolvedClassName = (0, _classnames.default)('btn', 'bf-editor-button', {
-    'btn-primary': primary
-  }, {
-    'btn-secondary': secondary
-  }, {
-    'btn-disabled': disabled
-  }, {
-    'btn-success': success
-  }, {
-    'btn-error': error
-  }, {
-    'btn-lg': size === 'lg'
-  }, {
-    'btn-sm': size === 'sm'
-  }, className);
+      title = props.title;
   return _react.default.createElement("button", {
     title: title || '',
-    className: resolvedClassName,
+    className: "btn bf-editor-button ".concat(className),
     onClick: onClick
-  }, children);
+  }, props.children);
 };
 
 var _default = Button;
 exports.default = _default;
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/dist/elements/Icon.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/dist/elements/Icon.js ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-
-var Icon = function Icon(props) {
-  var icon = props.icon,
-      size = props.size,
-      color = props.color,
-      className = props.className,
-      onClick = props.onClick;
-  var resolvedClassName = (0, _classnames.default)('icon', "icon--".concat(icon), className);
-  return _react.default.createElement("i", {
-    style: {
-      fontSize: size,
-      color: color
-    },
-    className: resolvedClassName,
-    onClick: onClick
-  });
-};
-
-Icon.defaultProps = {
-  size: 14
-};
-var _default = Icon;
-exports.default = _default;
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/dist/forms/Checkbox.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/dist/forms/Checkbox.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-__webpack_require__(/*! ../../css/Checkbox.css */ "./node_modules/@visualbi/bifrost-editor/css/Checkbox.css");
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-
-function _interopRequireWildcard(obj) {
-  if (obj && obj.__esModule) {
-    return obj;
-  } else {
-    var newObj = {};
-
-    if (obj != null) {
-      for (var key in obj) {
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
-          var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};
-
-          if (desc.get || desc.set) {
-            Object.defineProperty(newObj, key, desc);
-          } else {
-            newObj[key] = obj[key];
-          }
-        }
-      }
-    }
-
-    newObj.default = obj;
-    return newObj;
-  }
-}
-
-function _typeof(obj) {
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-var Checkbox =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Checkbox, _Component);
-
-  function Checkbox() {
-    _classCallCheck(this, Checkbox);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Checkbox).apply(this, arguments));
-  }
-
-  _createClass(Checkbox, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          value = _this$props.value,
-          _onChange = _this$props.onChange,
-          label = _this$props.label,
-          disabled = _this$props.disabled,
-          className = _this$props.className,
-          error = _this$props.error;
-      var resolvedClassName = (0, _classnames.default)('bf-editor-form-checkbox', 'form-checkbox', {
-        'is-error': error
-      }, {
-        'disabled': disabled
-      }, className);
-      return _react.default.createElement("label", {
-        className: resolvedClassName
-      }, _react.default.createElement("input", {
-        type: "checkbox",
-        checked: value,
-        disabled: disabled,
-        onChange: function onChange(e) {
-          return _onChange(e.target.checked);
-        }
-      }), _react.default.createElement("i", {
-        className: "form-icon"
-      }), label && _react.default.createElement("span", null, label));
-    }
-  }]);
-
-  return Checkbox;
-}(_react.Component);
-
-exports.default = Checkbox;
-
-_defineProperty(Checkbox, "defaultProps", {
-  onChange: function onChange() {}
-});
 
 /***/ }),
 
@@ -30493,9 +27518,13 @@ var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_mo
 
 var _reactSimpleColorpicker = _interopRequireDefault(__webpack_require__(/*! react-simple-colorpicker */ "./node_modules/react-simple-colorpicker/lib/index.js"));
 
-__webpack_require__(/*! ../../css/ColorPicker.css */ "./node_modules/@visualbi/bifrost-editor/css/ColorPicker.css");
+var _colorConvert = _interopRequireDefault(__webpack_require__(/*! color-convert */ "./node_modules/color-convert/index.js"));
 
 var _Flex = _interopRequireDefault(__webpack_require__(/*! ../layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js"));
+
+var _Button = _interopRequireDefault(__webpack_require__(/*! ./Button */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Button.js"));
+
+__webpack_require__(/*! ../styles/ColorPicker.css */ "./node_modules/@visualbi/bifrost-editor/dist/styles/ColorPicker.css");
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
@@ -30638,9 +27667,13 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ColorPicker).call(this, props));
     _this.state = {
-      visible: false
+      visible: false,
+      color: props.value || '#FFFFFF'
     };
     _this.togglePicker = _this.togglePicker.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.onResetClick = _this.onResetClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.onPickerSubmit = _this.onPickerSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.onPickerClose = _this.onPickerClose.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -30653,29 +27686,186 @@ function (_Component) {
       });
     }
   }, {
+    key: "parseColor",
+    value: function parseColor(cstr) {
+      // Picked up from https://github.com/substack/parse-color/blob/master/index.js
+      var m, conv, parts, alpha;
+
+      if (m = /^((?:rgb|hs[lv]|cmyk|xyz|lab)a?)\s*\(([^\)]*)\)/.exec(cstr)) {
+        var name = m[1];
+        var base = name.replace(/a$/, '');
+        var size = base === 'cmyk' ? 4 : 3;
+        conv = _colorConvert.default[base];
+        parts = m[2].replace(/^\s+|\s+$/g, '').split(/\s*,\s*/).map(function (x, i) {
+          if (/%$/.test(x) && i === size) {
+            return parseFloat(x) / 100;
+          } else if (/%$/.test(x)) {
+            return parseFloat(x);
+          }
+
+          return parseFloat(x);
+        });
+        if (name === base) parts.push(1);
+        alpha = parts[size] === undefined ? 1 : parts[size];
+        parts = parts.slice(0, size);
+
+        conv[base] = function () {
+          return parts;
+        };
+      } else if (/^#[A-Fa-f0-9]+$/.test(cstr)) {
+        var base = cstr.replace(/^#/, '');
+        var size = base.length;
+        conv = _colorConvert.default.rgb;
+        parts = base.split(size === 3 ? /(.)/ : /(..)/);
+        parts = parts.filter(Boolean).map(function (x) {
+          if (size === 3) {
+            return parseInt(x + x, 16);
+          } else {
+            return parseInt(x, 16);
+          }
+        });
+        alpha = 1;
+
+        conv.rgb = function () {
+          return parts;
+        };
+
+        if (!parts[0]) parts[0] = 0;
+        if (!parts[1]) parts[1] = 0;
+        if (!parts[2]) parts[2] = 0;
+      } else {
+        conv = _colorConvert.default.keyword;
+
+        conv.keyword = function () {
+          return cstr;
+        };
+
+        parts = cstr;
+        alpha = 1;
+      }
+
+      var res = {
+        rgb: undefined,
+        hsl: undefined,
+        hsv: undefined,
+        cmyk: undefined,
+        keyword: undefined,
+        hex: undefined
+      };
+
+      try {
+        res.rgb = conv.rgb(parts);
+      } catch (e) {}
+
+      try {
+        res.hsl = conv.hsl(parts);
+      } catch (e) {}
+
+      try {
+        res.hsv = conv.hsv(parts);
+      } catch (e) {}
+
+      try {
+        res.cmyk = conv.cmyk(parts);
+      } catch (e) {}
+
+      try {
+        res.keyword = conv.keyword(parts);
+      } catch (e) {}
+
+      if (res.rgb) res.hex = '#' + res.rgb.map(function (x) {
+        var s = x.toString(16);
+        if (s.length === 1) return '0' + s;
+        return s;
+      }).join('');
+      if (res.rgb) res.rgba = res.rgb.concat(alpha);
+      if (res.hsl) res.hsla = res.hsl.concat(alpha);
+      if (res.hsv) res.hsva = res.hsv.concat(alpha);
+      if (res.cmyk) res.cmyka = res.cmyk.concat(alpha);
+      return res;
+    }
+  }, {
+    key: "onResetClick",
+    value: function onResetClick() {
+      this.setState({
+        color: this.props.value
+      });
+    }
+  }, {
+    key: "onPickerSubmit",
+    value: function onPickerSubmit() {
+      var color = this.state.color;
+      var onChange = this.props.onChange;
+
+      if (onChange) {
+        onChange(color);
+      }
+
+      this.setState({
+        visible: false
+      });
+    }
+  }, {
+    key: "onPickerClose",
+    value: function onPickerClose() {
+      this.setState({
+        visible: false
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var visible = this.state.visible;
-      var _this$props = this.props,
-          value = _this$props.value,
-          _onChange = _this$props.onChange,
-          disabled = _this$props.disabled;
+      var _this2 = this;
+
+      var _this$state = this.state,
+          visible = _this$state.visible,
+          color = _this$state.color;
+      var value = this.props.value;
+      var parsedColor = this.parseColor(color);
       return _react.default.createElement("div", {
         className: "bf-editor-form-colorpicker"
       }, _react.default.createElement("div", {
-        className: "bf-editor-form-colorpicker swatch",
+        className: "swatch",
         style: {
           backgroundColor: value
         },
         onClick: this.togglePicker
       }), _react.default.createElement("div", {
-        className: visible ? 'd-visible' : 'd-invisible'
+        className: visible ? 'picker-visible' : 'picker-invisible'
+      }, _react.default.createElement("div", {
+        className: "colorpicker-modal"
       }, _react.default.createElement(_reactSimpleColorpicker.default, {
-        color: value,
+        color: parsedColor.rgba ? "rgba(".concat(parsedColor.rgb.join(','), ")") : '#FFFFFF',
         onChange: function onChange(color) {
-          return _onChange(color);
+          return _this2.setState({
+            color: color
+          });
         }
-      })));
+      }), _react.default.createElement("div", {
+        className: "colorpicker-input-container"
+      }, _react.default.createElement("input", {
+        className: "form-input",
+        placeholder: "Choose Color",
+        value: color,
+        onChange: function onChange(e) {
+          return _this2.setState({
+            color: e.target.value
+          });
+        }
+      })), _react.default.createElement("div", {
+        className: "colorpicker-footer"
+      }, _react.default.createElement(_Button.default, {
+        className: "btn btn-link btn-sm",
+        onClick: this.onPickerClose
+      }, "Close"), _react.default.createElement("div", {
+        className: "colorpicker-btns"
+      }, _react.default.createElement(_Button.default, {
+        className: "btn btn-sm",
+        onClick: this.onResetClick
+      }, "Reset"), _react.default.createElement(_Button.default, {
+        className: "btn btn-primary btn-sm",
+        onClick: this.onPickerSubmit
+      }, "Submit"))))));
     }
   }]);
 
@@ -30711,13 +27901,11 @@ var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ ".
 
 var _rcForm = __webpack_require__(/*! rc-form */ "./node_modules/rc-form/es/index.js");
 
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
 var _FormGroup = _interopRequireDefault(__webpack_require__(/*! ./FormGroup */ "./node_modules/@visualbi/bifrost-editor/dist/forms/FormGroup.js"));
 
-var _Button = _interopRequireDefault(__webpack_require__(/*! ../elements/Button */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Button.js"));
+var _Button = _interopRequireDefault(__webpack_require__(/*! ./Button */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Button.js"));
 
-__webpack_require__(/*! ../../css/Form.css */ "./node_modules/@visualbi/bifrost-editor/css/Form.css");
+var _Flex = _interopRequireDefault(__webpack_require__(/*! ../layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js"));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
@@ -30929,8 +28117,7 @@ function (_React$Component) {
         tooltip: field.tooltip,
         error: isErrored || field.error,
         messages: errors || field.messages || [],
-        horizontal: field.horizontal,
-        className: field.className
+        horizontal: field.horizontal
       }, _react.default.createElement(field.control, _objectSpread({}, field.controlProps)));
     }
   }, {
@@ -30966,10 +28153,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this$props3 = this.props,
-          showSubmitButton = _this$props3.showSubmitButton,
-          className = _this$props3.className;
-      var resolvedClassName = (0, _classnames.default)('form', className);
+      var showSubmitButton = this.props.showSubmitButton;
 
       var submitButton = _react.default.createElement(_Button.default, {
         className: "btn-sm btn-primary",
@@ -31004,9 +28188,11 @@ function (_React$Component) {
       }
 
       return _react.default.createElement("form", {
-        className: resolvedClassName
-      }, this.generateFormFields(this.props.fields), _react.default.createElement("div", {
-        className: "form-footer-button"
+        className: "".concat(this.props.className)
+      }, this.generateFormFields(this.props.fields), _react.default.createElement(_Flex.default, {
+        flexDirection: "row-reverse",
+        alignItems: "center",
+        justifyContent: "space-between"
       }, showSubmitButton && submitButton, showClearButton && clearButton));
     }
   }]);
@@ -31090,11 +28276,13 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+__webpack_require__(/*! ../styles/FormGroup.css */ "./node_modules/@visualbi/bifrost-editor/dist/styles/FormGroup.css");
 
-__webpack_require__(/*! ../../css/FormGroup.css */ "./node_modules/@visualbi/bifrost-editor/css/FormGroup.css");
+var _Flex = _interopRequireDefault(__webpack_require__(/*! ../layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js"));
 
-var _Icon = _interopRequireDefault(__webpack_require__(/*! ../elements/Icon */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Icon.js"));
+var _reactIconsKit = __webpack_require__(/*! react-icons-kit */ "./node_modules/react-icons-kit/index.js");
+
+var _ic_help = __webpack_require__(/*! react-icons-kit/md/ic_help */ "./node_modules/react-icons-kit/md/ic_help.js");
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
@@ -31171,6 +28359,14 @@ function _possibleConstructorReturn(self, call) {
   return _assertThisInitialized(self);
 }
 
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
 function _getPrototypeOf(o) {
   _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
     return o.__proto__ || Object.getPrototypeOf(o);
@@ -31202,44 +28398,20 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
 var FormGroup =
 /*#__PURE__*/
 function (_Component) {
   _inherits(FormGroup, _Component);
 
-  function FormGroup(props) {
-    var _this;
-
+  function FormGroup() {
     _classCallCheck(this, FormGroup);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(FormGroup).call(this, props));
-    _this.state = {
-      isTooltipOpen: false
-    };
-    _this.toggleTooltip = _this.toggleTooltip.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(FormGroup).apply(this, arguments));
   }
 
   _createClass(FormGroup, [{
-    key: "toggleTooltip",
-    value: function toggleTooltip() {
-      var isTooltipOpen = this.state.isTooltipOpen;
-      this.setState({
-        isTooltipOpen: !isTooltipOpen
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
-      var isTooltipOpen = this.state.isTooltipOpen;
       var _this$props = this.props,
           error = _this$props.error,
           messages = _this$props.messages,
@@ -31249,75 +28421,38 @@ function (_Component) {
           children = _this$props.children,
           value = _this$props.value,
           onChange = _this$props.onChange,
-          onBlur = _this$props.onBlur,
-          className = _this$props.className;
-      var resolvedClassName = (0, _classnames.default)('bf-editor-form-group', 'form-group', {
-        'has-error': error
-      }, {
-        'horizontal': horizontal
-      }, className);
-      var tooltipBodyClass = (0, _classnames.default)('tooltip-body', {
-        'hidden': !isTooltipOpen
-      }, {
-        'visible': isTooltipOpen
-      });
+          onBlur = _this$props.onBlur;
       return _react.default.createElement("div", {
-        className: resolvedClassName
-      }, _react.default.createElement("div", {
-        className: "form-label"
-      }, _react.default.createElement("label", null, label), tooltip && _react.default.createElement("div", {
-        className: "tooltip tooltip-right"
-      }, _react.default.createElement(_Icon.default, {
-        icon: "Help",
-        size: 8,
-        onClick: this.toggleTooltip
+        className: "bf-editor-form-group form-group ".concat(horizontal ? 'horizontal' : '', " ").concat(error ? 'has-error' : '')
+      }, label && _react.default.createElement(_Flex.default, {
+        className: "form-label-container ".concat(horizontal ? 'horizontal' : ''),
+        alignItems: "center",
+        justifyContent: "flex-start"
+      }, _react.default.createElement("label", {
+        class: "form-label"
+      }, label), tooltip && _react.default.createElement("div", {
+        className: "popover popover-right"
+      }, _react.default.createElement(_reactIconsKit.Icon, {
+        icon: _ic_help.ic_help,
+        size: 14
       }), _react.default.createElement("div", {
-        className: tooltipBodyClass
-      }, _react.default.createElement("p", null, tooltip)))), _react.default.createElement("div", {
-        className: "form-input-container"
+        class: "popover-container"
+      }, _react.default.createElement("div", {
+        class: "card"
+      }, _react.default.createElement("div", {
+        class: "card-body"
+      }, tooltip))))), _react.default.createElement(_Flex.default, {
+        alignItems: horizontal ? 'flex-end' : 'stretch',
+        flexDirection: "column"
       }, _react.default.cloneElement(children, {
         value: value,
         onChange: onChange,
         onBlur: onBlur
-      })), Array.isArray(messages) ? _react.default.createElement("ul", {
-        className: "form-input-hint"
-      }, messages.map(function (message) {
-        return _react.default.createElement("li", null, message);
-      })) : null); // return (
-      //   <div
-      //     className={resolvedClassName}
-      //   >
-      //     {label && (
-      //       <Flex
-      //         className={`form-label-container ${horizontal ? 'horizontal' : ''}`}
-      //         alignItems="center"
-      //         justifyContent="flex-start"
-      //       >
-      //         <label className="form-label">{label}</label>
-      //         {tooltip && (
-      //           <div className="popover popover-right">
-      //             <Icon icon="Help" size={14} />
-      //             <div className="popover-container">
-      //               <div className="card">
-      //                 <div className="card-body">
-      //                   {tooltip}
-      //                 </div>
-      //               </div>
-      //             </div>
-      //           </div>
-      //         )}
-      //       </Flex>
-      //     )}
-      //     <Flex alignItems={horizontal ? 'flex-end' : 'stretch'} flexDirection="column">
-      //       {React.cloneElement(children, { value, onChange, onBlur })}
-      //       {error && Array.isArray(messages) ? (
-      //         messages.map(message => (
-      //           <p className="form-input-hint">{message}</p>
-      //         ))
-      //       ) : null}
-      //     </Flex>
-      //   </div>
-      // );
+      }), error && Array.isArray(messages) ? messages.map(function (message) {
+        return _react.default.createElement("p", {
+          class: "form-input-hint"
+        }, message);
+      }) : null));
     }
   }]);
 
@@ -31345,15 +28480,7 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-__webpack_require__(/*! ../../css/Input.css */ "./node_modules/@visualbi/bifrost-editor/css/Input.css");
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
+__webpack_require__(/*! ../styles/Input.css */ "./node_modules/@visualbi/bifrost-editor/dist/styles/Input.css");
 
 function _interopRequireWildcard(obj) {
   if (obj && obj.__esModule) {
@@ -31499,17 +28626,11 @@ function (_Component) {
           type = _this$props.type,
           placeholder = _this$props.placeholder,
           _onChange = _this$props.onChange,
-          error = _this$props.error,
-          className = _this$props.className;
-      var resolvedClassName = (0, _classnames.default)('bf-editor-form-input', 'form-input', {
-        'has-icon-left': icon
-      }, {
-        'is-error': error
-      }, {
-        'disabled': disabled
-      }, className);
-      return _react.default.createElement("input", {
-        className: resolvedClassName,
+          onClick = _this$props.onClick;
+      return _react.default.createElement("div", {
+        class: "bf-editor-form-input ".concat(icon ? 'has-icon-right' : '')
+      }, _react.default.createElement("input", {
+        class: "form-input",
         type: type || 'text',
         placeholder: placeholder,
         disabled: disabled,
@@ -31517,7 +28638,10 @@ function (_Component) {
         onChange: function onChange(e) {
           return _onChange(e.target.value);
         }
-      });
+      }), icon ? _react.default.createElement("i", {
+        onClick: onClick,
+        class: "form-icon icon ".concat(icon)
+      }) : null);
     }
   }]);
 
@@ -31527,193 +28651,9 @@ function (_Component) {
 exports.default = Input;
 
 _defineProperty(Input, "defaultProps", {
-  onChange: function onChange() {}
+  onChange: function onChange() {},
+  onClick: function onClick() {}
 });
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/dist/forms/Radio.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/dist/forms/Radio.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-__webpack_require__(/*! ../../css/Radio.css */ "./node_modules/@visualbi/bifrost-editor/css/Radio.css");
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-
-function _interopRequireWildcard(obj) {
-  if (obj && obj.__esModule) {
-    return obj;
-  } else {
-    var newObj = {};
-
-    if (obj != null) {
-      for (var key in obj) {
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
-          var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};
-
-          if (desc.get || desc.set) {
-            Object.defineProperty(newObj, key, desc);
-          } else {
-            newObj[key] = obj[key];
-          }
-        }
-      }
-    }
-
-    newObj.default = obj;
-    return newObj;
-  }
-}
-
-function _typeof(obj) {
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-var Radio =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Radio, _Component);
-
-  function Radio() {
-    _classCallCheck(this, Radio);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Radio).apply(this, arguments));
-  }
-
-  _createClass(Radio, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          name = _this$props.name,
-          label = _this$props.label,
-          disabled = _this$props.disabled,
-          value = _this$props.value,
-          error = _this$props.error,
-          _onChange = _this$props.onChange,
-          className = _this$props.className;
-      var resolvedClassName = (0, _classnames.default)('bf-editor-form-radio', 'form-radio', {
-        'is-error': error
-      }, {
-        'disabled': disabled
-      }, className);
-      return _react.default.createElement("label", {
-        className: resolvedClassName
-      }, _react.default.createElement("input", {
-        name: name,
-        type: "radio",
-        disabled: disabled,
-        checked: value,
-        onChange: function onChange(e) {
-          return _onChange(e.target.checked);
-        }
-      }), _react.default.createElement("i", {
-        className: "form-icon"
-      }), label && _react.default.createElement("span", null, label));
-    }
-  }]);
-
-  return Radio;
-}(_react.Component);
-
-exports.default = Radio;
 
 /***/ }),
 
@@ -31734,15 +28674,7 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-__webpack_require__(/*! ../../css/Select.css */ "./node_modules/@visualbi/bifrost-editor/css/Select.css");
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
+__webpack_require__(/*! ../styles/Select.css */ "./node_modules/@visualbi/bifrost-editor/dist/styles/Select.css");
 
 function _interopRequireWildcard(obj) {
   if (obj && obj.__esModule) {
@@ -31886,19 +28818,14 @@ function (_Component) {
           value = _this$props.value,
           options = _this$props.options,
           disabled = _this$props.disabled,
+          type = _this$props.type,
           placeholder = _this$props.placeholder,
-          error = _this$props.error,
-          _onChange = _this$props.onChange,
-          className = _this$props.className;
-      var resolvedClassName = (0, _classnames.default)('bf-editor-form-select', 'form-select', {
-        'has-icon-left': icon
-      }, {
-        'is-error': error
-      }, {
-        'disabled': disabled
-      }, className);
-      return _react.default.createElement("select", {
-        className: resolvedClassName,
+          _onChange = _this$props.onChange;
+      return _react.default.createElement("div", {
+        class: "bf-editor-form-select ".concat(icon ? 'has-icon-left' : '')
+      }, _react.default.createElement("select", {
+        class: "form-select",
+        type: type || 'text',
         placeholder: placeholder,
         disabled: disabled,
         value: value,
@@ -31910,10 +28837,12 @@ function (_Component) {
         value: null
       }, placeholder) : null, (options || []).map(function (option) {
         return _react.default.createElement("option", {
-          key: option.value || option.key,
-          value: option.value || option.key
+          key: option.key,
+          value: option.key
         }, option.label);
-      }));
+      })), icon ? _react.default.createElement("i", {
+        class: "form-icon icon ".concat(icon)
+      }) : null);
     }
   }]);
 
@@ -31923,209 +28852,6 @@ function (_Component) {
 exports.default = Select;
 
 _defineProperty(Select, "defaultProps", {
-  onChange: function onChange() {}
-});
-
-/***/ }),
-
-/***/ "./node_modules/@visualbi/bifrost-editor/dist/forms/Switch.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/@visualbi/bifrost-editor/dist/forms/Switch.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-__webpack_require__(/*! ../../css/Switch.css */ "./node_modules/@visualbi/bifrost-editor/css/Switch.css");
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-
-function _interopRequireWildcard(obj) {
-  if (obj && obj.__esModule) {
-    return obj;
-  } else {
-    var newObj = {};
-
-    if (obj != null) {
-      for (var key in obj) {
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
-          var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};
-
-          if (desc.get || desc.set) {
-            Object.defineProperty(newObj, key, desc);
-          } else {
-            newObj[key] = obj[key];
-          }
-        }
-      }
-    }
-
-    newObj.default = obj;
-    return newObj;
-  }
-}
-
-function _typeof(obj) {
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-var Switch =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Switch, _Component);
-
-  function Switch() {
-    _classCallCheck(this, Switch);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Switch).apply(this, arguments));
-  }
-
-  _createClass(Switch, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          value = _this$props.value,
-          size = _this$props.size,
-          _onChange = _this$props.onChange,
-          label = _this$props.label,
-          disabled = _this$props.disabled,
-          error = _this$props.error,
-          className = _this$props.className;
-      var resolvedClassName = (0, _classnames.default)('bf-editor-form-switch', 'form-switch', {
-        'is-error': error
-      }, {
-        'disabled': disabled
-      }, size, className);
-      return _react.default.createElement("label", {
-        className: resolvedClassName
-      }, _react.default.createElement("input", {
-        type: "checkbox",
-        checked: value,
-        disabled: disabled,
-        onChange: function onChange(e) {
-          return _onChange(e.target.checked);
-        }
-      }), _react.default.createElement("i", {
-        className: "form-icon"
-      }), label && _react.default.createElement("span", null, label));
-    }
-  }]);
-
-  return Switch;
-}(_react.Component);
-
-exports.default = Switch;
-
-_defineProperty(Switch, "defaultProps", {
   onChange: function onChange() {}
 });
 
@@ -32148,62 +28874,23 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-__webpack_require__(/*! ../../css/Box.css */ "./node_modules/@visualbi/bifrost-editor/css/Box.css");
-
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
     default: obj
   };
 }
 
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
-    }
-
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
-  }
-
-  return target;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
 var Box = function Box(props) {
   var className = props.className,
       height = props.height,
-      width = props.width,
-      style = props.style;
-  var resovledClassName = (0, _classnames.default)('bf-editor-box', className);
+      width = props.width;
   return _react.default.createElement("div", {
-    className: resovledClassName,
-    style: _objectSpread({
+    className: "bf-editor-box ".concat(className),
+    style: {
+      display: 'block',
       height: height,
       width: width
-    }, style)
+    }
   }, props.children);
 };
 
@@ -32528,6 +29215,306 @@ var _default = (0, _mobx.decorate)(Router, {
 });
 
 exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@visualbi/bifrost-editor/dist/styles/Button.css":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/dist/styles/Button.css ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../css-loader!./Button.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Button.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/@visualbi/bifrost-editor/dist/styles/ColorPicker.css":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/dist/styles/ColorPicker.css ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../css-loader!./ColorPicker.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/ColorPicker.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/@visualbi/bifrost-editor/dist/styles/Drawer.css":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/dist/styles/Drawer.css ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../css-loader!./Drawer.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Drawer.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/@visualbi/bifrost-editor/dist/styles/Editor.css":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/dist/styles/Editor.css ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../css-loader!./Editor.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Editor.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/@visualbi/bifrost-editor/dist/styles/FormGroup.css":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/dist/styles/FormGroup.css ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../css-loader!./FormGroup.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/FormGroup.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/@visualbi/bifrost-editor/dist/styles/Input.css":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/dist/styles/Input.css ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../css-loader!./Input.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Input.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/@visualbi/bifrost-editor/dist/styles/Navigation.css":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/dist/styles/Navigation.css ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../css-loader!./Navigation.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Navigation.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/@visualbi/bifrost-editor/dist/styles/Panel.css":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/dist/styles/Panel.css ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../css-loader!./Panel.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Panel.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/@visualbi/bifrost-editor/dist/styles/Search.css":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/dist/styles/Search.css ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../css-loader!./Search.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Search.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/@visualbi/bifrost-editor/dist/styles/Select.css":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/dist/styles/Select.css ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../css-loader!./Select.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Select.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
@@ -40266,6 +37253,40 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 
 /***/ }),
 
+/***/ "./node_modules/camel-case/camel-case.js":
+/*!***********************************************!*\
+  !*** ./node_modules/camel-case/camel-case.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var upperCase = __webpack_require__(/*! upper-case */ "./node_modules/upper-case/upper-case.js");
+
+var noCase = __webpack_require__(/*! no-case */ "./node_modules/no-case/no-case.js");
+/**
+ * Camel case a string.
+ *
+ * @param  {string} value
+ * @param  {string} [locale]
+ * @return {string}
+ */
+
+
+module.exports = function (value, locale, mergeNumbers) {
+  var result = noCase(value, locale); // Replace periods between numeric entities with an underscore.
+
+  if (!mergeNumbers) {
+    result = result.replace(/ (?=\d)/g, '_');
+  } // Replace spaces between words with an upper cased character.
+
+
+  return result.replace(/ (.)/g, function (m, $1) {
+    return upperCase($1, locale);
+  });
+};
+
+/***/ }),
+
 /***/ "./node_modules/classnames/index.js":
 /*!******************************************!*\
   !*** ./node_modules/classnames/index.js ***!
@@ -40324,6 +37345,1267 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
   } else {}
 })();
+
+/***/ }),
+
+/***/ "./node_modules/color-convert/conversions.js":
+/*!***************************************************!*\
+  !*** ./node_modules/color-convert/conversions.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* MIT license */
+var cssKeywords = __webpack_require__(/*! color-name */ "./node_modules/color-name/index.js"); // NOTE: conversions should only return primitive values (i.e. arrays, or
+//       values that give correct `typeof` results).
+//       do not use box values types (i.e. Number(), String(), etc.)
+
+
+var reverseKeywords = {};
+
+for (var key in cssKeywords) {
+  if (cssKeywords.hasOwnProperty(key)) {
+    reverseKeywords[cssKeywords[key]] = key;
+  }
+}
+
+var convert = module.exports = {
+  rgb: {
+    channels: 3,
+    labels: 'rgb'
+  },
+  hsl: {
+    channels: 3,
+    labels: 'hsl'
+  },
+  hsv: {
+    channels: 3,
+    labels: 'hsv'
+  },
+  hwb: {
+    channels: 3,
+    labels: 'hwb'
+  },
+  cmyk: {
+    channels: 4,
+    labels: 'cmyk'
+  },
+  xyz: {
+    channels: 3,
+    labels: 'xyz'
+  },
+  lab: {
+    channels: 3,
+    labels: 'lab'
+  },
+  lch: {
+    channels: 3,
+    labels: 'lch'
+  },
+  hex: {
+    channels: 1,
+    labels: ['hex']
+  },
+  keyword: {
+    channels: 1,
+    labels: ['keyword']
+  },
+  ansi16: {
+    channels: 1,
+    labels: ['ansi16']
+  },
+  ansi256: {
+    channels: 1,
+    labels: ['ansi256']
+  },
+  hcg: {
+    channels: 3,
+    labels: ['h', 'c', 'g']
+  },
+  apple: {
+    channels: 3,
+    labels: ['r16', 'g16', 'b16']
+  },
+  gray: {
+    channels: 1,
+    labels: ['gray']
+  }
+}; // hide .channels and .labels properties
+
+for (var model in convert) {
+  if (convert.hasOwnProperty(model)) {
+    if (!('channels' in convert[model])) {
+      throw new Error('missing channels property: ' + model);
+    }
+
+    if (!('labels' in convert[model])) {
+      throw new Error('missing channel labels property: ' + model);
+    }
+
+    if (convert[model].labels.length !== convert[model].channels) {
+      throw new Error('channel and label counts mismatch: ' + model);
+    }
+
+    var channels = convert[model].channels;
+    var labels = convert[model].labels;
+    delete convert[model].channels;
+    delete convert[model].labels;
+    Object.defineProperty(convert[model], 'channels', {
+      value: channels
+    });
+    Object.defineProperty(convert[model], 'labels', {
+      value: labels
+    });
+  }
+}
+
+convert.rgb.hsl = function (rgb) {
+  var r = rgb[0] / 255;
+  var g = rgb[1] / 255;
+  var b = rgb[2] / 255;
+  var min = Math.min(r, g, b);
+  var max = Math.max(r, g, b);
+  var delta = max - min;
+  var h;
+  var s;
+  var l;
+
+  if (max === min) {
+    h = 0;
+  } else if (r === max) {
+    h = (g - b) / delta;
+  } else if (g === max) {
+    h = 2 + (b - r) / delta;
+  } else if (b === max) {
+    h = 4 + (r - g) / delta;
+  }
+
+  h = Math.min(h * 60, 360);
+
+  if (h < 0) {
+    h += 360;
+  }
+
+  l = (min + max) / 2;
+
+  if (max === min) {
+    s = 0;
+  } else if (l <= 0.5) {
+    s = delta / (max + min);
+  } else {
+    s = delta / (2 - max - min);
+  }
+
+  return [h, s * 100, l * 100];
+};
+
+convert.rgb.hsv = function (rgb) {
+  var rdif;
+  var gdif;
+  var bdif;
+  var h;
+  var s;
+  var r = rgb[0] / 255;
+  var g = rgb[1] / 255;
+  var b = rgb[2] / 255;
+  var v = Math.max(r, g, b);
+  var diff = v - Math.min(r, g, b);
+
+  var diffc = function (c) {
+    return (v - c) / 6 / diff + 1 / 2;
+  };
+
+  if (diff === 0) {
+    h = s = 0;
+  } else {
+    s = diff / v;
+    rdif = diffc(r);
+    gdif = diffc(g);
+    bdif = diffc(b);
+
+    if (r === v) {
+      h = bdif - gdif;
+    } else if (g === v) {
+      h = 1 / 3 + rdif - bdif;
+    } else if (b === v) {
+      h = 2 / 3 + gdif - rdif;
+    }
+
+    if (h < 0) {
+      h += 1;
+    } else if (h > 1) {
+      h -= 1;
+    }
+  }
+
+  return [h * 360, s * 100, v * 100];
+};
+
+convert.rgb.hwb = function (rgb) {
+  var r = rgb[0];
+  var g = rgb[1];
+  var b = rgb[2];
+  var h = convert.rgb.hsl(rgb)[0];
+  var w = 1 / 255 * Math.min(r, Math.min(g, b));
+  b = 1 - 1 / 255 * Math.max(r, Math.max(g, b));
+  return [h, w * 100, b * 100];
+};
+
+convert.rgb.cmyk = function (rgb) {
+  var r = rgb[0] / 255;
+  var g = rgb[1] / 255;
+  var b = rgb[2] / 255;
+  var c;
+  var m;
+  var y;
+  var k;
+  k = Math.min(1 - r, 1 - g, 1 - b);
+  c = (1 - r - k) / (1 - k) || 0;
+  m = (1 - g - k) / (1 - k) || 0;
+  y = (1 - b - k) / (1 - k) || 0;
+  return [c * 100, m * 100, y * 100, k * 100];
+};
+/**
+ * See https://en.m.wikipedia.org/wiki/Euclidean_distance#Squared_Euclidean_distance
+ * */
+
+
+function comparativeDistance(x, y) {
+  return Math.pow(x[0] - y[0], 2) + Math.pow(x[1] - y[1], 2) + Math.pow(x[2] - y[2], 2);
+}
+
+convert.rgb.keyword = function (rgb) {
+  var reversed = reverseKeywords[rgb];
+
+  if (reversed) {
+    return reversed;
+  }
+
+  var currentClosestDistance = Infinity;
+  var currentClosestKeyword;
+
+  for (var keyword in cssKeywords) {
+    if (cssKeywords.hasOwnProperty(keyword)) {
+      var value = cssKeywords[keyword]; // Compute comparative distance
+
+      var distance = comparativeDistance(rgb, value); // Check if its less, if so set as closest
+
+      if (distance < currentClosestDistance) {
+        currentClosestDistance = distance;
+        currentClosestKeyword = keyword;
+      }
+    }
+  }
+
+  return currentClosestKeyword;
+};
+
+convert.keyword.rgb = function (keyword) {
+  return cssKeywords[keyword];
+};
+
+convert.rgb.xyz = function (rgb) {
+  var r = rgb[0] / 255;
+  var g = rgb[1] / 255;
+  var b = rgb[2] / 255; // assume sRGB
+
+  r = r > 0.04045 ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
+  g = g > 0.04045 ? Math.pow((g + 0.055) / 1.055, 2.4) : g / 12.92;
+  b = b > 0.04045 ? Math.pow((b + 0.055) / 1.055, 2.4) : b / 12.92;
+  var x = r * 0.4124 + g * 0.3576 + b * 0.1805;
+  var y = r * 0.2126 + g * 0.7152 + b * 0.0722;
+  var z = r * 0.0193 + g * 0.1192 + b * 0.9505;
+  return [x * 100, y * 100, z * 100];
+};
+
+convert.rgb.lab = function (rgb) {
+  var xyz = convert.rgb.xyz(rgb);
+  var x = xyz[0];
+  var y = xyz[1];
+  var z = xyz[2];
+  var l;
+  var a;
+  var b;
+  x /= 95.047;
+  y /= 100;
+  z /= 108.883;
+  x = x > 0.008856 ? Math.pow(x, 1 / 3) : 7.787 * x + 16 / 116;
+  y = y > 0.008856 ? Math.pow(y, 1 / 3) : 7.787 * y + 16 / 116;
+  z = z > 0.008856 ? Math.pow(z, 1 / 3) : 7.787 * z + 16 / 116;
+  l = 116 * y - 16;
+  a = 500 * (x - y);
+  b = 200 * (y - z);
+  return [l, a, b];
+};
+
+convert.hsl.rgb = function (hsl) {
+  var h = hsl[0] / 360;
+  var s = hsl[1] / 100;
+  var l = hsl[2] / 100;
+  var t1;
+  var t2;
+  var t3;
+  var rgb;
+  var val;
+
+  if (s === 0) {
+    val = l * 255;
+    return [val, val, val];
+  }
+
+  if (l < 0.5) {
+    t2 = l * (1 + s);
+  } else {
+    t2 = l + s - l * s;
+  }
+
+  t1 = 2 * l - t2;
+  rgb = [0, 0, 0];
+
+  for (var i = 0; i < 3; i++) {
+    t3 = h + 1 / 3 * -(i - 1);
+
+    if (t3 < 0) {
+      t3++;
+    }
+
+    if (t3 > 1) {
+      t3--;
+    }
+
+    if (6 * t3 < 1) {
+      val = t1 + (t2 - t1) * 6 * t3;
+    } else if (2 * t3 < 1) {
+      val = t2;
+    } else if (3 * t3 < 2) {
+      val = t1 + (t2 - t1) * (2 / 3 - t3) * 6;
+    } else {
+      val = t1;
+    }
+
+    rgb[i] = val * 255;
+  }
+
+  return rgb;
+};
+
+convert.hsl.hsv = function (hsl) {
+  var h = hsl[0];
+  var s = hsl[1] / 100;
+  var l = hsl[2] / 100;
+  var smin = s;
+  var lmin = Math.max(l, 0.01);
+  var sv;
+  var v;
+  l *= 2;
+  s *= l <= 1 ? l : 2 - l;
+  smin *= lmin <= 1 ? lmin : 2 - lmin;
+  v = (l + s) / 2;
+  sv = l === 0 ? 2 * smin / (lmin + smin) : 2 * s / (l + s);
+  return [h, sv * 100, v * 100];
+};
+
+convert.hsv.rgb = function (hsv) {
+  var h = hsv[0] / 60;
+  var s = hsv[1] / 100;
+  var v = hsv[2] / 100;
+  var hi = Math.floor(h) % 6;
+  var f = h - Math.floor(h);
+  var p = 255 * v * (1 - s);
+  var q = 255 * v * (1 - s * f);
+  var t = 255 * v * (1 - s * (1 - f));
+  v *= 255;
+
+  switch (hi) {
+    case 0:
+      return [v, t, p];
+
+    case 1:
+      return [q, v, p];
+
+    case 2:
+      return [p, v, t];
+
+    case 3:
+      return [p, q, v];
+
+    case 4:
+      return [t, p, v];
+
+    case 5:
+      return [v, p, q];
+  }
+};
+
+convert.hsv.hsl = function (hsv) {
+  var h = hsv[0];
+  var s = hsv[1] / 100;
+  var v = hsv[2] / 100;
+  var vmin = Math.max(v, 0.01);
+  var lmin;
+  var sl;
+  var l;
+  l = (2 - s) * v;
+  lmin = (2 - s) * vmin;
+  sl = s * vmin;
+  sl /= lmin <= 1 ? lmin : 2 - lmin;
+  sl = sl || 0;
+  l /= 2;
+  return [h, sl * 100, l * 100];
+}; // http://dev.w3.org/csswg/css-color/#hwb-to-rgb
+
+
+convert.hwb.rgb = function (hwb) {
+  var h = hwb[0] / 360;
+  var wh = hwb[1] / 100;
+  var bl = hwb[2] / 100;
+  var ratio = wh + bl;
+  var i;
+  var v;
+  var f;
+  var n; // wh + bl cant be > 1
+
+  if (ratio > 1) {
+    wh /= ratio;
+    bl /= ratio;
+  }
+
+  i = Math.floor(6 * h);
+  v = 1 - bl;
+  f = 6 * h - i;
+
+  if ((i & 0x01) !== 0) {
+    f = 1 - f;
+  }
+
+  n = wh + f * (v - wh); // linear interpolation
+
+  var r;
+  var g;
+  var b;
+
+  switch (i) {
+    default:
+    case 6:
+    case 0:
+      r = v;
+      g = n;
+      b = wh;
+      break;
+
+    case 1:
+      r = n;
+      g = v;
+      b = wh;
+      break;
+
+    case 2:
+      r = wh;
+      g = v;
+      b = n;
+      break;
+
+    case 3:
+      r = wh;
+      g = n;
+      b = v;
+      break;
+
+    case 4:
+      r = n;
+      g = wh;
+      b = v;
+      break;
+
+    case 5:
+      r = v;
+      g = wh;
+      b = n;
+      break;
+  }
+
+  return [r * 255, g * 255, b * 255];
+};
+
+convert.cmyk.rgb = function (cmyk) {
+  var c = cmyk[0] / 100;
+  var m = cmyk[1] / 100;
+  var y = cmyk[2] / 100;
+  var k = cmyk[3] / 100;
+  var r;
+  var g;
+  var b;
+  r = 1 - Math.min(1, c * (1 - k) + k);
+  g = 1 - Math.min(1, m * (1 - k) + k);
+  b = 1 - Math.min(1, y * (1 - k) + k);
+  return [r * 255, g * 255, b * 255];
+};
+
+convert.xyz.rgb = function (xyz) {
+  var x = xyz[0] / 100;
+  var y = xyz[1] / 100;
+  var z = xyz[2] / 100;
+  var r;
+  var g;
+  var b;
+  r = x * 3.2406 + y * -1.5372 + z * -0.4986;
+  g = x * -0.9689 + y * 1.8758 + z * 0.0415;
+  b = x * 0.0557 + y * -0.2040 + z * 1.0570; // assume sRGB
+
+  r = r > 0.0031308 ? 1.055 * Math.pow(r, 1.0 / 2.4) - 0.055 : r * 12.92;
+  g = g > 0.0031308 ? 1.055 * Math.pow(g, 1.0 / 2.4) - 0.055 : g * 12.92;
+  b = b > 0.0031308 ? 1.055 * Math.pow(b, 1.0 / 2.4) - 0.055 : b * 12.92;
+  r = Math.min(Math.max(0, r), 1);
+  g = Math.min(Math.max(0, g), 1);
+  b = Math.min(Math.max(0, b), 1);
+  return [r * 255, g * 255, b * 255];
+};
+
+convert.xyz.lab = function (xyz) {
+  var x = xyz[0];
+  var y = xyz[1];
+  var z = xyz[2];
+  var l;
+  var a;
+  var b;
+  x /= 95.047;
+  y /= 100;
+  z /= 108.883;
+  x = x > 0.008856 ? Math.pow(x, 1 / 3) : 7.787 * x + 16 / 116;
+  y = y > 0.008856 ? Math.pow(y, 1 / 3) : 7.787 * y + 16 / 116;
+  z = z > 0.008856 ? Math.pow(z, 1 / 3) : 7.787 * z + 16 / 116;
+  l = 116 * y - 16;
+  a = 500 * (x - y);
+  b = 200 * (y - z);
+  return [l, a, b];
+};
+
+convert.lab.xyz = function (lab) {
+  var l = lab[0];
+  var a = lab[1];
+  var b = lab[2];
+  var x;
+  var y;
+  var z;
+  y = (l + 16) / 116;
+  x = a / 500 + y;
+  z = y - b / 200;
+  var y2 = Math.pow(y, 3);
+  var x2 = Math.pow(x, 3);
+  var z2 = Math.pow(z, 3);
+  y = y2 > 0.008856 ? y2 : (y - 16 / 116) / 7.787;
+  x = x2 > 0.008856 ? x2 : (x - 16 / 116) / 7.787;
+  z = z2 > 0.008856 ? z2 : (z - 16 / 116) / 7.787;
+  x *= 95.047;
+  y *= 100;
+  z *= 108.883;
+  return [x, y, z];
+};
+
+convert.lab.lch = function (lab) {
+  var l = lab[0];
+  var a = lab[1];
+  var b = lab[2];
+  var hr;
+  var h;
+  var c;
+  hr = Math.atan2(b, a);
+  h = hr * 360 / 2 / Math.PI;
+
+  if (h < 0) {
+    h += 360;
+  }
+
+  c = Math.sqrt(a * a + b * b);
+  return [l, c, h];
+};
+
+convert.lch.lab = function (lch) {
+  var l = lch[0];
+  var c = lch[1];
+  var h = lch[2];
+  var a;
+  var b;
+  var hr;
+  hr = h / 360 * 2 * Math.PI;
+  a = c * Math.cos(hr);
+  b = c * Math.sin(hr);
+  return [l, a, b];
+};
+
+convert.rgb.ansi16 = function (args) {
+  var r = args[0];
+  var g = args[1];
+  var b = args[2];
+  var value = 1 in arguments ? arguments[1] : convert.rgb.hsv(args)[2]; // hsv -> ansi16 optimization
+
+  value = Math.round(value / 50);
+
+  if (value === 0) {
+    return 30;
+  }
+
+  var ansi = 30 + (Math.round(b / 255) << 2 | Math.round(g / 255) << 1 | Math.round(r / 255));
+
+  if (value === 2) {
+    ansi += 60;
+  }
+
+  return ansi;
+};
+
+convert.hsv.ansi16 = function (args) {
+  // optimization here; we already know the value and don't need to get
+  // it converted for us.
+  return convert.rgb.ansi16(convert.hsv.rgb(args), args[2]);
+};
+
+convert.rgb.ansi256 = function (args) {
+  var r = args[0];
+  var g = args[1];
+  var b = args[2]; // we use the extended greyscale palette here, with the exception of
+  // black and white. normal palette only has 4 greyscale shades.
+
+  if (r === g && g === b) {
+    if (r < 8) {
+      return 16;
+    }
+
+    if (r > 248) {
+      return 231;
+    }
+
+    return Math.round((r - 8) / 247 * 24) + 232;
+  }
+
+  var ansi = 16 + 36 * Math.round(r / 255 * 5) + 6 * Math.round(g / 255 * 5) + Math.round(b / 255 * 5);
+  return ansi;
+};
+
+convert.ansi16.rgb = function (args) {
+  var color = args % 10; // handle greyscale
+
+  if (color === 0 || color === 7) {
+    if (args > 50) {
+      color += 3.5;
+    }
+
+    color = color / 10.5 * 255;
+    return [color, color, color];
+  }
+
+  var mult = (~~(args > 50) + 1) * 0.5;
+  var r = (color & 1) * mult * 255;
+  var g = (color >> 1 & 1) * mult * 255;
+  var b = (color >> 2 & 1) * mult * 255;
+  return [r, g, b];
+};
+
+convert.ansi256.rgb = function (args) {
+  // handle greyscale
+  if (args >= 232) {
+    var c = (args - 232) * 10 + 8;
+    return [c, c, c];
+  }
+
+  args -= 16;
+  var rem;
+  var r = Math.floor(args / 36) / 5 * 255;
+  var g = Math.floor((rem = args % 36) / 6) / 5 * 255;
+  var b = rem % 6 / 5 * 255;
+  return [r, g, b];
+};
+
+convert.rgb.hex = function (args) {
+  var integer = ((Math.round(args[0]) & 0xFF) << 16) + ((Math.round(args[1]) & 0xFF) << 8) + (Math.round(args[2]) & 0xFF);
+  var string = integer.toString(16).toUpperCase();
+  return '000000'.substring(string.length) + string;
+};
+
+convert.hex.rgb = function (args) {
+  var match = args.toString(16).match(/[a-f0-9]{6}|[a-f0-9]{3}/i);
+
+  if (!match) {
+    return [0, 0, 0];
+  }
+
+  var colorString = match[0];
+
+  if (match[0].length === 3) {
+    colorString = colorString.split('').map(function (char) {
+      return char + char;
+    }).join('');
+  }
+
+  var integer = parseInt(colorString, 16);
+  var r = integer >> 16 & 0xFF;
+  var g = integer >> 8 & 0xFF;
+  var b = integer & 0xFF;
+  return [r, g, b];
+};
+
+convert.rgb.hcg = function (rgb) {
+  var r = rgb[0] / 255;
+  var g = rgb[1] / 255;
+  var b = rgb[2] / 255;
+  var max = Math.max(Math.max(r, g), b);
+  var min = Math.min(Math.min(r, g), b);
+  var chroma = max - min;
+  var grayscale;
+  var hue;
+
+  if (chroma < 1) {
+    grayscale = min / (1 - chroma);
+  } else {
+    grayscale = 0;
+  }
+
+  if (chroma <= 0) {
+    hue = 0;
+  } else if (max === r) {
+    hue = (g - b) / chroma % 6;
+  } else if (max === g) {
+    hue = 2 + (b - r) / chroma;
+  } else {
+    hue = 4 + (r - g) / chroma + 4;
+  }
+
+  hue /= 6;
+  hue %= 1;
+  return [hue * 360, chroma * 100, grayscale * 100];
+};
+
+convert.hsl.hcg = function (hsl) {
+  var s = hsl[1] / 100;
+  var l = hsl[2] / 100;
+  var c = 1;
+  var f = 0;
+
+  if (l < 0.5) {
+    c = 2.0 * s * l;
+  } else {
+    c = 2.0 * s * (1.0 - l);
+  }
+
+  if (c < 1.0) {
+    f = (l - 0.5 * c) / (1.0 - c);
+  }
+
+  return [hsl[0], c * 100, f * 100];
+};
+
+convert.hsv.hcg = function (hsv) {
+  var s = hsv[1] / 100;
+  var v = hsv[2] / 100;
+  var c = s * v;
+  var f = 0;
+
+  if (c < 1.0) {
+    f = (v - c) / (1 - c);
+  }
+
+  return [hsv[0], c * 100, f * 100];
+};
+
+convert.hcg.rgb = function (hcg) {
+  var h = hcg[0] / 360;
+  var c = hcg[1] / 100;
+  var g = hcg[2] / 100;
+
+  if (c === 0.0) {
+    return [g * 255, g * 255, g * 255];
+  }
+
+  var pure = [0, 0, 0];
+  var hi = h % 1 * 6;
+  var v = hi % 1;
+  var w = 1 - v;
+  var mg = 0;
+
+  switch (Math.floor(hi)) {
+    case 0:
+      pure[0] = 1;
+      pure[1] = v;
+      pure[2] = 0;
+      break;
+
+    case 1:
+      pure[0] = w;
+      pure[1] = 1;
+      pure[2] = 0;
+      break;
+
+    case 2:
+      pure[0] = 0;
+      pure[1] = 1;
+      pure[2] = v;
+      break;
+
+    case 3:
+      pure[0] = 0;
+      pure[1] = w;
+      pure[2] = 1;
+      break;
+
+    case 4:
+      pure[0] = v;
+      pure[1] = 0;
+      pure[2] = 1;
+      break;
+
+    default:
+      pure[0] = 1;
+      pure[1] = 0;
+      pure[2] = w;
+  }
+
+  mg = (1.0 - c) * g;
+  return [(c * pure[0] + mg) * 255, (c * pure[1] + mg) * 255, (c * pure[2] + mg) * 255];
+};
+
+convert.hcg.hsv = function (hcg) {
+  var c = hcg[1] / 100;
+  var g = hcg[2] / 100;
+  var v = c + g * (1.0 - c);
+  var f = 0;
+
+  if (v > 0.0) {
+    f = c / v;
+  }
+
+  return [hcg[0], f * 100, v * 100];
+};
+
+convert.hcg.hsl = function (hcg) {
+  var c = hcg[1] / 100;
+  var g = hcg[2] / 100;
+  var l = g * (1.0 - c) + 0.5 * c;
+  var s = 0;
+
+  if (l > 0.0 && l < 0.5) {
+    s = c / (2 * l);
+  } else if (l >= 0.5 && l < 1.0) {
+    s = c / (2 * (1 - l));
+  }
+
+  return [hcg[0], s * 100, l * 100];
+};
+
+convert.hcg.hwb = function (hcg) {
+  var c = hcg[1] / 100;
+  var g = hcg[2] / 100;
+  var v = c + g * (1.0 - c);
+  return [hcg[0], (v - c) * 100, (1 - v) * 100];
+};
+
+convert.hwb.hcg = function (hwb) {
+  var w = hwb[1] / 100;
+  var b = hwb[2] / 100;
+  var v = 1 - b;
+  var c = v - w;
+  var g = 0;
+
+  if (c < 1) {
+    g = (v - c) / (1 - c);
+  }
+
+  return [hwb[0], c * 100, g * 100];
+};
+
+convert.apple.rgb = function (apple) {
+  return [apple[0] / 65535 * 255, apple[1] / 65535 * 255, apple[2] / 65535 * 255];
+};
+
+convert.rgb.apple = function (rgb) {
+  return [rgb[0] / 255 * 65535, rgb[1] / 255 * 65535, rgb[2] / 255 * 65535];
+};
+
+convert.gray.rgb = function (args) {
+  return [args[0] / 100 * 255, args[0] / 100 * 255, args[0] / 100 * 255];
+};
+
+convert.gray.hsl = convert.gray.hsv = function (args) {
+  return [0, 0, args[0]];
+};
+
+convert.gray.hwb = function (gray) {
+  return [0, 100, gray[0]];
+};
+
+convert.gray.cmyk = function (gray) {
+  return [0, 0, 0, gray[0]];
+};
+
+convert.gray.lab = function (gray) {
+  return [gray[0], 0, 0];
+};
+
+convert.gray.hex = function (gray) {
+  var val = Math.round(gray[0] / 100 * 255) & 0xFF;
+  var integer = (val << 16) + (val << 8) + val;
+  var string = integer.toString(16).toUpperCase();
+  return '000000'.substring(string.length) + string;
+};
+
+convert.rgb.gray = function (rgb) {
+  var val = (rgb[0] + rgb[1] + rgb[2]) / 3;
+  return [val / 255 * 100];
+};
+
+/***/ }),
+
+/***/ "./node_modules/color-convert/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/color-convert/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var conversions = __webpack_require__(/*! ./conversions */ "./node_modules/color-convert/conversions.js");
+
+var route = __webpack_require__(/*! ./route */ "./node_modules/color-convert/route.js");
+
+var convert = {};
+var models = Object.keys(conversions);
+
+function wrapRaw(fn) {
+  var wrappedFn = function (args) {
+    if (args === undefined || args === null) {
+      return args;
+    }
+
+    if (arguments.length > 1) {
+      args = Array.prototype.slice.call(arguments);
+    }
+
+    return fn(args);
+  }; // preserve .conversion property if there is one
+
+
+  if ('conversion' in fn) {
+    wrappedFn.conversion = fn.conversion;
+  }
+
+  return wrappedFn;
+}
+
+function wrapRounded(fn) {
+  var wrappedFn = function (args) {
+    if (args === undefined || args === null) {
+      return args;
+    }
+
+    if (arguments.length > 1) {
+      args = Array.prototype.slice.call(arguments);
+    }
+
+    var result = fn(args); // we're assuming the result is an array here.
+    // see notice in conversions.js; don't use box types
+    // in conversion functions.
+
+    if (typeof result === 'object') {
+      for (var len = result.length, i = 0; i < len; i++) {
+        result[i] = Math.round(result[i]);
+      }
+    }
+
+    return result;
+  }; // preserve .conversion property if there is one
+
+
+  if ('conversion' in fn) {
+    wrappedFn.conversion = fn.conversion;
+  }
+
+  return wrappedFn;
+}
+
+models.forEach(function (fromModel) {
+  convert[fromModel] = {};
+  Object.defineProperty(convert[fromModel], 'channels', {
+    value: conversions[fromModel].channels
+  });
+  Object.defineProperty(convert[fromModel], 'labels', {
+    value: conversions[fromModel].labels
+  });
+  var routes = route(fromModel);
+  var routeModels = Object.keys(routes);
+  routeModels.forEach(function (toModel) {
+    var fn = routes[toModel];
+    convert[fromModel][toModel] = wrapRounded(fn);
+    convert[fromModel][toModel].raw = wrapRaw(fn);
+  });
+});
+module.exports = convert;
+
+/***/ }),
+
+/***/ "./node_modules/color-convert/route.js":
+/*!*********************************************!*\
+  !*** ./node_modules/color-convert/route.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var conversions = __webpack_require__(/*! ./conversions */ "./node_modules/color-convert/conversions.js");
+/*
+	this function routes a model to all other models.
+
+	all functions that are routed have a property `.conversion` attached
+	to the returned synthetic function. This property is an array
+	of strings, each with the steps in between the 'from' and 'to'
+	color models (inclusive).
+
+	conversions that are not possible simply are not included.
+*/
+
+
+function buildGraph() {
+  var graph = {}; // https://jsperf.com/object-keys-vs-for-in-with-closure/3
+
+  var models = Object.keys(conversions);
+
+  for (var len = models.length, i = 0; i < len; i++) {
+    graph[models[i]] = {
+      // http://jsperf.com/1-vs-infinity
+      // micro-opt, but this is simple.
+      distance: -1,
+      parent: null
+    };
+  }
+
+  return graph;
+} // https://en.wikipedia.org/wiki/Breadth-first_search
+
+
+function deriveBFS(fromModel) {
+  var graph = buildGraph();
+  var queue = [fromModel]; // unshift -> queue -> pop
+
+  graph[fromModel].distance = 0;
+
+  while (queue.length) {
+    var current = queue.pop();
+    var adjacents = Object.keys(conversions[current]);
+
+    for (var len = adjacents.length, i = 0; i < len; i++) {
+      var adjacent = adjacents[i];
+      var node = graph[adjacent];
+
+      if (node.distance === -1) {
+        node.distance = graph[current].distance + 1;
+        node.parent = current;
+        queue.unshift(adjacent);
+      }
+    }
+  }
+
+  return graph;
+}
+
+function link(from, to) {
+  return function (args) {
+    return to(from(args));
+  };
+}
+
+function wrapConversion(toModel, graph) {
+  var path = [graph[toModel].parent, toModel];
+  var fn = conversions[graph[toModel].parent][toModel];
+  var cur = graph[toModel].parent;
+
+  while (graph[cur].parent) {
+    path.unshift(graph[cur].parent);
+    fn = link(conversions[graph[cur].parent][cur], fn);
+    cur = graph[cur].parent;
+  }
+
+  fn.conversion = path;
+  return fn;
+}
+
+module.exports = function (fromModel) {
+  var graph = deriveBFS(fromModel);
+  var conversion = {};
+  var models = Object.keys(graph);
+
+  for (var len = models.length, i = 0; i < len; i++) {
+    var toModel = models[i];
+    var node = graph[toModel];
+
+    if (node.parent === null) {
+      // no possible conversion, or this node is the source model.
+      continue;
+    }
+
+    conversion[toModel] = wrapConversion(toModel, graph);
+  }
+
+  return conversion;
+};
+
+/***/ }),
+
+/***/ "./node_modules/color-name/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/color-name/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {
+  "aliceblue": [240, 248, 255],
+  "antiquewhite": [250, 235, 215],
+  "aqua": [0, 255, 255],
+  "aquamarine": [127, 255, 212],
+  "azure": [240, 255, 255],
+  "beige": [245, 245, 220],
+  "bisque": [255, 228, 196],
+  "black": [0, 0, 0],
+  "blanchedalmond": [255, 235, 205],
+  "blue": [0, 0, 255],
+  "blueviolet": [138, 43, 226],
+  "brown": [165, 42, 42],
+  "burlywood": [222, 184, 135],
+  "cadetblue": [95, 158, 160],
+  "chartreuse": [127, 255, 0],
+  "chocolate": [210, 105, 30],
+  "coral": [255, 127, 80],
+  "cornflowerblue": [100, 149, 237],
+  "cornsilk": [255, 248, 220],
+  "crimson": [220, 20, 60],
+  "cyan": [0, 255, 255],
+  "darkblue": [0, 0, 139],
+  "darkcyan": [0, 139, 139],
+  "darkgoldenrod": [184, 134, 11],
+  "darkgray": [169, 169, 169],
+  "darkgreen": [0, 100, 0],
+  "darkgrey": [169, 169, 169],
+  "darkkhaki": [189, 183, 107],
+  "darkmagenta": [139, 0, 139],
+  "darkolivegreen": [85, 107, 47],
+  "darkorange": [255, 140, 0],
+  "darkorchid": [153, 50, 204],
+  "darkred": [139, 0, 0],
+  "darksalmon": [233, 150, 122],
+  "darkseagreen": [143, 188, 143],
+  "darkslateblue": [72, 61, 139],
+  "darkslategray": [47, 79, 79],
+  "darkslategrey": [47, 79, 79],
+  "darkturquoise": [0, 206, 209],
+  "darkviolet": [148, 0, 211],
+  "deeppink": [255, 20, 147],
+  "deepskyblue": [0, 191, 255],
+  "dimgray": [105, 105, 105],
+  "dimgrey": [105, 105, 105],
+  "dodgerblue": [30, 144, 255],
+  "firebrick": [178, 34, 34],
+  "floralwhite": [255, 250, 240],
+  "forestgreen": [34, 139, 34],
+  "fuchsia": [255, 0, 255],
+  "gainsboro": [220, 220, 220],
+  "ghostwhite": [248, 248, 255],
+  "gold": [255, 215, 0],
+  "goldenrod": [218, 165, 32],
+  "gray": [128, 128, 128],
+  "green": [0, 128, 0],
+  "greenyellow": [173, 255, 47],
+  "grey": [128, 128, 128],
+  "honeydew": [240, 255, 240],
+  "hotpink": [255, 105, 180],
+  "indianred": [205, 92, 92],
+  "indigo": [75, 0, 130],
+  "ivory": [255, 255, 240],
+  "khaki": [240, 230, 140],
+  "lavender": [230, 230, 250],
+  "lavenderblush": [255, 240, 245],
+  "lawngreen": [124, 252, 0],
+  "lemonchiffon": [255, 250, 205],
+  "lightblue": [173, 216, 230],
+  "lightcoral": [240, 128, 128],
+  "lightcyan": [224, 255, 255],
+  "lightgoldenrodyellow": [250, 250, 210],
+  "lightgray": [211, 211, 211],
+  "lightgreen": [144, 238, 144],
+  "lightgrey": [211, 211, 211],
+  "lightpink": [255, 182, 193],
+  "lightsalmon": [255, 160, 122],
+  "lightseagreen": [32, 178, 170],
+  "lightskyblue": [135, 206, 250],
+  "lightslategray": [119, 136, 153],
+  "lightslategrey": [119, 136, 153],
+  "lightsteelblue": [176, 196, 222],
+  "lightyellow": [255, 255, 224],
+  "lime": [0, 255, 0],
+  "limegreen": [50, 205, 50],
+  "linen": [250, 240, 230],
+  "magenta": [255, 0, 255],
+  "maroon": [128, 0, 0],
+  "mediumaquamarine": [102, 205, 170],
+  "mediumblue": [0, 0, 205],
+  "mediumorchid": [186, 85, 211],
+  "mediumpurple": [147, 112, 219],
+  "mediumseagreen": [60, 179, 113],
+  "mediumslateblue": [123, 104, 238],
+  "mediumspringgreen": [0, 250, 154],
+  "mediumturquoise": [72, 209, 204],
+  "mediumvioletred": [199, 21, 133],
+  "midnightblue": [25, 25, 112],
+  "mintcream": [245, 255, 250],
+  "mistyrose": [255, 228, 225],
+  "moccasin": [255, 228, 181],
+  "navajowhite": [255, 222, 173],
+  "navy": [0, 0, 128],
+  "oldlace": [253, 245, 230],
+  "olive": [128, 128, 0],
+  "olivedrab": [107, 142, 35],
+  "orange": [255, 165, 0],
+  "orangered": [255, 69, 0],
+  "orchid": [218, 112, 214],
+  "palegoldenrod": [238, 232, 170],
+  "palegreen": [152, 251, 152],
+  "paleturquoise": [175, 238, 238],
+  "palevioletred": [219, 112, 147],
+  "papayawhip": [255, 239, 213],
+  "peachpuff": [255, 218, 185],
+  "peru": [205, 133, 63],
+  "pink": [255, 192, 203],
+  "plum": [221, 160, 221],
+  "powderblue": [176, 224, 230],
+  "purple": [128, 0, 128],
+  "rebeccapurple": [102, 51, 153],
+  "red": [255, 0, 0],
+  "rosybrown": [188, 143, 143],
+  "royalblue": [65, 105, 225],
+  "saddlebrown": [139, 69, 19],
+  "salmon": [250, 128, 114],
+  "sandybrown": [244, 164, 96],
+  "seagreen": [46, 139, 87],
+  "seashell": [255, 245, 238],
+  "sienna": [160, 82, 45],
+  "silver": [192, 192, 192],
+  "skyblue": [135, 206, 235],
+  "slateblue": [106, 90, 205],
+  "slategray": [112, 128, 144],
+  "slategrey": [112, 128, 144],
+  "snow": [255, 250, 250],
+  "springgreen": [0, 255, 127],
+  "steelblue": [70, 130, 180],
+  "tan": [210, 180, 140],
+  "teal": [0, 128, 128],
+  "thistle": [216, 191, 216],
+  "tomato": [255, 99, 71],
+  "turquoise": [64, 224, 208],
+  "violet": [238, 130, 238],
+  "wheat": [245, 222, 179],
+  "white": [255, 255, 255],
+  "whitesmoke": [245, 245, 245],
+  "yellow": [255, 255, 0],
+  "yellowgreen": [154, 205, 50]
+};
 
 /***/ }),
 
@@ -45520,266 +43802,190 @@ module.exports = factory(React.Component, React.isValidElement, ReactNoopUpdateQ
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Box.css":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/Box.css ***!
-  \*************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Button.css":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/dist/styles/Button.css ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, "/* \n  Box.scss \n  - Includes all default styles for the Box component\n*/\n.container {\n  margin-left: auto;\n  margin-right: auto;\n  padding-left: 0.4rem;\n  padding-right: 0.4rem;\n  width: 100%; }\n  .container.grid-xl {\n    max-width: 1296px; }\n  .container.grid-lg {\n    max-width: 976px; }\n  .container.grid-md {\n    max-width: 856px; }\n  .container.grid-sm {\n    max-width: 616px; }\n  .container.grid-xs {\n    max-width: 496px; }\n\n.show-xs,\n.show-sm,\n.show-md,\n.show-lg,\n.show-xl {\n  display: none !important; }\n\n.columns {\n  display: flex;\n  flex-wrap: wrap;\n  margin-left: -0.4rem;\n  margin-right: -0.4rem; }\n  .columns.col-gapless {\n    margin-left: 0;\n    margin-right: 0; }\n    .columns.col-gapless > .column {\n      padding-left: 0;\n      padding-right: 0; }\n  .columns.col-oneline {\n    flex-wrap: nowrap;\n    overflow-x: auto; }\n\n.column {\n  flex: 1;\n  max-width: 100%;\n  padding-left: 0.4rem;\n  padding-right: 0.4rem; }\n  .column.col-12, .column.col-11, .column.col-10, .column.col-9, .column.col-8, .column.col-7, .column.col-6, .column.col-5, .column.col-4, .column.col-3, .column.col-2, .column.col-1 {\n    flex: none; }\n\n.col-12 {\n  width: 100%; }\n\n.col-11 {\n  width: 91.66666667%; }\n\n.col-10 {\n  width: 83.33333333%; }\n\n.col-9 {\n  width: 75%; }\n\n.col-8 {\n  width: 66.66666667%; }\n\n.col-7 {\n  width: 58.33333333%; }\n\n.col-6 {\n  width: 50%; }\n\n.col-5 {\n  width: 41.66666667%; }\n\n.col-4 {\n  width: 33.33333333%; }\n\n.col-3 {\n  width: 25%; }\n\n.col-2 {\n  width: 16.66666667%; }\n\n.col-1 {\n  width: 8.33333333%; }\n\n.col-auto {\n  flex: 0 0 auto;\n  max-width: none;\n  width: auto; }\n\n.col-mx-auto {\n  margin-left: auto;\n  margin-right: auto; }\n\n.col-ml-auto {\n  margin-left: auto; }\n\n.col-mr-auto {\n  margin-right: auto; }\n\n.mt-0 {\n  margin-top: 0px !important; }\n\n.pt-0 {\n  padding-top: 0px !important; }\n\n.mb-0 {\n  margin-bottom: 0px !important; }\n\n.pb-0 {\n  padding-bottom: 0px !important; }\n\n.ml-0 {\n  margin-left: 0px !important; }\n\n.pl-0 {\n  padding-left: 0px !important; }\n\n.mr-0 {\n  margin-right: 0px !important; }\n\n.pr-0 {\n  padding-right: 0px !important; }\n\n.m-0 {\n  margin: 0px !important; }\n\n.p-0 {\n  padding: 0px !important; }\n\n.mt-4 {\n  margin-top: 4px !important; }\n\n.pt-4 {\n  padding-top: 4px !important; }\n\n.mb-4 {\n  margin-bottom: 4px !important; }\n\n.pb-4 {\n  padding-bottom: 4px !important; }\n\n.ml-4 {\n  margin-left: 4px !important; }\n\n.pl-4 {\n  padding-left: 4px !important; }\n\n.mr-4 {\n  margin-right: 4px !important; }\n\n.pr-4 {\n  padding-right: 4px !important; }\n\n.m-4 {\n  margin: 4px !important; }\n\n.p-4 {\n  padding: 4px !important; }\n\n.mt-12 {\n  margin-top: 12px !important; }\n\n.pt-12 {\n  padding-top: 12px !important; }\n\n.mb-12 {\n  margin-bottom: 12px !important; }\n\n.pb-12 {\n  padding-bottom: 12px !important; }\n\n.ml-12 {\n  margin-left: 12px !important; }\n\n.pl-12 {\n  padding-left: 12px !important; }\n\n.mr-12 {\n  margin-right: 12px !important; }\n\n.pr-12 {\n  padding-right: 12px !important; }\n\n.m-12 {\n  margin: 12px !important; }\n\n.p-12 {\n  padding: 12px !important; }\n\n.mt-8 {\n  margin-top: 8px !important; }\n\n.pt-8 {\n  padding-top: 8px !important; }\n\n.mb-8 {\n  margin-bottom: 8px !important; }\n\n.pb-8 {\n  padding-bottom: 8px !important; }\n\n.ml-8 {\n  margin-left: 8px !important; }\n\n.pl-8 {\n  padding-left: 8px !important; }\n\n.mr-8 {\n  margin-right: 8px !important; }\n\n.pr-8 {\n  padding-right: 8px !important; }\n\n.m-8 {\n  margin: 8px !important; }\n\n.p-8 {\n  padding: 8px !important; }\n\n.mt-24 {\n  margin-top: 24px !important; }\n\n.pt-24 {\n  padding-top: 24px !important; }\n\n.mb-24 {\n  margin-bottom: 24px !important; }\n\n.pb-24 {\n  padding-bottom: 24px !important; }\n\n.ml-24 {\n  margin-left: 24px !important; }\n\n.pl-24 {\n  padding-left: 24px !important; }\n\n.mr-24 {\n  margin-right: 24px !important; }\n\n.pr-24 {\n  padding-right: 24px !important; }\n\n.m-24 {\n  margin: 24px !important; }\n\n.p-24 {\n  padding: 24px !important; }\n\n.mt-16 {\n  margin-top: 16px !important; }\n\n.pt-16 {\n  padding-top: 16px !important; }\n\n.mb-16 {\n  margin-bottom: 16px !important; }\n\n.pb-16 {\n  padding-bottom: 16px !important; }\n\n.ml-16 {\n  margin-left: 16px !important; }\n\n.pl-16 {\n  padding-left: 16px !important; }\n\n.mr-16 {\n  margin-right: 16px !important; }\n\n.pr-16 {\n  padding-right: 16px !important; }\n\n.m-16 {\n  margin: 16px !important; }\n\n.p-16 {\n  padding: 16px !important; }\n\n.mt-32 {\n  margin-top: 32px !important; }\n\n.pt-32 {\n  padding-top: 32px !important; }\n\n.mb-32 {\n  margin-bottom: 32px !important; }\n\n.pb-32 {\n  padding-bottom: 32px !important; }\n\n.ml-32 {\n  margin-left: 32px !important; }\n\n.pl-32 {\n  padding-left: 32px !important; }\n\n.mr-32 {\n  margin-right: 32px !important; }\n\n.pr-32 {\n  padding-right: 32px !important; }\n\n.m-32 {\n  margin: 32px !important; }\n\n.p-32 {\n  padding: 32px !important; }\n\n.mt-56 {\n  margin-top: 56px !important; }\n\n.pt-56 {\n  padding-top: 56px !important; }\n\n.mb-56 {\n  margin-bottom: 56px !important; }\n\n.pb-56 {\n  padding-bottom: 56px !important; }\n\n.ml-56 {\n  margin-left: 56px !important; }\n\n.pl-56 {\n  padding-left: 56px !important; }\n\n.mr-56 {\n  margin-right: 56px !important; }\n\n.pr-56 {\n  padding-right: 56px !important; }\n\n.m-56 {\n  margin: 56px !important; }\n\n.p-56 {\n  padding: 56px !important; }\n\n.mt-64 {\n  margin-top: 64px !important; }\n\n.pt-64 {\n  padding-top: 64px !important; }\n\n.mb-64 {\n  margin-bottom: 64px !important; }\n\n.pb-64 {\n  padding-bottom: 64px !important; }\n\n.ml-64 {\n  margin-left: 64px !important; }\n\n.pl-64 {\n  padding-left: 64px !important; }\n\n.mr-64 {\n  margin-right: 64px !important; }\n\n.pr-64 {\n  padding-right: 64px !important; }\n\n.m-64 {\n  margin: 64px !important; }\n\n.p-64 {\n  padding: 64px !important; }\n\n@media (max-width: 1280px) {\n  .col-xl-12,\n  .col-xl-11,\n  .col-xl-10,\n  .col-xl-9,\n  .col-xl-8,\n  .col-xl-7,\n  .col-xl-6,\n  .col-xl-5,\n  .col-xl-4,\n  .col-xl-3,\n  .col-xl-2,\n  .col-xl-1 {\n    flex: none; }\n  .col-xl-12 {\n    width: 100%; }\n  .col-xl-11 {\n    width: 91.66666667%; }\n  .col-xl-10 {\n    width: 83.33333333%; }\n  .col-xl-9 {\n    width: 75%; }\n  .col-xl-8 {\n    width: 66.66666667%; }\n  .col-xl-7 {\n    width: 58.33333333%; }\n  .col-xl-6 {\n    width: 50%; }\n  .col-xl-5 {\n    width: 41.66666667%; }\n  .col-xl-4 {\n    width: 33.33333333%; }\n  .col-xl-3 {\n    width: 25%; }\n  .col-xl-2 {\n    width: 16.66666667%; }\n  .col-xl-1 {\n    width: 8.33333333%; }\n  .hide-xl {\n    display: none !important; }\n  .show-xl {\n    display: block !important; } }\n\n@media (max-width: 960px) {\n  .col-lg-12,\n  .col-lg-11,\n  .col-lg-10,\n  .col-lg-9,\n  .col-lg-8,\n  .col-lg-7,\n  .col-lg-6,\n  .col-lg-5,\n  .col-lg-4,\n  .col-lg-3,\n  .col-lg-2,\n  .col-lg-1 {\n    flex: none; }\n  .col-lg-12 {\n    width: 100%; }\n  .col-lg-11 {\n    width: 91.66666667%; }\n  .col-lg-10 {\n    width: 83.33333333%; }\n  .col-lg-9 {\n    width: 75%; }\n  .col-lg-8 {\n    width: 66.66666667%; }\n  .col-lg-7 {\n    width: 58.33333333%; }\n  .col-lg-6 {\n    width: 50%; }\n  .col-lg-5 {\n    width: 41.66666667%; }\n  .col-lg-4 {\n    width: 33.33333333%; }\n  .col-lg-3 {\n    width: 25%; }\n  .col-lg-2 {\n    width: 16.66666667%; }\n  .col-lg-1 {\n    width: 8.33333333%; }\n  .hide-lg {\n    display: none !important; }\n  .show-lg {\n    display: block !important; } }\n\n@media (max-width: 840px) {\n  .col-md-12,\n  .col-md-11,\n  .col-md-10,\n  .col-md-9,\n  .col-md-8,\n  .col-md-7,\n  .col-md-6,\n  .col-md-5,\n  .col-md-4,\n  .col-md-3,\n  .col-md-2,\n  .col-md-1 {\n    flex: none; }\n  .col-md-12 {\n    width: 100%; }\n  .col-md-11 {\n    width: 91.66666667%; }\n  .col-md-10 {\n    width: 83.33333333%; }\n  .col-md-9 {\n    width: 75%; }\n  .col-md-8 {\n    width: 66.66666667%; }\n  .col-md-7 {\n    width: 58.33333333%; }\n  .col-md-6 {\n    width: 50%; }\n  .col-md-5 {\n    width: 41.66666667%; }\n  .col-md-4 {\n    width: 33.33333333%; }\n  .col-md-3 {\n    width: 25%; }\n  .col-md-2 {\n    width: 16.66666667%; }\n  .col-md-1 {\n    width: 8.33333333%; }\n  .hide-md {\n    display: none !important; }\n  .show-md {\n    display: block !important; } }\n\n@media (max-width: 600px) {\n  .col-sm-12,\n  .col-sm-11,\n  .col-sm-10,\n  .col-sm-9,\n  .col-sm-8,\n  .col-sm-7,\n  .col-sm-6,\n  .col-sm-5,\n  .col-sm-4,\n  .col-sm-3,\n  .col-sm-2,\n  .col-sm-1 {\n    flex: none; }\n  .col-sm-12 {\n    width: 100%; }\n  .col-sm-11 {\n    width: 91.66666667%; }\n  .col-sm-10 {\n    width: 83.33333333%; }\n  .col-sm-9 {\n    width: 75%; }\n  .col-sm-8 {\n    width: 66.66666667%; }\n  .col-sm-7 {\n    width: 58.33333333%; }\n  .col-sm-6 {\n    width: 50%; }\n  .col-sm-5 {\n    width: 41.66666667%; }\n  .col-sm-4 {\n    width: 33.33333333%; }\n  .col-sm-3 {\n    width: 25%; }\n  .col-sm-2 {\n    width: 16.66666667%; }\n  .col-sm-1 {\n    width: 8.33333333%; }\n  .hide-sm {\n    display: none !important; }\n  .show-sm {\n    display: block !important; } }\n\n@media (max-width: 480px) {\n  .col-xs-12,\n  .col-xs-11,\n  .col-xs-10,\n  .col-xs-9,\n  .col-xs-8,\n  .col-xs-7,\n  .col-xs-6,\n  .col-xs-5,\n  .col-xs-4,\n  .col-xs-3,\n  .col-xs-2,\n  .col-xs-1 {\n    flex: none; }\n  .col-xs-12 {\n    width: 100%; }\n  .col-xs-11 {\n    width: 91.66666667%; }\n  .col-xs-10 {\n    width: 83.33333333%; }\n  .col-xs-9 {\n    width: 75%; }\n  .col-xs-8 {\n    width: 66.66666667%; }\n  .col-xs-7 {\n    width: 58.33333333%; }\n  .col-xs-6 {\n    width: 50%; }\n  .col-xs-5 {\n    width: 41.66666667%; }\n  .col-xs-4 {\n    width: 33.33333333%; }\n  .col-xs-3 {\n    width: 25%; }\n  .col-xs-2 {\n    width: 16.66666667%; }\n  .col-xs-1 {\n    width: 8.33333333%; }\n  .hide-xs {\n    display: none !important; }\n  .show-xs {\n    display: block !important; } }\n", ""]);
+exports.push([module.i, ".bf-editor-button.btn {\n  font-size: 0.7rem;\n}\n.bf-editor-button.btn.btn-sm {\n  font-size: 0.6rem;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Button.css":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/Button.css ***!
-  \****************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/ColorPicker.css":
+/*!*****************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/dist/styles/ColorPicker.css ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, "/* \n  Button.scss \n  - Includes all default styles for the button component\n*/\n.btn {\n  position: relative;\n  -webkit-font-smoothing: antialiased;\n  background-color: #f4f4f4;\n  border: none;\n  color: #333333;\n  font-size: 13px;\n  font-weight: 600;\n  box-sizing: border-box;\n  text-align: center;\n  text-decoration: none;\n  cursor: pointer;\n  vertical-align: top;\n  padding-top: 0;\n  padding-right: 0.8rem;\n  padding-left: 0.8rem;\n  padding-bottom: 0;\n  display: inline-block;\n  height: 1.8rem;\n  min-width: 4rem;\n  line-height: 1.2rem;\n  outline: transparent;\n  border: 0.05rem solid transparent;\n  border-image: initial;\n  border-radius: 0;\n  user-select: none;\n  white-space: nowrap; }\n  .btn:focus, .btn:hover {\n    background: #dbdbdb;\n    text-decoration: none; }\n  .btn[disabled], .btn:disabled, .btn.disabled {\n    cursor: default;\n    opacity: .5;\n    pointer-events: none; }\n  .btn.btn-primary {\n    background-color: #f2c811;\n    color: #212121; }\n    .btn.btn-primary:focus, .btn.btn-primary:hover {\n      background: #ddb60c; }\n  .btn.btn-secondary {\n    background-color: #0078d4;\n    color: #f4f4f4; }\n    .btn.btn-secondary:focus, .btn.btn-secondary:hover {\n      background: #006abb; }\n  .btn.btn-disabled {\n    background-color: #f4f4f4;\n    color: #a6a6a6; }\n    .btn.btn-disabled:focus, .btn.btn-disabled:hover {\n      cursor: default;\n      background: #e7e7e7; }\n  .btn.btn-action {\n    background-color: #212121;\n    color: #f4f4f4; }\n    .btn.btn-action:focus, .btn.btn-action:hover {\n      background: #2e2e2e; }\n  .btn.btn-success {\n    background: #bad80a;\n    border-color: #adc909;\n    color: #f4f4f4; }\n    .btn.btn-success:focus {\n      box-shadow: 0 0 0 0.1rem rgba(186, 216, 10, 0.2); }\n    .btn.btn-success:focus, .btn.btn-success:hover {\n      background: #b2ce0a;\n      border-color: #a5c009;\n      color: #f4f4f4; }\n    .btn.btn-success:active, .btn.btn-success.active {\n      background: #9db608;\n      border-color: #90a708;\n      color: #f4f4f4; }\n    .btn.btn-success.loading::after {\n      border-bottom-color: #f4f4f4;\n      border-left-color: #f4f4f4; }\n  .btn.btn-error {\n    background: #e81123;\n    border-color: #da1021;\n    color: #f4f4f4; }\n    .btn.btn-error:focus {\n      box-shadow: 0 0 0 0.1rem rgba(232, 17, 35, 0.2); }\n    .btn.btn-error:focus, .btn.btn-error:hover {\n      background: #de1022;\n      border-color: #d00f1f;\n      color: #f4f4f4; }\n    .btn.btn-error:active, .btn.btn-error.active {\n      background: #c70f1e;\n      border-color: #b80e1c;\n      color: #f4f4f4; }\n    .btn.btn-error.loading::after {\n      border-bottom-color: #f4f4f4;\n      border-left-color: #f4f4f4; }\n  .btn.btn-link {\n    background: transparent;\n    border-color: transparent;\n    color: #0078d4; }\n    .btn.btn-link:focus, .btn.btn-link:hover, .btn.btn-link:active, .btn.btn-link.active {\n      color: #005ba1; }\n  .btn.btn-sm {\n    font-size: 11px;\n    height: 1.4rem;\n    padding: 0.05rem 0.3rem; }\n  .btn.btn-lg {\n    font-size: 16px;\n    height: 2rem;\n    padding: 0.35rem 0.6rem; }\n  .btn.btn-block {\n    display: block;\n    width: 100%; }\n  .btn.btn-action {\n    width: 1.8rem;\n    padding-left: 0;\n    padding-right: 0; }\n    .btn.btn-action.btn-sm {\n      width: 1.4rem; }\n    .btn.btn-action.btn-lg {\n      width: 2rem; }\n  .btn .btn-group {\n    display: inline-flex;\n    flex-wrap: wrap; }\n    .btn .btn-group .btn {\n      flex: 1 0 auto; }\n      .btn .btn-group .btn:first-child:not(:last-child) {\n        border-bottom-right-radius: 0;\n        border-top-right-radius: 0; }\n      .btn .btn-group .btn:not(:first-child):not(:last-child) {\n        border-radius: 0;\n        margin-left: -0.05rem; }\n      .btn .btn-group .btn:last-child:not(:first-child) {\n        border-bottom-left-radius: 0;\n        border-top-left-radius: 0;\n        margin-left: -0.05rem; }\n      .btn .btn-group .btn:focus, .btn .btn-group .btn:hover, .btn .btn-group .btn:active, .btn .btn-group .btn.active {\n        z-index: 1; }\n    .btn .btn-group.btn-group-block {\n      display: flex; }\n      .btn .btn-group.btn-group-block .btn {\n        flex: 1 0 0; }\n", ""]);
+exports.push([module.i, ".bf-editor-form-colorpicker {\n  position: relative;\n}\n\n.bf-editor-form-colorpicker .colorpicker-container {\n  position: relative;\n}\n\n.bf-editor-form-colorpicker .colorpicker-container .form-input {\n  font-size: 0.6rem;\n}\n\n.bf-editor-form-colorpicker .colorpicker-modal {\n  position: fixed;\n  z-index: 99;\n  left: 0;\n  top: 42px;\n  margin-top: 10px;\n  right: 0;\n  width: 280px;\n  height: 320px;\n  left: 50%;\n  margin-left: -140px;\n  top: 50%;\n  margin-top: -125px;\n  background-color: #fff;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 0.25em;\n  box-shadow: 0 3px 6px rgba(119, 91, 91, 0.3);\n}\n\n.bf-editor-form-colorpicker .colorpicker {\n  height: 220px;\n  width: 100%;\n}\n\n.bf-editor-form-colorpicker .colorpicker .map {\n  height: 200px;\n}\n\n.bf-editor-form-group.horizontal .bf-editor-form-colorpicker .colorpicker {\n  left: -6.5rem;\n  right: auto;\n}\n.bf-editor-form-colorpicker .slider {\n  position: absolute;\n  user-select: none;\n}\n.bf-editor-form-colorpicker .slider.vertical {\n  top: 0;\n  bottom: 0;\n  left: 50%;\n  width: 10px;\n  cursor: ns-resize;\n  height: 5.5rem;\n}\n.bf-editor-form-colorpicker .slider.vertical .track {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 50%;\n  width: 8px;\n  margin-left: -4px;\n}\n.bf-editor-form-colorpicker .slider.horizontal {\n  left: 0;\n  right: 0;\n  top: 50%;\n  height: 10px;\n  cursor: ew-resize;\n}\n.bf-editor-form-colorpicker .slider.horizontal .track {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 50%;\n  height: 8px;\n  margin-top: -4px;\n}\n.bf-editor-form-colorpicker .slider .track {\n  border-radius: 3px;\n  background: #888;\n}\n.bf-editor-form-colorpicker .slider .pointer {\n  position: absolute;\n  bottom: 50%;\n  left: 50%;\n  width: 16px;\n  height: 16px;\n  margin-left: -8px;\n  margin-bottom: -8px;\n  border-radius: 16px;\n  background: #fff;\n  box-shadow: inset 0 0 0 1px #ccc,0 1px 2px #ccc;\n  will-change: left, bottom;\n}\n.bf-editor-form-colorpicker .hue-slider {\n  position: absolute;\n  top: 1em;\n  bottom: 1em;\n  right: 1.3em;\n}\n.bf-editor-form-colorpicker .hue-slider .track {\n  background: linear-gradient(to bottom, #FF0000 0%, #FF0099 10%, #CD00FF 20%, #3200FF 30%, #0066FF 40%, #00FFFD 50%, #00FF66 60%, #35FF00 70%, #CDFF00 80%, #FF9900 90%, #FF0000 100%);\n}\n.bf-editor-form-colorpicker .opacity-slider {\n  position: absolute;\n  bottom: 1.3em;\n  left: 1em;\n  right: 2em;\n}\n.bf-editor-form-colorpicker .opacity-slider .slider {\n  background: #fff url(\"data:image/gif;base64,R0lGODdhEAAQAPEAAMvLy8zMzP///wAAACwAAAAAEAAQAEACHYxvosstCAEMrq6Jj812Y59NIDQipdY5XLWqH4sVADs=\") repeat;\n  background-size: 8px 8px;\n  height: 8px;\n}\n.bf-editor-form-colorpicker .opacity-slider .slider .track {\n  height: 8px;\n  margin-top: -4px;\n  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #FFF 100%);\n}\n.bf-editor-form-colorpicker .with-opacity-slider {\n  height: 14em;\n}\n.bf-editor-form-colorpicker .with-opacity-slider .map {\n  bottom: 2em;\n}\n.bf-editor-form-colorpicker .with-opacity-slider .hue-slider {\n  bottom: 2em;\n}\n.bf-editor-form-colorpicker .picker {\n  position: relative;\n  margin-bottom: 1em;\n}\n.bf-editor-form-colorpicker .picker:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n.bf-editor-form-colorpicker .picker-right {\n  height: 20em;\n}\n.bf-editor-form-colorpicker .map {\n  position: absolute;\n  top: 1em;\n  bottom: 1em;\n  right: 2em;\n  left: 1em;\n  overflow: hidden;\n  user-select: none;\n  border-radius: 0.25em;\n}\n.bf-editor-form-colorpicker .map.active {\n  cursor: none;\n}\n.bf-editor-form-colorpicker .map.dark .pointer {\n  border-color: #fff;\n}\n.bf-editor-form-colorpicker .map.light .pointer {\n  border-color: #000;\n}\n.bf-editor-form-colorpicker .map .pointer {\n  position: absolute;\n  width: 10px;\n  height: 10px;\n  margin-left: -5px;\n  margin-bottom: -5px;\n  border-radius: 100%;\n  border: 1px solid #000;\n  will-change: left, bottom;\n}\n.bf-editor-form-colorpicker .map .background {\n  top: 0;\n  left: 0;\n  position: absolute;\n  height: 100%;\n  width: 100%;\n}\n.bf-editor-form-colorpicker .map .background:before,.bf-editor-form-colorpicker .map .background:after {\n  display: block;\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n.bf-editor-form-colorpicker .map .background:after {\n  background: linear-gradient(to bottom, transparent 0%, black 100%);\n}\n.bf-editor-form-colorpicker .map .background:before {\n  background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);\n}\n.bf-editor-form-colorpicker .swatch {\n  height: 32px;\n  border-radius: 4px;\n}\n.bf-editor-form-group.horizontal .bf-editor-form-colorpicker .swatch {\n  width: 32px;\n}\n\n.bf-editor-form-colorpicker .picker-visible {\n  visibility: visible;\n}\n\n.bf-editor-form-colorpicker .picker-invisible {\n  visibility: collapse;\n}\n\n.bf-editor-form-colorpicker .colorpicker-input-container {\n  padding: 12px 16px;\n}\n\n.bf-editor-form-colorpicker .colorpicker-input-container .form-input {\n  height: 24px;\n  font-size: 0.6em;\n  width: 125px;\n}\n\n.bf-editor-form-colorpicker .colorpicker-footer {\n  display: flex;\n  justify-content: space-between;\n  padding: 0 16px;\n  padding-bottom: 12px;\n  width: 100%;\n}\n\n.bf-editor-form-colorpicker .colorpicker-btns .btn {\n  margin-left: 8px;\n}\n\n@media (min-width: 50em) {\n  .bf-editor-form-colorpicker .picker {\n    width: 50%;\n    float: left;\n  }\n}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Checkbox.css":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/Checkbox.css ***!
-  \******************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Drawer.css":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/dist/styles/Drawer.css ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, "/* \n  Checkbox.scss \n  - Includes all default styles for the Checkbox component\n*/\n.form-checkbox {\n  font-size: 13px;\n  display: block;\n  line-height: 1.2rem;\n  margin: 0.2rem 0;\n  min-height: 1.2rem;\n  padding: 0.1rem 0.4rem 0.1rem 1.2rem;\n  position: relative; }\n  .form-checkbox input {\n    clip: rect(0, 0, 0, 0);\n    height: 1px;\n    margin: -1px;\n    overflow: hidden;\n    position: absolute;\n    width: 1px; }\n    .form-checkbox input:focus + .form-icon {\n      border-color: #a6a6a6; }\n    .form-checkbox input:checked + .form-icon {\n      background: #f4f4f4;\n      border-color: #0078d4;\n      box-shadow: none; }\n  .form-checkbox .form-icon {\n    border: 0.05rem solid #adadad;\n    cursor: pointer;\n    display: inline-block;\n    position: absolute;\n    transition: background .2s, border .2s, box-shadow .2s, color .2s; }\n\n.form-checkbox .form-icon {\n  background: #f4f4f4;\n  height: 0.8rem;\n  left: 0;\n  top: 0.3rem;\n  width: 0.8rem; }\n\n.form-checkbox input:active + .form-icon {\n  background: #f7f7f7; }\n\n.form-checkbox .form-icon {\n  border-color: #333333;\n  border-radius: none; }\n\n.form-checkbox input:checked + .form-icon {\n  background-color: #0078d4; }\n  .form-checkbox input:checked + .form-icon::before {\n    background-clip: padding-box;\n    border: 0.1rem solid #f4f4f4;\n    border-left-width: 0;\n    border-top-width: 0;\n    content: \"\";\n    height: 9px;\n    left: 50%;\n    margin-left: -3px;\n    margin-top: -6px;\n    position: absolute;\n    top: 50%;\n    transform: rotate(45deg);\n    width: 6px; }\n\n.has-error .form-checkbox, .form-checkbox.is-error {\n  color: #e81123; }\n  .has-error .form-checkbox .form-icon, .form-checkbox.is-error .form-icon {\n    border-color: #e81123; }\n  .has-error .form-checkbox input:checked + .form-icon, .form-checkbox.is-error input:checked + .form-icon {\n    background: #e81123;\n    border-color: #e81123; }\n  .has-error .form-checkbox input:focus + .form-icon, .form-checkbox.is-error input:focus + .form-icon {\n    box-shadow: 0 0 0 0.1rem rgba(232, 17, 35, 0.2);\n    border-color: #e81123; }\n\n.has-error .form-checkbox input:indeterminate + .form-icon, .form-checkbox.is-error input:indeterminate + .form-icon {\n  background: #e81123;\n  border-color: #e81123; }\n\n.form-checkbox input:disabled + .form-icon, .form-checkbox input.disabled + .form-icon {\n  background: #f7f7f7;\n  cursor: not-allowed;\n  opacity: .5; }\n\n.form-checkbox input:checked:disabled + .form-icon, .form-checkbox input:checked.disabled + .form-icon {\n  border: 1px solid #a6a6a6; }\n\n.form-checkbox input:checked:disabled + .form-icon::before, .form-checkbox input:checked.disabled + .form-icon::before {\n  border-color: #a6a6a6; }\n", ""]);
+exports.push([module.i, ".bf-editor-drawer.off-canvas {\n  position: static;\n}\n.bf-editor-drawer .off-canvas-sidebar {\n  position: absolute;\n  top: 37px;\n  opacity: 1;\n  z-index: 98;\n  transition: 0.5s all;\n  right: 0;\n}\n.bf-editor-drawer .off-canvas-sidebar.active {\n  opacity: 1;\n}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/ColorPicker.css":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/ColorPicker.css ***!
-  \*********************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Editor.css":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/dist/styles/Editor.css ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, ".bf-editor-form-colorpicker {\n  position: relative;\n}\n.bf-editor-form-colorpicker .colorpicker {\n  position: absolute;\n  z-index: 99;\n  left: 0;\n  top: 42px;\n  right: 0;\n  width: 10em;\n  height: 9em;\n  background-color: #fff;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 0.25em;\n  box-shadow: 0 3px 6px rgba(119, 91, 91, 0.3);\n}\n.bf-editor-form-group.horizontal .bf-editor-form-colorpicker .colorpicker {\n  left: -6.5rem;\n  right: auto;\n}\n.bf-editor-form-colorpicker .slider {\n  position: absolute;\n  user-select: none;\n}\n.bf-editor-form-colorpicker .slider.vertical {\n  top: 0;\n  bottom: 0;\n  left: 50%;\n  width: 10px;\n  cursor: ns-resize;\n  height: 5.5rem;\n}\n.bf-editor-form-colorpicker .slider.vertical .track {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 50%;\n  width: 8px;\n  margin-left: -4px;\n}\n.bf-editor-form-colorpicker .slider.horizontal {\n  left: 0;\n  right: 0;\n  top: 50%;\n  height: 10px;\n  cursor: ew-resize;\n}\n.bf-editor-form-colorpicker .slider.horizontal .track {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 50%;\n  height: 8px;\n  margin-top: -4px;\n}\n.bf-editor-form-colorpicker .slider .track {\n  border-radius: 3px;\n  background: #888;\n}\n.bf-editor-form-colorpicker .slider .pointer {\n  position: absolute;\n  bottom: 50%;\n  left: 50%;\n  width: 16px;\n  height: 16px;\n  margin-left: -8px;\n  margin-bottom: -8px;\n  border-radius: 16px;\n  background: #fff;\n  box-shadow: inset 0 0 0 1px #ccc,0 1px 2px #ccc;\n  will-change: left, bottom;\n}\n.bf-editor-form-colorpicker .hue-slider {\n  position: absolute;\n  top: 1em;\n  bottom: 1em;\n  right: 1.3em;\n}\n.bf-editor-form-colorpicker .hue-slider .track {\n  background: linear-gradient(to bottom, #FF0000 0%, #FF0099 10%, #CD00FF 20%, #3200FF 30%, #0066FF 40%, #00FFFD 50%, #00FF66 60%, #35FF00 70%, #CDFF00 80%, #FF9900 90%, #FF0000 100%);\n}\n.bf-editor-form-colorpicker .opacity-slider {\n  position: absolute;\n  bottom: 1.3em;\n  left: 1em;\n  right: 2em;\n}\n.bf-editor-form-colorpicker .opacity-slider .slider {\n  background: #fff url(\"data:image/gif;base64,R0lGODdhEAAQAPEAAMvLy8zMzP///wAAACwAAAAAEAAQAEACHYxvosstCAEMrq6Jj812Y59NIDQipdY5XLWqH4sVADs=\") repeat;\n  background-size: 8px 8px;\n  height: 8px;\n}\n.bf-editor-form-colorpicker .opacity-slider .slider .track {\n  height: 8px;\n  margin-top: -4px;\n  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #FFF 100%);\n}\n.bf-editor-form-colorpicker .with-opacity-slider {\n  height: 14em;\n}\n.bf-editor-form-colorpicker .with-opacity-slider .map {\n  bottom: 2em;\n}\n.bf-editor-form-colorpicker .with-opacity-slider .hue-slider {\n  bottom: 2em;\n}\n.bf-editor-form-colorpicker .picker {\n  position: relative;\n  margin-bottom: 1em;\n}\n.bf-editor-form-colorpicker .picker:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n.bf-editor-form-colorpicker .picker-right {\n  height: 20em;\n}\n.bf-editor-form-colorpicker .map {\n  position: absolute;\n  top: 1em;\n  bottom: 1em;\n  right: 2em;\n  left: 1em;\n  overflow: hidden;\n  user-select: none;\n  border-radius: 0.25em;\n}\n.bf-editor-form-colorpicker .map.active {\n  cursor: none;\n}\n.bf-editor-form-colorpicker .map.dark .pointer {\n  border-color: #fff;\n}\n.bf-editor-form-colorpicker .map.light .pointer {\n  border-color: #000;\n}\n.bf-editor-form-colorpicker .map .pointer {\n  position: absolute;\n  width: 10px;\n  height: 10px;\n  margin-left: -5px;\n  margin-bottom: -5px;\n  border-radius: 100%;\n  border: 1px solid #000;\n  will-change: left, bottom;\n}\n.bf-editor-form-colorpicker .map .background {\n  top: 0;\n  left: 0;\n  position: absolute;\n  height: 100%;\n  width: 100%;\n}\n.bf-editor-form-colorpicker .map .background:before,.bf-editor-form-colorpicker .map .background:after {\n  display: block;\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n.bf-editor-form-colorpicker .map .background:after {\n  background: linear-gradient(to bottom, transparent 0%, black 100%);\n}\n.bf-editor-form-colorpicker .map .background:before {\n  background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);\n}\n.bf-editor-form-colorpicker .swatch {\n  height: 32px;\n  border-radius: 4px;\n}\n.bf-editor-form-group.horizontal .bf-editor-form-colorpicker .swatch {\n  width: 32px;\n}\n\n@media (min-width: 50em) {\n  .bf-editor-form-colorpicker .picker {\n    width: 50%;\n    float: left;\n  }\n}", ""]);
+exports.push([module.i, ".bf-editor {\n  position: static;\n}\n\n.bf-editor p {\n  font-size: 0.65rem;\n}\n\n/* Custom CSS Scrollbar */\n::-webkit-scrollbar {\n    width: 4px;\n}\n\n::-webkit-scrollbar-track {\n  background-color: transparent;\n}\n\n::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 0px;\n  border-radius: 0px;\n  background: #DDD;\n}\n\n::-webkit-scrollbar-thumb:window-inactive {\n\tbackground: #f7f7f7; \n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Drawer.css":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/Drawer.css ***!
-  \****************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/FormGroup.css":
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/dist/styles/FormGroup.css ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, "/* \n  Drawer.scss\n  - Includes all default styles for the Drawer component\n*/\n.off-canvas {\n  display: flex;\n  flex-flow: nowrap;\n  height: 100%;\n  position: static;\n  width: 100%; }\n  .off-canvas .off-canvas-toggle {\n    display: block;\n    position: absolute;\n    top: 0.4rem;\n    transition: none;\n    z-index: 1;\n    left: 0.4rem; }\n  .off-canvas .off-canvas-sidebar {\n    background: #ffffff;\n    bottom: 0;\n    min-width: 10rem;\n    overflow-y: auto;\n    z-index: 200;\n    position: absolute;\n    top: 37px;\n    opacity: 1;\n    z-index: 98;\n    transition: 0.5s all;\n    right: 0;\n    left: 0;\n    transform: translateX(-100%); }\n    .off-canvas .off-canvas-sidebar.active {\n      opacity: 1; }\n  .off-canvas .off-canvas-content {\n    flex: 1 1 auto;\n    height: 100%;\n    padding: 0.4rem 0.4rem 0.4rem 4rem; }\n  .off-canvas .off-canvas-overlay {\n    background: rgba(33, 33, 33, 0.1);\n    border-color: transparent;\n    border-radius: 0;\n    bottom: 0;\n    display: none;\n    height: 100%;\n    left: 0;\n    position: fixed;\n    right: 0;\n    top: 0;\n    width: 100%; }\n  .off-canvas .off-canvas-sidebar:target, .off-canvas .off-canvas-sidebar.active {\n    transform: translateX(0); }\n  .off-canvas .off-canvas-sidebar:target ~ .off-canvas-overlay,\n  .off-canvas .off-canvas-sidebar.active ~ .off-canvas-overlay {\n    display: block;\n    z-index: 100; }\n\n@media (min-width: 960px) {\n  .off-canvas.off-canvas-sidebar-show .off-canvas-toggle {\n    display: none; }\n  .off-canvas.off-canvas-sidebar-show .off-canvas-sidebar {\n    flex: 0 0 auto;\n    position: relative;\n    transform: none; }\n  .off-canvas.off-canvas-sidebar-show .off-canvas-overlay {\n    display: none !important; } }\n", ""]);
+exports.push([module.i, ".bf-editor-form-group.form-group {\n  display: flex;\n  flex-direction: column;\n  padding-bottom: 8px;\n}\n\n.bf-editor-form-group.form-group.horizontal {\n  flex-direction: row;\n  align-items: flex-start;\n  justify-content: space-between;\n}\n\n.bf-editor-form-group .form-label-container {\n  color: #C8C8C8;\n  flex-shrink: 0;\n}\n\n.bf-editor-form-group.horizontal .form-label-container {\n  padding-right: 8px;\n  flex-grow: 1;\n}\n\n.bf-editor-form-group .form-label {\n  font-size: 0.6rem;\n  font-weight: 400;\n  line-height: 0.9rem;\n  color: #282828;\n  padding-right: 4px;\n}\n\n.bf-editor-form-group .form-label-container .popover {\n  margin-top: -2px;\n}\n\n.bf-editor-form-group .form-label-container .popover .popover-container {\n  width: 200px;\n}\n\n.bf-editor-form-group .form-label-container .popover .popover-container .card .card-body {\n  font-size: 0.6rem;\n  color: #484848;\n  padding: 8px;\n}\n\n.bf-editor-form-group .form-input-hint {\n  margin-bottom: 0;\n  font-size: 0.5rem;\n}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Editor.css":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/Editor.css ***!
-  \****************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Input.css":
+/*!***********************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/dist/styles/Input.css ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, "/* \n  Editor.scss \n  - Includes the base css needed\n  - Includes all default styles for the Editor component\n*/\n/* Manually forked from Normalize.css */\n/* normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Change the default font family in all browsers (opinionated).\n * 2. Correct the line height in all browsers.\n * 3. Prevent adjustments of font size after orientation changes in\n *    IE on Windows Phone and in iOS.\n */\n/* Document\n   ========================================================================== */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 3 */\n  -webkit-text-size-adjust: 100%;\n  /* 3 */ }\n\n/* Sections\n   ========================================================================== */\n/**\n * Remove the margin in all browsers (opinionated).\n */\nbody {\n  margin: 0; }\n\n/**\n * Add the correct display in IE 9-.\n */\narticle,\naside,\nfooter,\nheader,\nnav,\nsection {\n  display: block; }\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in IE.\n */\nfigcaption,\nfigure,\nmain {\n  /* 1 */\n  display: block; }\n\n/**\n * Add the correct margin in IE 8 (removed).\n */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */ }\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers. (removed)\n * 2. Correct the odd `em` font sizing in all browsers.\n */\n/* Text-level semantics\n   ========================================================================== */\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\na {\n  background-color: transparent;\n  /* 1 */\n  -webkit-text-decoration-skip: objects;\n  /* 2 */ }\n\n/**\n * Remove the outline on focused links when they are also active or hovered\n * in all browsers (opinionated).\n */\na:active,\na:hover {\n  outline-width: 0; }\n\n/**\n * Modify default styling of address.\n */\naddress {\n  font-style: normal; }\n\n/**\n * 1. Remove the bottom border in Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari. (removed)\n */\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\nb,\nstrong {\n  font-weight: inherit; }\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder; }\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: \"Segoe UI Mono\", \"Helvetica\", \"Roboto Mono\", Menlo, Courier, monospace;\n  /* 1 (changed) */\n  font-size: 1em;\n  /* 2 */ }\n\n/**\n * Add the correct font style in Android 4.3-.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Add the correct background and color in IE 9-. (Removed)\n */\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n  font-weight: 400;\n  /* (added) */ }\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsub {\n  bottom: -0.25em; }\n\nsup {\n  top: -0.5em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n */\naudio,\nvideo {\n  display: inline-block; }\n\n/**\n * Add the correct display in iOS 4-7.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Remove the border on images inside links in IE 10-.\n */\nimg {\n  border-style: none; }\n\n/**\n * Hide the overflow in IE.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Forms\n   ========================================================================== */\n/**\n * 1. Change the font styles in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit;\n  /* 1 (changed) */\n  font-size: inherit;\n  /* 1 (changed) */\n  line-height: inherit;\n  /* 1 (changed) */\n  margin: 0;\n  /* 2 */ }\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\nbutton,\ninput {\n  /* 1 */\n  overflow: visible; }\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\nbutton,\nselect {\n  /* 1 */\n  text-transform: none; }\n\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\nbutton,\nhtml [type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */ }\n\n/**\n * Remove the inner border and padding in Firefox.\n */\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0; }\n\n/**\n * Restore the focus styles unset by the previous rule (removed).\n */\n/**\n * Change the border, margin, and padding in all browsers (opinionated) (changed).\n */\nfieldset {\n  border: 0;\n  margin: 0;\n  padding: 0; }\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\nlegend {\n  box-sizing: border-box;\n  /* 1 */\n  color: inherit;\n  /* 2 */\n  display: table;\n  /* 1 */\n  max-width: 100%;\n  /* 1 */\n  padding: 0;\n  /* 3 */\n  white-space: normal;\n  /* 1 */ }\n\n/**\n * 1. Add the correct display in IE 9-.\n * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Remove the default vertical scrollbar in IE.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  outline-offset: -2px;\n  /* 2 */ }\n\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.\n */\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  /* 1 */\n  font: inherit;\n  /* 2 */ }\n\n/* Interactive\n   ========================================================================== */\n/*\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n */\ndetails,\nmenu {\n  display: block; }\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n  outline: none; }\n\n/* Scripting\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n */\ncanvas {\n  display: inline-block; }\n\n/**\n * Add the correct display in IE.\n */\ntemplate {\n  display: none; }\n\n/* Hidden\n   ========================================================================== */\n/**\n * Add the correct display in IE 10-.\n */\n[hidden] {\n  display: none; }\n\n*,\n*::before,\n*::after {\n  box-sizing: inherit; }\n\nhtml {\n  box-sizing: border-box;\n  font-size: 20px;\n  line-height: 1.5;\n  -webkit-tap-highlight-color: transparent; }\n\nbody {\n  color: #333333;\n  font-family: \"Segoe UI\", \"Helvetica\", helvetica, arial, sans-serif;\n  font-size: 13px;\n  overflow-x: hidden;\n  text-rendering: optimizeLegibility; }\n\na {\n  color: #0078d4;\n  outline: none;\n  text-decoration: none; }\n  a:focus {\n    box-shadow: 0 0 0 0.1rem rgba(242, 200, 17, 0.2); }\n  a:focus, a:hover, a:active, a.active {\n    color: #005ba1;\n    text-decoration: underline; }\n  a:visited {\n    color: #0894ff; }\n\n.bf-editor {\n  position: static; }\n\n.bf-editor p {\n  font-size: 0.65rem; }\n\n/* Custom CSS Scrollbar */\n::-webkit-scrollbar {\n  width: 4px; }\n\n::-webkit-scrollbar-track {\n  background-color: transparent; }\n\n::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 0px;\n  border-radius: 0px;\n  background: #DDD; }\n\n::-webkit-scrollbar-thumb:window-inactive {\n  background: #f7f7f7; }\n", ""]);
+exports.push([module.i, ".bf-editor-form-input .form-input {\n  height: 1.6rem;\n  font-size: 0.6rem;\n}\n.bf-editor-form-input i.icon {\n  font-size: 0.6rem;\n  height: 0.6rem;\n  width: 0.6rem;\n}\n.bf-editor-form-input .form-input:not(:placeholder-shown):invalid:focus {\n  box-shadow: none;\n  background-color: #fffaf7;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Form.css":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/Form.css ***!
-  \**************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Navigation.css":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/dist/styles/Navigation.css ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, "/* \n  Form.scss \n  - Includes all default styles for the Form component\n*/\n.form .form-footer-button {\n  display: flex;\n  align-items: center;\n  flex-direction: row-reverse;\n  justify-content: space-between;\n  padding-top: 24px; }\n", ""]);
+exports.push([module.i, "/* CSS for Navigation.tsx */\n.bf-editor-navigation {\n  border-bottom: 1px #DDD solid;\n  background-color: #ffffff;\n  z-index: 99;\n}\n.bf-editor-logo {\n  height: 21px;\n  width: 21px;\n}\n.bf-editor-navigation .navbar-section .btn.btn-link {\n  border-radius: 0;\n}\n.bf-editor-navigation .navbar-section .btn.btn-link:focus {\n  box-shadow: none;\n  border-bottom: 2px #5755d9 solid;\n}\n.bf-editor-navigation .navbar-section .btn.btn-link:focus i {\n  color: #FFF;\n}\n.bf-editor-navigation .btn {\n  font-size: 0.65rem;\n}\n.bf-editor-navigation .menu-item a {\n  font-size: 0.65rem;\n  text-align: left;\n}\n.bf-editor-navigation-search {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n}\n.bf-editor-navigation-search span {\n  padding-left: 6px;\n}\n.bf-editor-navigation-search i.icon.icon-search {\n  color: #5755d9;\n}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/FormGroup.css":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/FormGroup.css ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Panel.css":
+/*!***********************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/dist/styles/Panel.css ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, "/* \n  FormGroup.scss\n  - Includes all default styles for the FormGroup component\n*/\n.form-group {\n  font-size: 13px;\n  position: relative; }\n  .form-group:not(:last-child) {\n    margin-bottom: 0.4rem; }\n  .form-group .tooltip .icon {\n    margin-right: 5px;\n    background-color: #f4f4f4;\n    border-radius: 100px;\n    width: 16px;\n    height: 16px;\n    display: flex;\n    align-items: center;\n    justify-content: center; }\n  .form-group .tooltip .tooltip-body {\n    position: absolute;\n    z-index: 999;\n    background-color: #ffffff;\n    box-shadow: 0 3px 10px #f4f4f4;\n    width: 150px;\n    top: 24px;\n    right: 4px;\n    padding: 8px 12px; }\n    .form-group .tooltip .tooltip-body.hidden {\n      visibility: hidden; }\n    .form-group .tooltip .tooltip-body.visible {\n      visibility: visible; }\n    .form-group .tooltip .tooltip-body p {\n      font-size: 11px;\n      line-height: 0.8rem;\n      margin: 0;\n      color: #212121; }\n\n.form-label {\n  display: flex;\n  color: #333333;\n  line-height: 1.2rem;\n  font-size: 13px;\n  font-weight: 400;\n  box-sizing: border-box;\n  box-shadow: none;\n  padding: 0;\n  overflow-wrap: break-word;\n  margin: 0;\n  margin-top: 0.6rem;\n  align-items: center;\n  justify-content: space-between; }\n  .has-success .form-label,\n  .is-success + .form-label {\n    color: #bad80a; }\n  .has-error .form-label,\n  .is-error + .form-label {\n    color: #e81123; }\n\n.form-input-hint {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  color: #989898;\n  font-size: 12px;\n  margin-top: 0.2rem; }\n  .has-success .form-input-hint,\n  .is-success + .form-input-hint {\n    color: #bad80a; }\n  .has-error .form-input-hint,\n  .is-error + .form-input-hint {\n    color: #e81123; }\n\n.form-group.horizontal {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n  margin-bottom: 0.4rem; }\n  .form-group.horizontal .form-label {\n    width: 50%;\n    justify-content: flex-start;\n    margin-top: 0; }\n    .form-group.horizontal .form-label .tooltip {\n      padding-left: 12px; }\n  .form-group.horizontal .form-input-container {\n    width: 50%;\n    display: flex;\n    justify-content: flex-end; }\n  .form-group.horizontal .form-checkbox, .form-group.horizontal .form-radio, .form-group.horizontal .form-switch {\n    padding-right: 0;\n    padding-left: 1rem; }\n  .form-group.horizontal .form-switch {\n    padding-left: 1.8rem; }\n", ""]);
+exports.push([module.i, ".bf-editor-panel {\n  width: 270px;\n  box-shadow: 0 0 2px #DDD;\n  background-color: #FFF;\n  height: 100%;\n  overflow: auto;\n}\n.bf-editor-panel .panel-header {\n  background-color: #FFF;\n  padding: 16px 16px;\n}\n.bf-editor-panel .panel-header h2 {\n  font-size: 0.55rem;\n  text-transform: uppercase;\n  font-weight: 500;\n  color: #998899;\n  margin: 0;\n}\n.bf-editor-panel .panel-header .btn {\n  font-size: 0.6rem;\n}\n.bf-editor-panel .panel-body {\n  padding: 0px 16px;\n  padding-bottom: 16px;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Input.css":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/Input.css ***!
-  \***************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Search.css":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/dist/styles/Search.css ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, "/* \n  Input.scss \n  - Includes all default styles for the Input component\n*/\n.form-input {\n  box-shadow: none;\n  background: none transparent;\n  margin: 0;\n  padding: 0 0.6rem;\n  box-sizing: border-box;\n  background-image: initial;\n  border: 0.05rem solid #a6a6a6;\n  border-radius: 0;\n  color: #333333;\n  display: block;\n  font-size: 13px;\n  text-overflow: ellipsis;\n  outline: 0px;\n  height: 1.8rem;\n  line-height: 1.2rem;\n  max-width: 100%;\n  position: relative;\n  transition: background .2s, border .2s, box-shadow .2s, color .2s;\n  width: 100%; }\n  .form-input:hover {\n    border-color: #333333; }\n  .form-input:focus {\n    border-color: #0078d4; }\n  .form-input::placeholder {\n    color: #a6a6a6;\n    font-size: 13px; }\n  .form-input.input-inline {\n    display: inline-block;\n    vertical-align: middle;\n    width: auto; }\n  .form-input[type=\"file\"] {\n    height: auto; }\n\n.has-icon-left,\n.has-icon-right {\n  position: relative; }\n  .has-icon-left .form-icon,\n  .has-icon-right .form-icon {\n    height: 0.8rem;\n    margin: 0 0.25rem;\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n    width: 0.8rem;\n    z-index: 2; }\n\n.has-icon-left .form-icon {\n  left: 0.05rem; }\n\n.has-icon-left .form-input {\n  padding-left: 1.3rem; }\n\n.has-icon-right .form-icon {\n  right: 0.05rem; }\n\n.has-icon-right .form-input {\n  padding-right: 1.3rem; }\n\n.has-success .form-input, .form-input.is-success {\n  background: #fdfef2;\n  border-color: #bad80a; }\n  .has-success .form-input:focus, .form-input.is-success:focus {\n    box-shadow: 0 0 0 0.1rem rgba(186, 216, 10, 0.2); }\n\n.has-error .form-input, .form-input.is-error {\n  background: white;\n  border-color: #e81123;\n  color: #e81123; }\n  .has-error .form-input:focus, .form-input.is-error:focus {\n    box-shadow: 0 0 0 0.1rem rgba(232, 17, 35, 0.2); }\n\n.form-input:not(:placeholder-shown):invalid {\n  border-color: #e81123;\n  color: #e81123; }\n  .form-input:not(:placeholder-shown):invalid:focus {\n    box-shadow: 0 0 0 0.1rem rgba(232, 17, 35, 0.2);\n    background: white; }\n  .form-input:not(:placeholder-shown):invalid + .form-input-hint {\n    color: #e81123; }\n\n.form-input:disabled, .form-input.disabled,\n.form-select:disabled,\n.form-select.disabled {\n  background-color: #f7f7f7;\n  cursor: not-allowed;\n  opacity: .5; }\n\n.form-input[readonly] {\n  background-color: #ffffff; }\n\ntextarea.form-input, textarea.form-input.input-lg, textarea.form-input.input-sm {\n  padding: 0 0.6rem;\n  height: auto; }\n", ""]);
+exports.push([module.i, ".bf-editor-navigation-search {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n}\n.bf-editor-navigation-search span {\n  padding-left: 6px;\n}\n.bf-editor-navigation-search i.icon.icon-search {\n  color: #5755d9;\n}\n\n.bf-editor-navigation-search .modal {\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n\n.bf-editor-navigation-search .modal .modal-container {\n  padding: 0;\n}\n\n.bf-editor-navigation-search .modal .modal-header {\n  border-bottom: 1px #EEE solid;\n  background-color: #F7F7F7;\n  padding: 8px 12px;\n}\n\n.bf-editor-navigation-search input {\n  border: 0;\n  outline: 0;\n  padding-left: 12px;\n  width: 100%;\n  background: transparent;\n  font-size: 0.65rem;\n}\n\n.bf-editor-navigation-search p.search-hint {\n  color: #989898;\n  font-size: 0.6rem;\n  margin-bottom: 12px;\n}\n\n.bf-editor-navigation-search .search-results .tile {\n  padding: 8px 8px;\n}\n\n.bf-editor-navigation-search .search-results .tile:hover {\n  background-color: #F7F7F7;\n  cursor: pointer;\n}\n\n.bf-editor-navigation-search .search-results .tile .tile-title {\n  font-size: 0.70rem;\n  font-weight: 500;\n  line-height: 1.2rem;\n}\n\n.bf-editor-navigation-search .search-results .tile .tile-subtitle {\n  font-size: 0.55rem;\n  line-height: 0.75rem;\n  white-space: normal;\n  margin-bottom: 0;\n}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Navigation.css":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/Navigation.css ***!
-  \********************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/dist/styles/Select.css":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/dist/styles/Select.css ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, "/* \n  Navigation.scss \n  - Includes all default styles for the Navigation component\n*/\n/* \n  menu.scss \n  - Includes all default styles for rendering menus\n*/\n.menu {\n  box-shadow: 0 0.05rem 0.2rem rgba(33, 33, 33, 0.3);\n  background: #f4f4f4;\n  border-radius: 0.1rem;\n  list-style: none;\n  margin: 0;\n  min-width: 180px;\n  padding: 0.4rem;\n  transform: translateY(0.2rem);\n  z-index: 300; }\n  .menu.menu-nav {\n    background: transparent;\n    box-shadow: none; }\n  .menu .menu-item {\n    margin-top: 0;\n    padding: 0 0.4rem;\n    text-decoration: none;\n    user-select: none; }\n    .menu .menu-item > a {\n      border-radius: 0.1rem;\n      color: inherit;\n      display: block;\n      margin: 0 -0.4rem;\n      padding: 0.2rem 0.4rem;\n      text-decoration: none; }\n      .menu .menu-item > a:focus, .menu .menu-item > a:hover {\n        background: #0078d4;\n        color: #f2c811; }\n      .menu .menu-item > a:active, .menu .menu-item > a.active {\n        background: #0078d4;\n        color: #f2c811; }\n    .menu .menu-item .form-checkbox,\n    .menu .menu-item .form-radio,\n    .menu .menu-item .form-switch {\n      margin: 0.1rem 0; }\n    .menu .menu-item + .menu-item {\n      margin-top: 0.2rem; }\n  .menu .menu-badge {\n    float: right;\n    padding: 0.2rem 0; }\n    .menu .menu-badge .btn {\n      margin-top: -0.1rem; }\n\n/* \n  dropdown.scss \n  - Includes all default styles for rendering dropdowns\n*/\n.dropdown {\n  display: inline-block;\n  position: relative; }\n  .dropdown .menu {\n    animation: slide-down .15s ease 1;\n    display: none;\n    left: 0;\n    max-height: 50vh;\n    overflow-y: auto;\n    position: absolute;\n    top: 100%; }\n  .dropdown.dropdown-right .menu {\n    left: auto;\n    right: 0; }\n  .dropdown.active .menu,\n  .dropdown .dropdown-toggle:focus + .menu,\n  .dropdown .menu:hover {\n    display: block; }\n  .dropdown .btn-group .dropdown-toggle:nth-last-child(2) {\n    border-bottom-right-radius: 0.1rem;\n    border-top-right-radius: 0.1rem; }\n\n.navigation {\n  background: #f4f4f4;\n  display: flex;\n  justify-content: flex-start;\n  align-items: center; }\n  .navigation a, .navigation button {\n    color: #333;\n    font-size: 13px;\n    font-weight: 500;\n    padding: 0.6em 1em;\n    background-color: transparent;\n    border: 0;\n    display: flex;\n    align-items: center; }\n  .navigation a:hover,\n  .navigation a:focus,\n  .navigation button:hover,\n  .navigation button:focus {\n    cursor: pointer;\n    text-decoration: none;\n    background: #e6e6e6;\n    box-shadow: none;\n    outline: 0; }\n  .navigation a > i.icon, .navigation button > i.icon {\n    color: #106cbc;\n    margin-right: 8px; }\n  .navigation .dropdown a.dropdown-toggle, .navigation .dropdown button.dropdown-toggle {\n    display: flex; }\n  .navigation .menu {\n    border: 1px solid #e6e6e6;\n    border-radius: 0;\n    box-shadow: none;\n    padding: 0;\n    background-color: #ffffff; }\n  .navigation .menu .menu-item {\n    padding: 0;\n    min-width: 175px; }\n  .navigation .menu .menu-item > a, .navigation .menu .menu-item > button {\n    font-size: 11px;\n    display: flex;\n    width: 100%;\n    padding-left: 12px;\n    padding-right: 12px;\n    justify-content: flex-start; }\n  .navigation .menu .menu-item a:hover,\n  .navigation .menu .menu-item a:focus,\n  .navigation .menu .menu-item button:hover,\n  .navigation .menu .menu-item button:focus {\n    color: #333;\n    background: #f4f4f4; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Panel.css":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/Panel.css ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "/* \n  Panel.scss \n  - Includes all default styles for the Panel component\n*/\n.bf-editor-panel {\n  width: 320px;\n  box-shadow: 0 0 2px #DDD;\n  background-color: #FFF;\n  bottom: 0;\n  overflow: auto;\n  position: fixed;\n  top: 39px;\n  left: 0; }\n\n.bf-editor-panel .panel-header {\n  background-color: #FFF;\n  padding: 16px 16px; }\n\n.bf-editor-panel .panel-header h2 {\n  font-size: 0.55rem;\n  text-transform: uppercase;\n  font-weight: 500;\n  color: #998899;\n  margin: 0; }\n\n.bf-editor-panel .panel-header .btn-close {\n  font-size: 0.6rem;\n  background: none;\n  border: 0;\n  padding: 0 4px; }\n\n.bf-editor-panel .panel-body {\n  padding: 0px 16px;\n  padding-bottom: 16px; }\n\n.bf-editor-panel > .react-resizable-handle {\n  content: '....';\n  width: 10px;\n  height: 20px;\n  display: inline-block;\n  overflow: hidden;\n  line-height: 5px;\n  padding: 3px 4px;\n  cursor: move;\n  vertical-align: middle;\n  margin-right: .3em;\n  font-size: 12px;\n  font-family: sans-serif;\n  letter-spacing: 2px;\n  color: #cccccc;\n  text-shadow: 1px 0 1px black;\n  position: absolute;\n  top: 50%;\n  right: 0;\n  width: 15px;\n  margin-top: -10px; }\n\n.bf-editor-panel > .react-resizable-handle::after {\n  content: '.. .. .. ..'; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Radio.css":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/Radio.css ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "/* \n  Radio.scss \n  - Includes all default styles for the Radio component\n*/\n.form-radio {\n  font-size: 0.6rem;\n  display: block;\n  line-height: 1.2rem;\n  margin: 0.2rem 0;\n  min-height: 1.2rem;\n  padding: 0.1rem 0.4rem 0.1rem 1.2rem;\n  position: relative; }\n  .form-radio input {\n    clip: rect(0, 0, 0, 0);\n    height: 1px;\n    margin: -1px;\n    overflow: hidden;\n    position: absolute;\n    width: 1px; }\n    .form-radio input:focus + .form-icon {\n      border-color: #a6a6a6; }\n    .form-radio input:checked + .form-icon {\n      background: #f4f4f4;\n      border-color: #0078d4;\n      box-shadow: none; }\n  .form-radio .form-icon {\n    border: 0.05rem solid #adadad;\n    cursor: pointer;\n    display: inline-block;\n    position: absolute;\n    transition: background .2s, border .2s, box-shadow .2s, color .2s; }\n\n.form-radio .form-icon {\n  background: #f4f4f4;\n  height: 0.8rem;\n  left: 0;\n  top: 0.3rem;\n  width: 0.8rem; }\n\n.form-radio input:active + .form-icon {\n  background: #f7f7f7; }\n\n.form-radio .form-icon {\n  border-radius: 50%; }\n\n.form-radio input:checked + .form-icon::before {\n  background: #0078d4;\n  border-radius: 50%;\n  content: \"\";\n  height: 8px;\n  left: 50%;\n  position: absolute;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  width: 8px; }\n\n.has-error .form-radio .form-icon, .form-radio.is-error .form-icon {\n  border-color: #e81123; }\n\n.has-error .form-radio input:checked + .form-icon, .form-radio.is-error input:checked + .form-icon {\n  border-color: #e81123; }\n  .has-error .form-radio input:checked + .form-icon::before, .form-radio.is-error input:checked + .form-icon::before {\n    background: #e81123; }\n\n.has-error .form-radio input:focus + .form-icon, .form-radio.is-error input:focus + .form-icon {\n  box-shadow: 0 0 0 0.1rem rgba(232, 17, 35, 0.2);\n  border-color: #e81123; }\n\n.form-radio input:disabled + .form-icon, .form-radio input.disabled + .form-icon {\n  background: #f7f7f7;\n  cursor: not-allowed;\n  opacity: .5; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Select.css":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/Select.css ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "/* \n  Select.scss \n  - Includes all default styles for the Select component\n*/\n.form-select {\n  appearance: none;\n  border: 0.05rem solid #a6a6a6;\n  border-radius: 0.1rem;\n  color: inherit;\n  font-size: 0.6rem;\n  height: 1.8rem;\n  line-height: 1.2rem;\n  outline: none;\n  margin-top: 0.4rem;\n  padding: 0.25rem 0.4rem;\n  vertical-align: middle;\n  width: 100%;\n  background: transparent; }\n  .form-select:hover {\n    border-color: #333333; }\n  .form-select:focus {\n    border-color: #0078d4; }\n  .form-select::-ms-expand {\n    display: none; }\n  .form-select.select-sm {\n    font-size: 11px;\n    height: 1.4rem;\n    padding: 0.05rem 1.1rem 0.05rem 0.3rem; }\n  .form-select.select-lg {\n    font-size: 16px;\n    height: 2rem;\n    padding: 0.35rem 1.4rem 0.35rem 0.6rem; }\n  .form-select[size], .form-select[multiple] {\n    height: auto;\n    padding: 0.25rem 0.4rem; }\n    .form-select[size] option, .form-select[multiple] option {\n      padding: 0.1rem 0.2rem; }\n  .form-select:not([multiple]):not([size]) {\n    background: transparent url(\"data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23667189'%20d='M2%200L0%202h4zm0%205L0%203h4z'/%3E%3C/svg%3E\") no-repeat right 0.35rem center/0.4rem 0.5rem;\n    padding-right: 1.2rem; }\n\n.has-success .form-select, .form-select.is-success {\n  background: #fdfef2;\n  border-color: #bad80a; }\n  .has-success .form-select:focus, .form-select.is-success:focus {\n    box-shadow: 0 0 0 0.1rem rgba(186, 216, 10, 0.2); }\n\n.has-error .form-select, .form-select.is-error {\n  background: white;\n  border-color: #e81123;\n  color: #e81123; }\n  .has-error .form-select:focus, .form-select.is-error:focus {\n    box-shadow: 0 0 0 0.1rem rgba(232, 17, 35, 0.2); }\n\n.form-select:disabled, .form-select.disabled {\n  background-color: #f7f7f7 !important;\n  cursor: not-allowed;\n  opacity: .5; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Switch.css":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/Switch.css ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "/* \n  Switch.scss \n  - Includes all default styles for the Switch component\n*/\n.form-switch {\n  font-size: 0.6rem;\n  display: block;\n  line-height: 1.2rem;\n  margin: 0.2rem 0;\n  min-height: 1.2rem;\n  padding: 0.1rem 0.4rem 0.1rem 1.2rem;\n  position: relative; }\n  .form-switch input {\n    clip: rect(0, 0, 0, 0);\n    height: 1px;\n    margin: -1px;\n    overflow: hidden;\n    position: absolute;\n    width: 1px; }\n    .form-switch input:focus + .form-icon {\n      border-color: #a6a6a6; }\n    .form-switch input:checked + .form-icon {\n      background: #f4f4f4;\n      border-color: #0078d4;\n      box-shadow: none; }\n  .form-switch .form-icon {\n    border: 0.05rem solid #adadad;\n    cursor: pointer;\n    display: inline-block;\n    position: absolute;\n    transition: background .2s, border .2s, box-shadow .2s, color .2s; }\n\n.form-switch {\n  padding-left: 2rem; }\n  .form-switch .form-icon {\n    background: #f4f4f4;\n    background-clip: padding-box;\n    border-radius: 0.45rem;\n    height: 0.9rem;\n    left: 0;\n    top: 0.25rem;\n    width: 1.6rem;\n    border-color: #333333; }\n    .form-switch .form-icon::before {\n      background: #333333;\n      border-radius: 50%;\n      content: \"\";\n      display: block;\n      height: 0.6rem;\n      left: 3px;\n      position: absolute;\n      top: 50%;\n      transform: translateY(-50%);\n      transition: background .2s, border .2s, box-shadow .2s, color .2s, left .2s;\n      width: 0.6rem; }\n  .form-switch input:checked + .form-icon {\n    background-color: #0078d4;\n    border: none; }\n    .form-switch input:checked + .form-icon::before {\n      background-color: #f4f4f4;\n      left: 16px; }\n  .form-switch input:active + .form-icon::before {\n    background-color: #0078d4; }\n\n.has-error .form-switch .form-icon, .form-switch.is-error .form-icon {\n  border-color: #e81123; }\n  .has-error .form-switch .form-icon::before, .form-switch.is-error .form-icon::before {\n    background-color: #e81123; }\n\n.has-error .form-switch input:checked + .form-icon, .form-switch.is-error input:checked + .form-icon {\n  background: #e81123;\n  border-color: #e81123; }\n\n.has-error .form-switch input:focus + .form-icon, .form-switch.is-error input:focus + .form-icon {\n  box-shadow: 0 0 0 0.1rem rgba(232, 17, 35, 0.2);\n  border-color: #e81123; }\n\n.form-switch input:disabled + .form-icon, .form-switch input.disabled + .form-icon {\n  opacity: 0.5; }\n\n.form-switch input:checked:disabled + .form-icon, .form-switch input:checked.disabled + .form-icon {\n  opacity: 0.5; }\n", ""]);
+exports.push([module.i, ".bf-editor-form-select .form-select {\n  height: 1.6rem;\n  font-size: 0.6rem;\n}\n.bf-editor-form-select i.icon {\n  font-size: 0.6rem;\n  height: 0.6rem;\n  width: 0.6rem;\n}", ""]);
 
 // exports
 
@@ -45824,45 +44030,6 @@ exports.push([module.i, "@font-face {\r\n  font-family: 'Material Icons';\r\n  f
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./styles/DataTab.css":
-/*!******************************************************!*\
-  !*** ./node_modules/css-loader!./styles/DataTab.css ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "/* -----------------------------VDTn - data-------------------------- */\n\n.vdt-data{\n    display: flex;\n    flex-direction: column;\n}\n\n.vdt-data-view{\n    display: flex;\n    flex-direction: column;\n}\n\n.vdt-data-view .view-footer-btn {\n    position: absolute;\n    bottom: 10px;\n    right: 10px;\n}\n\n.vdt-data-view .view-footer-btn>.back-button {\n    margin-right: 10px;\n}\n\n.vdt-data-menu{\n    cursor: pointer;\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n    border-bottom:1px solid #d4d4d4;\n    padding: 10px 0 10PX 10PX;\n}\n.vdt-data-subMenu{\n    display: flex;\n    flex-direction: row;\n    justify-content: flex-start;\n    align-items: center;\n}\n.vdt-data-menu-img{\n    display: flex;\n    align-items: center;\n    padding: 0  20px 0px 10px;\n}\n.vdt-data-menu-img .vdt-img{\n    height: 30px;\n    width: 30px;\n}\n\n.vdt-data-menu-name{\n    display: flex;\n    flex-direction: column;\n}\n.vdt-data-menu-title{\n    text-align: start;\n    font-weight: 500;\n    font-size: 14px;\n}\n.vdt-data-menu-description{\n    text-align: start;\n    font-size: 12px;\n}\n.vdt-data-menu-front-img{\n    display: flex;\n    align-items: center;\n}\n.vdt-data-menu-front-img .vdt-front-logo{\n    height: 20px;\n    width: 20px;\n    padding: 0px;\n}\n.vdt-data-menu {\n    border-bottom: 1px solid #eaeaea !important;\n}\n.vdt-data-menu-img .icon {\n    font-size: 27px;\n}\n.vdt-data-menu-front-img .icon {\n    color: #0078d4;\n    font-size: 14px;\n}\n.color-indicator-input{\n    width:100px;\n}\n.color-indicator-input .form-input {\n    margin-right: 6px;\n}\n\n.menu-data-view {\n    bottom: 50px;\n    top: 64px;\n    overflow-y: auto;\n    position: absolute;\n    right: 0px;\n    left: 0px;\n    padding: 0px 16px;\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./styles/FormElements.css":
-/*!***********************************************************!*\
-  !*** ./node_modules/css-loader!./styles/FormElements.css ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var escape = __webpack_require__(/*! ../node_modules/css-loader/lib/url/escape.js */ "./node_modules/css-loader/lib/url/escape.js");
-exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "/*Form related overrides*/\n.form-group:not(:last-child) {\n    margin-bottom: 18px !important;\n}\n.form-label label {\n    font-size: 14px !important;\n    /* margin-bottom: 10px; */\n    font-weight: 600;\n}\n.select-primarySec .main-label {\n    font-weight: 600;\n}\n.form-label:not(:first-child){\n    margin-top: 0 !important;\n}\n.form-input-container {\n    font-size: 12px !important;\n}\n.form-radio {\n    margin: 0 !important;\n}\n.formGroup-section {\n    margin-bottom: 24px;\n}\n\n.form-radio span {\n    font-weight: 500;\n}\n/* input {\n    margin-bottom: 6px !important;\n} */\n.inline-label {\n    width: calc(100% - 9px) !important;\n    border: 1px solid #a6a6a6 !important;\n}\n.sublabel {\n    font-size: 12px;\n}\n.first-section {\n    margin-top: 18px;\n}\n.main-label {\n    font-size: 14px;\n}\n.dropdown {\n    width: 150px !important;\n    margin-bottom: 5px !important;\n}\n.primValue {\n    width: 100px !important;\n    margin-bottom: 5px !important;\n}\n.menu-note{\n    font-size: 12px;\n    color:#615c5c;\n    margin-top: 2px;\n}\n.form-input {\n    margin-top: 6px !important;\n}\n.theme {\n    border: 1px solid #eaeaea;\n    padding: 10px;\n    font-size: 10px;\n    font-weight: 500;\n    text-transform: uppercase;\n    width: 132px;\n    cursor: pointer;\n}\n.theme:last-of-type {\n    margin-left: 10px;\n}\n.theme-selection .bf-editor-flex {\n    flex-wrap: wrap !important;\n}\n.theme-selection h3 {\n    width: 100%;\n}\n.theme-selection .menu-note {\n    width: 100%;\n}\n.selected-theme {\n    border: 1px solid #666666;\n}\n.light-preview {\n    margin-top: 10px;\n    height: 68px;\n    background-color: #ddd;\n    background-position: center;\n    background-image: url(" + escape(__webpack_require__(/*! ../assets/Nodes-light.png */ "./assets/Nodes-light.png")) + ");\n    background-repeat: no-repeat;\n}\n.dark-preview{\n    margin-top: 10px;\n    background-color: #ddd;\n    height: 68px;\n    background-position: center;\n    background-image: url(" + escape(__webpack_require__(/*! ../assets/Nodes-dark.png */ "./assets/Nodes-dark.png")) + ");\n    background-repeat: no-repeat;\n}\n\n/*Fix modal form to allow forms containing 2 fields*/\n.modal-container .form {\n    display: flex;\n    flex-wrap: wrap;\n}\n.modal-container .form .form-group {\n    width: 100%;\n}\n.modal-container .form .range-form {\n    width: 48%;\n}\n.modal-container .form .end {\n    margin-left: 12px !important;\n    margin-top: 24px !important;\n}\n\n.modal-container .toggle-switch .form-switch>span {\n    font-size: 14px !important;\n    font-weight: 600;\n}\n\n/*Fix calculation configuration*/\n.operand-selection {\n    margin-top: 10px;\n}\n/*Fix data and appearance forms*/\n.menu-data-view .section-header {\n    font-size: 16px;\n    position: absolute;\n    top: -12px;\n    font-weight: 600;\n    text-transform: uppercase;\n}\n.menu-data-view .node-separator {\n    margin-top: 0px !important;\n    margin-bottom: 10px;\n}\n.menu-data-view .node-separator-section {\n    margin-bottom: 0 !important;\n}\n.menu-data-view .form-label {\n    margin-top: 0 !important;\n}\n.menu-data-view .section-note {\n    margin-top: 14px;\n}\n/*Temporary css to make data and appearance tabs looks nice for this release due to inconsistency in components implementation and I don't want to modify components now*/\n.menu-data-view .periods {\n    margin-bottom: 0 !important;\n}\n.menu-data-view .periods {\n    margin-top: 18px;\n}\n.menu-data-view .form-group-zero-bot-margin {\n    margin-bottom: 0 !important;\n}\n.menu-data-view .sublabel-dropdown{\n    font-size: 12px;\n    font-weight: 500;\n}\n.menu-data-view .secondary-value-section {\n    margin: 18px 0 0 0 !important;\n}\n.menu-data-view .section-label {\n    font-weight: 500 !important;\n}\n.menu-data-view .checkbox-group {\n    margin-bottom: 0 !important;\n}\n.menu-data-view .suffix-labels label{\n    font-weight: 400;\n}\n\n.settings-menu-temp-fix {\n    margin-top: 5px;\n}\n.menu-data-view .export-panel{\n    margin-top: 5px;\n}\n.export label {\n    font-size: 14px;\n    font-weight: 500;\n}\n\n/** Multi Select */\n/* .form-multi-select {\n    height: 65px !important;\n} */\n\n.form-multi-select ul.menu {\n    max-height: 200px;\n    overflow-y: auto;\n    top: auto;\n    margin-top: 5px;\n}\n\n.form-multi-select .selected {\n    flex-wrap: wrap;\n    height: 100%;\n    overflow: auto;\n    align-items: flex-start !important;\n}\n\n.form-multi-select .chip {\n    margin-bottom: 2px;\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/index.js!./styles/Icon.css":
 /*!***************************************************!*\
   !*** ./node_modules/css-loader!./styles/Icon.css ***!
@@ -45877,6 +44044,25 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 // module
 exports.push([module.i, "/* \n  Icon.scss \n  - Includes all basic icons\n*/\n@font-face {\n  font-family: 'FabricMDL2Icons';\n  src: url(" + escape(__webpack_require__(/*! ../fonts/fabric-icons.woff */ "./fonts/fabric-icons.woff")) + ") format(\"woff\"); }\n\n.icon {\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  display: inline-block;\n  font-family: 'FabricMDL2Icons';\n  font-style: normal;\n  font-weight: normal;\n  speak: none;\n  color: #707070; }\n  .icon--Appearance:before {\n    content: \"\\F3F9\";\n  }\n  .icon--Data:before {\n    content: \"\\E9EC\";\n  }\n.icon--Nodes:before {\n  content: \"\\F7DD\";\n}\n.icon--Export:before {\n    content: \"\\EFB8\";\n  }\n.icon--Navigation:before {\n    content: \"\\E816\";\n  }\n.icon--DataSource:before {\n  content: \"\\EFC7\";\n}\n.icon--Calculator:before {\n  content: \"\\E8EF\";\n}\n.icon--Enum:before {\n  content: \"\\EEBF\";\n}\n.icon--Divide::before {\n  content: \"\\F4FC\";\n  display: inline-block;\n  -webkit-transform: rotate(90deg);\n  -moz-transform: rotate(90deg);\n  -o-transform: rotate(90deg);\n  -ms-transform: rotate(90deg);\n  transform: rotate(90deg);\n}\n.icon--Custom:before {\n  content: \"\\E929\";\n}\n.icon--Expand:before {\n    content: \"\\F164\";\n  }\n\n.icon--Collapse:before {\n    content: \"\\F165\";\n  }\n.icon--PageAdd:before{\n  content: \"\\EA1A\";\n}\n\n.icon--SampleData:before{\n  content: \"\\E9F9\";\n}\n\n.icon--DynamicTree:before{\n  content: \"\\E74C\";\n}\n\n.icon--Import:before{\n  content: \"\\E898\";\n}\n\n.icon--NodeMapping:before {\n  content: \"\\E707\"; }\n\n.icon--DataSeries:before {\n    content: \"\\ECDC\"; }\n\n.icon--PeriodsAggregation:before {\n    content: \"\\EC92\"; }\n\n.icon--PrimandSec:before {\n    content: \"\\E81E\"; }\n\n.icon--General:before {\n    content: \"\\E713\"; }\n\n.icon--StatusBar:before {\n    content: \"\\F35C\"; }\n\n.icon--Visualization:before {\n    content: \"\\EB3C\"; }\n\n.icon--Colors:before {\n    content: \"\\E790\"; }\n.icon--FullTree:before {\n  content: \"\\EA52\";\n}\n.icon--TreeSettings:before {\n  content: \"\\EEBF\";\n}\n.icon--GlobalNavButton:before {\n  content: \"\\E700\"; }\n\n.icon--Brightness:before {\n  content: \"\\E706\"; }\n\n.icon--QuickNote:before {\n  content: \"\\E70B\"; }\n\n.icon--ChevronDown:before {\n  content: \"\\E70D\"; }\n\n.icon--ChevronUp:before {\n  content: \"\\E70E\"; }\n\n.icon--Edit:before {\n  content: \"\\E70F\"; }\n\n.icon--Add:before {\n  content: \"\\E710\"; }\n\n.icon--Cancel:before {\n  content: \"\\E711\"; \ncursor: pointer;}\n\n.icon--More:before {\n  content: \"\\E712\"; }\n\n.icon--Settings:before {\n  content: \"\\E713\"; }\n\n.icon--Mail:before {\n  content: \"\\E715\"; }\n\n.icon--People:before {\n  content: \"\\E716\"; }\n\n.icon--Stop:before {\n  content: \"\\E71A\"; }\n\n.icon--Filter:before {\n  content: \"\\E71C\"; }\n\n.icon--AllApps:before {\n  content: \"\\E71D\"; }\n\n.icon--Zoom:before {\n  content: \"\\E71E\"; }\n\n.icon--ZoomOut:before {\n  content: \"\\E71F\"; }\n\n.icon--Search:before {\n  content: \"\\E721\"; }\n\n.icon--Attach:before {\n  content: \"\\E723\"; }\n\n.icon--Send:before {\n  content: \"\\E724\"; }\n\n.icon--Forward:before {\n  content: \"\\E72A\"; }\n\n.icon--Back:before {\n  content: \"\\E72B\"; }\n\n.icon--Refresh:before {\n  content: \"\\E72C\"; }\n\n.icon--Lock:before {\n  content: \"\\E72E\"; }\n\n.icon--Blocked:before {\n  content: \"\\E733\"; }\n\n.icon--FavoriteStar:before {\n  content: \"\\E734\"; }\n\n.icon--FavoriteStarFill:before {\n  content: \"\\E735\"; }\n\n.icon--Checkbox:before {\n  content: \"\\E739\"; }\n\n.icon--CheckboxComposite:before {\n  content: \"\\E73A\"; }\n\n.icon--CheckboxFill:before {\n  content: \"\\E73B\"; }\n\n.icon--CheckboxCompositeReversed:before {\n  content: \"\\E73D\"; }\n\n.icon--CheckMark:before {\n  content: \"\\E73E\"; }\n\n.icon--BackToWindow:before {\n  content: \"\\E73F\"; }\n\n.icon--FullScreen:before {\n  content: \"\\E740\"; }\n\n.icon--Print:before {\n  content: \"\\E749\"; }\n\n.icon--Up:before {\n  content: \"\\E74A\"; }\n\n.icon--Down:before {\n  content: \"\\E74B\"; }\n\n.icon--Delete:before {\n  content: \"\\E74D\"; }\n\n.icon--Save:before {\n  content: \"\\E74E\"; }\n\n.icon--ReturnKey:before {\n  content: \"\\E751\"; }\n\n.icon--Cloud:before {\n  content: \"\\E753\"; }\n\n.icon--Sad:before {\n  content: \"\\E757\"; }\n\n.icon--PageLeft:before {\n  content: \"\\E760\"; }\n\n.icon--PageRight:before {\n  content: \"\\E761\"; }\n\n.icon--KeyboardClassic:before {\n  content: \"\\E765\"; }\n\n.icon--Play:before {\n  content: \"\\E768\"; }\n\n.icon--Pause:before {\n  content: \"\\E769\"; }\n\n.icon--ChevronLeft:before {\n  content: \"\\E76B\"; }\n\n.icon--ChevronRight:before {\n  content: \"\\E76C\"; }\n\n.icon--Emoji2:before {\n  content: \"\\E76E\"; }\n\n.icon--Globe:before {\n  content: \"\\E774\"; }\n\n.icon--Contact:before {\n  content: \"\\E77B\"; }\n\n.icon--Unlock:before {\n  content: \"\\E785\"; }\n\n.icon--AutoEnhanceOn:before {\n  content: \"\\E78D\"; }\n\n.icon--Light:before {\n  content: \"\\E793\"; }\n\n.icon--Redo:before {\n  content: \"\\E7A6\"; }\n\n.icon--Undo:before {\n  content: \"\\E7A7\"; }\n\n.icon--Crop:before {\n  content: \"\\E7A8\"; }\n\n.icon--Warning:before {\n  content: \"\\E7BA\"; }\n\n.icon--Flag:before {\n  content: \"\\E7C1\"; }\n\n.icon--Page:before {\n  content: \"\\E7C3\"; }\n\n.icon--Tab:before {\n  content: \"\\E7E9\"; }\n\n.icon--Pinned:before {\n  content: \"\\E840\"; }\n\n.icon--RevToggleKey:before {\n  content: \"\\E845\"; }\n\n.icon--Previous:before {\n  content: \"\\E892\"; }\n\n.icon--Next:before {\n  content: \"\\E893\"; }\n\n.icon--Clear:before {\n  content: \"\\E894\"; }\n\n.icon--Sync:before {\n  content: \"\\E895\"; }\n\n.icon--Download:before {\n  content: \"\\E896\"; }\n\n.icon--Help:before {\n  content: \"\\E897\"; }\n\n.icon--OpenInNewWindow:before {\n  content: \"\\E8A7\"; }\n\n.icon--Switch:before {\n  content: \"\\E8AB\"; }\n\n.icon--ChromeClose:before {\n  content: \"\\E8BB\"; }\n\n.icon--Message:before {\n  content: \"\\E8BD\"; }\n\n.icon--Copy:before {\n  content: \"\\E8C8\"; }\n\n.icon--Like:before {\n  content: \"\\E8E1\"; }\n\n.icon--AddFriend:before {\n  content: \"\\E8FA\"; }\n\n.icon--Accept:before {\n  content: \"\\E8FB\"; }\n\n.icon--Comment:before {\n  content: \"\\E90A\"; }\n\n.icon--Repair:before {\n  content: \"\\E90F\"; }\n\n.icon--FullCircleMask:before {\n  content: \"\\E91F\"; }\n\n.icon--LocationFill:before {\n  content: \"\\E920\"; }\n\n.icon--FlickDown:before {\n  content: \"\\E935\"; }\n\n.icon--FlickUp:before {\n  content: \"\\E936\"; }\n\n.icon--FlickLeft:before {\n  content: \"\\E937\"; }\n\n.icon--FlickRight:before {\n  content: \"\\E938\"; }\n\n.icon--Code:before {\n  content: \"\\E943\"; }\n\n.icon--Info:before {\n  content: \"\\E946\"; }\n\n.icon--CalculatorMultiply:before {\n  content: \"\\E947\"; }\n\n.icon--CalculatorAddition:before {\n  content: \"\\E948\"; }\n\n.icon--CalculatorSubtract:before {\n  content: \"\\E949\"; }\n\n.icon--CalculatorEqualTo:before {\n  content: \"\\E94E\"; }\n\n.icon--ChevronUpSmall:before {\n  content: \"\\E96D\"; }\n\n.icon--ChevronDownSmall:before {\n  content: \"\\E96E\"; }\n\n.icon--ChevronLeftSmall:before {\n  content: \"\\E96F\"; }\n\n.icon--ChevronRightSmall:before {\n  content: \"\\E970\"; }\n\n.icon--ChevronUpMed:before {\n  content: \"\\E971\"; }\n\n.icon--ChevronDownMed:before {\n  content: \"\\E972\"; }\n\n.icon--ChevronLeftMed:before {\n  content: \"\\E973\"; }\n\n.icon--ChevronRightMed:before {\n  content: \"\\E974\"; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./styles/Kpi.css":
+/*!**************************************************!*\
+  !*** ./node_modules/css-loader!./styles/Kpi.css ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "/* .kpiButton{\r\n  height: 100px;\r\n  width: 100px;\r\n  background:transparent;\r\n  border:none;\r\n  margin-right: 10px;\r\n}\r\n\r\n.kpiButton:hover{\r\n  background:transparent;\r\n  \r\n} */\r\n.select-style{\r\n  /* font-size: 0.6rem;\r\n  height: 0.6rem;\r\n  width: 0.6rem; */\r\n}\r\n.add-btn-style{\r\n  background: #5755d9;\r\n  border-color: #4b48d6;\r\n  color: #fff;\r\n  height: 1.4rem;\r\n  padding: .05rem .3rem;\r\n  font-size: 0.6rem;\r\n}\r\n\r\n.kpi-preview-style{\r\n  margin: 4px;\r\n  height: 100px;\r\n}\r\n\r\n.kpi-proceed-btn{\r\n  display: flex;\r\n  justify-content: flex-start;\r\n  margin-left: 10px;\r\n  margin-top: 40px;\r\n}\r\n.kpi-proceed-btn .btn.btn-primary{\r\n  background: #f3c907;\r\n  border-color: #f3c907;\r\n  color:black;\r\n \r\n}\r\n\r\n.bf-editor-vdt-selection{\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 10px;\r\n\r\n}\r\n.bf-editor-vdt-selection-item{\r\n  display: flex;\r\n  flex-direction: row;\r\n  border:1px solid #80808040;\r\n  /* border:1px solid #f3c907; */\r\n  justify-content:start;\r\n  border-radius: 0px;\r\n  margin: 10px;\r\n  padding: 0px;\r\n  position: relative;\r\n}\r\n.bf-editor-vdt-selection-item-active{\r\n  display: flex;\r\n  flex-direction: row;\r\n  /* border:1px solid #80808040; */\r\n  border:1px solid black;\r\n  justify-content:start;\r\n  border-radius: 6px;\r\n  margin: 10px;\r\n  padding: 0px;\r\n  position: relative;\r\n}\r\n.zoom-button {\r\n  position: absolute;\r\n  height: 25px;\r\n  width: 25px;\r\n  right: 10px;\r\n  top: 10px;\r\n  background: #d6d6d687;\r\n  padding: 3px 4px 4px 4px;\r\n  border-radius: 2px;\r\n}", ""]);
 
 // exports
 
@@ -57782,6 +55968,72 @@ module.exports = toString;
 
 /***/ }),
 
+/***/ "./node_modules/lower-case/lower-case.js":
+/*!***********************************************!*\
+  !*** ./node_modules/lower-case/lower-case.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * Special language-specific overrides.
+ *
+ * Source: ftp://ftp.unicode.org/Public/UCD/latest/ucd/SpecialCasing.txt
+ *
+ * @type {Object}
+ */
+var LANGUAGES = {
+  tr: {
+    regexp: /\u0130|\u0049|\u0049\u0307/g,
+    map: {
+      '\u0130': '\u0069',
+      '\u0049': '\u0131',
+      '\u0049\u0307': '\u0069'
+    }
+  },
+  az: {
+    regexp: /[\u0130]/g,
+    map: {
+      '\u0130': '\u0069',
+      '\u0049': '\u0131',
+      '\u0049\u0307': '\u0069'
+    }
+  },
+  lt: {
+    regexp: /[\u0049\u004A\u012E\u00CC\u00CD\u0128]/g,
+    map: {
+      '\u0049': '\u0069\u0307',
+      '\u004A': '\u006A\u0307',
+      '\u012E': '\u012F\u0307',
+      '\u00CC': '\u0069\u0307\u0300',
+      '\u00CD': '\u0069\u0307\u0301',
+      '\u0128': '\u0069\u0307\u0303'
+    }
+  }
+  /**
+   * Lowercase a string.
+   *
+   * @param  {String} str
+   * @return {String}
+   */
+
+};
+
+module.exports = function (str, locale) {
+  var lang = LANGUAGES[locale];
+  str = str == null ? '' : String(str);
+
+  if (lang) {
+    str = str.replace(lang.regexp, function (m) {
+      return lang.map[m];
+    });
+  }
+
+  return str.toLowerCase();
+};
+
+/***/ }),
+
 /***/ "./node_modules/mobx-react/index.module.js":
 /*!*************************************************!*\
   !*** ./node_modules/mobx-react/index.module.js ***!
@@ -64307,6 +62559,88 @@ if ( true && typeof module.exports !== "undefined") {
 
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../node-libs-browser/node_modules/process/browser.js */ "./node_modules/node-libs-browser/node_modules/process/browser.js"), __webpack_require__(/*! ./../../webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
+/***/ "./node_modules/no-case/no-case.js":
+/*!*****************************************!*\
+  !*** ./node_modules/no-case/no-case.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var lowerCase = __webpack_require__(/*! lower-case */ "./node_modules/lower-case/lower-case.js");
+
+var NON_WORD_REGEXP = __webpack_require__(/*! ./vendor/non-word-regexp */ "./node_modules/no-case/vendor/non-word-regexp.js");
+
+var CAMEL_CASE_REGEXP = __webpack_require__(/*! ./vendor/camel-case-regexp */ "./node_modules/no-case/vendor/camel-case-regexp.js");
+
+var CAMEL_CASE_UPPER_REGEXP = __webpack_require__(/*! ./vendor/camel-case-upper-regexp */ "./node_modules/no-case/vendor/camel-case-upper-regexp.js");
+/**
+ * Sentence case a string.
+ *
+ * @param  {string} str
+ * @param  {string} locale
+ * @param  {string} replacement
+ * @return {string}
+ */
+
+
+module.exports = function (str, locale, replacement) {
+  if (str == null) {
+    return '';
+  }
+
+  replacement = typeof replacement !== 'string' ? ' ' : replacement;
+
+  function replace(match, index, value) {
+    if (index === 0 || index === value.length - match.length) {
+      return '';
+    }
+
+    return replacement;
+  }
+
+  str = String(str) // Support camel case ("camelCase" -> "camel Case").
+  .replace(CAMEL_CASE_REGEXP, '$1 $2') // Support odd camel case ("CAMELCase" -> "CAMEL Case").
+  .replace(CAMEL_CASE_UPPER_REGEXP, '$1 $2') // Remove all non-word characters and replace with a single space.
+  .replace(NON_WORD_REGEXP, replace); // Lower case the entire string.
+
+  return lowerCase(str, locale);
+};
+
+/***/ }),
+
+/***/ "./node_modules/no-case/vendor/camel-case-regexp.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/no-case/vendor/camel-case-regexp.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = /([a-z\xB5\xDF-\xF6\xF8-\xFF\u0101\u0103\u0105\u0107\u0109\u010B\u010D\u010F\u0111\u0113\u0115\u0117\u0119\u011B\u011D\u011F\u0121\u0123\u0125\u0127\u0129\u012B\u012D\u012F\u0131\u0133\u0135\u0137\u0138\u013A\u013C\u013E\u0140\u0142\u0144\u0146\u0148\u0149\u014B\u014D\u014F\u0151\u0153\u0155\u0157\u0159\u015B\u015D\u015F\u0161\u0163\u0165\u0167\u0169\u016B\u016D\u016F\u0171\u0173\u0175\u0177\u017A\u017C\u017E-\u0180\u0183\u0185\u0188\u018C\u018D\u0192\u0195\u0199-\u019B\u019E\u01A1\u01A3\u01A5\u01A8\u01AA\u01AB\u01AD\u01B0\u01B4\u01B6\u01B9\u01BA\u01BD-\u01BF\u01C6\u01C9\u01CC\u01CE\u01D0\u01D2\u01D4\u01D6\u01D8\u01DA\u01DC\u01DD\u01DF\u01E1\u01E3\u01E5\u01E7\u01E9\u01EB\u01ED\u01EF\u01F0\u01F3\u01F5\u01F9\u01FB\u01FD\u01FF\u0201\u0203\u0205\u0207\u0209\u020B\u020D\u020F\u0211\u0213\u0215\u0217\u0219\u021B\u021D\u021F\u0221\u0223\u0225\u0227\u0229\u022B\u022D\u022F\u0231\u0233-\u0239\u023C\u023F\u0240\u0242\u0247\u0249\u024B\u024D\u024F-\u0293\u0295-\u02AF\u0371\u0373\u0377\u037B-\u037D\u0390\u03AC-\u03CE\u03D0\u03D1\u03D5-\u03D7\u03D9\u03DB\u03DD\u03DF\u03E1\u03E3\u03E5\u03E7\u03E9\u03EB\u03ED\u03EF-\u03F3\u03F5\u03F8\u03FB\u03FC\u0430-\u045F\u0461\u0463\u0465\u0467\u0469\u046B\u046D\u046F\u0471\u0473\u0475\u0477\u0479\u047B\u047D\u047F\u0481\u048B\u048D\u048F\u0491\u0493\u0495\u0497\u0499\u049B\u049D\u049F\u04A1\u04A3\u04A5\u04A7\u04A9\u04AB\u04AD\u04AF\u04B1\u04B3\u04B5\u04B7\u04B9\u04BB\u04BD\u04BF\u04C2\u04C4\u04C6\u04C8\u04CA\u04CC\u04CE\u04CF\u04D1\u04D3\u04D5\u04D7\u04D9\u04DB\u04DD\u04DF\u04E1\u04E3\u04E5\u04E7\u04E9\u04EB\u04ED\u04EF\u04F1\u04F3\u04F5\u04F7\u04F9\u04FB\u04FD\u04FF\u0501\u0503\u0505\u0507\u0509\u050B\u050D\u050F\u0511\u0513\u0515\u0517\u0519\u051B\u051D\u051F\u0521\u0523\u0525\u0527\u0529\u052B\u052D\u052F\u0561-\u0587\u13F8-\u13FD\u1D00-\u1D2B\u1D6B-\u1D77\u1D79-\u1D9A\u1E01\u1E03\u1E05\u1E07\u1E09\u1E0B\u1E0D\u1E0F\u1E11\u1E13\u1E15\u1E17\u1E19\u1E1B\u1E1D\u1E1F\u1E21\u1E23\u1E25\u1E27\u1E29\u1E2B\u1E2D\u1E2F\u1E31\u1E33\u1E35\u1E37\u1E39\u1E3B\u1E3D\u1E3F\u1E41\u1E43\u1E45\u1E47\u1E49\u1E4B\u1E4D\u1E4F\u1E51\u1E53\u1E55\u1E57\u1E59\u1E5B\u1E5D\u1E5F\u1E61\u1E63\u1E65\u1E67\u1E69\u1E6B\u1E6D\u1E6F\u1E71\u1E73\u1E75\u1E77\u1E79\u1E7B\u1E7D\u1E7F\u1E81\u1E83\u1E85\u1E87\u1E89\u1E8B\u1E8D\u1E8F\u1E91\u1E93\u1E95-\u1E9D\u1E9F\u1EA1\u1EA3\u1EA5\u1EA7\u1EA9\u1EAB\u1EAD\u1EAF\u1EB1\u1EB3\u1EB5\u1EB7\u1EB9\u1EBB\u1EBD\u1EBF\u1EC1\u1EC3\u1EC5\u1EC7\u1EC9\u1ECB\u1ECD\u1ECF\u1ED1\u1ED3\u1ED5\u1ED7\u1ED9\u1EDB\u1EDD\u1EDF\u1EE1\u1EE3\u1EE5\u1EE7\u1EE9\u1EEB\u1EED\u1EEF\u1EF1\u1EF3\u1EF5\u1EF7\u1EF9\u1EFB\u1EFD\u1EFF-\u1F07\u1F10-\u1F15\u1F20-\u1F27\u1F30-\u1F37\u1F40-\u1F45\u1F50-\u1F57\u1F60-\u1F67\u1F70-\u1F7D\u1F80-\u1F87\u1F90-\u1F97\u1FA0-\u1FA7\u1FB0-\u1FB4\u1FB6\u1FB7\u1FBE\u1FC2-\u1FC4\u1FC6\u1FC7\u1FD0-\u1FD3\u1FD6\u1FD7\u1FE0-\u1FE7\u1FF2-\u1FF4\u1FF6\u1FF7\u210A\u210E\u210F\u2113\u212F\u2134\u2139\u213C\u213D\u2146-\u2149\u214E\u2184\u2C30-\u2C5E\u2C61\u2C65\u2C66\u2C68\u2C6A\u2C6C\u2C71\u2C73\u2C74\u2C76-\u2C7B\u2C81\u2C83\u2C85\u2C87\u2C89\u2C8B\u2C8D\u2C8F\u2C91\u2C93\u2C95\u2C97\u2C99\u2C9B\u2C9D\u2C9F\u2CA1\u2CA3\u2CA5\u2CA7\u2CA9\u2CAB\u2CAD\u2CAF\u2CB1\u2CB3\u2CB5\u2CB7\u2CB9\u2CBB\u2CBD\u2CBF\u2CC1\u2CC3\u2CC5\u2CC7\u2CC9\u2CCB\u2CCD\u2CCF\u2CD1\u2CD3\u2CD5\u2CD7\u2CD9\u2CDB\u2CDD\u2CDF\u2CE1\u2CE3\u2CE4\u2CEC\u2CEE\u2CF3\u2D00-\u2D25\u2D27\u2D2D\uA641\uA643\uA645\uA647\uA649\uA64B\uA64D\uA64F\uA651\uA653\uA655\uA657\uA659\uA65B\uA65D\uA65F\uA661\uA663\uA665\uA667\uA669\uA66B\uA66D\uA681\uA683\uA685\uA687\uA689\uA68B\uA68D\uA68F\uA691\uA693\uA695\uA697\uA699\uA69B\uA723\uA725\uA727\uA729\uA72B\uA72D\uA72F-\uA731\uA733\uA735\uA737\uA739\uA73B\uA73D\uA73F\uA741\uA743\uA745\uA747\uA749\uA74B\uA74D\uA74F\uA751\uA753\uA755\uA757\uA759\uA75B\uA75D\uA75F\uA761\uA763\uA765\uA767\uA769\uA76B\uA76D\uA76F\uA771-\uA778\uA77A\uA77C\uA77F\uA781\uA783\uA785\uA787\uA78C\uA78E\uA791\uA793-\uA795\uA797\uA799\uA79B\uA79D\uA79F\uA7A1\uA7A3\uA7A5\uA7A7\uA7A9\uA7B5\uA7B7\uA7FA\uAB30-\uAB5A\uAB60-\uAB65\uAB70-\uABBF\uFB00-\uFB06\uFB13-\uFB17\uFF41-\uFF5A0-9\xB2\xB3\xB9\xBC-\xBE\u0660-\u0669\u06F0-\u06F9\u07C0-\u07C9\u0966-\u096F\u09E6-\u09EF\u09F4-\u09F9\u0A66-\u0A6F\u0AE6-\u0AEF\u0B66-\u0B6F\u0B72-\u0B77\u0BE6-\u0BF2\u0C66-\u0C6F\u0C78-\u0C7E\u0CE6-\u0CEF\u0D66-\u0D75\u0DE6-\u0DEF\u0E50-\u0E59\u0ED0-\u0ED9\u0F20-\u0F33\u1040-\u1049\u1090-\u1099\u1369-\u137C\u16EE-\u16F0\u17E0-\u17E9\u17F0-\u17F9\u1810-\u1819\u1946-\u194F\u19D0-\u19DA\u1A80-\u1A89\u1A90-\u1A99\u1B50-\u1B59\u1BB0-\u1BB9\u1C40-\u1C49\u1C50-\u1C59\u2070\u2074-\u2079\u2080-\u2089\u2150-\u2182\u2185-\u2189\u2460-\u249B\u24EA-\u24FF\u2776-\u2793\u2CFD\u3007\u3021-\u3029\u3038-\u303A\u3192-\u3195\u3220-\u3229\u3248-\u324F\u3251-\u325F\u3280-\u3289\u32B1-\u32BF\uA620-\uA629\uA6E6-\uA6EF\uA830-\uA835\uA8D0-\uA8D9\uA900-\uA909\uA9D0-\uA9D9\uA9F0-\uA9F9\uAA50-\uAA59\uABF0-\uABF9\uFF10-\uFF19])([A-Z\xC0-\xD6\xD8-\xDE\u0100\u0102\u0104\u0106\u0108\u010A\u010C\u010E\u0110\u0112\u0114\u0116\u0118\u011A\u011C\u011E\u0120\u0122\u0124\u0126\u0128\u012A\u012C\u012E\u0130\u0132\u0134\u0136\u0139\u013B\u013D\u013F\u0141\u0143\u0145\u0147\u014A\u014C\u014E\u0150\u0152\u0154\u0156\u0158\u015A\u015C\u015E\u0160\u0162\u0164\u0166\u0168\u016A\u016C\u016E\u0170\u0172\u0174\u0176\u0178\u0179\u017B\u017D\u0181\u0182\u0184\u0186\u0187\u0189-\u018B\u018E-\u0191\u0193\u0194\u0196-\u0198\u019C\u019D\u019F\u01A0\u01A2\u01A4\u01A6\u01A7\u01A9\u01AC\u01AE\u01AF\u01B1-\u01B3\u01B5\u01B7\u01B8\u01BC\u01C4\u01C7\u01CA\u01CD\u01CF\u01D1\u01D3\u01D5\u01D7\u01D9\u01DB\u01DE\u01E0\u01E2\u01E4\u01E6\u01E8\u01EA\u01EC\u01EE\u01F1\u01F4\u01F6-\u01F8\u01FA\u01FC\u01FE\u0200\u0202\u0204\u0206\u0208\u020A\u020C\u020E\u0210\u0212\u0214\u0216\u0218\u021A\u021C\u021E\u0220\u0222\u0224\u0226\u0228\u022A\u022C\u022E\u0230\u0232\u023A\u023B\u023D\u023E\u0241\u0243-\u0246\u0248\u024A\u024C\u024E\u0370\u0372\u0376\u037F\u0386\u0388-\u038A\u038C\u038E\u038F\u0391-\u03A1\u03A3-\u03AB\u03CF\u03D2-\u03D4\u03D8\u03DA\u03DC\u03DE\u03E0\u03E2\u03E4\u03E6\u03E8\u03EA\u03EC\u03EE\u03F4\u03F7\u03F9\u03FA\u03FD-\u042F\u0460\u0462\u0464\u0466\u0468\u046A\u046C\u046E\u0470\u0472\u0474\u0476\u0478\u047A\u047C\u047E\u0480\u048A\u048C\u048E\u0490\u0492\u0494\u0496\u0498\u049A\u049C\u049E\u04A0\u04A2\u04A4\u04A6\u04A8\u04AA\u04AC\u04AE\u04B0\u04B2\u04B4\u04B6\u04B8\u04BA\u04BC\u04BE\u04C0\u04C1\u04C3\u04C5\u04C7\u04C9\u04CB\u04CD\u04D0\u04D2\u04D4\u04D6\u04D8\u04DA\u04DC\u04DE\u04E0\u04E2\u04E4\u04E6\u04E8\u04EA\u04EC\u04EE\u04F0\u04F2\u04F4\u04F6\u04F8\u04FA\u04FC\u04FE\u0500\u0502\u0504\u0506\u0508\u050A\u050C\u050E\u0510\u0512\u0514\u0516\u0518\u051A\u051C\u051E\u0520\u0522\u0524\u0526\u0528\u052A\u052C\u052E\u0531-\u0556\u10A0-\u10C5\u10C7\u10CD\u13A0-\u13F5\u1E00\u1E02\u1E04\u1E06\u1E08\u1E0A\u1E0C\u1E0E\u1E10\u1E12\u1E14\u1E16\u1E18\u1E1A\u1E1C\u1E1E\u1E20\u1E22\u1E24\u1E26\u1E28\u1E2A\u1E2C\u1E2E\u1E30\u1E32\u1E34\u1E36\u1E38\u1E3A\u1E3C\u1E3E\u1E40\u1E42\u1E44\u1E46\u1E48\u1E4A\u1E4C\u1E4E\u1E50\u1E52\u1E54\u1E56\u1E58\u1E5A\u1E5C\u1E5E\u1E60\u1E62\u1E64\u1E66\u1E68\u1E6A\u1E6C\u1E6E\u1E70\u1E72\u1E74\u1E76\u1E78\u1E7A\u1E7C\u1E7E\u1E80\u1E82\u1E84\u1E86\u1E88\u1E8A\u1E8C\u1E8E\u1E90\u1E92\u1E94\u1E9E\u1EA0\u1EA2\u1EA4\u1EA6\u1EA8\u1EAA\u1EAC\u1EAE\u1EB0\u1EB2\u1EB4\u1EB6\u1EB8\u1EBA\u1EBC\u1EBE\u1EC0\u1EC2\u1EC4\u1EC6\u1EC8\u1ECA\u1ECC\u1ECE\u1ED0\u1ED2\u1ED4\u1ED6\u1ED8\u1EDA\u1EDC\u1EDE\u1EE0\u1EE2\u1EE4\u1EE6\u1EE8\u1EEA\u1EEC\u1EEE\u1EF0\u1EF2\u1EF4\u1EF6\u1EF8\u1EFA\u1EFC\u1EFE\u1F08-\u1F0F\u1F18-\u1F1D\u1F28-\u1F2F\u1F38-\u1F3F\u1F48-\u1F4D\u1F59\u1F5B\u1F5D\u1F5F\u1F68-\u1F6F\u1FB8-\u1FBB\u1FC8-\u1FCB\u1FD8-\u1FDB\u1FE8-\u1FEC\u1FF8-\u1FFB\u2102\u2107\u210B-\u210D\u2110-\u2112\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u2130-\u2133\u213E\u213F\u2145\u2183\u2C00-\u2C2E\u2C60\u2C62-\u2C64\u2C67\u2C69\u2C6B\u2C6D-\u2C70\u2C72\u2C75\u2C7E-\u2C80\u2C82\u2C84\u2C86\u2C88\u2C8A\u2C8C\u2C8E\u2C90\u2C92\u2C94\u2C96\u2C98\u2C9A\u2C9C\u2C9E\u2CA0\u2CA2\u2CA4\u2CA6\u2CA8\u2CAA\u2CAC\u2CAE\u2CB0\u2CB2\u2CB4\u2CB6\u2CB8\u2CBA\u2CBC\u2CBE\u2CC0\u2CC2\u2CC4\u2CC6\u2CC8\u2CCA\u2CCC\u2CCE\u2CD0\u2CD2\u2CD4\u2CD6\u2CD8\u2CDA\u2CDC\u2CDE\u2CE0\u2CE2\u2CEB\u2CED\u2CF2\uA640\uA642\uA644\uA646\uA648\uA64A\uA64C\uA64E\uA650\uA652\uA654\uA656\uA658\uA65A\uA65C\uA65E\uA660\uA662\uA664\uA666\uA668\uA66A\uA66C\uA680\uA682\uA684\uA686\uA688\uA68A\uA68C\uA68E\uA690\uA692\uA694\uA696\uA698\uA69A\uA722\uA724\uA726\uA728\uA72A\uA72C\uA72E\uA732\uA734\uA736\uA738\uA73A\uA73C\uA73E\uA740\uA742\uA744\uA746\uA748\uA74A\uA74C\uA74E\uA750\uA752\uA754\uA756\uA758\uA75A\uA75C\uA75E\uA760\uA762\uA764\uA766\uA768\uA76A\uA76C\uA76E\uA779\uA77B\uA77D\uA77E\uA780\uA782\uA784\uA786\uA78B\uA78D\uA790\uA792\uA796\uA798\uA79A\uA79C\uA79E\uA7A0\uA7A2\uA7A4\uA7A6\uA7A8\uA7AA-\uA7AD\uA7B0-\uA7B4\uA7B6\uFF21-\uFF3A])/g;
+
+/***/ }),
+
+/***/ "./node_modules/no-case/vendor/camel-case-upper-regexp.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/no-case/vendor/camel-case-upper-regexp.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = /([A-Z\xC0-\xD6\xD8-\xDE\u0100\u0102\u0104\u0106\u0108\u010A\u010C\u010E\u0110\u0112\u0114\u0116\u0118\u011A\u011C\u011E\u0120\u0122\u0124\u0126\u0128\u012A\u012C\u012E\u0130\u0132\u0134\u0136\u0139\u013B\u013D\u013F\u0141\u0143\u0145\u0147\u014A\u014C\u014E\u0150\u0152\u0154\u0156\u0158\u015A\u015C\u015E\u0160\u0162\u0164\u0166\u0168\u016A\u016C\u016E\u0170\u0172\u0174\u0176\u0178\u0179\u017B\u017D\u0181\u0182\u0184\u0186\u0187\u0189-\u018B\u018E-\u0191\u0193\u0194\u0196-\u0198\u019C\u019D\u019F\u01A0\u01A2\u01A4\u01A6\u01A7\u01A9\u01AC\u01AE\u01AF\u01B1-\u01B3\u01B5\u01B7\u01B8\u01BC\u01C4\u01C7\u01CA\u01CD\u01CF\u01D1\u01D3\u01D5\u01D7\u01D9\u01DB\u01DE\u01E0\u01E2\u01E4\u01E6\u01E8\u01EA\u01EC\u01EE\u01F1\u01F4\u01F6-\u01F8\u01FA\u01FC\u01FE\u0200\u0202\u0204\u0206\u0208\u020A\u020C\u020E\u0210\u0212\u0214\u0216\u0218\u021A\u021C\u021E\u0220\u0222\u0224\u0226\u0228\u022A\u022C\u022E\u0230\u0232\u023A\u023B\u023D\u023E\u0241\u0243-\u0246\u0248\u024A\u024C\u024E\u0370\u0372\u0376\u037F\u0386\u0388-\u038A\u038C\u038E\u038F\u0391-\u03A1\u03A3-\u03AB\u03CF\u03D2-\u03D4\u03D8\u03DA\u03DC\u03DE\u03E0\u03E2\u03E4\u03E6\u03E8\u03EA\u03EC\u03EE\u03F4\u03F7\u03F9\u03FA\u03FD-\u042F\u0460\u0462\u0464\u0466\u0468\u046A\u046C\u046E\u0470\u0472\u0474\u0476\u0478\u047A\u047C\u047E\u0480\u048A\u048C\u048E\u0490\u0492\u0494\u0496\u0498\u049A\u049C\u049E\u04A0\u04A2\u04A4\u04A6\u04A8\u04AA\u04AC\u04AE\u04B0\u04B2\u04B4\u04B6\u04B8\u04BA\u04BC\u04BE\u04C0\u04C1\u04C3\u04C5\u04C7\u04C9\u04CB\u04CD\u04D0\u04D2\u04D4\u04D6\u04D8\u04DA\u04DC\u04DE\u04E0\u04E2\u04E4\u04E6\u04E8\u04EA\u04EC\u04EE\u04F0\u04F2\u04F4\u04F6\u04F8\u04FA\u04FC\u04FE\u0500\u0502\u0504\u0506\u0508\u050A\u050C\u050E\u0510\u0512\u0514\u0516\u0518\u051A\u051C\u051E\u0520\u0522\u0524\u0526\u0528\u052A\u052C\u052E\u0531-\u0556\u10A0-\u10C5\u10C7\u10CD\u13A0-\u13F5\u1E00\u1E02\u1E04\u1E06\u1E08\u1E0A\u1E0C\u1E0E\u1E10\u1E12\u1E14\u1E16\u1E18\u1E1A\u1E1C\u1E1E\u1E20\u1E22\u1E24\u1E26\u1E28\u1E2A\u1E2C\u1E2E\u1E30\u1E32\u1E34\u1E36\u1E38\u1E3A\u1E3C\u1E3E\u1E40\u1E42\u1E44\u1E46\u1E48\u1E4A\u1E4C\u1E4E\u1E50\u1E52\u1E54\u1E56\u1E58\u1E5A\u1E5C\u1E5E\u1E60\u1E62\u1E64\u1E66\u1E68\u1E6A\u1E6C\u1E6E\u1E70\u1E72\u1E74\u1E76\u1E78\u1E7A\u1E7C\u1E7E\u1E80\u1E82\u1E84\u1E86\u1E88\u1E8A\u1E8C\u1E8E\u1E90\u1E92\u1E94\u1E9E\u1EA0\u1EA2\u1EA4\u1EA6\u1EA8\u1EAA\u1EAC\u1EAE\u1EB0\u1EB2\u1EB4\u1EB6\u1EB8\u1EBA\u1EBC\u1EBE\u1EC0\u1EC2\u1EC4\u1EC6\u1EC8\u1ECA\u1ECC\u1ECE\u1ED0\u1ED2\u1ED4\u1ED6\u1ED8\u1EDA\u1EDC\u1EDE\u1EE0\u1EE2\u1EE4\u1EE6\u1EE8\u1EEA\u1EEC\u1EEE\u1EF0\u1EF2\u1EF4\u1EF6\u1EF8\u1EFA\u1EFC\u1EFE\u1F08-\u1F0F\u1F18-\u1F1D\u1F28-\u1F2F\u1F38-\u1F3F\u1F48-\u1F4D\u1F59\u1F5B\u1F5D\u1F5F\u1F68-\u1F6F\u1FB8-\u1FBB\u1FC8-\u1FCB\u1FD8-\u1FDB\u1FE8-\u1FEC\u1FF8-\u1FFB\u2102\u2107\u210B-\u210D\u2110-\u2112\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u2130-\u2133\u213E\u213F\u2145\u2183\u2C00-\u2C2E\u2C60\u2C62-\u2C64\u2C67\u2C69\u2C6B\u2C6D-\u2C70\u2C72\u2C75\u2C7E-\u2C80\u2C82\u2C84\u2C86\u2C88\u2C8A\u2C8C\u2C8E\u2C90\u2C92\u2C94\u2C96\u2C98\u2C9A\u2C9C\u2C9E\u2CA0\u2CA2\u2CA4\u2CA6\u2CA8\u2CAA\u2CAC\u2CAE\u2CB0\u2CB2\u2CB4\u2CB6\u2CB8\u2CBA\u2CBC\u2CBE\u2CC0\u2CC2\u2CC4\u2CC6\u2CC8\u2CCA\u2CCC\u2CCE\u2CD0\u2CD2\u2CD4\u2CD6\u2CD8\u2CDA\u2CDC\u2CDE\u2CE0\u2CE2\u2CEB\u2CED\u2CF2\uA640\uA642\uA644\uA646\uA648\uA64A\uA64C\uA64E\uA650\uA652\uA654\uA656\uA658\uA65A\uA65C\uA65E\uA660\uA662\uA664\uA666\uA668\uA66A\uA66C\uA680\uA682\uA684\uA686\uA688\uA68A\uA68C\uA68E\uA690\uA692\uA694\uA696\uA698\uA69A\uA722\uA724\uA726\uA728\uA72A\uA72C\uA72E\uA732\uA734\uA736\uA738\uA73A\uA73C\uA73E\uA740\uA742\uA744\uA746\uA748\uA74A\uA74C\uA74E\uA750\uA752\uA754\uA756\uA758\uA75A\uA75C\uA75E\uA760\uA762\uA764\uA766\uA768\uA76A\uA76C\uA76E\uA779\uA77B\uA77D\uA77E\uA780\uA782\uA784\uA786\uA78B\uA78D\uA790\uA792\uA796\uA798\uA79A\uA79C\uA79E\uA7A0\uA7A2\uA7A4\uA7A6\uA7A8\uA7AA-\uA7AD\uA7B0-\uA7B4\uA7B6\uFF21-\uFF3A])([A-Z\xC0-\xD6\xD8-\xDE\u0100\u0102\u0104\u0106\u0108\u010A\u010C\u010E\u0110\u0112\u0114\u0116\u0118\u011A\u011C\u011E\u0120\u0122\u0124\u0126\u0128\u012A\u012C\u012E\u0130\u0132\u0134\u0136\u0139\u013B\u013D\u013F\u0141\u0143\u0145\u0147\u014A\u014C\u014E\u0150\u0152\u0154\u0156\u0158\u015A\u015C\u015E\u0160\u0162\u0164\u0166\u0168\u016A\u016C\u016E\u0170\u0172\u0174\u0176\u0178\u0179\u017B\u017D\u0181\u0182\u0184\u0186\u0187\u0189-\u018B\u018E-\u0191\u0193\u0194\u0196-\u0198\u019C\u019D\u019F\u01A0\u01A2\u01A4\u01A6\u01A7\u01A9\u01AC\u01AE\u01AF\u01B1-\u01B3\u01B5\u01B7\u01B8\u01BC\u01C4\u01C7\u01CA\u01CD\u01CF\u01D1\u01D3\u01D5\u01D7\u01D9\u01DB\u01DE\u01E0\u01E2\u01E4\u01E6\u01E8\u01EA\u01EC\u01EE\u01F1\u01F4\u01F6-\u01F8\u01FA\u01FC\u01FE\u0200\u0202\u0204\u0206\u0208\u020A\u020C\u020E\u0210\u0212\u0214\u0216\u0218\u021A\u021C\u021E\u0220\u0222\u0224\u0226\u0228\u022A\u022C\u022E\u0230\u0232\u023A\u023B\u023D\u023E\u0241\u0243-\u0246\u0248\u024A\u024C\u024E\u0370\u0372\u0376\u037F\u0386\u0388-\u038A\u038C\u038E\u038F\u0391-\u03A1\u03A3-\u03AB\u03CF\u03D2-\u03D4\u03D8\u03DA\u03DC\u03DE\u03E0\u03E2\u03E4\u03E6\u03E8\u03EA\u03EC\u03EE\u03F4\u03F7\u03F9\u03FA\u03FD-\u042F\u0460\u0462\u0464\u0466\u0468\u046A\u046C\u046E\u0470\u0472\u0474\u0476\u0478\u047A\u047C\u047E\u0480\u048A\u048C\u048E\u0490\u0492\u0494\u0496\u0498\u049A\u049C\u049E\u04A0\u04A2\u04A4\u04A6\u04A8\u04AA\u04AC\u04AE\u04B0\u04B2\u04B4\u04B6\u04B8\u04BA\u04BC\u04BE\u04C0\u04C1\u04C3\u04C5\u04C7\u04C9\u04CB\u04CD\u04D0\u04D2\u04D4\u04D6\u04D8\u04DA\u04DC\u04DE\u04E0\u04E2\u04E4\u04E6\u04E8\u04EA\u04EC\u04EE\u04F0\u04F2\u04F4\u04F6\u04F8\u04FA\u04FC\u04FE\u0500\u0502\u0504\u0506\u0508\u050A\u050C\u050E\u0510\u0512\u0514\u0516\u0518\u051A\u051C\u051E\u0520\u0522\u0524\u0526\u0528\u052A\u052C\u052E\u0531-\u0556\u10A0-\u10C5\u10C7\u10CD\u13A0-\u13F5\u1E00\u1E02\u1E04\u1E06\u1E08\u1E0A\u1E0C\u1E0E\u1E10\u1E12\u1E14\u1E16\u1E18\u1E1A\u1E1C\u1E1E\u1E20\u1E22\u1E24\u1E26\u1E28\u1E2A\u1E2C\u1E2E\u1E30\u1E32\u1E34\u1E36\u1E38\u1E3A\u1E3C\u1E3E\u1E40\u1E42\u1E44\u1E46\u1E48\u1E4A\u1E4C\u1E4E\u1E50\u1E52\u1E54\u1E56\u1E58\u1E5A\u1E5C\u1E5E\u1E60\u1E62\u1E64\u1E66\u1E68\u1E6A\u1E6C\u1E6E\u1E70\u1E72\u1E74\u1E76\u1E78\u1E7A\u1E7C\u1E7E\u1E80\u1E82\u1E84\u1E86\u1E88\u1E8A\u1E8C\u1E8E\u1E90\u1E92\u1E94\u1E9E\u1EA0\u1EA2\u1EA4\u1EA6\u1EA8\u1EAA\u1EAC\u1EAE\u1EB0\u1EB2\u1EB4\u1EB6\u1EB8\u1EBA\u1EBC\u1EBE\u1EC0\u1EC2\u1EC4\u1EC6\u1EC8\u1ECA\u1ECC\u1ECE\u1ED0\u1ED2\u1ED4\u1ED6\u1ED8\u1EDA\u1EDC\u1EDE\u1EE0\u1EE2\u1EE4\u1EE6\u1EE8\u1EEA\u1EEC\u1EEE\u1EF0\u1EF2\u1EF4\u1EF6\u1EF8\u1EFA\u1EFC\u1EFE\u1F08-\u1F0F\u1F18-\u1F1D\u1F28-\u1F2F\u1F38-\u1F3F\u1F48-\u1F4D\u1F59\u1F5B\u1F5D\u1F5F\u1F68-\u1F6F\u1FB8-\u1FBB\u1FC8-\u1FCB\u1FD8-\u1FDB\u1FE8-\u1FEC\u1FF8-\u1FFB\u2102\u2107\u210B-\u210D\u2110-\u2112\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u2130-\u2133\u213E\u213F\u2145\u2183\u2C00-\u2C2E\u2C60\u2C62-\u2C64\u2C67\u2C69\u2C6B\u2C6D-\u2C70\u2C72\u2C75\u2C7E-\u2C80\u2C82\u2C84\u2C86\u2C88\u2C8A\u2C8C\u2C8E\u2C90\u2C92\u2C94\u2C96\u2C98\u2C9A\u2C9C\u2C9E\u2CA0\u2CA2\u2CA4\u2CA6\u2CA8\u2CAA\u2CAC\u2CAE\u2CB0\u2CB2\u2CB4\u2CB6\u2CB8\u2CBA\u2CBC\u2CBE\u2CC0\u2CC2\u2CC4\u2CC6\u2CC8\u2CCA\u2CCC\u2CCE\u2CD0\u2CD2\u2CD4\u2CD6\u2CD8\u2CDA\u2CDC\u2CDE\u2CE0\u2CE2\u2CEB\u2CED\u2CF2\uA640\uA642\uA644\uA646\uA648\uA64A\uA64C\uA64E\uA650\uA652\uA654\uA656\uA658\uA65A\uA65C\uA65E\uA660\uA662\uA664\uA666\uA668\uA66A\uA66C\uA680\uA682\uA684\uA686\uA688\uA68A\uA68C\uA68E\uA690\uA692\uA694\uA696\uA698\uA69A\uA722\uA724\uA726\uA728\uA72A\uA72C\uA72E\uA732\uA734\uA736\uA738\uA73A\uA73C\uA73E\uA740\uA742\uA744\uA746\uA748\uA74A\uA74C\uA74E\uA750\uA752\uA754\uA756\uA758\uA75A\uA75C\uA75E\uA760\uA762\uA764\uA766\uA768\uA76A\uA76C\uA76E\uA779\uA77B\uA77D\uA77E\uA780\uA782\uA784\uA786\uA78B\uA78D\uA790\uA792\uA796\uA798\uA79A\uA79C\uA79E\uA7A0\uA7A2\uA7A4\uA7A6\uA7A8\uA7AA-\uA7AD\uA7B0-\uA7B4\uA7B6\uFF21-\uFF3A][a-z\xB5\xDF-\xF6\xF8-\xFF\u0101\u0103\u0105\u0107\u0109\u010B\u010D\u010F\u0111\u0113\u0115\u0117\u0119\u011B\u011D\u011F\u0121\u0123\u0125\u0127\u0129\u012B\u012D\u012F\u0131\u0133\u0135\u0137\u0138\u013A\u013C\u013E\u0140\u0142\u0144\u0146\u0148\u0149\u014B\u014D\u014F\u0151\u0153\u0155\u0157\u0159\u015B\u015D\u015F\u0161\u0163\u0165\u0167\u0169\u016B\u016D\u016F\u0171\u0173\u0175\u0177\u017A\u017C\u017E-\u0180\u0183\u0185\u0188\u018C\u018D\u0192\u0195\u0199-\u019B\u019E\u01A1\u01A3\u01A5\u01A8\u01AA\u01AB\u01AD\u01B0\u01B4\u01B6\u01B9\u01BA\u01BD-\u01BF\u01C6\u01C9\u01CC\u01CE\u01D0\u01D2\u01D4\u01D6\u01D8\u01DA\u01DC\u01DD\u01DF\u01E1\u01E3\u01E5\u01E7\u01E9\u01EB\u01ED\u01EF\u01F0\u01F3\u01F5\u01F9\u01FB\u01FD\u01FF\u0201\u0203\u0205\u0207\u0209\u020B\u020D\u020F\u0211\u0213\u0215\u0217\u0219\u021B\u021D\u021F\u0221\u0223\u0225\u0227\u0229\u022B\u022D\u022F\u0231\u0233-\u0239\u023C\u023F\u0240\u0242\u0247\u0249\u024B\u024D\u024F-\u0293\u0295-\u02AF\u0371\u0373\u0377\u037B-\u037D\u0390\u03AC-\u03CE\u03D0\u03D1\u03D5-\u03D7\u03D9\u03DB\u03DD\u03DF\u03E1\u03E3\u03E5\u03E7\u03E9\u03EB\u03ED\u03EF-\u03F3\u03F5\u03F8\u03FB\u03FC\u0430-\u045F\u0461\u0463\u0465\u0467\u0469\u046B\u046D\u046F\u0471\u0473\u0475\u0477\u0479\u047B\u047D\u047F\u0481\u048B\u048D\u048F\u0491\u0493\u0495\u0497\u0499\u049B\u049D\u049F\u04A1\u04A3\u04A5\u04A7\u04A9\u04AB\u04AD\u04AF\u04B1\u04B3\u04B5\u04B7\u04B9\u04BB\u04BD\u04BF\u04C2\u04C4\u04C6\u04C8\u04CA\u04CC\u04CE\u04CF\u04D1\u04D3\u04D5\u04D7\u04D9\u04DB\u04DD\u04DF\u04E1\u04E3\u04E5\u04E7\u04E9\u04EB\u04ED\u04EF\u04F1\u04F3\u04F5\u04F7\u04F9\u04FB\u04FD\u04FF\u0501\u0503\u0505\u0507\u0509\u050B\u050D\u050F\u0511\u0513\u0515\u0517\u0519\u051B\u051D\u051F\u0521\u0523\u0525\u0527\u0529\u052B\u052D\u052F\u0561-\u0587\u13F8-\u13FD\u1D00-\u1D2B\u1D6B-\u1D77\u1D79-\u1D9A\u1E01\u1E03\u1E05\u1E07\u1E09\u1E0B\u1E0D\u1E0F\u1E11\u1E13\u1E15\u1E17\u1E19\u1E1B\u1E1D\u1E1F\u1E21\u1E23\u1E25\u1E27\u1E29\u1E2B\u1E2D\u1E2F\u1E31\u1E33\u1E35\u1E37\u1E39\u1E3B\u1E3D\u1E3F\u1E41\u1E43\u1E45\u1E47\u1E49\u1E4B\u1E4D\u1E4F\u1E51\u1E53\u1E55\u1E57\u1E59\u1E5B\u1E5D\u1E5F\u1E61\u1E63\u1E65\u1E67\u1E69\u1E6B\u1E6D\u1E6F\u1E71\u1E73\u1E75\u1E77\u1E79\u1E7B\u1E7D\u1E7F\u1E81\u1E83\u1E85\u1E87\u1E89\u1E8B\u1E8D\u1E8F\u1E91\u1E93\u1E95-\u1E9D\u1E9F\u1EA1\u1EA3\u1EA5\u1EA7\u1EA9\u1EAB\u1EAD\u1EAF\u1EB1\u1EB3\u1EB5\u1EB7\u1EB9\u1EBB\u1EBD\u1EBF\u1EC1\u1EC3\u1EC5\u1EC7\u1EC9\u1ECB\u1ECD\u1ECF\u1ED1\u1ED3\u1ED5\u1ED7\u1ED9\u1EDB\u1EDD\u1EDF\u1EE1\u1EE3\u1EE5\u1EE7\u1EE9\u1EEB\u1EED\u1EEF\u1EF1\u1EF3\u1EF5\u1EF7\u1EF9\u1EFB\u1EFD\u1EFF-\u1F07\u1F10-\u1F15\u1F20-\u1F27\u1F30-\u1F37\u1F40-\u1F45\u1F50-\u1F57\u1F60-\u1F67\u1F70-\u1F7D\u1F80-\u1F87\u1F90-\u1F97\u1FA0-\u1FA7\u1FB0-\u1FB4\u1FB6\u1FB7\u1FBE\u1FC2-\u1FC4\u1FC6\u1FC7\u1FD0-\u1FD3\u1FD6\u1FD7\u1FE0-\u1FE7\u1FF2-\u1FF4\u1FF6\u1FF7\u210A\u210E\u210F\u2113\u212F\u2134\u2139\u213C\u213D\u2146-\u2149\u214E\u2184\u2C30-\u2C5E\u2C61\u2C65\u2C66\u2C68\u2C6A\u2C6C\u2C71\u2C73\u2C74\u2C76-\u2C7B\u2C81\u2C83\u2C85\u2C87\u2C89\u2C8B\u2C8D\u2C8F\u2C91\u2C93\u2C95\u2C97\u2C99\u2C9B\u2C9D\u2C9F\u2CA1\u2CA3\u2CA5\u2CA7\u2CA9\u2CAB\u2CAD\u2CAF\u2CB1\u2CB3\u2CB5\u2CB7\u2CB9\u2CBB\u2CBD\u2CBF\u2CC1\u2CC3\u2CC5\u2CC7\u2CC9\u2CCB\u2CCD\u2CCF\u2CD1\u2CD3\u2CD5\u2CD7\u2CD9\u2CDB\u2CDD\u2CDF\u2CE1\u2CE3\u2CE4\u2CEC\u2CEE\u2CF3\u2D00-\u2D25\u2D27\u2D2D\uA641\uA643\uA645\uA647\uA649\uA64B\uA64D\uA64F\uA651\uA653\uA655\uA657\uA659\uA65B\uA65D\uA65F\uA661\uA663\uA665\uA667\uA669\uA66B\uA66D\uA681\uA683\uA685\uA687\uA689\uA68B\uA68D\uA68F\uA691\uA693\uA695\uA697\uA699\uA69B\uA723\uA725\uA727\uA729\uA72B\uA72D\uA72F-\uA731\uA733\uA735\uA737\uA739\uA73B\uA73D\uA73F\uA741\uA743\uA745\uA747\uA749\uA74B\uA74D\uA74F\uA751\uA753\uA755\uA757\uA759\uA75B\uA75D\uA75F\uA761\uA763\uA765\uA767\uA769\uA76B\uA76D\uA76F\uA771-\uA778\uA77A\uA77C\uA77F\uA781\uA783\uA785\uA787\uA78C\uA78E\uA791\uA793-\uA795\uA797\uA799\uA79B\uA79D\uA79F\uA7A1\uA7A3\uA7A5\uA7A7\uA7A9\uA7B5\uA7B7\uA7FA\uAB30-\uAB5A\uAB60-\uAB65\uAB70-\uABBF\uFB00-\uFB06\uFB13-\uFB17\uFF41-\uFF5A])/g;
+
+/***/ }),
+
+/***/ "./node_modules/no-case/vendor/non-word-regexp.js":
+/*!********************************************************!*\
+  !*** ./node_modules/no-case/vendor/non-word-regexp.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = /[^A-Za-z\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0561-\u0587\u05D0-\u05EA\u05F0-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u08A0-\u08B4\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0AF9\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58-\u0C5A\u0C60\u0C61\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D5F-\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16F1-\u16F8\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1877\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1CE9-\u1CEC\u1CEE-\u1CF1\u1CF5\u1CF6\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2183\u2184\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2E2F\u3005\u3006\u3031-\u3035\u303B\u303C\u3041-\u3096\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FD5\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6E5\uA717-\uA71F\uA722-\uA788\uA78B-\uA7AD\uA7B0-\uA7B7\uA7F7-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA8FD\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB65\uAB70-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC0-9\xB2\xB3\xB9\xBC-\xBE\u0660-\u0669\u06F0-\u06F9\u07C0-\u07C9\u0966-\u096F\u09E6-\u09EF\u09F4-\u09F9\u0A66-\u0A6F\u0AE6-\u0AEF\u0B66-\u0B6F\u0B72-\u0B77\u0BE6-\u0BF2\u0C66-\u0C6F\u0C78-\u0C7E\u0CE6-\u0CEF\u0D66-\u0D75\u0DE6-\u0DEF\u0E50-\u0E59\u0ED0-\u0ED9\u0F20-\u0F33\u1040-\u1049\u1090-\u1099\u1369-\u137C\u16EE-\u16F0\u17E0-\u17E9\u17F0-\u17F9\u1810-\u1819\u1946-\u194F\u19D0-\u19DA\u1A80-\u1A89\u1A90-\u1A99\u1B50-\u1B59\u1BB0-\u1BB9\u1C40-\u1C49\u1C50-\u1C59\u2070\u2074-\u2079\u2080-\u2089\u2150-\u2182\u2185-\u2189\u2460-\u249B\u24EA-\u24FF\u2776-\u2793\u2CFD\u3007\u3021-\u3029\u3038-\u303A\u3192-\u3195\u3220-\u3229\u3248-\u324F\u3251-\u325F\u3280-\u3289\u32B1-\u32BF\uA620-\uA629\uA6E6-\uA6EF\uA830-\uA835\uA8D0-\uA8D9\uA900-\uA909\uA9D0-\uA9D9\uA9F0-\uA9F9\uAA50-\uAA59\uABF0-\uABF9\uFF10-\uFF19]+/g;
 
 /***/ }),
 
@@ -71161,2425 +69495,338 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./node_modules/react-draggable/dist/react-draggable.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/react-draggable/dist/react-draggable.js ***!
-  \**************************************************************/
+/***/ "./node_modules/react-icons-kit/Icon.js":
+/*!**********************************************!*\
+  !*** ./node_modules/react-icons-kit/Icon.js ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-(function (global, factory) {
-   true ? module.exports = factory(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"), __webpack_require__(/*! react */ "./node_modules/react/index.js")) : undefined;
-})(this, function (ReactDOM, React) {
-  'use strict';
+"use strict";
 
-  ReactDOM = ReactDOM && ReactDOM.hasOwnProperty('default') ? ReactDOM['default'] : ReactDOM;
-  React = React && React.hasOwnProperty('default') ? React['default'] : React;
 
-  function createCommonjsModule(fn, module) {
-    return module = {
-      exports: {}
-    }, fn(module, module.exports), module.exports;
-  }
-  /**
-   * Copyright (c) 2013-present, Facebook, Inc.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *
-   * 
-   */
-
-
-  function makeEmptyFunction(arg) {
-    return function () {
-      return arg;
-    };
-  }
-  /**
-   * This function accepts and discards inputs; it has no side effects. This is
-   * primarily useful idiomatically for overridable function endpoints which
-   * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
-   */
-
-
-  var emptyFunction = function emptyFunction() {};
-
-  emptyFunction.thatReturns = makeEmptyFunction;
-  emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
-  emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
-  emptyFunction.thatReturnsNull = makeEmptyFunction(null);
-
-  emptyFunction.thatReturnsThis = function () {
-    return this;
-  };
-
-  emptyFunction.thatReturnsArgument = function (arg) {
-    return arg;
-  };
-
-  var emptyFunction_1 = emptyFunction;
-  /**
-   * Copyright (c) 2013-present, Facebook, Inc.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *
-   */
-
-  /**
-   * Use invariant() to assert state which your program assumes to be true.
-   *
-   * Provide sprintf-style format (only %s is supported) and arguments
-   * to provide information about what broke and what you were
-   * expecting.
-   *
-   * The invariant message will be stripped in production, but the invariant
-   * will remain to ensure logic does not differ in production.
-   */
-
-  var validateFormat = function validateFormat(format) {};
-
-  {
-    validateFormat = function validateFormat(format) {
-      if (format === undefined) {
-        throw new Error('invariant requires an error message argument');
-      }
-    };
-  }
-
-  function invariant(condition, format, a, b, c, d, e, f) {
-    validateFormat(format);
-
-    if (!condition) {
-      var error;
-
-      if (format === undefined) {
-        error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
-      } else {
-        var args = [a, b, c, d, e, f];
-        var argIndex = 0;
-        error = new Error(format.replace(/%s/g, function () {
-          return args[argIndex++];
-        }));
-        error.name = 'Invariant Violation';
-      }
-
-      error.framesToPop = 1; // we don't care about invariant's own frame
-
-      throw error;
-    }
-  }
-
-  var invariant_1 = invariant;
-  /**
-   * Similar to invariant but only logs a warning if the condition is not met.
-   * This can be used to log issues in development environments in critical
-   * paths. Removing the logging code for production environments will keep the
-   * same logic and follow the same code paths.
-   */
-
-  var warning = emptyFunction_1;
-  {
-    var printWarning = function printWarning(format) {
-      for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        args[_key - 1] = arguments[_key];
-      }
-
-      var argIndex = 0;
-      var message = 'Warning: ' + format.replace(/%s/g, function () {
-        return args[argIndex++];
-      });
-
-      if (typeof console !== 'undefined') {
-        console.error(message);
-      }
-
-      try {
-        // --- Welcome to debugging React ---
-        // This error was thrown as a convenience so that you can use this stack
-        // to find the callsite that caused this warning to fire.
-        throw new Error(message);
-      } catch (x) {}
-    };
-
-    warning = function warning(condition, format) {
-      if (format === undefined) {
-        throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
-      }
-
-      if (format.indexOf('Failed Composite propType: ') === 0) {
-        return; // Ignore CompositeComponent proptype check.
-      }
-
-      if (!condition) {
-        for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-          args[_key2 - 2] = arguments[_key2];
-        }
-
-        printWarning.apply(undefined, [format].concat(args));
-      }
-    };
-  }
-  var warning_1 = warning;
-  /*
-  object-assign
-  (c) Sindre Sorhus
-  @license MIT
-  */
-
-  /* eslint-disable no-unused-vars */
-
-  var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-  var hasOwnProperty = Object.prototype.hasOwnProperty;
-  var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-  function toObject(val) {
-    if (val === null || val === undefined) {
-      throw new TypeError('Object.assign cannot be called with null or undefined');
-    }
-
-    return Object(val);
-  }
-
-  function shouldUseNative() {
-    try {
-      if (!Object.assign) {
-        return false;
-      } // Detect buggy property enumeration order in older V8 versions.
-      // https://bugs.chromium.org/p/v8/issues/detail?id=4118
-
-
-      var test1 = new String('abc'); // eslint-disable-line no-new-wrappers
-
-      test1[5] = 'de';
-
-      if (Object.getOwnPropertyNames(test1)[0] === '5') {
-        return false;
-      } // https://bugs.chromium.org/p/v8/issues/detail?id=3056
-
-
-      var test2 = {};
-
-      for (var i = 0; i < 10; i++) {
-        test2['_' + String.fromCharCode(i)] = i;
-      }
-
-      var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-        return test2[n];
-      });
-
-      if (order2.join('') !== '0123456789') {
-        return false;
-      } // https://bugs.chromium.org/p/v8/issues/detail?id=3056
-
-
-      var test3 = {};
-      'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-        test3[letter] = letter;
-      });
-
-      if (Object.keys(Object.assign({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
-        return false;
-      }
-
-      return true;
-    } catch (err) {
-      // We don't expect any of the above to throw, but better to be safe.
-      return false;
-    }
-  }
-
-  var objectAssign = shouldUseNative() ? Object.assign : function (target, source) {
-    var from;
-    var to = toObject(target);
-    var symbols;
-
-    for (var s = 1; s < arguments.length; s++) {
-      from = Object(arguments[s]);
-
-      for (var key in from) {
-        if (hasOwnProperty.call(from, key)) {
-          to[key] = from[key];
-        }
-      }
-
-      if (getOwnPropertySymbols) {
-        symbols = getOwnPropertySymbols(from);
-
-        for (var i = 0; i < symbols.length; i++) {
-          if (propIsEnumerable.call(from, symbols[i])) {
-            to[symbols[i]] = from[symbols[i]];
-          }
-        }
-      }
-    }
-
-    return to;
-  };
-  /**
-   * Copyright (c) 2013-present, Facebook, Inc.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   */
-
-  var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
-  var ReactPropTypesSecret_1 = ReactPropTypesSecret;
-  {
-    var invariant$1 = invariant_1;
-    var warning$1 = warning_1;
-    var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
-    var loggedTypeFailures = {};
-  }
-  /**
-   * Assert that the values match with the type specs.
-   * Error messages are memorized and will only be shown once.
-   *
-   * @param {object} typeSpecs Map of name to a ReactPropType
-   * @param {object} values Runtime values that need to be type-checked
-   * @param {string} location e.g. "prop", "context", "child context"
-   * @param {string} componentName Name of the component for error messages.
-   * @param {?Function} getStack Returns the component stack.
-   * @private
-   */
-
-  function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
-    {
-      for (var typeSpecName in typeSpecs) {
-        if (typeSpecs.hasOwnProperty(typeSpecName)) {
-          var error; // Prop type validation may throw. In case they do, we don't want to
-          // fail the render phase where it didn't fail before. So we log it.
-          // After these have been cleaned up, we'll let them throw.
-
-          try {
-            // This is intentionally an invariant that gets caught. It's the same
-            // behavior as without this statement except with a better message.
-            invariant$1(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, typeof typeSpecs[typeSpecName]);
-            error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$1);
-          } catch (ex) {
-            error = ex;
-          }
-
-          warning$1(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error);
-
-          if (error instanceof Error && !(error.message in loggedTypeFailures)) {
-            // Only monitor this failure once because there tends to be a lot of the
-            // same error.
-            loggedTypeFailures[error.message] = true;
-            var stack = getStack ? getStack() : '';
-            warning$1(false, 'Failed %s type: %s%s', location, error.message, stack != null ? stack : '');
-          }
-        }
-      }
-    }
-  }
-
-  var checkPropTypes_1 = checkPropTypes;
-
-  var factoryWithTypeCheckers = function (isValidElement, throwOnDirectAccess) {
-    /* global Symbol */
-    var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
-    var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
-
-    /**
-     * Returns the iterator method function contained on the iterable object.
-     *
-     * Be sure to invoke the function with the iterable as context:
-     *
-     *     var iteratorFn = getIteratorFn(myIterable);
-     *     if (iteratorFn) {
-     *       var iterator = iteratorFn.call(myIterable);
-     *       ...
-     *     }
-     *
-     * @param {?object} maybeIterable
-     * @return {?function}
-     */
-
-    function getIteratorFn(maybeIterable) {
-      var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
-
-      if (typeof iteratorFn === 'function') {
-        return iteratorFn;
-      }
-    }
-    /**
-     * Collection of methods that allow declaration and validation of props that are
-     * supplied to React components. Example usage:
-     *
-     *   var Props = require('ReactPropTypes');
-     *   var MyArticle = React.createClass({
-     *     propTypes: {
-     *       // An optional string prop named "description".
-     *       description: Props.string,
-     *
-     *       // A required enum prop named "category".
-     *       category: Props.oneOf(['News','Photos']).isRequired,
-     *
-     *       // A prop named "dialog" that requires an instance of Dialog.
-     *       dialog: Props.instanceOf(Dialog).isRequired
-     *     },
-     *     render: function() { ... }
-     *   });
-     *
-     * A more formal specification of how these methods are used:
-     *
-     *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
-     *   decl := ReactPropTypes.{type}(.isRequired)?
-     *
-     * Each and every declaration produces a function with the same signature. This
-     * allows the creation of custom validation functions. For example:
-     *
-     *  var MyLink = React.createClass({
-     *    propTypes: {
-     *      // An optional string or URI prop named "href".
-     *      href: function(props, propName, componentName) {
-     *        var propValue = props[propName];
-     *        if (propValue != null && typeof propValue !== 'string' &&
-     *            !(propValue instanceof URI)) {
-     *          return new Error(
-     *            'Expected a string or an URI for ' + propName + ' in ' +
-     *            componentName
-     *          );
-     *        }
-     *      }
-     *    },
-     *    render: function() {...}
-     *  });
-     *
-     * @internal
-     */
-
-
-    var ANONYMOUS = '<<anonymous>>'; // Important!
-    // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
-
-    var ReactPropTypes = {
-      array: createPrimitiveTypeChecker('array'),
-      bool: createPrimitiveTypeChecker('boolean'),
-      func: createPrimitiveTypeChecker('function'),
-      number: createPrimitiveTypeChecker('number'),
-      object: createPrimitiveTypeChecker('object'),
-      string: createPrimitiveTypeChecker('string'),
-      symbol: createPrimitiveTypeChecker('symbol'),
-      any: createAnyTypeChecker(),
-      arrayOf: createArrayOfTypeChecker,
-      element: createElementTypeChecker(),
-      instanceOf: createInstanceTypeChecker,
-      node: createNodeChecker(),
-      objectOf: createObjectOfTypeChecker,
-      oneOf: createEnumTypeChecker,
-      oneOfType: createUnionTypeChecker,
-      shape: createShapeTypeChecker,
-      exact: createStrictShapeTypeChecker
-    };
-    /**
-     * inlined Object.is polyfill to avoid requiring consumers ship their own
-     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
-     */
-
-    /*eslint-disable no-self-compare*/
-
-    function is(x, y) {
-      // SameValue algorithm
-      if (x === y) {
-        // Steps 1-5, 7-10
-        // Steps 6.b-6.e: +0 != -0
-        return x !== 0 || 1 / x === 1 / y;
-      } else {
-        // Step 6.a: NaN == NaN
-        return x !== x && y !== y;
-      }
-    }
-    /*eslint-enable no-self-compare*/
-
-    /**
-     * We use an Error-like object for backward compatibility as people may call
-     * PropTypes directly and inspect their output. However, we don't use real
-     * Errors anymore. We don't inspect their stack anyway, and creating them
-     * is prohibitively expensive if they are created too often, such as what
-     * happens in oneOfType() for any type before the one that matched.
-     */
-
-
-    function PropTypeError(message) {
-      this.message = message;
-      this.stack = '';
-    } // Make `instanceof Error` still work for returned errors.
-
-
-    PropTypeError.prototype = Error.prototype;
-
-    function createChainableTypeChecker(validate) {
-      {
-        var manualPropTypeCallCache = {};
-        var manualPropTypeWarningCount = 0;
-      }
-
-      function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
-        componentName = componentName || ANONYMOUS;
-        propFullName = propFullName || propName;
-
-        if (secret !== ReactPropTypesSecret_1) {
-          if (throwOnDirectAccess) {
-            // New behavior only for users of `prop-types` package
-            invariant_1(false, 'Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
-          } else if ( true && typeof console !== 'undefined') {
-            // Old behavior for people using React.PropTypes
-            var cacheKey = componentName + ':' + propName;
-
-            if (!manualPropTypeCallCache[cacheKey] && // Avoid spamming the console because they are often not actionable except for lib authors
-            manualPropTypeWarningCount < 3) {
-              warning_1(false, 'You are manually calling a React.PropTypes validation ' + 'function for the `%s` prop on `%s`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.', propFullName, componentName);
-              manualPropTypeCallCache[cacheKey] = true;
-              manualPropTypeWarningCount++;
-            }
-          }
-        }
-
-        if (props[propName] == null) {
-          if (isRequired) {
-            if (props[propName] === null) {
-              return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
-            }
-
-            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
-          }
-
-          return null;
-        } else {
-          return validate(props, propName, componentName, location, propFullName);
-        }
-      }
-
-      var chainedCheckType = checkType.bind(null, false);
-      chainedCheckType.isRequired = checkType.bind(null, true);
-      return chainedCheckType;
-    }
-
-    function createPrimitiveTypeChecker(expectedType) {
-      function validate(props, propName, componentName, location, propFullName, secret) {
-        var propValue = props[propName];
-        var propType = getPropType(propValue);
-
-        if (propType !== expectedType) {
-          // `propValue` being instance of, say, date/regexp, pass the 'object'
-          // check, but we can offer a more precise error message here rather than
-          // 'of type `object`'.
-          var preciseType = getPreciseType(propValue);
-          return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
-        }
-
-        return null;
-      }
-
-      return createChainableTypeChecker(validate);
-    }
-
-    function createAnyTypeChecker() {
-      return createChainableTypeChecker(emptyFunction_1.thatReturnsNull);
-    }
-
-    function createArrayOfTypeChecker(typeChecker) {
-      function validate(props, propName, componentName, location, propFullName) {
-        if (typeof typeChecker !== 'function') {
-          return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
-        }
-
-        var propValue = props[propName];
-
-        if (!Array.isArray(propValue)) {
-          var propType = getPropType(propValue);
-          return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
-        }
-
-        for (var i = 0; i < propValue.length; i++) {
-          var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret_1);
-
-          if (error instanceof Error) {
-            return error;
-          }
-        }
-
-        return null;
-      }
-
-      return createChainableTypeChecker(validate);
-    }
-
-    function createElementTypeChecker() {
-      function validate(props, propName, componentName, location, propFullName) {
-        var propValue = props[propName];
-
-        if (!isValidElement(propValue)) {
-          var propType = getPropType(propValue);
-          return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
-        }
-
-        return null;
-      }
-
-      return createChainableTypeChecker(validate);
-    }
-
-    function createInstanceTypeChecker(expectedClass) {
-      function validate(props, propName, componentName, location, propFullName) {
-        if (!(props[propName] instanceof expectedClass)) {
-          var expectedClassName = expectedClass.name || ANONYMOUS;
-          var actualClassName = getClassName(props[propName]);
-          return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
-        }
-
-        return null;
-      }
-
-      return createChainableTypeChecker(validate);
-    }
-
-    function createEnumTypeChecker(expectedValues) {
-      if (!Array.isArray(expectedValues)) {
-        warning_1(false, 'Invalid argument supplied to oneOf, expected an instance of array.');
-        return emptyFunction_1.thatReturnsNull;
-      }
-
-      function validate(props, propName, componentName, location, propFullName) {
-        var propValue = props[propName];
-
-        for (var i = 0; i < expectedValues.length; i++) {
-          if (is(propValue, expectedValues[i])) {
-            return null;
-          }
-        }
-
-        var valuesString = JSON.stringify(expectedValues);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
-      }
-
-      return createChainableTypeChecker(validate);
-    }
-
-    function createObjectOfTypeChecker(typeChecker) {
-      function validate(props, propName, componentName, location, propFullName) {
-        if (typeof typeChecker !== 'function') {
-          return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
-        }
-
-        var propValue = props[propName];
-        var propType = getPropType(propValue);
-
-        if (propType !== 'object') {
-          return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
-        }
-
-        for (var key in propValue) {
-          if (propValue.hasOwnProperty(key)) {
-            var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
-
-            if (error instanceof Error) {
-              return error;
-            }
-          }
-        }
-
-        return null;
-      }
-
-      return createChainableTypeChecker(validate);
-    }
-
-    function createUnionTypeChecker(arrayOfTypeCheckers) {
-      if (!Array.isArray(arrayOfTypeCheckers)) {
-        warning_1(false, 'Invalid argument supplied to oneOfType, expected an instance of array.');
-        return emptyFunction_1.thatReturnsNull;
-      }
-
-      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
-        var checker = arrayOfTypeCheckers[i];
-
-        if (typeof checker !== 'function') {
-          warning_1(false, 'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' + 'received %s at index %s.', getPostfixForTypeWarning(checker), i);
-          return emptyFunction_1.thatReturnsNull;
-        }
-      }
-
-      function validate(props, propName, componentName, location, propFullName) {
-        for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
-          var checker = arrayOfTypeCheckers[i];
-
-          if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret_1) == null) {
-            return null;
-          }
-        }
-
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
-      }
-
-      return createChainableTypeChecker(validate);
-    }
-
-    function createNodeChecker() {
-      function validate(props, propName, componentName, location, propFullName) {
-        if (!isNode(props[propName])) {
-          return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
-        }
-
-        return null;
-      }
-
-      return createChainableTypeChecker(validate);
-    }
-
-    function createShapeTypeChecker(shapeTypes) {
-      function validate(props, propName, componentName, location, propFullName) {
-        var propValue = props[propName];
-        var propType = getPropType(propValue);
-
-        if (propType !== 'object') {
-          return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
-        }
-
-        for (var key in shapeTypes) {
-          var checker = shapeTypes[key];
-
-          if (!checker) {
-            continue;
-          }
-
-          var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
-
-          if (error) {
-            return error;
-          }
-        }
-
-        return null;
-      }
-
-      return createChainableTypeChecker(validate);
-    }
-
-    function createStrictShapeTypeChecker(shapeTypes) {
-      function validate(props, propName, componentName, location, propFullName) {
-        var propValue = props[propName];
-        var propType = getPropType(propValue);
-
-        if (propType !== 'object') {
-          return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
-        } // We need to check all keys in case some are required but missing from
-        // props.
-
-
-        var allKeys = objectAssign({}, props[propName], shapeTypes);
-
-        for (var key in allKeys) {
-          var checker = shapeTypes[key];
-
-          if (!checker) {
-            return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' + '\nBad object: ' + JSON.stringify(props[propName], null, '  ') + '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  '));
-          }
-
-          var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
-
-          if (error) {
-            return error;
-          }
-        }
-
-        return null;
-      }
-
-      return createChainableTypeChecker(validate);
-    }
-
-    function isNode(propValue) {
-      switch (typeof propValue) {
-        case 'number':
-        case 'string':
-        case 'undefined':
-          return true;
-
-        case 'boolean':
-          return !propValue;
-
-        case 'object':
-          if (Array.isArray(propValue)) {
-            return propValue.every(isNode);
-          }
-
-          if (propValue === null || isValidElement(propValue)) {
-            return true;
-          }
-
-          var iteratorFn = getIteratorFn(propValue);
-
-          if (iteratorFn) {
-            var iterator = iteratorFn.call(propValue);
-            var step;
-
-            if (iteratorFn !== propValue.entries) {
-              while (!(step = iterator.next()).done) {
-                if (!isNode(step.value)) {
-                  return false;
-                }
-              }
-            } else {
-              // Iterator will provide entry [k,v] tuples rather than values.
-              while (!(step = iterator.next()).done) {
-                var entry = step.value;
-
-                if (entry) {
-                  if (!isNode(entry[1])) {
-                    return false;
-                  }
-                }
-              }
-            }
-          } else {
-            return false;
-          }
-
-          return true;
-
-        default:
-          return false;
-      }
-    }
-
-    function isSymbol(propType, propValue) {
-      // Native Symbol.
-      if (propType === 'symbol') {
-        return true;
-      } // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
-
-
-      if (propValue['@@toStringTag'] === 'Symbol') {
-        return true;
-      } // Fallback for non-spec compliant Symbols which are polyfilled.
-
-
-      if (typeof Symbol === 'function' && propValue instanceof Symbol) {
-        return true;
-      }
-
-      return false;
-    } // Equivalent of `typeof` but with special handling for array and regexp.
-
-
-    function getPropType(propValue) {
-      var propType = typeof propValue;
-
-      if (Array.isArray(propValue)) {
-        return 'array';
-      }
-
-      if (propValue instanceof RegExp) {
-        // Old webkits (at least until Android 4.0) return 'function' rather than
-        // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
-        // passes PropTypes.object.
-        return 'object';
-      }
-
-      if (isSymbol(propType, propValue)) {
-        return 'symbol';
-      }
-
-      return propType;
-    } // This handles more types than `getPropType`. Only used for error messages.
-    // See `createPrimitiveTypeChecker`.
-
-
-    function getPreciseType(propValue) {
-      if (typeof propValue === 'undefined' || propValue === null) {
-        return '' + propValue;
-      }
-
-      var propType = getPropType(propValue);
-
-      if (propType === 'object') {
-        if (propValue instanceof Date) {
-          return 'date';
-        } else if (propValue instanceof RegExp) {
-          return 'regexp';
-        }
-      }
-
-      return propType;
-    } // Returns a string that is postfixed to a warning about an invalid type.
-    // For example, "undefined" or "of type array"
-
-
-    function getPostfixForTypeWarning(value) {
-      var type = getPreciseType(value);
-
-      switch (type) {
-        case 'array':
-        case 'object':
-          return 'an ' + type;
-
-        case 'boolean':
-        case 'date':
-        case 'regexp':
-          return 'a ' + type;
-
-        default:
-          return type;
-      }
-    } // Returns class name of the object, if any.
-
-
-    function getClassName(propValue) {
-      if (!propValue.constructor || !propValue.constructor.name) {
-        return ANONYMOUS;
-      }
-
-      return propValue.constructor.name;
-    }
-
-    ReactPropTypes.checkPropTypes = checkPropTypes_1;
-    ReactPropTypes.PropTypes = ReactPropTypes;
-    return ReactPropTypes;
-  };
-
-  var propTypes = createCommonjsModule(function (module) {
-    /**
-     * Copyright (c) 2013-present, Facebook, Inc.
-     *
-     * This source code is licensed under the MIT license found in the
-     * LICENSE file in the root directory of this source tree.
-     */
-    {
-      var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol.for && Symbol.for('react.element') || 0xeac7;
-
-      var isValidElement = function (object) {
-        return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-      }; // By explicitly using `prop-types` you are opting into new development behavior.
-      // http://fb.me/prop-types-in-prod
-
-
-      var throwOnDirectAccess = true;
-      module.exports = factoryWithTypeCheckers(isValidElement, throwOnDirectAccess);
-    }
-  });
-  var classnames = createCommonjsModule(function (module) {
-    /*!
-      Copyright (c) 2016 Jed Watson.
-      Licensed under the MIT License (MIT), see
-      http://jedwatson.github.io/classnames
-    */
-
-    /* global define */
-    (function () {
-      var hasOwn = {}.hasOwnProperty;
-
-      function classNames() {
-        var classes = [];
-
-        for (var i = 0; i < arguments.length; i++) {
-          var arg = arguments[i];
-          if (!arg) continue;
-          var argType = typeof arg;
-
-          if (argType === 'string' || argType === 'number') {
-            classes.push(arg);
-          } else if (Array.isArray(arg)) {
-            classes.push(classNames.apply(null, arg));
-          } else if (argType === 'object') {
-            for (var key in arg) {
-              if (hasOwn.call(arg, key) && arg[key]) {
-                classes.push(key);
-              }
-            }
-          }
-        }
-
-        return classes.join(' ');
-      }
-
-      if ( true && module.exports) {
-        module.exports = classNames;
-      } else if (false) {} else {
-        window.classNames = classNames;
-      }
-    })();
-  }); // @credits https://gist.github.com/rogozhnikoff/a43cfed27c41e4e68cdc
-
-  function findInArray(array
-  /*: Array<any> | TouchList*/
-  , callback
-  /*: Function*/
-  )
-  /*: any*/
-  {
-    for (var i = 0, length = array.length; i < length; i++) {
-      if (callback.apply(callback, [array[i], i, array])) return array[i];
-    }
-  }
-
-  function isFunction(func
-  /*: any*/
-  )
-  /*: boolean*/
-  {
-    return typeof func === 'function' || Object.prototype.toString.call(func) === '[object Function]';
-  }
-
-  function isNum(num
-  /*: any*/
-  )
-  /*: boolean*/
-  {
-    return typeof num === 'number' && !isNaN(num);
-  }
-
-  function int(a
-  /*: string*/
-  )
-  /*: number*/
-  {
-    return parseInt(a, 10);
-  }
-
-  function dontSetMe(props
-  /*: Object*/
-  , propName
-  /*: string*/
-  , componentName
-  /*: string*/
-  ) {
-    if (props[propName]) {
-      return new Error('Invalid prop ' + propName + ' passed to ' + componentName + ' - do not set this, set it on the child.');
-    }
-  }
-
-  var prefixes = ['Moz', 'Webkit', 'O', 'ms'];
-
-  function getPrefix()
-  /*: string*/
-  {
-    var prop
-    /*: string*/
-    = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'transform'; // Checking specifically for 'window.document' is for pseudo-browser server-side
-    // environments that define 'window' as the global context.
-    // E.g. React-rails (see https://github.com/reactjs/react-rails/pull/84)
-
-    if (typeof window === 'undefined' || typeof window.document === 'undefined') return '';
-    var style = window.document.documentElement.style;
-    if (prop in style) return '';
-
-    for (var i = 0; i < prefixes.length; i++) {
-      if (browserPrefixToKey(prop, prefixes[i]) in style) return prefixes[i];
-    }
-
-    return '';
-  }
-
-  function browserPrefixToKey(prop
-  /*: string*/
-  , prefix
-  /*: string*/
-  )
-  /*: string*/
-  {
-    return prefix ? '' + prefix + kebabToTitleCase(prop) : prop;
-  }
-
-  function kebabToTitleCase(str
-  /*: string*/
-  )
-  /*: string*/
-  {
-    var out = '';
-    var shouldCapitalize = true;
-
-    for (var i = 0; i < str.length; i++) {
-      if (shouldCapitalize) {
-        out += str[i].toUpperCase();
-        shouldCapitalize = false;
-      } else if (str[i] === '-') {
-        shouldCapitalize = true;
-      } else {
-        out += str[i];
-      }
-    }
-
-    return out;
-  } // Default export is the prefix itself, like 'Moz', 'Webkit', etc
-  // Note that you may have to re-test for certain things; for instance, Chrome 50
-  // can handle unprefixed `transform`, but not unprefixed `user-select`
-
-
-  var browserPrefix = getPrefix();
-
-  var classCallCheck = function (instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  };
-
-  var createClass = function () {
-    function defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-      }
-    }
-
-    return function (Constructor, protoProps, staticProps) {
-      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-      if (staticProps) defineProperties(Constructor, staticProps);
-      return Constructor;
-    };
-  }();
-
-  var defineProperty = function (obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
-
-    return obj;
-  };
-
-  var _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  var inherits = function (subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-    }
-
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-      constructor: {
-        value: subClass,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-  };
-
-  var possibleConstructorReturn = function (self, call) {
-    if (!self) {
-      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
-
-    return call && (typeof call === "object" || typeof call === "function") ? call : self;
-  };
-
-  var slicedToArray = function () {
-    function sliceIterator(arr, i) {
-      var _arr = [];
-      var _n = true;
-      var _d = false;
-      var _e = undefined;
-
-      try {
-        for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-          _arr.push(_s.value);
-
-          if (i && _arr.length === i) break;
-        }
-      } catch (err) {
-        _d = true;
-        _e = err;
-      } finally {
-        try {
-          if (!_n && _i["return"]) _i["return"]();
-        } finally {
-          if (_d) throw _e;
-        }
-      }
-
-      return _arr;
-    }
-
-    return function (arr, i) {
-      if (Array.isArray(arr)) {
-        return arr;
-      } else if (Symbol.iterator in Object(arr)) {
-        return sliceIterator(arr, i);
-      } else {
-        throw new TypeError("Invalid attempt to destructure non-iterable instance");
-      }
-    };
-  }();
-  /*:: import type {ControlPosition, MouseTouchEvent} from './types';*/
-
-
-  var matchesSelectorFunc = '';
-
-  function matchesSelector(el
-  /*: Node*/
-  , selector
-  /*: string*/
-  )
-  /*: boolean*/
-  {
-    if (!matchesSelectorFunc) {
-      matchesSelectorFunc = findInArray(['matches', 'webkitMatchesSelector', 'mozMatchesSelector', 'msMatchesSelector', 'oMatchesSelector'], function (method) {
-        // $FlowIgnore: Doesn't think elements are indexable
-        return isFunction(el[method]);
-      });
-    } // Might not be found entirely (not an Element?) - in that case, bail
-    // $FlowIgnore: Doesn't think elements are indexable
-
-
-    if (!isFunction(el[matchesSelectorFunc])) return false; // $FlowIgnore: Doesn't think elements are indexable
-
-    return el[matchesSelectorFunc](selector);
-  } // Works up the tree to the draggable itself attempting to match selector.
-
-
-  function matchesSelectorAndParentsTo(el
-  /*: Node*/
-  , selector
-  /*: string*/
-  , baseNode
-  /*: Node*/
-  )
-  /*: boolean*/
-  {
-    var node = el;
-
-    do {
-      if (matchesSelector(node, selector)) return true;
-      if (node === baseNode) return false;
-      node = node.parentNode;
-    } while (node);
-
-    return false;
-  }
-
-  function addEvent(el
-  /*: ?Node*/
-  , event
-  /*: string*/
-  , handler
-  /*: Function*/
-  )
-  /*: void*/
-  {
-    if (!el) {
-      return;
-    }
-
-    if (el.attachEvent) {
-      el.attachEvent('on' + event, handler);
-    } else if (el.addEventListener) {
-      el.addEventListener(event, handler, true);
-    } else {
-      // $FlowIgnore: Doesn't think elements are indexable
-      el['on' + event] = handler;
-    }
-  }
-
-  function removeEvent(el
-  /*: ?Node*/
-  , event
-  /*: string*/
-  , handler
-  /*: Function*/
-  )
-  /*: void*/
-  {
-    if (!el) {
-      return;
-    }
-
-    if (el.detachEvent) {
-      el.detachEvent('on' + event, handler);
-    } else if (el.removeEventListener) {
-      el.removeEventListener(event, handler, true);
-    } else {
-      // $FlowIgnore: Doesn't think elements are indexable
-      el['on' + event] = null;
-    }
-  }
-
-  function outerHeight(node
-  /*: HTMLElement*/
-  )
-  /*: number*/
-  {
-    // This is deliberately excluding margin for our calculations, since we are using
-    // offsetTop which is including margin. See getBoundPosition
-    var height = node.clientHeight;
-    var computedStyle = node.ownerDocument.defaultView.getComputedStyle(node);
-    height += int(computedStyle.borderTopWidth);
-    height += int(computedStyle.borderBottomWidth);
-    return height;
-  }
-
-  function outerWidth(node
-  /*: HTMLElement*/
-  )
-  /*: number*/
-  {
-    // This is deliberately excluding margin for our calculations, since we are using
-    // offsetLeft which is including margin. See getBoundPosition
-    var width = node.clientWidth;
-    var computedStyle = node.ownerDocument.defaultView.getComputedStyle(node);
-    width += int(computedStyle.borderLeftWidth);
-    width += int(computedStyle.borderRightWidth);
-    return width;
-  }
-
-  function innerHeight(node
-  /*: HTMLElement*/
-  )
-  /*: number*/
-  {
-    var height = node.clientHeight;
-    var computedStyle = node.ownerDocument.defaultView.getComputedStyle(node);
-    height -= int(computedStyle.paddingTop);
-    height -= int(computedStyle.paddingBottom);
-    return height;
-  }
-
-  function innerWidth(node
-  /*: HTMLElement*/
-  )
-  /*: number*/
-  {
-    var width = node.clientWidth;
-    var computedStyle = node.ownerDocument.defaultView.getComputedStyle(node);
-    width -= int(computedStyle.paddingLeft);
-    width -= int(computedStyle.paddingRight);
-    return width;
-  } // Get from offsetParent
-
-
-  function offsetXYFromParent(evt
-  /*: {clientX: number, clientY: number}*/
-  , offsetParent
-  /*: HTMLElement*/
-  )
-  /*: ControlPosition*/
-  {
-    var isBody = offsetParent === offsetParent.ownerDocument.body;
-    var offsetParentRect = isBody ? {
-      left: 0,
-      top: 0
-    } : offsetParent.getBoundingClientRect();
-    var x = evt.clientX + offsetParent.scrollLeft - offsetParentRect.left;
-    var y = evt.clientY + offsetParent.scrollTop - offsetParentRect.top;
-    return {
-      x: x,
-      y: y
-    };
-  }
-
-  function createCSSTransform(_ref)
-  /*: Object*/
-  {
-    var x = _ref.x,
-        y = _ref.y; // Replace unitless items with px
-
-    return defineProperty({}, browserPrefixToKey('transform', browserPrefix), 'translate(' + x + 'px,' + y + 'px)');
-  }
-
-  function createSVGTransform(_ref3)
-  /*: string*/
-  {
-    var x = _ref3.x,
-        y = _ref3.y;
-    return 'translate(' + x + ',' + y + ')';
-  }
-
-  function getTouch(e
-  /*: MouseTouchEvent*/
-  , identifier
-  /*: number*/
-  )
-  /*: ?{clientX: number, clientY: number}*/
-  {
-    return e.targetTouches && findInArray(e.targetTouches, function (t) {
-      return identifier === t.identifier;
-    }) || e.changedTouches && findInArray(e.changedTouches, function (t) {
-      return identifier === t.identifier;
-    });
-  }
-
-  function getTouchIdentifier(e
-  /*: MouseTouchEvent*/
-  )
-  /*: ?number*/
-  {
-    if (e.targetTouches && e.targetTouches[0]) return e.targetTouches[0].identifier;
-    if (e.changedTouches && e.changedTouches[0]) return e.changedTouches[0].identifier;
-  } // User-select Hacks:
-  //
-  // Useful for preventing blue highlights all over everything when dragging.
-  // Note we're passing `document` b/c we could be iframed
-
-
-  function addUserSelectStyles(doc
-  /*: ?Document*/
-  ) {
-    if (!doc) return;
-    var styleEl = doc.getElementById('react-draggable-style-el');
-
-    if (!styleEl) {
-      styleEl = doc.createElement('style');
-      styleEl.type = 'text/css';
-      styleEl.id = 'react-draggable-style-el';
-      styleEl.innerHTML = '.react-draggable-transparent-selection *::-moz-selection {background: transparent;}\n';
-      styleEl.innerHTML += '.react-draggable-transparent-selection *::selection {background: transparent;}\n';
-      doc.getElementsByTagName('head')[0].appendChild(styleEl);
-    }
-
-    if (doc.body) addClassName(doc.body, 'react-draggable-transparent-selection');
-  }
-
-  function removeUserSelectStyles(doc
-  /*: ?Document*/
-  ) {
-    try {
-      if (doc && doc.body) removeClassName(doc.body, 'react-draggable-transparent-selection'); // $FlowIgnore: IE
-
-      if (doc.selection) {
-        // $FlowIgnore: IE
-        doc.selection.empty();
-      } else {
-        window.getSelection().removeAllRanges(); // remove selection caused by scroll
-      }
-    } catch (e) {// probably IE
-    }
-  }
-
-  function styleHacks()
-  /*: Object*/
-  {
-    var childStyle
-    /*: Object*/
-    = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {}; // Workaround IE pointer events; see #51
-    // https://github.com/mzabriskie/react-draggable/issues/51#issuecomment-103488278
-
-    return _extends({
-      touchAction: 'none'
-    }, childStyle);
-  }
-
-  function addClassName(el
-  /*: HTMLElement*/
-  , className
-  /*: string*/
-  ) {
-    if (el.classList) {
-      el.classList.add(className);
-    } else {
-      if (!el.className.match(new RegExp('(?:^|\\s)' + className + '(?!\\S)'))) {
-        el.className += ' ' + className;
-      }
-    }
-  }
-
-  function removeClassName(el
-  /*: HTMLElement*/
-  , className
-  /*: string*/
-  ) {
-    if (el.classList) {
-      el.classList.remove(className);
-    } else {
-      el.className = el.className.replace(new RegExp('(?:^|\\s)' + className + '(?!\\S)', 'g'), '');
-    }
-  }
-  /*:: import type Draggable from '../Draggable';*/
-
-  /*:: import type {Bounds, ControlPosition, DraggableData, MouseTouchEvent} from './types';*/
-
-  /*:: import type DraggableCore from '../DraggableCore';*/
-
-
-  function getBoundPosition(draggable
-  /*: Draggable*/
-  , x
-  /*: number*/
-  , y
-  /*: number*/
-  )
-  /*: [number, number]*/
-  {
-    // If no bounds, short-circuit and move on
-    if (!draggable.props.bounds) return [x, y]; // Clone new bounds
-
-    var bounds = draggable.props.bounds;
-    bounds = typeof bounds === 'string' ? bounds : cloneBounds(bounds);
-    var node = findDOMNode(draggable);
-
-    if (typeof bounds === 'string') {
-      var ownerDocument = node.ownerDocument;
-      var ownerWindow = ownerDocument.defaultView;
-      var boundNode = void 0;
-
-      if (bounds === 'parent') {
-        boundNode = node.parentNode;
-      } else {
-        boundNode = ownerDocument.querySelector(bounds);
-      }
-
-      if (!(boundNode instanceof ownerWindow.HTMLElement)) {
-        throw new Error('Bounds selector "' + bounds + '" could not find an element.');
-      }
-
-      var nodeStyle = ownerWindow.getComputedStyle(node);
-      var boundNodeStyle = ownerWindow.getComputedStyle(boundNode); // Compute bounds. This is a pain with padding and offsets but this gets it exactly right.
-
-      bounds = {
-        left: -node.offsetLeft + int(boundNodeStyle.paddingLeft) + int(nodeStyle.marginLeft),
-        top: -node.offsetTop + int(boundNodeStyle.paddingTop) + int(nodeStyle.marginTop),
-        right: innerWidth(boundNode) - outerWidth(node) - node.offsetLeft + int(boundNodeStyle.paddingRight) - int(nodeStyle.marginRight),
-        bottom: innerHeight(boundNode) - outerHeight(node) - node.offsetTop + int(boundNodeStyle.paddingBottom) - int(nodeStyle.marginBottom)
-      };
-    } // Keep x and y below right and bottom limits...
-
-
-    if (isNum(bounds.right)) x = Math.min(x, bounds.right);
-    if (isNum(bounds.bottom)) y = Math.min(y, bounds.bottom); // But above left and top limits.
-
-    if (isNum(bounds.left)) x = Math.max(x, bounds.left);
-    if (isNum(bounds.top)) y = Math.max(y, bounds.top);
-    return [x, y];
-  }
-
-  function snapToGrid(grid
-  /*: [number, number]*/
-  , pendingX
-  /*: number*/
-  , pendingY
-  /*: number*/
-  )
-  /*: [number, number]*/
-  {
-    var x = Math.round(pendingX / grid[0]) * grid[0];
-    var y = Math.round(pendingY / grid[1]) * grid[1];
-    return [x, y];
-  }
-
-  function canDragX(draggable
-  /*: Draggable*/
-  )
-  /*: boolean*/
-  {
-    return draggable.props.axis === 'both' || draggable.props.axis === 'x';
-  }
-
-  function canDragY(draggable
-  /*: Draggable*/
-  )
-  /*: boolean*/
-  {
-    return draggable.props.axis === 'both' || draggable.props.axis === 'y';
-  } // Get {x, y} positions from event.
-
-
-  function getControlPosition(e
-  /*: MouseTouchEvent*/
-  , touchIdentifier
-  /*: ?number*/
-  , draggableCore
-  /*: DraggableCore*/
-  )
-  /*: ?ControlPosition*/
-  {
-    var touchObj = typeof touchIdentifier === 'number' ? getTouch(e, touchIdentifier) : null;
-    if (typeof touchIdentifier === 'number' && !touchObj) return null; // not the right touch
-
-    var node = findDOMNode(draggableCore); // User can provide an offsetParent if desired.
-
-    var offsetParent = draggableCore.props.offsetParent || node.offsetParent || node.ownerDocument.body;
-    return offsetXYFromParent(touchObj || e, offsetParent);
-  } // Create an data object exposed by <DraggableCore>'s events
-
-
-  function createCoreData(draggable
-  /*: DraggableCore*/
-  , x
-  /*: number*/
-  , y
-  /*: number*/
-  )
-  /*: DraggableData*/
-  {
-    var state = draggable.state;
-    var isStart = !isNum(state.lastX);
-    var node = findDOMNode(draggable);
-
-    if (isStart) {
-      // If this is our first move, use the x and y as last coords.
-      return {
-        node: node,
-        deltaX: 0,
-        deltaY: 0,
-        lastX: x,
-        lastY: y,
-        x: x,
-        y: y
-      };
-    } else {
-      // Otherwise calculate proper values.
-      return {
-        node: node,
-        deltaX: x - state.lastX,
-        deltaY: y - state.lastY,
-        lastX: state.lastX,
-        lastY: state.lastY,
-        x: x,
-        y: y
-      };
-    }
-  } // Create an data exposed by <Draggable>'s events
-
-
-  function createDraggableData(draggable
-  /*: Draggable*/
-  , coreData
-  /*: DraggableData*/
-  )
-  /*: DraggableData*/
-  {
-    var scale = draggable.props.scale;
-    return {
-      node: coreData.node,
-      x: draggable.state.x + coreData.deltaX / scale,
-      y: draggable.state.y + coreData.deltaY / scale,
-      deltaX: coreData.deltaX / scale,
-      deltaY: coreData.deltaY / scale,
-      lastX: draggable.state.x,
-      lastY: draggable.state.y
-    };
-  } // A lot faster than stringify/parse
-
-
-  function cloneBounds(bounds
-  /*: Bounds*/
-  )
-  /*: Bounds*/
-  {
-    return {
-      left: bounds.left,
-      top: bounds.top,
-      right: bounds.right,
-      bottom: bounds.bottom
-    };
-  }
-
-  function findDOMNode(draggable
-  /*: Draggable | DraggableCore*/
-  )
-  /*: HTMLElement*/
-  {
-    var node = ReactDOM.findDOMNode(draggable);
-
-    if (!node) {
-      throw new Error('<DraggableCore>: Unmounted during event!');
-    } // $FlowIgnore we can't assert on HTMLElement due to tests... FIXME
-
-
-    return node;
-  }
-  /*eslint no-console:0*/
-
-
-  function log() {}
-  /*:: import type {EventHandler, MouseTouchEvent} from './utils/types';*/
-  // Simple abstraction for dragging events names.
-
-  /*:: import type {Element as ReactElement} from 'react';*/
-
-
-  var eventsFor = {
-    touch: {
-      start: 'touchstart',
-      move: 'touchmove',
-      stop: 'touchend'
-    },
-    mouse: {
-      start: 'mousedown',
-      move: 'mousemove',
-      stop: 'mouseup'
-    }
-  }; // Default to mouse events.
-
-  var dragEventFor = eventsFor.mouse;
-  /*:: type DraggableCoreState = {
-    dragging: boolean,
-    lastX: number,
-    lastY: number,
-    touchIdentifier: ?number
-  };*/
-
-  /*:: export type DraggableBounds = {
-    left: number,
-    right: number,
-    top: number,
-    bottom: number,
-  };*/
-
-  /*:: export type DraggableData = {
-    node: HTMLElement,
-    x: number, y: number,
-    deltaX: number, deltaY: number,
-    lastX: number, lastY: number,
-  };*/
-
-  /*:: export type DraggableEventHandler = (e: MouseEvent, data: DraggableData) => void;*/
-
-  /*:: export type ControlPosition = {x: number, y: number};*/
-  //
-  // Define <DraggableCore>.
-  //
-  // <DraggableCore> is for advanced usage of <Draggable>. It maintains minimal internal state so it can
-  // work well with libraries that require more control over the element.
-  //
-
-  /*:: export type DraggableCoreProps = {
-    allowAnyClick: boolean,
-    cancel: string,
-    children: ReactElement<any>,
-    disabled: boolean,
-    enableUserSelectHack: boolean,
-    offsetParent: HTMLElement,
-    grid: [number, number],
-    handle: string,
-    onStart: DraggableEventHandler,
-    onDrag: DraggableEventHandler,
-    onStop: DraggableEventHandler,
-    onMouseDown: (e: MouseEvent) => void,
-  };*/
-
-  var DraggableCore = function (_React$Component) {
-    inherits(DraggableCore, _React$Component);
-
-    function DraggableCore() {
-      var _ref;
-
-      var _temp, _this, _ret;
-
-      classCallCheck(this, DraggableCore);
-
-      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      return _ret = (_temp = (_this = possibleConstructorReturn(this, (_ref = DraggableCore.__proto__ || Object.getPrototypeOf(DraggableCore)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-        dragging: false,
-        // Used while dragging to determine deltas.
-        lastX: NaN,
-        lastY: NaN,
-        touchIdentifier: null
-      }, _this.handleDragStart = function (e) {
-        // Make it possible to attach event handlers on top of this one.
-        _this.props.onMouseDown(e); // Only accept left-clicks.
-
-
-        if (!_this.props.allowAnyClick && typeof e.button === 'number' && e.button !== 0) return false; // Get nodes. Be sure to grab relative document (could be iframed)
-
-        var thisNode = ReactDOM.findDOMNode(_this);
-
-        if (!thisNode || !thisNode.ownerDocument || !thisNode.ownerDocument.body) {
-          throw new Error('<DraggableCore> not mounted on DragStart!');
-        }
-
-        var ownerDocument = thisNode.ownerDocument; // Short circuit if handle or cancel prop was provided and selector doesn't match.
-
-        if (_this.props.disabled || !(e.target instanceof ownerDocument.defaultView.Node) || _this.props.handle && !matchesSelectorAndParentsTo(e.target, _this.props.handle, thisNode) || _this.props.cancel && matchesSelectorAndParentsTo(e.target, _this.props.cancel, thisNode)) {
-          return;
-        } // Set touch identifier in component state if this is a touch event. This allows us to
-        // distinguish between individual touches on multitouch screens by identifying which
-        // touchpoint was set to this element.
-
-
-        var touchIdentifier = getTouchIdentifier(e);
-
-        _this.setState({
-          touchIdentifier: touchIdentifier
-        }); // Get the current drag point from the event. This is used as the offset.
-
-
-        var position = getControlPosition(e, touchIdentifier, _this);
-        if (position == null) return; // not possible but satisfies flow
-
-        var x = position.x,
-            y = position.y; // Create an event object with all the data parents need to make a decision here.
-
-        var coreEvent = createCoreData(_this, x, y); // Call event handler. If it returns explicit false, cancel.
-
-        log('calling', _this.props.onStart);
-
-        var shouldUpdate = _this.props.onStart(e, coreEvent);
-
-        if (shouldUpdate === false) return; // Add a style to the body to disable user-select. This prevents text from
-        // being selected all over the page.
-
-        if (_this.props.enableUserSelectHack) addUserSelectStyles(ownerDocument); // Initiate dragging. Set the current x and y as offsets
-        // so we know how much we've moved during the drag. This allows us
-        // to drag elements around even if they have been moved, without issue.
-
-        _this.setState({
-          dragging: true,
-          lastX: x,
-          lastY: y
-        }); // Add events to the document directly so we catch when the user's mouse/touch moves outside of
-        // this element. We use different events depending on whether or not we have detected that this
-        // is a touch-capable device.
-
-
-        addEvent(ownerDocument, dragEventFor.move, _this.handleDrag);
-        addEvent(ownerDocument, dragEventFor.stop, _this.handleDragStop);
-      }, _this.handleDrag = function (e) {
-        // Prevent scrolling on mobile devices, like ipad/iphone.
-        if (e.type === 'touchmove') e.preventDefault(); // Get the current drag point from the event. This is used as the offset.
-
-        var position = getControlPosition(e, _this.state.touchIdentifier, _this);
-        if (position == null) return;
-        var x = position.x,
-            y = position.y; // Snap to grid if prop has been provided
-
-        if (Array.isArray(_this.props.grid)) {
-          var _deltaX = x - _this.state.lastX,
-              _deltaY = y - _this.state.lastY;
-
-          var _snapToGrid = snapToGrid(_this.props.grid, _deltaX, _deltaY);
-
-          var _snapToGrid2 = slicedToArray(_snapToGrid, 2);
-
-          _deltaX = _snapToGrid2[0];
-          _deltaY = _snapToGrid2[1];
-          if (!_deltaX && !_deltaY) return; // skip useless drag
-
-          x = _this.state.lastX + _deltaX, y = _this.state.lastY + _deltaY;
-        }
-
-        var coreEvent = createCoreData(_this, x, y); // Call event handler. If it returns explicit false, trigger end.
-
-        var shouldUpdate = _this.props.onDrag(e, coreEvent);
-
-        if (shouldUpdate === false) {
-          try {
-            // $FlowIgnore
-            _this.handleDragStop(new MouseEvent('mouseup'));
-          } catch (err) {
-            // Old browsers
-            var event = document.createEvent('MouseEvents')
-            /*: any*/
-            ; // I see why this insanity was deprecated
-            // $FlowIgnore
-
-            event.initMouseEvent('mouseup', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-
-            _this.handleDragStop(event);
-          }
-
-          return;
-        }
-
-        _this.setState({
-          lastX: x,
-          lastY: y
-        });
-      }, _this.handleDragStop = function (e) {
-        if (!_this.state.dragging) return;
-        var position = getControlPosition(e, _this.state.touchIdentifier, _this);
-        if (position == null) return;
-        var x = position.x,
-            y = position.y;
-        var coreEvent = createCoreData(_this, x, y);
-        var thisNode = ReactDOM.findDOMNode(_this);
-
-        if (thisNode) {
-          // Remove user-select hack
-          if (_this.props.enableUserSelectHack) removeUserSelectStyles(thisNode.ownerDocument);
-        } // Reset the el.
-
-
-        _this.setState({
-          dragging: false,
-          lastX: NaN,
-          lastY: NaN
-        }); // Call event handler
-
-
-        _this.props.onStop(e, coreEvent);
-
-        if (thisNode) {
-          removeEvent(thisNode.ownerDocument, dragEventFor.move, _this.handleDrag);
-          removeEvent(thisNode.ownerDocument, dragEventFor.stop, _this.handleDragStop);
-        }
-      }, _this.onMouseDown = function (e) {
-        dragEventFor = eventsFor.mouse; // on touchscreen laptops we could switch back to mouse
-
-        return _this.handleDragStart(e);
-      }, _this.onMouseUp = function (e) {
-        dragEventFor = eventsFor.mouse;
-        return _this.handleDragStop(e);
-      }, _this.onTouchStart = function (e) {
-        // We're on a touch device now, so change the event handlers
-        dragEventFor = eventsFor.touch;
-        return _this.handleDragStart(e);
-      }, _this.onTouchEnd = function (e) {
-        // We're on a touch device now, so change the event handlers
-        dragEventFor = eventsFor.touch;
-        return _this.handleDragStop(e);
-      }, _temp), possibleConstructorReturn(_this, _ret);
-    }
-
-    createClass(DraggableCore, [{
-      key: 'componentWillUnmount',
-      value: function componentWillUnmount() {
-        // Remove any leftover event handlers. Remove both touch and mouse handlers in case
-        // some browser quirk caused a touch event to fire during a mouse move, or vice versa.
-        var thisNode = ReactDOM.findDOMNode(this);
-
-        if (thisNode) {
-          var ownerDocument = thisNode.ownerDocument;
-          removeEvent(ownerDocument, eventsFor.mouse.move, this.handleDrag);
-          removeEvent(ownerDocument, eventsFor.touch.move, this.handleDrag);
-          removeEvent(ownerDocument, eventsFor.mouse.stop, this.handleDragStop);
-          removeEvent(ownerDocument, eventsFor.touch.stop, this.handleDragStop);
-          if (this.props.enableUserSelectHack) removeUserSelectStyles(ownerDocument);
-        }
-      } // Same as onMouseDown (start drag), but now consider this a touch device.
-
-    }, {
-      key: 'render',
-      value: function render() {
-        // Reuse the child provided
-        // This makes it flexible to use whatever element is wanted (div, ul, etc)
-        return React.cloneElement(React.Children.only(this.props.children), {
-          style: styleHacks(this.props.children.props.style),
-          // Note: mouseMove handler is attached to document so it will still function
-          // when the user drags quickly and leaves the bounds of the element.
-          onMouseDown: this.onMouseDown,
-          onTouchStart: this.onTouchStart,
-          onMouseUp: this.onMouseUp,
-          onTouchEnd: this.onTouchEnd
-        });
-      }
-    }]);
-    return DraggableCore;
-  }(React.Component);
-
-  DraggableCore.displayName = 'DraggableCore';
-  DraggableCore.propTypes = {
-    /**
-     * `allowAnyClick` allows dragging using any mouse button.
-     * By default, we only accept the left button.
-     *
-     * Defaults to `false`.
-     */
-    allowAnyClick: propTypes.bool,
-
-    /**
-     * `disabled`, if true, stops the <Draggable> from dragging. All handlers,
-     * with the exception of `onMouseDown`, will not fire.
-     */
-    disabled: propTypes.bool,
-
-    /**
-     * By default, we add 'user-select:none' attributes to the document body
-     * to prevent ugly text selection during drag. If this is causing problems
-     * for your app, set this to `false`.
-     */
-    enableUserSelectHack: propTypes.bool,
-
-    /**
-     * `offsetParent`, if set, uses the passed DOM node to compute drag offsets
-     * instead of using the parent node.
-     */
-    offsetParent: function offsetParent(props
-    /*: DraggableCoreProps*/
-    , propName
-    /*: $Keys<DraggableCoreProps>*/
-    ) {
-      if (props[propName] && props[propName].nodeType !== 1) {
-        throw new Error('Draggable\'s offsetParent must be a DOM Node.');
-      }
-    },
-
-    /**
-     * `grid` specifies the x and y that dragging should snap to.
-     */
-    grid: propTypes.arrayOf(propTypes.number),
-
-    /**
-     * `scale` specifies the scale of the area you are dragging inside of. It allows
-     * the drag deltas to scale correctly with how far zoomed in/out you are.
-     */
-    scale: propTypes.number,
-
-    /**
-     * `handle` specifies a selector to be used as the handle that initiates drag.
-     *
-     * Example:
-     *
-     * ```jsx
-     *   let App = React.createClass({
-     *       render: function () {
-     *         return (
-     *            <Draggable handle=".handle">
-     *              <div>
-     *                  <div className="handle">Click me to drag</div>
-     *                  <div>This is some other content</div>
-     *              </div>
-     *           </Draggable>
-     *         );
-     *       }
-     *   });
-     * ```
-     */
-    handle: propTypes.string,
-
-    /**
-     * `cancel` specifies a selector to be used to prevent drag initialization.
-     *
-     * Example:
-     *
-     * ```jsx
-     *   let App = React.createClass({
-     *       render: function () {
-     *           return(
-     *               <Draggable cancel=".cancel">
-     *                   <div>
-     *                     <div className="cancel">You can't drag from here</div>
-     *                     <div>Dragging here works fine</div>
-     *                   </div>
-     *               </Draggable>
-     *           );
-     *       }
-     *   });
-     * ```
-     */
-    cancel: propTypes.string,
-
-    /**
-     * Called when dragging starts.
-     * If this function returns the boolean false, dragging will be canceled.
-     */
-    onStart: propTypes.func,
-
-    /**
-     * Called while dragging.
-     * If this function returns the boolean false, dragging will be canceled.
-     */
-    onDrag: propTypes.func,
-
-    /**
-     * Called when dragging stops.
-     * If this function returns the boolean false, the drag will remain active.
-     */
-    onStop: propTypes.func,
-
-    /**
-     * A workaround option which can be passed if onMouseDown needs to be accessed,
-     * since it'll always be blocked (as there is internal use of onMouseDown)
-     */
-    onMouseDown: propTypes.func,
-
-    /**
-     * These properties should be defined on the child, not here.
-     */
-    className: dontSetMe,
-    style: dontSetMe,
-    transform: dontSetMe
-  };
-  DraggableCore.defaultProps = {
-    allowAnyClick: false,
-    // by default only accept left click
-    cancel: null,
-    disabled: false,
-    enableUserSelectHack: true,
-    offsetParent: null,
-    handle: null,
-    grid: null,
-    transform: null,
-    onStart: function onStart() {},
-    onDrag: function onDrag() {},
-    onStop: function onStop() {},
-    onMouseDown: function onMouseDown() {}
-  };
-  /*:: import type {DraggableEventHandler} from './utils/types';*/
-
-  /*:: import type {Element as ReactElement} from 'react';*/
-
-  /*:: type DraggableState = {
-    dragging: boolean,
-    dragged: boolean,
-    x: number, y: number,
-    slackX: number, slackY: number,
-    isElementSVG: boolean
-  };*/
-  //
-  // Define <Draggable>
-  //
-
-  /*:: export type DraggableProps = {
-    ...$Exact<DraggableCoreProps>,
-    axis: 'both' | 'x' | 'y' | 'none',
-    bounds: DraggableBounds | string | false,
-    defaultClassName: string,
-    defaultClassNameDragging: string,
-    defaultClassNameDragged: string,
-    defaultPosition: ControlPosition,
-    position: ControlPosition,
-    scale: number
-  };*/
-
-  var Draggable = function (_React$Component) {
-    inherits(Draggable, _React$Component);
-
-    function Draggable(props
-    /*: DraggableProps*/
-    ) {
-      classCallCheck(this, Draggable);
-
-      var _this = possibleConstructorReturn(this, (Draggable.__proto__ || Object.getPrototypeOf(Draggable)).call(this, props));
-
-      _this.onDragStart = function (e, coreData) {
-        // Short-circuit if user's callback killed it.
-        var shouldStart = _this.props.onStart(e, createDraggableData(_this, coreData)); // Kills start event on core as well, so move handlers are never bound.
-
-
-        if (shouldStart === false) return false;
-
-        _this.setState({
-          dragging: true,
-          dragged: true
-        });
-      };
-
-      _this.onDrag = function (e, coreData) {
-        if (!_this.state.dragging) return false;
-        var uiData = createDraggableData(_this, coreData);
-        var newState
-        /*: $Shape<DraggableState>*/
-        = {
-          x: uiData.x,
-          y: uiData.y
-        }; // Keep within bounds.
-
-        if (_this.props.bounds) {
-          // Save original x and y.
-          var _x = newState.x,
-              _y = newState.y; // Add slack to the values used to calculate bound position. This will ensure that if
-          // we start removing slack, the element won't react to it right away until it's been
-          // completely removed.
-
-          newState.x += _this.state.slackX;
-          newState.y += _this.state.slackY; // Get bound position. This will ceil/floor the x and y within the boundaries.
-
-          var _getBoundPosition = getBoundPosition(_this, newState.x, newState.y),
-              _getBoundPosition2 = slicedToArray(_getBoundPosition, 2),
-              newStateX = _getBoundPosition2[0],
-              newStateY = _getBoundPosition2[1];
-
-          newState.x = newStateX;
-          newState.y = newStateY; // Recalculate slack by noting how much was shaved by the boundPosition handler.
-
-          newState.slackX = _this.state.slackX + (_x - newState.x);
-          newState.slackY = _this.state.slackY + (_y - newState.y); // Update the event we fire to reflect what really happened after bounds took effect.
-
-          uiData.x = newState.x;
-          uiData.y = newState.y;
-          uiData.deltaX = newState.x - _this.state.x;
-          uiData.deltaY = newState.y - _this.state.y;
-        } // Short-circuit if user's callback killed it.
-
-
-        var shouldUpdate = _this.props.onDrag(e, uiData);
-
-        if (shouldUpdate === false) return false;
-
-        _this.setState(newState);
-      };
-
-      _this.onDragStop = function (e, coreData) {
-        if (!_this.state.dragging) return false; // Short-circuit if user's callback killed it.
-
-        var shouldStop = _this.props.onStop(e, createDraggableData(_this, coreData));
-
-        if (shouldStop === false) return false;
-        var newState
-        /*: $Shape<DraggableState>*/
-        = {
-          dragging: false,
-          slackX: 0,
-          slackY: 0
-        }; // If this is a controlled component, the result of this operation will be to
-        // revert back to the old position. We expect a handler on `onDragStop`, at the least.
-
-        var controlled = Boolean(_this.props.position);
-
-        if (controlled) {
-          var _this$props$position = _this.props.position,
-              _x2 = _this$props$position.x,
-              _y2 = _this$props$position.y;
-          newState.x = _x2;
-          newState.y = _y2;
-        }
-
-        _this.setState(newState);
-      };
-
-      _this.state = {
-        // Whether or not we are currently dragging.
-        dragging: false,
-        // Whether or not we have been dragged before.
-        dragged: false,
-        // Current transform x and y.
-        x: props.position ? props.position.x : props.defaultPosition.x,
-        y: props.position ? props.position.y : props.defaultPosition.y,
-        // Used for compensating for out-of-bounds drags
-        slackX: 0,
-        slackY: 0,
-        // Can only determine if SVG after mounting
-        isElementSVG: false
-      };
-      return _this;
-    }
-
-    createClass(Draggable, [{
-      key: 'componentWillMount',
-      value: function componentWillMount() {
-        if (this.props.position && !(this.props.onDrag || this.props.onStop)) {
-          // eslint-disable-next-line
-          console.warn('A `position` was applied to this <Draggable>, without drag handlers. This will make this ' + 'component effectively undraggable. Please attach `onDrag` or `onStop` handlers so you can adjust the ' + '`position` of this element.');
-        }
-      }
-    }, {
-      key: 'componentDidMount',
-      value: function componentDidMount() {
-        // Check to see if the element passed is an instanceof SVGElement
-        if (typeof window.SVGElement !== 'undefined' && ReactDOM.findDOMNode(this) instanceof window.SVGElement) {
-          this.setState({
-            isElementSVG: true
-          });
-        }
-      }
-    }, {
-      key: 'componentWillReceiveProps',
-      value: function componentWillReceiveProps(nextProps
-      /*: Object*/
-      ) {
-        // Set x/y if position has changed
-        if (nextProps.position && (!this.props.position || nextProps.position.x !== this.props.position.x || nextProps.position.y !== this.props.position.y)) {
-          this.setState({
-            x: nextProps.position.x,
-            y: nextProps.position.y
-          });
-        }
-      }
-    }, {
-      key: 'componentWillUnmount',
-      value: function componentWillUnmount() {
-        this.setState({
-          dragging: false
-        }); // prevents invariant if unmounted while dragging
-      }
-    }, {
-      key: 'render',
-      value: function render()
-      /*: ReactElement<any>*/
-      {
-        var _classNames;
-
-        var style = {},
-            svgTransform = null; // If this is controlled, we don't want to move it - unless it's dragging.
-
-        var controlled = Boolean(this.props.position);
-        var draggable = !controlled || this.state.dragging;
-        var position = this.props.position || this.props.defaultPosition;
-        var transformOpts = {
-          // Set left if horizontal drag is enabled
-          x: canDragX(this) && draggable ? this.state.x : position.x,
-          // Set top if vertical drag is enabled
-          y: canDragY(this) && draggable ? this.state.y : position.y
-        }; // If this element was SVG, we use the `transform` attribute.
-
-        if (this.state.isElementSVG) {
-          svgTransform = createSVGTransform(transformOpts);
-        } else {
-          // Add a CSS transform to move the element around. This allows us to move the element around
-          // without worrying about whether or not it is relatively or absolutely positioned.
-          // If the item you are dragging already has a transform set, wrap it in a <span> so <Draggable>
-          // has a clean slate.
-          style = createCSSTransform(transformOpts);
-        }
-
-        var _props = this.props,
-            defaultClassName = _props.defaultClassName,
-            defaultClassNameDragging = _props.defaultClassNameDragging,
-            defaultClassNameDragged = _props.defaultClassNameDragged;
-        var children = React.Children.only(this.props.children); // Mark with class while dragging
-
-        var className = classnames(children.props.className || '', defaultClassName, (_classNames = {}, defineProperty(_classNames, defaultClassNameDragging, this.state.dragging), defineProperty(_classNames, defaultClassNameDragged, this.state.dragged), _classNames)); // Reuse the child provided
-        // This makes it flexible to use whatever element is wanted (div, ul, etc)
-
-        return React.createElement(DraggableCore, _extends({}, this.props, {
-          onStart: this.onDragStart,
-          onDrag: this.onDrag,
-          onStop: this.onDragStop
-        }), React.cloneElement(children, {
-          className: className,
-          style: _extends({}, children.props.style, style),
-          transform: svgTransform
-        }));
-      }
-    }]);
-    return Draggable;
-  }(React.Component);
-
-  Draggable.displayName = 'Draggable';
-  Draggable.propTypes = _extends({}, DraggableCore.propTypes, {
-    /**
-     * `axis` determines which axis the draggable can move.
-     *
-     *  Note that all callbacks will still return data as normal. This only
-     *  controls flushing to the DOM.
-     *
-     * 'both' allows movement horizontally and vertically.
-     * 'x' limits movement to horizontal axis.
-     * 'y' limits movement to vertical axis.
-     * 'none' limits all movement.
-     *
-     * Defaults to 'both'.
-     */
-    axis: propTypes.oneOf(['both', 'x', 'y', 'none']),
-
-    /**
-     * `bounds` determines the range of movement available to the element.
-     * Available values are:
-     *
-     * 'parent' restricts movement within the Draggable's parent node.
-     *
-     * Alternatively, pass an object with the following properties, all of which are optional:
-     *
-     * {left: LEFT_BOUND, right: RIGHT_BOUND, bottom: BOTTOM_BOUND, top: TOP_BOUND}
-     *
-     * All values are in px.
-     *
-     * Example:
-     *
-     * ```jsx
-     *   let App = React.createClass({
-     *       render: function () {
-     *         return (
-     *            <Draggable bounds={{right: 300, bottom: 300}}>
-     *              <div>Content</div>
-     *           </Draggable>
-     *         );
-     *       }
-     *   });
-     * ```
-     */
-    bounds: propTypes.oneOfType([propTypes.shape({
-      left: propTypes.number,
-      right: propTypes.number,
-      top: propTypes.number,
-      bottom: propTypes.number
-    }), propTypes.string, propTypes.oneOf([false])]),
-    defaultClassName: propTypes.string,
-    defaultClassNameDragging: propTypes.string,
-    defaultClassNameDragged: propTypes.string,
-
-    /**
-     * `defaultPosition` specifies the x and y that the dragged item should start at
-     *
-     * Example:
-     *
-     * ```jsx
-     *      let App = React.createClass({
-     *          render: function () {
-     *              return (
-     *                  <Draggable defaultPosition={{x: 25, y: 25}}>
-     *                      <div>I start with transformX: 25px and transformY: 25px;</div>
-     *                  </Draggable>
-     *              );
-     *          }
-     *      });
-     * ```
-     */
-    defaultPosition: propTypes.shape({
-      x: propTypes.number,
-      y: propTypes.number
-    }),
-
-    /**
-     * `position`, if present, defines the current position of the element.
-     *
-     *  This is similar to how form elements in React work - if no `position` is supplied, the component
-     *  is uncontrolled.
-     *
-     * Example:
-     *
-     * ```jsx
-     *      let App = React.createClass({
-     *          render: function () {
-     *              return (
-     *                  <Draggable position={{x: 25, y: 25}}>
-     *                      <div>I start with transformX: 25px and transformY: 25px;</div>
-     *                  </Draggable>
-     *              );
-     *          }
-     *      });
-     * ```
-     */
-    position: propTypes.shape({
-      x: propTypes.number,
-      y: propTypes.number
-    }),
-
-    /**
-     * These properties should be defined on the child, not here.
-     */
-    className: dontSetMe,
-    style: dontSetMe,
-    transform: dontSetMe
-  });
-  Draggable.defaultProps = _extends({}, DraggableCore.defaultProps, {
-    axis: 'both',
-    bounds: false,
-    defaultClassName: 'react-draggable',
-    defaultClassNameDragging: 'react-draggable-dragging',
-    defaultClassNameDragged: 'react-draggable-dragged',
-    defaultPosition: {
-      x: 0,
-      y: 0
-    },
-    position: null,
-    scale: 1
-  }); // Previous versions of this lib exported <Draggable> as the root export. As to not break
-  // them, or TypeScript, we export *both* as the root and as 'default'.
-  // See https://github.com/mzabriskie/react-draggable/pull/254
-  // and https://github.com/mzabriskie/react-draggable/issues/266
-
-  Draggable.default = Draggable;
-  Draggable.DraggableCore = DraggableCore;
-  return Draggable;
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
+exports.withBaseIcon = exports.Icon = undefined;
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _SvgIcon = __webpack_require__(/*! ./SvgIcon */ "./node_modules/react-icons-kit/SvgIcon.js");
+
+var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+function _objectWithoutProperties(obj, keys) {
+  var target = {};
+
+  for (var i in obj) {
+    if (keys.indexOf(i) >= 0) continue;
+    if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
+    target[i] = obj[i];
+  }
+
+  return target;
+}
+
+var Icon = function Icon(props) {
+  var style = props.style,
+      className = props.className,
+      icon = props.icon,
+      size = props.size,
+      others = _objectWithoutProperties(props, ['style', 'className', 'icon', 'size']); //eslint-disable-line
+
+
+  return _react2.default.createElement('div', _extends({}, others, {
+    style: _extends({
+      display: 'inline-block'
+    }, style),
+    className: className
+  }), _react2.default.createElement(_SvgIcon2.default, {
+    size: props.size,
+    icon: props.icon,
+    title: props.title
+  }));
+};
+
+exports.Icon = Icon;
+
+var withBaseIcon = exports.withBaseIcon = function withBaseIcon(defaultProps) {
+  return function (props) {
+    var propsToUse = _extends({}, defaultProps);
+
+    return _react2.default.createElement(Icon, _extends({}, propsToUse, props));
+  };
+};
+
+Icon.defaultProps = {
+  size: 16,
+  fill: 'currentColor'
+};
+Icon.propTypes = {
+  icon: _propTypes2.default.object.isRequired,
+  size: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
+  style: _propTypes2.default.object,
+  className: _propTypes2.default.string
+};
+exports.default = Icon;
+
+/***/ }),
+
+/***/ "./node_modules/react-icons-kit/SvgIcon.js":
+/*!*************************************************!*\
+  !*** ./node_modules/react-icons-kit/SvgIcon.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SvgIcon = undefined;
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _camelCase = __webpack_require__(/*! camel-case */ "./node_modules/camel-case/camel-case.js");
+
+var _camelCase2 = _interopRequireDefault(_camelCase);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+var walkChildren = function walkChildren(children) {
+  return children.map(function (child, idx) {
+    var name = child.name,
+        attribsMap = child.attribs,
+        _child$children = child.children,
+        gchildren = _child$children === undefined ? null : _child$children; //fill, stroke
+
+    var attribs = Object.keys(attribsMap).filter(function (key) {
+      return key !== 'fill' && key !== 'stroke' && attribsMap[key] !== 'none';
+    }).reduce(function (partial, key) {
+      partial[(0, _camelCase2.default)(key)] = attribsMap[key];
+      return partial;
+    }, {}); //special case, it has fill and stroke at the same time
+
+    var merge = {};
+
+    if (attribsMap.fill === 'none' && attribsMap.stroke) {
+      merge = {
+        fill: 'none',
+        stroke: 'currentColor'
+      };
+    }
+
+    return (0, _react.createElement)(name, _extends({
+      key: idx
+    }, attribs, merge), gchildren === null ? gchildren : walkChildren(gchildren));
+  });
+};
+
+var SvgIcon = exports.SvgIcon = function SvgIcon(props) {
+  var size = props.size;
+  var _props$icon = props.icon,
+      children = _props$icon.children,
+      viewBox = _props$icon.viewBox,
+      _props$icon$attribs = _props$icon.attribs,
+      svgAttribs = _props$icon$attribs === undefined ? {} : _props$icon$attribs;
+  var camelCasedAttribs = Object.keys(svgAttribs).reduce(function (partial, key) {
+    partial[(0, _camelCase2.default)(key)] = svgAttribs[key];
+    return partial;
+  }, {});
+  return _react2.default.createElement('svg', _extends({
+    fill: 'currentColor',
+    style: {
+      display: 'inline-block',
+      verticalAlign: 'middle'
+    },
+    height: size,
+    width: size,
+    viewBox: viewBox
+  }, camelCasedAttribs), props.title ? _react2.default.createElement('title', null, props.title) : null, walkChildren(children));
+};
+
+SvgIcon.defaultProps = {
+  size: 16
+};
+SvgIcon.propTypes = {
+  icon: _propTypes2.default.object.isRequired,
+  size: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
+  title: _propTypes2.default.string
+};
+exports.default = SvgIcon;
+
+/***/ }),
+
+/***/ "./node_modules/react-icons-kit/horizontalCenter.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/react-icons-kit/horizontalCenter.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.horizontalCenter = undefined;
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+var horizontalCenter = exports.horizontalCenter = function horizontalCenter(Component) {
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref$rAlign = _ref.rAlign,
+      rAlign = _ref$rAlign === undefined ? false : _ref$rAlign,
+      _ref$space = _ref.space,
+      space = _ref$space === undefined ? 4 : _ref$space;
+
+  return function (props) {
+    return _react2.default.createElement(Component, props, _react2.default.createElement('div', {
+      style: {
+        display: 'inline-flex',
+        justifyContent: 'center',
+        'alignItems': 'center'
+      }
+    }, _react.Children.toArray(props.children).map(function (child, idx) {
+      var spacerField = rAlign ? 'paddingLeft' : 'paddingRight';
+      return _react2.default.createElement('div', {
+        key: idx,
+        style: _defineProperty({
+          display: 'inline-block'
+        }, spacerField, space)
+      }, child);
+    })));
+  };
+};
+
+exports.default = horizontalCenter;
+
+/***/ }),
+
+/***/ "./node_modules/react-icons-kit/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/react-icons-kit/index.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.horizontalCenter = exports.Icon = exports.withBaseIcon = undefined;
+
+var _Icon = __webpack_require__(/*! ./Icon */ "./node_modules/react-icons-kit/Icon.js");
+
+var _horizontalCenter = __webpack_require__(/*! ./horizontalCenter */ "./node_modules/react-icons-kit/horizontalCenter.js");
+
+exports.withBaseIcon = _Icon.withBaseIcon;
+exports.Icon = _Icon.Icon;
+exports.horizontalCenter = _horizontalCenter.horizontalCenter;
+exports.default = _Icon.Icon;
+
+/***/ }),
+
+/***/ "./node_modules/react-icons-kit/md/ic_help.js":
+/*!****************************************************!*\
+  !*** ./node_modules/react-icons-kit/md/ic_help.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var ic_help = exports.ic_help = {
+  "viewBox": "0 0 24 24",
+  "children": [{
+    "name": "path",
+    "attribs": {
+      "d": "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"
+    }
+  }]
+};
 
 /***/ }),
 
@@ -73847,571 +70094,6 @@ if (true) {
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/react-is/cjs/react-is.development.js");
 }
-
-/***/ }),
-
-/***/ "./node_modules/react-resizable/build/Resizable.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/react-resizable/build/Resizable.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reactDraggable = __webpack_require__(/*! react-draggable */ "./node_modules/react-draggable/dist/react-draggable.js");
-
-var _cloneElement = __webpack_require__(/*! ./cloneElement */ "./node_modules/react-resizable/build/cloneElement.js");
-
-var _cloneElement2 = _interopRequireDefault(_cloneElement);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-
-function _objectWithoutProperties(obj, keys) {
-  var target = {};
-
-  for (var i in obj) {
-    if (keys.indexOf(i) >= 0) continue;
-    if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-    target[i] = obj[i];
-  }
-
-  return target;
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return call && (typeof call === "object" || typeof call === "function") ? call : self;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      enumerable: false,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}
-
-var Resizable = function (_React$Component) {
-  _inherits(Resizable, _React$Component);
-
-  function Resizable() {
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Resizable);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
-      resizing: false,
-      width: _this.props.width,
-      height: _this.props.height,
-      slackW: 0,
-      slackH: 0
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  Resizable.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    // If parent changes height/width, set that in our state.
-    if (!this.state.resizing && (nextProps.width !== this.props.width || nextProps.height !== this.props.height)) {
-      this.setState({
-        width: nextProps.width,
-        height: nextProps.height
-      });
-    }
-  };
-
-  Resizable.prototype.lockAspectRatio = function lockAspectRatio(width, height, aspectRatio) {
-    height = width / aspectRatio;
-    width = height * aspectRatio;
-    return [width, height];
-  }; // If you do this, be careful of constraints
-
-
-  Resizable.prototype.runConstraints = function runConstraints(width, height) {
-    var _ref = [this.props.minConstraints, this.props.maxConstraints],
-        min = _ref[0],
-        max = _ref[1];
-
-    if (this.props.lockAspectRatio) {
-      var ratio = this.state.width / this.state.height;
-      height = width / ratio;
-      width = height * ratio;
-    }
-
-    if (!min && !max) return [width, height];
-    var oldW = width,
-        oldH = height; // Add slack to the values used to calculate bound position. This will ensure that if
-    // we start removing slack, the element won't react to it right away until it's been
-    // completely removed.
-
-    var _state = this.state,
-        slackW = _state.slackW,
-        slackH = _state.slackH;
-    width += slackW;
-    height += slackH;
-
-    if (min) {
-      width = Math.max(min[0], width);
-      height = Math.max(min[1], height);
-    }
-
-    if (max) {
-      width = Math.min(max[0], width);
-      height = Math.min(max[1], height);
-    } // If the numbers changed, we must have introduced some slack. Record it for the next iteration.
-
-
-    slackW += oldW - width;
-    slackH += oldH - height;
-
-    if (slackW !== this.state.slackW || slackH !== this.state.slackH) {
-      this.setState({
-        slackW: slackW,
-        slackH: slackH
-      });
-    }
-
-    return [width, height];
-  };
-  /**
-   * Wrapper around drag events to provide more useful data.
-   *
-   * @param  {String} handlerName Handler name to wrap.
-   * @return {Function}           Handler function.
-   */
-
-
-  Resizable.prototype.resizeHandler = function resizeHandler(handlerName) {
-    var _this2 = this;
-
-    return function (e, _ref2) {
-      var node = _ref2.node,
-          deltaX = _ref2.deltaX,
-          deltaY = _ref2.deltaY; // Axis restrictions
-
-      var canDragX = _this2.props.axis === 'both' || _this2.props.axis === 'x';
-      var canDragY = _this2.props.axis === 'both' || _this2.props.axis === 'y'; // Update w/h
-
-      var width = _this2.state.width + (canDragX ? deltaX : 0);
-      var height = _this2.state.height + (canDragY ? deltaY : 0); // Early return if no change
-
-      var widthChanged = width !== _this2.state.width,
-          heightChanged = height !== _this2.state.height;
-      if (handlerName === 'onResize' && !widthChanged && !heightChanged) return; // Set the appropriate state for this handler.
-
-      var _runConstraints = _this2.runConstraints(width, height);
-
-      width = _runConstraints[0];
-      height = _runConstraints[1];
-      var newState = {};
-
-      if (handlerName === 'onResizeStart') {
-        newState.resizing = true;
-      } else if (handlerName === 'onResizeStop') {
-        newState.resizing = false;
-        newState.slackW = newState.slackH = 0;
-      } else {
-        // Early return if no change after constraints
-        if (width === _this2.state.width && height === _this2.state.height) return;
-        newState.width = width;
-        newState.height = height;
-      }
-
-      var hasCb = typeof _this2.props[handlerName] === 'function';
-
-      if (hasCb) {
-        if (typeof e.persist === 'function') e.persist();
-
-        _this2.setState(newState, function () {
-          return _this2.props[handlerName](e, {
-            node: node,
-            size: {
-              width: width,
-              height: height
-            }
-          });
-        });
-      } else {
-        _this2.setState(newState);
-      }
-    };
-  };
-
-  Resizable.prototype.render = function render() {
-    // eslint-disable-next-line no-unused-vars
-    var _props = this.props,
-        children = _props.children,
-        draggableOpts = _props.draggableOpts,
-        width = _props.width,
-        height = _props.height,
-        handleSize = _props.handleSize,
-        lockAspectRatio = _props.lockAspectRatio,
-        axis = _props.axis,
-        minConstraints = _props.minConstraints,
-        maxConstraints = _props.maxConstraints,
-        onResize = _props.onResize,
-        onResizeStop = _props.onResizeStop,
-        onResizeStart = _props.onResizeStart,
-        p = _objectWithoutProperties(_props, ['children', 'draggableOpts', 'width', 'height', 'handleSize', 'lockAspectRatio', 'axis', 'minConstraints', 'maxConstraints', 'onResize', 'onResizeStop', 'onResizeStart']);
-
-    var className = p.className ? p.className + ' react-resizable' : 'react-resizable'; // What we're doing here is getting the child of this element, and cloning it with this element's props.
-    // We are then defining its children as:
-    // Its original children (resizable's child's children), and
-    // A draggable handle.
-
-    return (0, _cloneElement2.default)(children, _extends({}, p, {
-      className: className,
-      children: [children.props.children, _react2.default.createElement(_reactDraggable.DraggableCore, _extends({}, draggableOpts, {
-        key: 'resizableHandle',
-        onStop: this.resizeHandler('onResizeStop'),
-        onStart: this.resizeHandler('onResizeStart'),
-        onDrag: this.resizeHandler('onResize')
-      }), _react2.default.createElement('span', {
-        className: 'react-resizable-handle'
-      }))]
-    }));
-  };
-
-  return Resizable;
-}(_react2.default.Component);
-
-Resizable.propTypes = {
-  //
-  // Required Props
-  //
-  // Require that one and only one child be present.
-  children: _propTypes2.default.element.isRequired,
-  // Initial w/h
-  width: _propTypes2.default.number.isRequired,
-  height: _propTypes2.default.number.isRequired,
-  //
-  // Optional props
-  //
-  // If you change this, be sure to update your css
-  handleSize: _propTypes2.default.array,
-  // If true, will only allow width/height to move in lockstep
-  lockAspectRatio: _propTypes2.default.bool,
-  // Restricts resizing to a particular axis (default: 'both')
-  // 'both' - allows resizing by width or height
-  // 'x' - only allows the width to be changed
-  // 'y' - only allows the height to be changed
-  // 'none' - disables resizing altogether
-  axis: _propTypes2.default.oneOf(['both', 'x', 'y', 'none']),
-  // Min/max size
-  minConstraints: _propTypes2.default.arrayOf(_propTypes2.default.number),
-  maxConstraints: _propTypes2.default.arrayOf(_propTypes2.default.number),
-  // Callbacks
-  onResizeStop: _propTypes2.default.func,
-  onResizeStart: _propTypes2.default.func,
-  onResize: _propTypes2.default.func,
-  // These will be passed wholesale to react-draggable's DraggableCore
-  draggableOpts: _propTypes2.default.object
-};
-Resizable.defaultProps = {
-  handleSize: [20, 20],
-  lockAspectRatio: false,
-  axis: 'both',
-  minConstraints: [20, 20],
-  maxConstraints: [Infinity, Infinity]
-};
-exports.default = Resizable;
-
-/***/ }),
-
-/***/ "./node_modules/react-resizable/build/ResizableBox.js":
-/*!************************************************************!*\
-  !*** ./node_modules/react-resizable/build/ResizableBox.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _Resizable = __webpack_require__(/*! ./Resizable */ "./node_modules/react-resizable/build/Resizable.js");
-
-var _Resizable2 = _interopRequireDefault(_Resizable);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-
-function _objectWithoutProperties(obj, keys) {
-  var target = {};
-
-  for (var i in obj) {
-    if (keys.indexOf(i) >= 0) continue;
-    if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-    target[i] = obj[i];
-  }
-
-  return target;
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return call && (typeof call === "object" || typeof call === "function") ? call : self;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      enumerable: false,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-} // An example use of Resizable.
-
-
-var ResizableBox = function (_React$Component) {
-  _inherits(ResizableBox, _React$Component);
-
-  function ResizableBox() {
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, ResizableBox);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
-      width: _this.props.width,
-      height: _this.props.height
-    }, _this.onResize = function (e, data) {
-      var size = data.size;
-      var width = size.width,
-          height = size.height;
-
-      if (_this.props.onResize) {
-        e.persist && e.persist();
-
-        _this.setState(size, function () {
-          return _this.props.onResize && _this.props.onResize(e, data);
-        });
-      } else {
-        _this.setState(size);
-      }
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  ResizableBox.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    if (nextProps.width !== this.props.width || nextProps.height !== this.props.height) {
-      this.setState({
-        width: nextProps.width,
-        height: nextProps.height
-      });
-    }
-  };
-
-  ResizableBox.prototype.render = function render() {
-    // Basic wrapper around a Resizable instance.
-    // If you use Resizable directly, you are responsible for updating the child component
-    // with a new width and height.
-    var _props = this.props,
-        handleSize = _props.handleSize,
-        onResize = _props.onResize,
-        onResizeStart = _props.onResizeStart,
-        onResizeStop = _props.onResizeStop,
-        draggableOpts = _props.draggableOpts,
-        minConstraints = _props.minConstraints,
-        maxConstraints = _props.maxConstraints,
-        lockAspectRatio = _props.lockAspectRatio,
-        axis = _props.axis,
-        width = _props.width,
-        height = _props.height,
-        props = _objectWithoutProperties(_props, ['handleSize', 'onResize', 'onResizeStart', 'onResizeStop', 'draggableOpts', 'minConstraints', 'maxConstraints', 'lockAspectRatio', 'axis', 'width', 'height']);
-
-    return _react2.default.createElement(_Resizable2.default, {
-      handleSize: handleSize,
-      width: this.state.width,
-      height: this.state.height,
-      onResizeStart: onResizeStart,
-      onResize: this.onResize,
-      onResizeStop: onResizeStop,
-      draggableOpts: draggableOpts,
-      minConstraints: minConstraints,
-      maxConstraints: maxConstraints,
-      lockAspectRatio: lockAspectRatio,
-      axis: axis
-    }, _react2.default.createElement('div', _extends({
-      style: {
-        width: this.state.width + 'px',
-        height: this.state.height + 'px'
-      }
-    }, props)));
-  };
-
-  return ResizableBox;
-}(_react2.default.Component);
-
-ResizableBox.propTypes = {
-  height: _propTypes2.default.number,
-  width: _propTypes2.default.number
-};
-ResizableBox.defaultProps = {
-  handleSize: [20, 20]
-};
-exports.default = ResizableBox;
-
-/***/ }),
-
-/***/ "./node_modules/react-resizable/build/cloneElement.js":
-/*!************************************************************!*\
-  !*** ./node_modules/react-resizable/build/cloneElement.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-} // React.addons.cloneWithProps look-alike that merges style & className.
-
-
-module.exports = function cloneElement(element, props) {
-  if (props.style && element.props.style) {
-    props.style = _extends({}, element.props.style, props.style);
-  }
-
-  if (props.className && element.props.className) {
-    props.className = element.props.className + ' ' + props.className;
-  }
-
-  return _react2.default.cloneElement(element, props);
-};
-
-/***/ }),
-
-/***/ "./node_modules/react-resizable/index.js":
-/*!***********************************************!*\
-  !*** ./node_modules/react-resizable/index.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function () {
-  throw new Error("Don't instantiate Resizable directly! Use require('react-resizable').Resizable");
-};
-
-module.exports.Resizable = __webpack_require__(/*! ./build/Resizable */ "./node_modules/react-resizable/build/Resizable.js").default;
-module.exports.ResizableBox = __webpack_require__(/*! ./build/ResizableBox */ "./node_modules/react-resizable/build/ResizableBox.js").default;
 
 /***/ }),
 
@@ -78710,6 +74392,68 @@ module.exports = function (css) {
 
 /***/ }),
 
+/***/ "./node_modules/upper-case/upper-case.js":
+/*!***********************************************!*\
+  !*** ./node_modules/upper-case/upper-case.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * Special language-specific overrides.
+ *
+ * Source: ftp://ftp.unicode.org/Public/UCD/latest/ucd/SpecialCasing.txt
+ *
+ * @type {Object}
+ */
+var LANGUAGES = {
+  tr: {
+    regexp: /[\u0069]/g,
+    map: {
+      '\u0069': '\u0130'
+    }
+  },
+  az: {
+    regexp: /[\u0069]/g,
+    map: {
+      '\u0069': '\u0130'
+    }
+  },
+  lt: {
+    regexp: /[\u0069\u006A\u012F]\u0307|\u0069\u0307[\u0300\u0301\u0303]/g,
+    map: {
+      '\u0069\u0307': '\u0049',
+      '\u006A\u0307': '\u004A',
+      '\u012F\u0307': '\u012E',
+      '\u0069\u0307\u0300': '\u00CC',
+      '\u0069\u0307\u0301': '\u00CD',
+      '\u0069\u0307\u0303': '\u0128'
+    }
+  }
+  /**
+   * Upper case a string.
+   *
+   * @param  {String} str
+   * @return {String}
+   */
+
+};
+
+module.exports = function (str, locale) {
+  var lang = LANGUAGES[locale];
+  str = str == null ? '' : String(str);
+
+  if (lang) {
+    str = str.replace(lang.regexp, function (m) {
+      return lang.map[m];
+    });
+  }
+
+  return str.toUpperCase();
+};
+
+/***/ }),
+
 /***/ "./node_modules/warning/warning.js":
 /*!*****************************************!*\
   !*** ./node_modules/warning/warning.js ***!
@@ -78881,229 +74625,6 @@ module.exports = function (module) {
 
 /***/ }),
 
-/***/ "./panels/AppearancePanel.jsx":
-/*!************************************!*\
-  !*** ./panels/AppearancePanel.jsx ***!
-  \************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es7.symbol.async-iterator */ "./node_modules/core-js/modules/es7.symbol.async-iterator.js");
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_core_withPanel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/core/withPanel */ "./node_modules/@visualbi/bifrost-editor/dist/core/withPanel.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_core_withPanel__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_core_withPanel__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_sortable_tree_style_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-sortable-tree/style.css */ "./node_modules/react-sortable-tree/style.css");
-/* harmony import */ var react_sortable_tree_style_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_sortable_tree_style_css__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _store_ValueDriverTree__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../store/ValueDriverTree */ "./store/ValueDriverTree.js");
-/* harmony import */ var _components_Appearance_AppearanceMenu__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Appearance/AppearanceMenu */ "./components/Appearance/AppearanceMenu.jsx");
-/* harmony import */ var _styles_Icon_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../styles/Icon.css */ "./styles/Icon.css");
-/* harmony import */ var _styles_Icon_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_styles_Icon_css__WEBPACK_IMPORTED_MODULE_9__);
-
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
- // import TreeStore from '../store/TreeStore';
-
-
-
-var panelConfig = {
-  title: 'Appearance',
-  options: {
-    resizable: false
-  }
-};
-
-var AppearancePanel =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(AppearancePanel, _Component);
-
-  function AppearancePanel(props) {
-    var _this;
-
-    _classCallCheck(this, AppearancePanel);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(AppearancePanel).call(this, props));
-    _this.ValueDriverTree = new _store_ValueDriverTree__WEBPACK_IMPORTED_MODULE_7__["default"](); // this.TreeStore = new TreeStore(this.props.store, this.props.VdtInstance);
-
-    return _this;
-  }
-
-  _createClass(AppearancePanel, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          store = _this$props.store,
-          VdtInstance = _this$props.VdtInstance;
-      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(mobx_react__WEBPACK_IMPORTED_MODULE_3__["Provider"], {
-        ValueDriverTree: this.ValueDriverTree
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Appearance_AppearanceMenu__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        store: store,
-        VdtInstance: VdtInstance
-      }));
-    }
-  }], [{
-    key: "propTypes",
-    get: function get() {
-      return {
-        store: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.element
-      };
-    }
-  }]);
-
-  return AppearancePanel;
-}(react__WEBPACK_IMPORTED_MODULE_2__["Component"]);
-
-AppearancePanel.defaultProps = {
-  store: {},
-  VdtInstance: {}
-};
-/* harmony default export */ __webpack_exports__["default"] = (_visualbi_bifrost_editor_dist_core_withPanel__WEBPACK_IMPORTED_MODULE_4___default()(Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(AppearancePanel), panelConfig));
-
-/***/ }),
-
-/***/ "./panels/DataPanel.jsx":
-/*!******************************!*\
-  !*** ./panels/DataPanel.jsx ***!
-  \******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es7.symbol.async-iterator */ "./node_modules/core-js/modules/es7.symbol.async-iterator.js");
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_core_withPanel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/core/withPanel */ "./node_modules/@visualbi/bifrost-editor/dist/core/withPanel.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_core_withPanel__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_core_withPanel__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_sortable_tree_style_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-sortable-tree/style.css */ "./node_modules/react-sortable-tree/style.css");
-/* harmony import */ var react_sortable_tree_style_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_sortable_tree_style_css__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _store_ValueDriverTree__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../store/ValueDriverTree */ "./store/ValueDriverTree.js");
-/* harmony import */ var _components_Data_DataMenu__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Data/DataMenu */ "./components/Data/DataMenu.jsx");
-/* harmony import */ var _styles_Icon_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../styles/Icon.css */ "./styles/Icon.css");
-/* harmony import */ var _styles_Icon_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_styles_Icon_css__WEBPACK_IMPORTED_MODULE_9__);
-
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
- // import TreeStore from '../store/TreeStore';
-
-
-
-var panelConfig = {
-  title: 'Data',
-  options: {
-    resizable: false
-  }
-};
-
-var DataPanel =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(DataPanel, _Component);
-
-  function DataPanel(props) {
-    var _this;
-
-    _classCallCheck(this, DataPanel);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(DataPanel).call(this, props));
-    _this.ValueDriverTree = new _store_ValueDriverTree__WEBPACK_IMPORTED_MODULE_7__["default"](); // this.TreeStore = new TreeStore(this.props.store, this.props.VdtInstance);
-
-    return _this;
-  }
-
-  _createClass(DataPanel, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          store = _this$props.store,
-          VdtInstance = _this$props.VdtInstance;
-      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(mobx_react__WEBPACK_IMPORTED_MODULE_3__["Provider"], {
-        ValueDriverTree: this.ValueDriverTree
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Data_DataMenu__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        store: store,
-        VdtInstance: VdtInstance
-      }));
-    }
-  }], [{
-    key: "propTypes",
-    get: function get() {
-      return {
-        store: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.element
-      };
-    }
-  }]);
-
-  return DataPanel;
-}(react__WEBPACK_IMPORTED_MODULE_2__["Component"]);
-
-DataPanel.defaultProps = {
-  store: {}
-};
-/* harmony default export */ __webpack_exports__["default"] = (_visualbi_bifrost_editor_dist_core_withPanel__WEBPACK_IMPORTED_MODULE_4___default()(Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(DataPanel), panelConfig));
-
-/***/ }),
-
 /***/ "./panels/TodoList.css":
 /*!*****************************!*\
   !*** ./panels/TodoList.css ***!
@@ -79156,22 +74677,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_sortable_tree_style_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_sortable_tree_style_css__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/elements/Button */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Button.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Button */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Button.js");
+/* harmony import */ var _visualbi_bifrost_editor_dist_forms_Button__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Button__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/Select */ "./node_modules/@visualbi/bifrost-editor/dist/forms/Select.js");
 /* harmony import */ var _visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_Select__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
 /* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _components_Shared_Tabs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/Shared/Tabs */ "./components/Shared/Tabs.jsx");
-/* harmony import */ var _components_KpiGeneral__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/KpiGeneral */ "./components/KpiGeneral/index.js");
-/* harmony import */ var _components_KpiData__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/KpiData */ "./components/KpiData/index.js");
-/* harmony import */ var _components_KpiAppearance__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/KpiAppearance */ "./components/KpiAppearance/index.js");
-/* harmony import */ var _store_DataStore__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../store/DataStore */ "./store/DataStore.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _TodoList_css__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./TodoList.css */ "./panels/TodoList.css");
-/* harmony import */ var _TodoList_css__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_TodoList_css__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _styles_Kpi_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../styles/Kpi.css */ "./styles/Kpi.css");
+/* harmony import */ var _styles_Kpi_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_styles_Kpi_css__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _components_KpiGeneral__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/KpiGeneral */ "./components/KpiGeneral/index.js");
+/* harmony import */ var _components_KpiData__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/KpiData */ "./components/KpiData/index.js");
+/* harmony import */ var _components_KpiAppearance__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/KpiAppearance */ "./components/KpiAppearance/index.js");
+/* harmony import */ var _store_DataStore__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../store/DataStore */ "./store/DataStore.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _styles_Icon_css__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../styles/Icon.css */ "./styles/Icon.css");
+/* harmony import */ var _styles_Icon_css__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_styles_Icon_css__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _TodoList_css__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./TodoList.css */ "./panels/TodoList.css");
+/* harmony import */ var _TodoList_css__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_TodoList_css__WEBPACK_IMPORTED_MODULE_19__);
 
 
 
@@ -79202,16 +74727,16 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
  // import { Accordion, AccordionItem } from '../layout/Accordion';
-// import '../styles/Kpi.css';
-// import ImageZoom from 'react-medium-image-zoom'
+
+ // import ImageZoom from 'react-medium-image-zoom'
 
 
 
 
 
 
- // import '../styles/Icon.css';
-// import '../../styles/DataTab.css';
+
+ // import '../../styles/DataTab.css';
 
  //import TodoItems from "./TodoItems";
 
@@ -79223,7 +74748,7 @@ var panelConfig = {
   }
 };
 var DEFAULT_COLOR = '#FFAA00';
-var options = '';
+var options = 'title';
 var scaling = [{
   key: 'title',
   label: 'Title'
@@ -79263,8 +74788,8 @@ function (_Component) {
       key: "",
       component: ""
     };
-    console.log('this.props this.props', _this.props);
-    _this.dataStore = new _store_DataStore__WEBPACK_IMPORTED_MODULE_14__["default"]();
+    console.log('this.props this.props constructor', _this.props);
+    _this.dataStore = new _store_DataStore__WEBPACK_IMPORTED_MODULE_15__["default"]();
     _this.ontabSelected = _this.ontabSelected.bind(_assertThisInitialized(_this));
     _this.createTasks = _this.createTasks.bind(_assertThisInitialized(_this));
     _this.addItem = _this.addItem.bind(_assertThisInitialized(_this));
@@ -79312,10 +74837,13 @@ function (_Component) {
     key: "addItem",
     value: function addItem() {
       var store = this.props.store;
-      var itemArray = Object(mobx__WEBPACK_IMPORTED_MODULE_16__["toJS"])(store.get('kpitile'));
+      var itemArray = Object(mobx__WEBPACK_IMPORTED_MODULE_17__["toJS"])(store.get('kpitile'));
+      console.log('AddItem itemArray', itemArray);
 
-      if (itemArray[0].icon === "icon-check") {
-        itemArray.shift();
+      if (itemArray.length !== 0) {
+        if (itemArray[0].icon === "icon-check") {
+          itemArray.shift();
+        }
       }
 
       if (options !== "") {
@@ -79342,7 +74870,7 @@ function (_Component) {
     value: function deleteItem(key) {
       console.log('deleteItem deleteItem deleteItem', key);
       var store = this.props.store;
-      var rules = Object(mobx__WEBPACK_IMPORTED_MODULE_16__["toJS"])(store.get('kpitile'));
+      var rules = Object(mobx__WEBPACK_IMPORTED_MODULE_17__["toJS"])(store.get('kpitile'));
       var filteredItems = rules.filter(function (item) {
         return item.key !== key;
       });
@@ -79391,7 +74919,7 @@ function (_Component) {
         enable: true
       };
       store.set('kpieditor', obj);
-      var todoEntries = Object(mobx__WEBPACK_IMPORTED_MODULE_16__["toJS"])(store.get('kpitile'));
+      var todoEntries = Object(mobx__WEBPACK_IMPORTED_MODULE_17__["toJS"])(store.get('kpitile'));
       console.log("toJS(store.get('kpitile'))", todoEntries);
 
       if (todoEntries[0].icon === "icon-check") {
@@ -79399,7 +74927,7 @@ function (_Component) {
       }
 
       var listItems = todoEntries.map(this.createTasks);
-      console.log('this.props this.props', this.props);
+      console.log('this.props this.props Render', this.props);
       var list = [{
         name: "General",
         code: "general",
@@ -79431,7 +74959,7 @@ function (_Component) {
         onChange: function onChange(e) {
           return _this3.onChange(e);
         }
-      }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_7___default.a, {
+      }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Button__WEBPACK_IMPORTED_MODULE_7___default.a, {
         type: "submit",
         onClick: this.addItem
       }, "Add"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
@@ -79471,7 +74999,7 @@ function (_Component) {
         onSelect: this.ontabSelected
       }), this.state.tabSelected == "general" && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "vdt-general"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_KpiGeneral__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_KpiGeneral__WEBPACK_IMPORTED_MODULE_12__["default"], {
         store: this.props.store,
         editorData: TodoList,
         expand: this.expand,
@@ -79484,7 +75012,7 @@ function (_Component) {
         }
       })), this.state.tabSelected == "appearance" && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "vdt-appearance"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_KpiAppearance__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_KpiAppearance__WEBPACK_IMPORTED_MODULE_14__["default"], {
         store: this.props.store,
         component: this.state.component,
         editorData: TodoList,
@@ -79498,7 +75026,7 @@ function (_Component) {
         }
       })), this.state.tabSelected == "data" && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "vdt-data"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_KpiData__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_KpiData__WEBPACK_IMPORTED_MODULE_13__["default"], {
         store: this.props.store,
         data: this.state.key,
         dataView: this.props.dataView,
@@ -79737,354 +75265,6 @@ function () {
 
 /***/ }),
 
-/***/ "./store/ValueDriverTree.js":
-/*!**********************************!*\
-  !*** ./store/ValueDriverTree.js ***!
-  \**********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-var _decorate;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-var ValueDriverTree =
-/*#__PURE__*/
-function () {
-  function ValueDriverTree() {
-    _classCallCheck(this, ValueDriverTree);
-
-    _defineProperty(this, "_treeData", []);
-
-    _defineProperty(this, "_vdtMenu", null);
-
-    _defineProperty(this, "_nodeDataset", []);
-
-    _defineProperty(this, "_nodeConfig", null);
-
-    _defineProperty(this, "_tabSelection", null);
-
-    _defineProperty(this, "_nodeConfigModalOpen", true);
-
-    _defineProperty(this, "_importModalOpen", true);
-
-    _defineProperty(this, "_importMode", "");
-
-    _defineProperty(this, "_importTreeSettings", "");
-
-    _defineProperty(this, "_importFullTree", "");
-
-    _defineProperty(this, "_data", {
-      nodeMapProps: {},
-      dataSeries: {},
-      periodAgg: {
-        activePeriod: {},
-        totalOfPeriod: {},
-        totalToPeriod: {},
-        selectedInterval: {}
-      },
-      primarySec: {}
-    });
-
-    _defineProperty(this, "_dataMenuItem", 0);
-
-    _defineProperty(this, "_appearanceMenuItem", 0);
-
-    _defineProperty(this, "_navPanelMenuItem", 0);
-
-    _defineProperty(this, "_navPanel", {});
-
-    _defineProperty(this, "_appearance", {
-      visualization: {},
-      statusBar: {},
-      general: {},
-      colors: {}
-    });
-  }
-
-  _createClass(ValueDriverTree, [{
-    key: "toogleImportModal",
-    value: function toogleImportModal(value) {
-      this._importModalOpen = value;
-    }
-  }, {
-    key: "setImportMode",
-    value: function setImportMode(value) {
-      this._importMode = value;
-    }
-  }, {
-    key: "setImportFullTree",
-    value: function setImportFullTree(value) {
-      this._importFullTree = value;
-    } //  node configration modal  setter and getter funtion
-
-  }, {
-    key: "toggleNodeConfigModal",
-    value: function toggleNodeConfigModal(value) {
-      this._nodeConfigModalOpen = value;
-    } // Modal Data getter and setter
-
-  }, {
-    key: "setNodeConfig",
-    value: function setNodeConfig(config) {
-      this._nodeConfig = config;
-    } //   Menu Tab selection Store setter and getter funtion
-
-  }, {
-    key: "setTabSelection",
-    value: function setTabSelection(initValue) {
-      this._tabSelection = initValue;
-    } //  VDT Appearance setter and getter funtion
-
-  }, {
-    key: "setAppearance",
-    value: function setAppearance(value) {
-      this._appearance = value;
-    }
-  }, {
-    key: "setAppearanceMenuItem",
-    value: function setAppearanceMenuItem(value) {
-      this._dataMenuItem = value;
-    } //  VDT Data menu  setter and getter funtion
-
-  }, {
-    key: "setData",
-    value: function setData(value) {
-      this._data = value;
-    }
-  }, {
-    key: "setDataMenuItem",
-    value: function setDataMenuItem(value) {
-      this._dataMenuItem = value;
-    } //Settings Panel
-
-  }, {
-    key: "setSettings",
-    value: function setSettings(value) {
-      this._navPanel = value;
-    }
-  }, {
-    key: "setSettingsMenuItem",
-    value: function setSettingsMenuItem(value) {
-      this._navPanelMenuItem = value;
-    } // Node navigator getter and setter
-
-  }, {
-    key: "setTreeData",
-    value: function setTreeData(treeData) {
-      this._treeData = treeData;
-    }
-  }, {
-    key: "setNodeDataSet",
-    value: function setNodeDataSet(dataset) {
-      this._nodeDataset = dataset;
-    } // Initial Menu selection setter and getter
-
-  }, {
-    key: "setVdtMenu",
-    value: function setVdtMenu(item) {
-      this._vdtMenu = item;
-    } // Setter for intial data Value
-
-  }, {
-    key: "setInitialData",
-    value: function setInitialData(initValue) {
-      this._data = initValue;
-    }
-  }, {
-    key: "setInitialAppearance",
-    value: function setInitialAppearance(initValue) {
-      this._appearance = initValue;
-    }
-  }, {
-    key: "setInitialSettings",
-    value: function setInitialSettings(initValue) {
-      this._navPanel = initValue;
-    }
-  }, {
-    key: "importModalOpen",
-    //Import Modal 
-    get: function get() {
-      return this._importModalOpen;
-    }
-  }, {
-    key: "importModeData",
-    get: function get() {
-      return this._importMode;
-    }
-  }, {
-    key: "importFullTreeData",
-    get: function get() {
-      return this._importFullTree;
-    }
-  }, {
-    key: "nodeConfigModalOpen",
-    get: function get() {
-      return this._nodeConfigModalOpen;
-    }
-  }, {
-    key: "nodeConfig",
-    get: function get() {
-      return this._nodeConfig;
-    }
-  }, {
-    key: "tabSelection",
-    get: function get() {
-      return this._tabSelection;
-    }
-  }, {
-    key: "appearance",
-    get: function get() {
-      return this._appearance;
-    }
-  }, {
-    key: "appearanceMenuItem",
-    get: function get() {
-      return this._dataMenuItem;
-    }
-  }, {
-    key: "data",
-    get: function get() {
-      return this._data;
-    }
-  }, {
-    key: "dataMenuItem",
-    get: function get() {
-      return this._dataMenuItem;
-    }
-  }, {
-    key: "navPanel",
-    get: function get() {
-      return this._navPanel;
-    }
-  }, {
-    key: "navPanelMenuItem",
-    get: function get() {
-      return this._navPanelMenuItem;
-    }
-  }, {
-    key: "nodeDataset",
-    get: function get() {
-      return this._nodeDataset;
-    }
-  }, {
-    key: "treeData",
-    get: function get() {
-      return this._treeData;
-    }
-  }, {
-    key: "vdtMenu",
-    get: function get() {
-      return this._vdtMenu;
-    }
-  }]);
-
-  return ValueDriverTree;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(mobx__WEBPACK_IMPORTED_MODULE_0__["decorate"])(ValueDriverTree, (_decorate = {
-  _nodeDataset: mobx__WEBPACK_IMPORTED_MODULE_0__["observable"],
-  _treeData: mobx__WEBPACK_IMPORTED_MODULE_0__["observable"],
-  _vdtMenu: mobx__WEBPACK_IMPORTED_MODULE_0__["observable"],
-  _nodeConfig: mobx__WEBPACK_IMPORTED_MODULE_0__["observable"],
-  _data: mobx__WEBPACK_IMPORTED_MODULE_0__["observable"],
-  _appearance: mobx__WEBPACK_IMPORTED_MODULE_0__["observable"],
-  _navPanel: mobx__WEBPACK_IMPORTED_MODULE_0__["observable"],
-  _dataMenuItem: mobx__WEBPACK_IMPORTED_MODULE_0__["observable"],
-  _appearanceMenuItem: mobx__WEBPACK_IMPORTED_MODULE_0__["observable"],
-  _navPanelMenuItem: mobx__WEBPACK_IMPORTED_MODULE_0__["observable"],
-  _tabSelection: mobx__WEBPACK_IMPORTED_MODULE_0__["observable"],
-  _nodeConfigModalOpen: mobx__WEBPACK_IMPORTED_MODULE_0__["observable"],
-  _importModalOpen: mobx__WEBPACK_IMPORTED_MODULE_0__["observable"],
-  _importMode: mobx__WEBPACK_IMPORTED_MODULE_0__["observable"],
-  _importFullTree: mobx__WEBPACK_IMPORTED_MODULE_0__["observable"],
-  importFullTreeData: mobx__WEBPACK_IMPORTED_MODULE_0__["computed"],
-  importModeData: mobx__WEBPACK_IMPORTED_MODULE_0__["computed"],
-  importModalOpen: mobx__WEBPACK_IMPORTED_MODULE_0__["computed"],
-  nodeDataset: mobx__WEBPACK_IMPORTED_MODULE_0__["computed"],
-  treeData: mobx__WEBPACK_IMPORTED_MODULE_0__["computed"],
-  vdtMenu: mobx__WEBPACK_IMPORTED_MODULE_0__["computed"],
-  nodeConfig: mobx__WEBPACK_IMPORTED_MODULE_0__["computed"],
-  data: mobx__WEBPACK_IMPORTED_MODULE_0__["computed"],
-  navPanel: mobx__WEBPACK_IMPORTED_MODULE_0__["computed"],
-  dataMenuItem: mobx__WEBPACK_IMPORTED_MODULE_0__["computed"],
-  appearance: mobx__WEBPACK_IMPORTED_MODULE_0__["computed"],
-  appearanceMenuItem: mobx__WEBPACK_IMPORTED_MODULE_0__["computed"]
-}, _defineProperty(_decorate, "navPanel", mobx__WEBPACK_IMPORTED_MODULE_0__["computed"]), _defineProperty(_decorate, "navPanelMenuItem", mobx__WEBPACK_IMPORTED_MODULE_0__["computed"]), _defineProperty(_decorate, "tabSelection", mobx__WEBPACK_IMPORTED_MODULE_0__["computed"]), _defineProperty(_decorate, "nodeConfigModalOpen", mobx__WEBPACK_IMPORTED_MODULE_0__["computed"]), _defineProperty(_decorate, "setImportFullTree", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _defineProperty(_decorate, "setImportMode", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _defineProperty(_decorate, "toogleImportModal", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _defineProperty(_decorate, "setNodeConfig", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _defineProperty(_decorate, "setInitialData", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _defineProperty(_decorate, "setInitialAppearance", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _defineProperty(_decorate, "setVdtMenu", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _defineProperty(_decorate, "setAppearance", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _defineProperty(_decorate, "setData", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _defineProperty(_decorate, "setAppearanceMenuItem", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _defineProperty(_decorate, "setSettingsMenuItem", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _defineProperty(_decorate, "setDataMenuItem", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _defineProperty(_decorate, "setTreeData", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _defineProperty(_decorate, "setNodeDataSet", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _defineProperty(_decorate, "setTabSelection", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _defineProperty(_decorate, "toggleNodeConfigModal", mobx__WEBPACK_IMPORTED_MODULE_0__["action"]), _decorate)));
-
-/***/ }),
-
-/***/ "./styles/DataTab.css":
-/*!****************************!*\
-  !*** ./styles/DataTab.css ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../node_modules/css-loader!./DataTab.css */ "./node_modules/css-loader/index.js!./styles/DataTab.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./styles/FormElements.css":
-/*!*********************************!*\
-  !*** ./styles/FormElements.css ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../node_modules/css-loader!./FormElements.css */ "./node_modules/css-loader/index.js!./styles/FormElements.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
 /***/ "./styles/Icon.css":
 /*!*************************!*\
   !*** ./styles/Icon.css ***!
@@ -80094,6 +75274,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../node_modules/css-loader!./Icon.css */ "./node_modules/css-loader/index.js!./styles/Icon.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./styles/Kpi.css":
+/*!************************!*\
+  !*** ./styles/Kpi.css ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../node_modules/css-loader!./Kpi.css */ "./node_modules/css-loader/index.js!./styles/Kpi.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -82554,15 +77764,6 @@ var powerbi;
             var kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662;
             (function (kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662) {
                 "use strict";
-                var nodeMapProps = {};
-                var dataSeries = {};
-                var periodAgg = {};
-                var primarySec = {};
-                var visualization = {};
-                var statusBar = {};
-                var general = {};
-                var colors = {};
-                var nav = {};
                 var DataViewObjectsParser = powerbi.extensibility.utils.dataview.DataViewObjectsParser;
                 var VisualSettings = (function (_super) {
                     __extends(VisualSettings, _super);
@@ -82596,19 +77797,8 @@ var powerbi;
                 kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662.dataPointSettings = dataPointSettings;
                 var Editor = (function () {
                     function Editor() {
-                        this.treeConfig = "[]";
-                        // data
-                        this.nodeMapProps = JSON.stringify(nodeMapProps);
-                        this.dataSeries = JSON.stringify(dataSeries);
-                        this.periodAgg = JSON.stringify(periodAgg);
-                        this.primarySec = JSON.stringify(primarySec);
-                        // Appearance
-                        this.visualization = JSON.stringify(visualization);
-                        this.statusBar = JSON.stringify(statusBar);
-                        this.general = JSON.stringify(general);
-                        this.colors = JSON.stringify(colors);
-                        //Settings
-                        this.navPanel = JSON.stringify(nav);
+                        this.kpitile = "";
+                        this.kpieditor = "";
                     }
                     return Editor;
                 }());
@@ -82694,7 +77884,7 @@ var powerbi;
                             return [
                                 {
                                     name: 'editor',
-                                    isVisible: false
+                                    isVisible: true
                                 }
                             ];
                         };
@@ -82883,6 +78073,7 @@ var powerbi;
                         var gridsterContainer = document.createElement("div");
                         gridsterContainer.setAttribute("class", "gridster");
                         gridsterContainer.style.border = "solid";
+                        gridsterContainer.style.left = "320px";
                         var amount = _.sum(options.data.categorical.measures[0].values);
                         amount = _.ceil(amount);
                         amount = this.numberWithCommas(amount);
@@ -82978,14 +78169,18 @@ var powerbi;
                                     }
                                 }
                                 else if (kpi.text === "primarykpi") {
+                                    console.log('primarykpi start', kpi);
                                     primaryKPIVar = _this.primaryKPIFun(options, kpi);
+                                    console.log('after primarykpiFuncrion call', primaryKPIVar, kpi);
                                     if (kpi.general) {
                                         a.remove_widget(document.getElementById(kpi.key), function (remove) {
                                             console.log('remove', remove);
                                         });
+                                        console.log('after remove', kpi);
                                         a.add_widget(primaryKPIVar, kpi.general.sizex, kpi.general.sizey, kpi.general.col, kpi.general.row);
                                     }
                                     else {
+                                        console.log('else condition', kpi);
                                         a.add_widget(primaryKPIVar, 4, 2, 1, 2);
                                     }
                                 }
@@ -83024,8 +78219,8 @@ var powerbi;
                                 }
                             });
                         }
-                        a = new gridster(gridsterContainer, kpitileSettings);
-                        a.add_widget('<div class="ddd" style=" background: #f5f5f5 "><div style="margin: 25px;padding: 1em;text-align: center;"><div class="value-text mb-md">' + amount + '</div><div class="label-text-md">' + options.data.categorical.measures[0].label + '</div></div></div>', 1, 1, 3, 3);
+                        // a = new gridster(gridsterContainer, kpitileSettings);
+                        // a.add_widget('<div class="ddd" style=" background: #f5f5f5 "><div style="margin: 25px;padding: 1em;text-align: center;"><div class="value-text mb-md">' + amount + '</div><div class="label-text-md">' + options.data.categorical.measures[0].label + '</div></div></div>', 1, 1, 3, 3);
                         if (options.updateType === powerbi.VisualUpdateType.ResizeEnd || options.updateType === 36 || options.updateType === powerbi.VisualUpdateType.Data) {
                             // a.remove_all_widgets(remove => {
                             //     console.log('remove', remove);

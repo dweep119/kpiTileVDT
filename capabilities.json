@@ -60,62 +60,14 @@
         "editor": {
             "displayName": "Editor",
             "properties": {
-                "treeConfig": {
-                    "displayName": "Tree Config",
+                "kpitile": {
+                    "displayName": "KPI Tile",
                     "type": {
                         "text": true
                     }
                 },
-                "navPanel": {
-                    "displayName": "navPanel",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "nodeMapProps": {
-                    "displayName": "nodeMapProps",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "dataSeries": {
-                    "displayName": "dataSeries",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "periodAgg": {
-                    "displayName": "periodAgg",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "primarySec": {
-                    "displayName": "primarySec",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "visualization": {
-                    "displayName": "visualization",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "statusBar": {
-                    "displayName": "statusBar",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "general": {
-                    "displayName": "general",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "colors": {
-                    "displayName": "colors",
+                "kpieditor": {
+                    "displayName": "KPI Editor",
                     "type": {
                         "text": true
                     }

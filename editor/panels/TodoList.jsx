@@ -4,12 +4,12 @@ import withPanel from '@visualbi/bifrost-editor/dist/core/withPanel';
 import 'react-sortable-tree/style.css';
 import PropTypes from 'prop-types';
 
-import Button from '@visualbi/bifrost-editor/dist/elements/Button';
+import Button from '@visualbi/bifrost-editor/dist/forms/Button';
 import Select from '@visualbi/bifrost-editor/dist/forms/Select';
 import Flex from '@visualbi/bifrost-editor/dist/layout/Flex';
 import Tabs from '../components/Shared/Tabs'
 // import { Accordion, AccordionItem } from '../layout/Accordion';
-// import '../styles/Kpi.css';
+import '../styles/Kpi.css';
 // import ImageZoom from 'react-medium-image-zoom'
 import GeneralComponent from '../components/KpiGeneral';
 import DataComponent from '../components/KpiData';
@@ -17,7 +17,7 @@ import AppearanceComponent from '../components/KpiAppearance';
 import DataStore from '../store/DataStore';
 import _ from 'lodash';
 import { toJS } from 'mobx';
-// import '../styles/Icon.css';
+import '../styles/Icon.css';
 // import '../../styles/DataTab.css';
 
 
@@ -33,7 +33,7 @@ const panelConfig = {
   };
 
   const DEFAULT_COLOR = '#FFAA00';
-  let options = '';
+  let options = 'title';
   const scaling = [{ key: 'title', label: 'Title' }, { key: 'primarykpi', label: 'Primary KPI' }, { key: 'secondarykpi', label: 'Secondary KPI' }, { key: 'sparklinechart', label: 'SparkLine Chart' }, { key: 'icon', label: 'Icon' }, { key: 'image', label: 'Image' }];
 
  class TodoList extends Component{
@@ -47,7 +47,7 @@ const panelConfig = {
         key: "",
         component: "" 
       }
-      console.log('this.props this.props', this.props)
+      console.log('this.props this.props constructor', this.props)
       this.dataStore = new DataStore();
       this.ontabSelected = this.ontabSelected.bind(this);
   
@@ -68,8 +68,11 @@ const panelConfig = {
     addItem() {
       const { store } = this.props;
       var itemArray = toJS(store.get('kpitile'));
-      if (itemArray[0].icon === "icon-check") {
-        itemArray.shift();
+      console.log('AddItem itemArray', itemArray);
+      if (itemArray.length !== 0) {
+        if (itemArray[0].icon === "icon-check") {
+          itemArray.shift();
+        }
       }
       if (options !== "") {    
         itemArray.push(
@@ -144,7 +147,7 @@ const panelConfig = {
         todoEntries.shift();
       }
       var listItems = todoEntries.map(this.createTasks);
-      console.log('this.props this.props', this.props);
+      console.log('this.props this.props Render', this.props);
       let list = [ {
         name: "General",
         code: "general",

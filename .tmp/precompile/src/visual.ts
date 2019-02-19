@@ -61,7 +61,7 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
 			return [
 				{
 					name: 'editor',
-					isVisible: false
+					isVisible: true
 				}
 			];
         };
@@ -235,6 +235,7 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
             let gridsterContainer: HTMLElement = document.createElement("div");
                 gridsterContainer.setAttribute("class", "gridster");
                 gridsterContainer.style.border = "solid";
+                gridsterContainer.style.left = "320px";
 
             let amount = _.sum(options.data.categorical.measures[0].values);
                 amount = _.ceil(amount);
@@ -332,13 +333,17 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
                             a.add_widget(titleVar, 4, 1, 1, 1);
                         }
                     } else if (kpi.text === "primarykpi") {
+                        console.log('primarykpi start', kpi);
                         primaryKPIVar = this.primaryKPIFun(options, kpi);
+                        console.log('after primarykpiFuncrion call', primaryKPIVar, kpi)
                         if (kpi.general) {
                             a.remove_widget(document.getElementById(kpi.key), remove => {
                                 console.log('remove', remove);
                             });
+                            console.log('after remove', kpi)
                             a.add_widget(primaryKPIVar, kpi.general.sizex, kpi.general.sizey, kpi.general.col, kpi.general.row);
                         } else {
+                            console.log('else condition', kpi)
                             a.add_widget(primaryKPIVar, 4, 2, 1, 2);
                         }
                     } else if (kpi.text === "secondarykpi") {
@@ -371,9 +376,9 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
                     }
                 });
             }
-            a = new gridster(gridsterContainer, kpitileSettings);
+            // a = new gridster(gridsterContainer, kpitileSettings);
 
-            a.add_widget('<div class="ddd" style=" background: #f5f5f5 "><div style="margin: 25px;padding: 1em;text-align: center;"><div class="value-text mb-md">' + amount + '</div><div class="label-text-md">' + options.data.categorical.measures[0].label + '</div></div></div>', 1, 1, 3, 3);
+            // a.add_widget('<div class="ddd" style=" background: #f5f5f5 "><div style="margin: 25px;padding: 1em;text-align: center;"><div class="value-text mb-md">' + amount + '</div><div class="label-text-md">' + options.data.categorical.measures[0].label + '</div></div></div>', 1, 1, 3, 3);
             
             if (options.updateType === VisualUpdateType.ResizeEnd || options.updateType === 36 || options.updateType === VisualUpdateType.Data) {
                 // a.remove_all_widgets(remove => {
