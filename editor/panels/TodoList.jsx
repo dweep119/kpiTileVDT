@@ -21,7 +21,7 @@ import { toJS } from 'mobx';
 // import '../../styles/DataTab.css';
 
 
-// import "./TodoList.css";
+import "./TodoList.css";
 //import TodoItems from "./TodoItems";
 
 const panelConfig = {
@@ -188,7 +188,7 @@ const panelConfig = {
                           <option name="Icon" value="icon">Icon</option>
                         </select> */}
                           
-                        <Select className="dropdown" value={'title'} options={scaling} onChange={e => this.onChange(e)} />
+                        <Select className="dropdown" options={scaling} onChange={e => this.onChange(e)} />
 
 
                         <Button type="submit" onClick={this.addItem}>Add</Button>          
