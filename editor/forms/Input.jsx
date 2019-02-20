@@ -3,7 +3,7 @@ import '../styles/Input.css';
 
 export default class Input extends Component {
   static defaultProps = {
-    onChange: () => {console.log("asdaaaaaa") },
+    onChange: () => { console.log('asdaaaaaa'); },
   }
 
   render() {
@@ -17,17 +17,17 @@ export default class Input extends Component {
     } = this.props;
 
     return (
-      <div class={`bf-editor-form-input ${icon ? 'has-icon-left' : ''}`}>
+      <div className={`bf-editor-form-input ${icon ? 'has-icon-left' : ''}`}>
         <input
-          class="form-input"
+          className="form-input"
           type={type || 'text'}
           placeholder={placeholder}
           disabled={disabled}
           value={value}
-          onChange={(e) =>{ onChange(e.target.value)}}
-        ></input>
+          onChange={(e) => { onChange(e.target.value); }}
+        />
         {icon ? (
-          <i class={`form-icon icon ${icon}`}></i>
+          <i className={`form-icon icon ${icon}`} />
         ) : null}
       </div>
     );

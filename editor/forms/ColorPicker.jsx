@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactColorPicker from 'react-simple-colorpicker'; 
+import ReactColorPicker from 'react-simple-colorpicker';
 import '../styles/ColorPicker.css';
 import Flex from '../layout/Flex';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Button.css';
 
-const Button = props => {
+const Button = (props) => {
   const {
     className,
     onClick,

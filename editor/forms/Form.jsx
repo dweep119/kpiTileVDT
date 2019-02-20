@@ -77,18 +77,16 @@ class Form extends React.Component {
   generateFormFields(fields) {
     const decorator = this.props.form.getFieldDecorator;
 
-    const generatedFields = fields.map((field) => {
-      return decorator(field.name, {
-        validate: [{
-          rules: field.rules || [],
-          trigger: 'onBlur',
-        }],
-        hidden: field.hidden || false,
-        valuePropName: field.valuePropName || 'value',
-        initialValue: field.defaultValue,
-        getValueFromEvent: field.getValueFromEvent,
-      })(this.getFormFieldComponent(field));
-    });
+    const generatedFields = fields.map(field => decorator(field.name, {
+      validate: [{
+        rules: field.rules || [],
+        trigger: 'onBlur',
+      }],
+      hidden: field.hidden || false,
+      valuePropName: field.valuePropName || 'value',
+      initialValue: field.defaultValue,
+      getValueFromEvent: field.getValueFromEvent,
+    })(this.getFormFieldComponent(field)));
 
     return generatedFields;
   }

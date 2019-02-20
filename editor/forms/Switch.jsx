@@ -7,18 +7,20 @@ export default class Switch extends Component {
   }
 
   render() {
-    const { value, size, className, onChange, label, disabled } = this.props;
+    const {
+      value, size, className, onChange, label, disabled
+    } = this.props;
 
     return (
       <div className={`bf-editor-form-switch ${className} ${size || ''}`}>
-        <label class="form-switch">
+        <label className="form-switch">
           <input
             type="checkbox"
             checked={value}
             disabled={disabled}
-            onChange={(e) => onChange(e.target.checked)}
+            onChange={e => onChange(e.target.checked)}
           />
-          <i class="form-icon"></i>
+          <i className="form-icon" />
           {label && (
             <span>{label}</span>
           )}

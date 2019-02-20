@@ -1,5 +1,6 @@
 import React from 'react';
-const Flex = props => {
+
+const Flex = (props) => {
   const {
     flexDirection,
     alignItems,

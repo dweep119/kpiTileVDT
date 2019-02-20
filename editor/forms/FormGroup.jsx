@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import '../styles/FormGroup.css';
-import Flex from '../layout/Flex';
 import { Icon } from 'react-icons-kit';
 import { ic_help } from 'react-icons-kit/md/ic_help';
+import Flex from '../layout/Flex';
 
 
 export default class FormGroup extends Component {
@@ -16,7 +16,8 @@ export default class FormGroup extends Component {
       children,
       value,
       onChange,
-      onBlur } = this.props;
+      onBlur
+    } = this.props;
 
     return (
       <div
@@ -28,13 +29,13 @@ export default class FormGroup extends Component {
             alignItems="center"
             justifyContent="flex-start"
           >
-            <label class="form-label">{label}</label>
+            <label className="form-label">{label}</label>
             {tooltip && (
               <div className="popover popover-right">
                 <Icon icon={ic_help} size={14} />
-                <div class="popover-container">
-                  <div class="card">
-                    <div class="card-body">
+                <div className="popover-container">
+                  <div className="card">
+                    <div className="card-body">
                       {tooltip}
                     </div>
                   </div>
@@ -47,7 +48,7 @@ export default class FormGroup extends Component {
           {React.cloneElement(children, { value, onChange, onBlur })}
           {error && Array.isArray(messages) ? (
             messages.map(message => (
-              <p class="form-input-hint">{message}</p>
+              <p className="form-input-hint">{message}</p>
             ))
           ) : null}
         </Flex>

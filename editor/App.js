@@ -2,22 +2,33 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Editor from '@visualbi/bifrost-editor/dist/core/Editor';
 
-import TodoList from './panels/TodoList';
+import TodoListPanel from './panels/TodoListPanel';
 
 export class App extends Component {
   constructor(props) {
     super(props);
 
-    this.kpitile = [{
-      name: 'Test',
-      color: '#FFAA22',
-      icon: 'icon-check',
-    }];
-    this.kpieditor = [{
-      name: 'Test',
-      color: '#FFAA22',
-      icon: 'icon-check',
-    }]
+    if (this.props.configurations) {
+      this.kpitile = this
+        .props
+        .getPropertyValue({propertyId: 'kpitile', sectionId: 'editor'});
+      this.kpieditor = this
+        .props
+        .getPropertyValue({propertyId: 'kpieditor', sectionId: 'editor'});
+
+    } else {
+
+      this.kpitile = [{
+        name: 'Test',
+        color: '#FFAA22',
+        icon: 'icon-check',
+      }];
+      this.kpieditor = [{
+        name: 'Test',
+        color: '#FFAA22',
+        icon: 'icon-check',
+      }]
+    }
     
   }
 
@@ -26,7 +37,7 @@ export class App extends Component {
     const panels = [
       {
         key: 'edit-kpi',
-        component: TodoList,
+        component: TodoListPanel,
         props: {
           className: 'vdt-editor-panel',
           dataView: this.props.dataView
@@ -34,10 +45,20 @@ export class App extends Component {
       }];
     const nav = [
       {
-        label: 'Edit KPI',
+        label: 'New',
         type: 'panel',
-        icon: 'Data',
+        icon: 'Add',
+        panelKey: 'new-kpi',
+      }, {
+        label: 'Customize',
+        type: 'panel',
+        icon: 'Edit',
         panelKey: 'edit-kpi',
+      }, {
+        label: 'Settings',
+        type: 'panel',
+        icon: 'Settings',
+        panelKey: 'settings',
       }];
 
     const store = [

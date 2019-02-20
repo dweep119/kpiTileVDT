@@ -7,18 +7,20 @@ export default class Checkbox extends Component {
   }
 
   render() {
-    const { value, onChange, label, disabled } = this.props;
+    const {
+      value, onChange, label, disabled
+    } = this.props;
 
     return (
-      <div class="bf-editor-form-checkbox">
-        <label class="form-checkbox">
+      <div className="bf-editor-form-checkbox">
+        <label className="form-checkbox">
           <input
             type="checkbox"
             checked={value}
             disabled={disabled}
-            onChange={(e) => onChange(e.target.checked)}
+            onChange={e => onChange(e.target.checked)}
           />
-          <i class="form-icon"></i>
+          <i className="form-icon" />
           {label && (
             <span>{label}</span>
           )}
@@ -27,4 +29,3 @@ export default class Checkbox extends Component {
     );
   }
 }
-

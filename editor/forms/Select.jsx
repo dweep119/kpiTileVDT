@@ -18,14 +18,14 @@ export default class Select extends Component {
     } = this.props;
 
     return (
-      <div class={`bf-editor-form-select ${icon ? 'has-icon-left' : ''}`}>
+      <div className={`bf-editor-form-select ${icon ? 'has-icon-left' : ''}`}>
         <select
-          class="form-select"
+          className="form-select"
           type={type || 'text'}
           placeholder={placeholder}
           disabled={disabled}
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={e => onChange(e.target.value)}
         >
           {placeholder ? (
             <option key="_placeholder" value={null}>{placeholder}</option>
@@ -35,7 +35,7 @@ export default class Select extends Component {
           ))}
         </select>
         {icon ? (
-          <i class={`form-icon icon ${icon}`}></i>
+          <i className={`form-icon icon ${icon}`} />
         ) : null}
       </div>
     );

@@ -6,10 +6,10 @@ export default class Radio extends Component {
     const { name, label, disabled } = this.props;
 
     return (
-      <div class="bf-editor-form-radio">
-        <label class="form-radio">
+      <div className="bf-editor-form-radio">
+        <label className="form-radio">
           <input name={name} type="radio" disabled={disabled} />
-          <i class="form-icon"></i>
+          <i className="form-icon" />
           {label && (
             <span>{label}</span>
           )}
@@ -18,4 +18,3 @@ export default class Radio extends Component {
     );
   }
 }
-

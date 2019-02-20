@@ -51,7 +51,7 @@ module powerbi.extensibility.visual {
      }
 
      export class Editor {
-      public kpitile: string = "";
+      public kpitile: string = "[]";
       public kpieditor: string = "";
     }
 

@@ -30,6 +30,13 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
     let gridster = (<any>window).Gridster;
     let _ = (<any> window)._;
     let titleVar, primaryKPIVar, secondaryKPIVar, iconVar, imageVar, sparkLineChartVar;
+    let position = {
+        col: 1,
+        row: 1,
+        sizex: 1,
+        sizey: 1,
+        id: ''
+    };
 
     export class ExampleChart extends bifrost.visual.BifrostVisual {
 
@@ -76,7 +83,7 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
             } else if (kpi.appearance && kpi.general) {
                 return ('<div id=" ' + kpi.key + ' "><div class="title-style" style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '; color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Apple Products</div></div>');
             }
-            return ('<div id="title"><div class="title-style" style="height: 100%;text-align: left;background-color: #4A90E2;font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Apple Products</div></div>');
+            return ('<div id=" ' + kpi.key + ' "><div class="title-style" style="height: 100%;text-align: left;background-color: #4A90E2;font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Apple Products</div></div>');
         }
 
         private primaryKPIFun = (options, kpi) => {
@@ -138,7 +145,7 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
                 '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Macbook Pro</div>'+
               '</div></div>');
             }
-            return ('<div id="primarykpi"><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> '+
+            return ('<div id=" ' + kpi.key + ' "><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> '+
             '<div class="value-text mb" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">$78,900<img src="https://i.imgur.com/uHvo5kW.png" alt="" style="height: 25px;width: 15px;" class="icon-sm mx" /></div>'+
             '<div class="label-text-md mb-md" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Macbook Pro</div>'+
             '<div class="label-text-sm" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">$24,900<img src="https://i.imgur.com/IJRKq5P.png" alt="" style="height: 25px;width: 15px;" class="icon-sm mx" /></div>'+
@@ -176,7 +183,7 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
                 // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
               '</div></div>');
             }
-            return ('<div id="secondarykpi"><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> '+
+            return ('<div id=" ' + kpi.key + ' "><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> '+
             '<div class="value-text mb" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">$78,900<img src="up-arrow.png" alt="" class="icon-sm mx" /></div>'+
             '<div class="label-text-md mb-md" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Macbook Pro</div>'+
             // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
@@ -190,7 +197,7 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
             } else if (kpi.appearance && kpi.general) {
                 return ('<div id=" ' + kpi.key + ' "><div style="height: 100px;width: 100px;background: ' + kpi.appearance.backgroundColor + '"><img src="https://image.flaticon.com/icons/svg/858/858699.svg" alt="" height="100px" width="100px"></div></div>');
             }
-            return ('<div id="image"><div style="height: 100px;width: 100px;"><img src="https://image.flaticon.com/icons/svg/858/858699.svg" alt="" height="100px" width="100px"></div></div>');
+            return ('<div id=" ' + kpi.key + ' "><div style="height: 100px;width: 100px;"><img src="https://image.flaticon.com/icons/svg/858/858699.svg" alt="" height="100px" width="100px"></div></div>');
         }
 
         private iconFun = (kpi) => {
@@ -199,14 +206,14 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
             } else if (kpi.appearance && kpi.general) {
                 return ('<div id=" ' + kpi.key + ' "><div style="background: ' + kpi.appearance.backgroundColor + '"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-c-512.png" alt="" height="100px" width="100px"></div></div>');
             }
-            return ('<div id="icon"><div><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-c-512.png" alt="" height="100px" width="100px"></div></div>');
+            return ('<div id=" ' + kpi.key + ' "><div><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-c-512.png" alt="" height="100px" width="100px"></div></div>');
         }
 
         private sparklinechartFun = (kpi) => {
             if (kpi.appearance && kpi.general) {
                 return ('<div id=" ' + kpi.key + ' "><div class="inner-tab" id="container" style="height: 100%;border-right: 1px solid #eeeeee;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '" ></div></div>');
             }
-            return ('<div id="chart"><div class="inner-tab" id="container" style="height: 100%;border-right: 1px solid #eeeeee;text-align: center;background-color: #4A90E2;" ></div></div>');
+            return ('<div id=" ' + kpi.key + ' "><div class="inner-tab" id="container" style="height: 100%;border-right: 1px solid #eeeeee;text-align: center;background-color: #4A90E2;" ></div></div>');
         }
 
 
@@ -214,13 +221,7 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
             options.element.innerHTML = '';
             let a, updatedProperty = {};
             const self = this;
-            let position = {
-                col: 1,
-                row: 1,
-                sizex: 1,
-                sizey: 1,
-                id: ''
-            };
+            
             let dataView = options.data,
                 settings: any = options.settings;
             this.chartContainer = options.element;
@@ -281,7 +282,7 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
                         //         } as VisualObjectInstancesToPersist
                         //     ]
                         // } as VisualObjectInstancesToPersist);
-                        console.log('DRAG stop', position);
+                        console.log('DRAG stop', position, kpitile);
                     }
                 },
                 resize: {
@@ -315,11 +316,20 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
                     kpitileSettings.draggable.enabled = true;
                     kpitileSettings.resize.enabled = true;
                 }
-                console.log('After shift kpitile', kpitile, kpitileSettings, position);
                 a = new gridster(gridsterContainer, kpitileSettings);
                 if (!kpitileSettings.draggable.enabled) {
                     a.disable();
                 }
+                kpitile.map(kpi => {
+                    if (position.id === kpi.key && kpi.general) {
+                        console.log('Inside If id is same', position , kpi)
+                        kpi.general.sizex = position.sizex;
+                        kpi.general.sizey = position.sizey;
+                        kpi.general.col = position.col;
+                        kpi.general.row = position.row;
+                    }
+                });
+                console.log('After shift kpitile', kpitile, kpitileSettings, position);
                 // this.setWidgetFun(kpitile, a, options);
                 kpitile.map(kpi => {
                     if (kpi.text === "title") {

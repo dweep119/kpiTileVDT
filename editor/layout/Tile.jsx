@@ -17,20 +17,22 @@ export default class Tile extends Component {
   }
 
   render() {
-    const { key, icon, actions, color, title, subtitle, onClick } = this.props;
+    const {
+      key, icon, actions, color, title, subtitle, onClick
+    } = this.props;
 
     return (
-      <div class="bf-editor-tile tile tile-centered" onClick={() => onClick(key, this.props)}>
-        <div style={color ? { backgroundColor: color } : null} class="tile-icon">
-          <i class={`icon ${icon} centered`}></i>
+      <div className="bf-editor-tile tile tile-centered" onClick={() => onClick(key, this.props)}>
+        <div style={color ? { backgroundColor: color } : null} className="tile-icon">
+          <i className={`icon ${icon} centered`} />
         </div>
-        <div class="tile-content">
-          <div class="tile-title">{title}</div>
-          <small class="tile-subtitle text-gray">{subtitle}</small>
+        <div className="tile-content">
+          <div className="tile-title">{title}</div>
+          <small className="tile-subtitle text-gray">{subtitle}</small>
         </div>
-        <div class="tile-action">
+        <div className="tile-action">
           {actions.map(action => (
-            <button title={action.title} class={action.className || 'btn btn-link'} onClick={(e) => this.onActionClick(e, action.onClick)}>
+            <button title={action.title} className={action.className || 'btn btn-link'} onClick={e => this.onActionClick(e, action.onClick)}>
               {action.label}
             </button>
           ))}
@@ -39,4 +41,3 @@ export default class Tile extends Component {
     );
   }
 }
-
