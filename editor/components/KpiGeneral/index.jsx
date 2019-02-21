@@ -7,17 +7,6 @@ import Select from '@visualbi/bifrost-editor/dist/forms/Select';
 import Button from '@visualbi/bifrost-editor/dist/elements/Button';
 import _ from 'lodash';
 
-const panelConfig = {
-  title: 'General',
-  options: {
-    // pass extra parameters,
-  }
-};
-
-const customFamilyValidator = (rule, value, callback) => {
-  console.log('Custom Validator', rule, value, callback);
-};
-
 const formFields = [
   {
     name: 'name',
@@ -158,7 +147,6 @@ class KpiGeneral extends Component {
   onSubmit(response) {
     let merged;
     const { store } = this.props;
-    console.log('Response kpi general', this.props);
     const rules = toJS(store.get('kpitile'));
     const result = rules.map((item, inx) => {
       if (item.key === this.props.data) {
@@ -169,7 +157,6 @@ class KpiGeneral extends Component {
       }
       return item;
     });
-    console.log('Response', response, 'Rules', result, merged);
     store.set('kpitile', result);
     this.props.onSubmit(this.props.data);
   }
@@ -179,17 +166,15 @@ class KpiGeneral extends Component {
   }
 
   onFieldsChange(changed, all) {
-    console.log('Fields changed', changed);
-    console.log('All fields', all);
+    console.log('Fields changed', changed, all);
   }
 
   render() {
     const { store } = this.props;
-    console.log('Store > kpiGeneral', toJS(store.get('kpitile')));
     const response = toJS(store.get('kpitile'));
+    console.log('KPI GENERAL', response, this.props);
     const result = response.map((item) => {
       if (item.key === this.props.data) {
-        console.log('General Hii', item, this.props.data);
         if (item.general) {
           // fields={formFields}
           const fields = formFields.filter((i) => {
@@ -204,10 +189,8 @@ class KpiGeneral extends Component {
           });
           return fields;
         }
-        console.log('formFields formFields', formFields);
         return formFields;
       }
-      console.log('formFields formFields General', formFields);
       return formFields;
     });
     return (

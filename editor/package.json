@@ -1,11 +1,7 @@
 {
   "name": "visual",
   "dependencies": {
-    "@visualbi/bifrost-editor": "^0.2.0-rc3",
-    "babel-eslint": "^10.0.1",
-    "immutable": "^4.0.0-rc.12",
-    "lodash": "^4.17.11",
-    "lodash.mapkeys": "^4.6.0",
+    "@visualbi/bifrost-editor": "^0.3.0-rc10",
     "mobx": "^4.6.0",
     "mobx-react": "^5.4.0",
     "prop-types": "^15.6.2",
@@ -30,6 +26,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.12.3",
+    "gulp": "^4.0.0",
     "style-loader": "0.23.1",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "url-loader": "1.1.2",

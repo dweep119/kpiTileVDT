@@ -5,18 +5,6 @@ import Form from '@visualbi/bifrost-editor/dist/forms/Form';
 import Input from '@visualbi/bifrost-editor/dist/forms/Input';
 import Select from '@visualbi/bifrost-editor/dist/forms/Select';
 
-
-const panelConfig = {
-  title: 'Data',
-  options: {
-    // pass extra parameters,
-  }
-};
-
-const customFamilyValidator = (rule, value, callback) => {
-  console.log('Custom Validator', rule, value, callback);
-};
-
 const formFields = [
   {
     name: 'measure',
@@ -150,10 +138,8 @@ class KpiData extends Component {
 
   onSubmit(response) {
     let merged;
-    console.log('Response data', response);
     const { store } = this.props;
     const rules = toJS(store.get('kpitile'));
-    console.log(', rules , rules', rules);
     const result = rules.map((item, inx) => {
       if (item.key === this.props.data) {
         merged = { ...rules[inx], data: response };
@@ -163,10 +149,8 @@ class KpiData extends Component {
       }
       return item;
     });
-    console.log('kpitile data result', result);
     store.set('kpitile', result);
     const editor = toJS(store.get('kpieditor'));
-    console.log('close called', rules);
     editor.enable = false;
     store.set('kpieditor', editor);
     this.props.close();
@@ -177,13 +161,11 @@ class KpiData extends Component {
   }
 
   onFieldsChange(changed, all) {
-    console.log('Fields changed', changed);
-    console.log('All fields', all);
+    console.log('Fields changed', changed, all);
   }
 
   render() {
     const { store } = this.props;
-    console.log('Store > kpiData', this.props);
     const response = toJS(store.get('kpitile'));
     const result = response.map((item) => {
       if (item.key === this.props.data) {
@@ -196,7 +178,6 @@ class KpiData extends Component {
                   if (i.name === k) {
                     if (i.name === 'dimension') {
                       this.props.dataView.categorical.dimensions.map((x, y) => {
-                        console.log('Hiiiiii', x, item.data[k]);
                         if (x.label === item.data[k]) {
                           i.defaultValue = this.props.dataView.categorical.dimensions[y].label;
                           i.controlProps = {
@@ -227,7 +208,6 @@ class KpiData extends Component {
       }
       const fields = formFields.filter((itm) => {
         if (itm.component.includes(this.props.component)) {
-          console.log('itm itm', itm);
           if (itm.name === 'dimension') {
             itm.defaultValue = this.props.dataView.categorical.dimensions[0].label;
             itm.controlProps = {
@@ -245,7 +225,6 @@ class KpiData extends Component {
       return fields;
     });
 
-    console.log('Result Result Result Data', result);
 
     return (
       <div>

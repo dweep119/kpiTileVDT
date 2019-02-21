@@ -2,48 +2,45 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Editor from '@visualbi/bifrost-editor/dist/core/Editor';
 
-import TodoListPanel from './panels/TodoListPanel';
+import CustomizePanel from './panels/CustomizePanel';
+
+const propertyIds = ['kpitile','kpieditor']
 
 export class App extends Component {
   constructor(props) {
     super(props);
 
-    if (this.props.configurations) {
-      this.kpitile = this
-        .props
-        .getPropertyValue({propertyId: 'kpitile', sectionId: 'editor'});
-      this.kpieditor = this
-        .props
-        .getPropertyValue({propertyId: 'kpieditor', sectionId: 'editor'});
-
-    } else {
-
-      this.kpitile = [{
-        name: 'Test',
-        color: '#FFAA22',
-        icon: 'icon-check',
-      }];
-      this.kpieditor = [{
-        name: 'Test',
-        color: '#FFAA22',
-        icon: 'icon-check',
-      }]
-    }
+    this.persistProperty();
     
   }
 
-  render() {
-    const {listener, configurations} = this.props;
-    const panels = [
+  persistProperty() {
+    propertyIds.map(propetyId =>{
+      this[propetyId] = this
+      .props
+      .getPropertyValue({propertyId: propetyId, sectionId: 'editor'});
+    })
+  }
+
+  getPanels() {
+    const { configurations } = this.props;
+    const VdtInstance = configurations ? configurations.VdtInstance : {};
+    const dataViews = configurations ? configurations.dataViews : {};
+    const treeInstance = configurations? configurations.treeInstance: {}
+    return [
       {
         key: 'edit-kpi',
-        component: TodoListPanel,
+        component: CustomizePanel,
         props: {
-          className: 'vdt-editor-panel',
+          className: 'kpi-editor-panel',
           dataView: this.props.dataView
         }
-      }];
-    const nav = [
+      }
+    ];
+  }
+
+  getNav() {
+    return [
       {
         label: 'New',
         type: 'panel',
@@ -59,9 +56,12 @@ export class App extends Component {
         type: 'panel',
         icon: 'Settings',
         panelKey: 'settings',
-      }];
+      }
+    ];
+  }
 
-    const store = [
+  getStore() {
+    return [
       {
         name: 'kpitile',
         meta: {
@@ -78,6 +78,14 @@ export class App extends Component {
         defaultValue: this.kpieditor,
       }
     ];
+  }
+
+  render() {
+    const {listener} = this.props;
+    const panels = this.getPanels();
+    const nav = this.getNav();
+    const store = this.getStore();
+
     return (
       <div className="App">
         <Editor nav={nav} panels={panels} store={store} listener={listener}/>
@@ -87,7 +95,6 @@ export class App extends Component {
 }
 
 export const loadEditor = (element, options) => {
-  console.log('App.js Render', options)
   ReactDOM.render(
     <App
     configurations={options.configurations}

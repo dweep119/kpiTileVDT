@@ -7,14 +7,7 @@ import Input from '@visualbi/bifrost-editor/dist/forms/Input';
 import Select from '@visualbi/bifrost-editor/dist/forms/Select';
 import Button from '@visualbi/bifrost-editor/dist/elements/Button';
 import ColorPicker from '@visualbi/bifrost-editor/dist/forms/ColorPicker';
-
-const panelConfig = {
-  title: 'Apperance',
-  options: {
-    // pass extra parameters,
-  }
-};
-
+import _ from 'lodash';
 
 const formFields = [
   {
@@ -107,12 +100,6 @@ const formFields = [
       required: true,
       message: 'Font Size is required',
     }]
-    // }, {
-    //   type: 'string',
-    //   min: 8,
-    //   max: 64,
-    //   message: 'Font Size must be between 8 and 64',
-    // }]
   },
   {
     name: 'fontWeight',
@@ -189,8 +176,6 @@ class KpiAppearance extends Component {
     let merged;
     const { store } = this.props;
     const rules = toJS(store.get('kpitile'));
-    console.log(', rules , rules', rules);
-    const general = this.props.data;
 
     const result = rules.map((item, inx) => {
       if (item.key === this.props.data) {
@@ -201,8 +186,7 @@ class KpiAppearance extends Component {
       }
       return item;
     });
-    // let arr = [merged];
-    console.log('Response 123 Appearance', response, merged, 'rules.push(merged)', result);
+
     store.set('kpitile', result);
     this.props.onSubmit(this.props.data);
   }
@@ -212,13 +196,13 @@ class KpiAppearance extends Component {
   }
 
   onFieldsChange(changed, all) {
-    console.log('Fields changed', changed);
-    console.log('All fields', all);
+    console.log('Fields changed', changed, all);
+    // console.log('All fields', );
   }
 
   render() {
     const { store } = this.props;
-    console.log('Store > kpiAppearance', toJS(store.get('kpitile')));
+    // console.log('Store > kpiAppearance', toJS(store.get('kpitile')));
 
     const response = toJS(store.get('kpitile'));
     const result = response.map((item) => {
@@ -234,22 +218,16 @@ class KpiAppearance extends Component {
                   }
                 });
               }
-              console.log('iiiiiiiiiiiii', i);
+              // console.log('iiiiiiiiiiiii', i);
               return i;
             }
           });
           return fields;
         }
       }
-      console.log('formFields formFields Appearance', formFields);
+      // console.log('formFields formFields Appearance', formFields);
       return formFields;
     });
-
-    // let fields = formFields.filter(item => {
-    //   if (item.component.includes(this.props.component)) {
-    //     return item;
-    //   }
-    // })
 
     return (
       <div>
