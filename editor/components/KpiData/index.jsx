@@ -149,11 +149,11 @@ class KpiData extends Component {
       }
       return item;
     });
-    store.set('kpitile', result);
-    const editor = toJS(store.get('kpieditor'));
-    editor.enable = false;
-    store.set('kpieditor', editor);
     this.props.close();
+    store.set('kpitile', result);
+    // const editor = toJS(store.get('kpieditor'));
+    // editor.enable = false;
+    // store.set('kpieditor', editor);
   }
 
   onError(errors) {

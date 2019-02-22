@@ -67,8 +67,8 @@ module powerbi.extensibility.visual {
     }
   
     export class KPIettings {
-      public resize: Boolean = false;
-      public draggable: Boolean = false;
+      public resize: Boolean = true;
+      public draggable: Boolean = true;
       public horizontalMargins: number = 10;
       public verticalMargins: number = 10;
       // public maxRows: number = 15;

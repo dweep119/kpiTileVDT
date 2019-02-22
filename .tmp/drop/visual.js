@@ -25718,6 +25718,7 @@ function (_Component) {
 
         return item;
       });
+      console.log('Result KPIAppearence', result);
       store.set('kpitile', result);
       this.props.onSubmit(this.props.data);
     }
@@ -26011,11 +26012,10 @@ function (_Component) {
 
         return item;
       });
-      store.set('kpitile', result);
-      var editor = Object(mobx__WEBPACK_IMPORTED_MODULE_9__["toJS"])(store.get('kpieditor'));
-      editor.enable = false;
-      store.set('kpieditor', editor);
       this.props.close();
+      store.set('kpitile', result); // const editor = toJS(store.get('kpieditor'));
+      // editor.enable = false;
+      // store.set('kpieditor', editor);
     }
   }, {
     key: "onError",
@@ -26510,7 +26510,7 @@ function (_Component) {
         style: {
           marginTop: 20
         }
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", null, "Back"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
         onClick: onBack,
         className: "icon icon--ChevronLeft",
         style: {
@@ -26518,7 +26518,7 @@ function (_Component) {
           width: '20px',
           marginRight: '5px'
         }
-      }))), children), submitButtonRender && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", null, "Back"))), children), submitButtonRender && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "view-footer-btn"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
         disabled: true,
@@ -77740,11 +77740,9 @@ function (_Component) {
       var _this$props = this.props,
           store = _this$props.store,
           dataView = _this$props.dataView,
-          onClose = _this$props.onClose;
-      var obj = {
-        enable: true
-      };
-      store.set('kpieditor', obj);
+          onClose = _this$props.onClose; // const obj = { enable: true };
+      //   store.set('kpieditor', obj);
+
       console.log('Customize Panel', this.props);
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(mobx_react__WEBPACK_IMPORTED_MODULE_3__["Provider"], {
         dataStore: this.dataStore
@@ -80514,8 +80512,8 @@ var powerbi;
                 kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662.License = License;
                 var KPIettings = (function () {
                     function KPIettings() {
-                        this.resize = false;
-                        this.draggable = false;
+                        this.resize = true;
+                        this.draggable = true;
                         this.horizontalMargins = 10;
                         this.verticalMargins = 10;
                         // public maxRows: number = 15;
@@ -80594,12 +80592,12 @@ var powerbi;
                         };
                         _this.titleFun = function (kpi) {
                             if (kpi.appearance && kpi.general && kpi.data) {
-                                return ('<div id=" ' + kpi.id + ' "><div class="title-style" style="padding: 25px; height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '; color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">' + kpi.data.dimension + '</div></div>');
+                                return ('<div id="' + kpi.id + '"><div class="title-style" style="padding: 25px; height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '; color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">' + kpi.data.dimension + '</div></div>');
                             }
                             else if (kpi.appearance && kpi.general) {
-                                return ('<div id=" ' + kpi.id + ' "><div class="title-style" style="padding: 25px; height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '; color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Apple Products</div></div>');
+                                return ('<div id="' + kpi.id + '"><div class="title-style" style="padding: 25px; height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '; color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Apple Products</div></div>');
                             }
-                            return ('<div id=" ' + kpi.id + ' "><div class="title-style" style="padding: 25px; height: 100%;text-align: left;background-color: #4A90E2;font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Apple Products</div></div>');
+                            return ('<div id="' + kpi.id + '"><div class="title-style" style="padding: 25px; height: 100%;text-align: left;background-color: #4A90E2;font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Apple Products</div></div>');
                         };
                         _this.primaryKPIFun = function (options, kpi) {
                             var amount, amount1, imgsrc, imgsrc1;
@@ -80651,7 +80649,7 @@ var powerbi;
                             });
                             if (kpi.appearance && kpi.general && kpi.data) {
                                 console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', amount, amount1, imgsrc, imgsrc1);
-                                return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
+                                return ('<div id="' + kpi.id + '"><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
                                     '<div class="value-text mb" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">$' + amount + '<img src=" ' + imgsrc + ' " alt="" style="height: 25px;width: 15px;" class="icon-sm mx" /></div>' +
                                     '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">' + kpi.data.measure + '</div>' +
                                     // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
@@ -80660,7 +80658,7 @@ var powerbi;
                                     '</div></div>');
                             }
                             else if (kpi.appearance && kpi.general) {
-                                return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
+                                return ('<div id="' + kpi.id + '"><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
                                     '<div class="value-text mb" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">$78,900<img src="https://i.imgur.com/uHvo5kW.png" alt="" style="height: 25px;width: 15px;" class="icon-sm mx" /></div>' +
                                     '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Macbook Pro</div>' +
                                     // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
@@ -80668,7 +80666,7 @@ var powerbi;
                                     '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Macbook Pro</div>' +
                                     '</div></div>');
                             }
-                            return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> ' +
+                            return ('<div id="' + kpi.id + '"><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> ' +
                                 '<div class="value-text mb" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">$78,900<img src="https://i.imgur.com/uHvo5kW.png" alt="" style="height: 25px;width: 15px;" class="icon-sm mx" /></div>' +
                                 '<div class="label-text-md mb-md" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Macbook Pro</div>' +
                                 '<div class="label-text-sm" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">$24,900<img src="https://i.imgur.com/IJRKq5P.png" alt="" style="height: 25px;width: 15px;" class="icon-sm mx" /></div>' +
@@ -80696,20 +80694,20 @@ var powerbi;
                                 }
                             });
                             if (kpi.appearance && kpi.general && kpi.data) {
-                                return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
+                                return ('<div id="' + kpi.id + '"><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
                                     '<div class="value-text mb" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">$' + amount + '<img src="up-arrow.png" alt="" class="icon-sm mx" /></div>' +
                                     '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">' + kpi.data.measure + '</div>' +
                                     // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
                                     '</div></div>');
                             }
                             else if (kpi.appearance && kpi.general) {
-                                return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
+                                return ('<div id="' + kpi.id + '"><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
                                     '<div class="value-text mb" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">$78,900<img src="up-arrow.png" alt="" class="icon-sm mx" /></div>' +
                                     '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Macbook Pro</div>' +
                                     // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
                                     '</div></div>');
                             }
-                            return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> ' +
+                            return ('<div id="' + kpi.id + '"><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> ' +
                                 '<div class="value-text mb" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">$78,900<img src="up-arrow.png" alt="" class="icon-sm mx" /></div>' +
                                 '<div class="label-text-md mb-md" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Macbook Pro</div>' +
                                 // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
@@ -80718,27 +80716,27 @@ var powerbi;
                         };
                         _this.imageFun = function (kpi) {
                             if (kpi.appearance && kpi.general && kpi.data) {
-                                return ('<div id=" ' + kpi.id + ' "><div style="height: 100px;width: 100px;background: ' + kpi.appearance.backgroundColor + '"><img src="' + kpi.data.imageSource + '" alt="" height="100px" width="100px"></div></div>');
+                                return ('<div id="' + kpi.id + '"><div style="height: 100px;width: 100px;background: ' + kpi.appearance.backgroundColor + '"><img src="' + kpi.data.imageSource + '" alt="" height="100px" width="100px"></div></div>');
                             }
                             else if (kpi.appearance && kpi.general) {
-                                return ('<div id=" ' + kpi.id + ' "><div style="height: 100px;width: 100px;background: ' + kpi.appearance.backgroundColor + '"><img src="https://image.flaticon.com/icons/svg/858/858699.svg" alt="" height="100px" width="100px"></div></div>');
+                                return ('<div id="' + kpi.id + '"><div style="height: 100px;width: 100px;background: ' + kpi.appearance.backgroundColor + '"><img src="https://image.flaticon.com/icons/svg/858/858699.svg" alt="" height="100px" width="100px"></div></div>');
                             }
-                            return ('<div id=" ' + kpi.id + ' "><div style="height: 100px;width: 100px;"><img src="https://image.flaticon.com/icons/svg/858/858699.svg" alt="" height="100px" width="100px"></div></div>');
+                            return ('<div id="' + kpi.id + '"><div style="height: 100px;width: 100px;"><img src="https://image.flaticon.com/icons/svg/858/858699.svg" alt="" height="100px" width="100px"></div></div>');
                         };
                         _this.iconFun = function (kpi) {
                             if (kpi.appearance && kpi.general && kpi.data) {
-                                return ('<div id=" ' + kpi.id + ' " style="height: 60px;width: 60px;"><div class="ddd wrap d-flex flex-col align-l align-x" style=" background: ' + kpi.appearance.backgroundColor + ';padding: 8px; "><img src=" ' + kpi.data.iconSource + ' " alt="" height="42" width="42"></div></div>');
+                                return ('<div id="' + kpi.id + '" style="height: 60px;width: 60px;"><div class="ddd wrap d-flex flex-col align-l align-x" style=" background: ' + kpi.appearance.backgroundColor + ';padding: 8px; "><img src=" ' + kpi.data.iconSource + ' " alt="" height="42" width="42"></div></div>');
                             }
                             else if (kpi.appearance && kpi.general) {
-                                return ('<div id=" ' + kpi.id + ' "><div style="background: ' + kpi.appearance.backgroundColor + '"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-c-512.png" alt="" height="100px" width="100px"></div></div>');
+                                return ('<div id="' + kpi.id + '"><div style="background: ' + kpi.appearance.backgroundColor + '"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-c-512.png" alt="" height="100px" width="100px"></div></div>');
                             }
-                            return ('<div id=" ' + kpi.id + ' "><div><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-c-512.png" alt="" height="100px" width="100px"></div></div>');
+                            return ('<div id="' + kpi.id + '"><div><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-c-512.png" alt="" height="100px" width="100px"></div></div>');
                         };
                         _this.sparklinechartFun = function (kpi) {
                             if (kpi.appearance && kpi.general) {
-                                return ('<div id=" ' + kpi.id + ' "><div class="inner-tab" id="container" style="height: 100%;border-right: 1px solid #eeeeee;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '" ></div></div>');
+                                return ('<div id="' + kpi.id + '"><div class="inner-tab" id="container" style="height: 100%;border-right: 1px solid #eeeeee;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '" ></div></div>');
                             }
-                            return ('<div id=" ' + kpi.id + ' "><div class="inner-tab" id="container" style="height: 100%;border-right: 1px solid #eeeeee;text-align: center;background-color: #4A90E2;" ></div></div>');
+                            return ('<div id="' + kpi.id + '"><div class="inner-tab" id="container" style="height: 100%;border-right: 1px solid #eeeeee;text-align: center;background-color: #4A90E2;" ></div></div>');
                         };
                         _this.visualInstance = options.host;
                         _this.element = options.element;
@@ -80841,14 +80839,14 @@ var powerbi;
                             avoid_overlapped_widgets: true
                         };
                         if (!_.isError(kpitile)) {
-                            if (kpieditor.enable) {
-                                kpitileSettings.draggable.enabled = true;
-                                kpitileSettings.resize.enabled = true;
-                            }
+                            // if (kpieditor.enable) {
+                            //     kpitileSettings.draggable.enabled = true;
+                            //     kpitileSettings.resize.enabled = true;
+                            // }
                             a = new gridster(this.gridsterContainer, kpitileSettings);
-                            if (!kpitileSettings.draggable.enabled) {
-                                a.disable();
-                            }
+                            // if (!kpitileSettings.draggable.enabled) {
+                            //     a.disable();
+                            // }
                             kpitile.map(function (kpi) {
                                 if (position.id === kpi.id && kpi.general) {
                                     console.log('Inside If id is same', position, kpi);
@@ -80876,8 +80874,8 @@ var powerbi;
                                 else if (kpi.text === "primarykpi") {
                                     console.log('primarykpi start', kpi);
                                     primaryKPIVar = _this.primaryKPIFun(options, kpi);
-                                    console.log('after primarykpiFuncrion call', primaryKPIVar, kpi);
                                     if (kpi.general) {
+                                        console.log('after primarykpiFuncrion call', document.getElementById(kpi.id));
                                         a.remove_widget(document.getElementById(kpi.id), function (remove) {
                                             console.log('remove', remove);
                                         });

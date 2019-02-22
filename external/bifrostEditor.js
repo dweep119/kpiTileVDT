@@ -1001,6 +1001,7 @@ function (_Component) {
 
         return item;
       });
+      console.log('Result KPIAppearence', result);
       store.set('kpitile', result);
       this.props.onSubmit(this.props.data);
     }
@@ -1294,11 +1295,10 @@ function (_Component) {
 
         return item;
       });
-      store.set('kpitile', result);
-      var editor = Object(mobx__WEBPACK_IMPORTED_MODULE_9__["toJS"])(store.get('kpieditor'));
-      editor.enable = false;
-      store.set('kpieditor', editor);
       this.props.close();
+      store.set('kpitile', result); // const editor = toJS(store.get('kpieditor'));
+      // editor.enable = false;
+      // store.set('kpieditor', editor);
     }
   }, {
     key: "onError",
@@ -1793,7 +1793,7 @@ function (_Component) {
         style: {
           marginTop: 20
         }
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", null, "Back"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
         onClick: onBack,
         className: "icon icon--ChevronLeft",
         style: {
@@ -1801,7 +1801,7 @@ function (_Component) {
           width: '20px',
           marginRight: '5px'
         }
-      }))), children), submitButtonRender && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", null, "Back"))), children), submitButtonRender && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "view-footer-btn"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
         disabled: true,
@@ -53023,11 +53023,9 @@ function (_Component) {
       var _this$props = this.props,
           store = _this$props.store,
           dataView = _this$props.dataView,
-          onClose = _this$props.onClose;
-      var obj = {
-        enable: true
-      };
-      store.set('kpieditor', obj);
+          onClose = _this$props.onClose; // const obj = { enable: true };
+      //   store.set('kpieditor', obj);
+
       console.log('Customize Panel', this.props);
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(mobx_react__WEBPACK_IMPORTED_MODULE_3__["Provider"], {
         dataStore: this.dataStore

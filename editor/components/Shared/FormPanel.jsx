@@ -13,7 +13,6 @@ export default class FormPanel extends Component {
           <Flex justifyContent="space-between" alignItems="center" className={className} >
             <h3 className="section-header" style={{marginTop:40}} >{title}</h3>
             <div onClick={onBack} className="menu-data-view-img" style={{marginTop:20}} >
-              <span>Back</span>
               <i
                 onClick={onBack}
                 className="icon icon--ChevronLeft"
@@ -23,6 +22,7 @@ export default class FormPanel extends Component {
                   marginRight: '5px'
                 }}
               />
+              <span>Back</span>
             </div>
           </Flex>
           {children}

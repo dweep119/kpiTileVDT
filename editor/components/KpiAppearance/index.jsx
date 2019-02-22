@@ -186,7 +186,7 @@ class KpiAppearance extends Component {
       }
       return item;
     });
-
+    console.log('Result KPIAppearence', result);
     store.set('kpitile', result);
     this.props.onSubmit(this.props.data);
   }
