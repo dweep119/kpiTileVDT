@@ -176,8 +176,8 @@ class KpiAppearance extends Component {
     let merged;
     const { store } = this.props;
     const rules = toJS(store.get('kpitile'));
-
     const result = rules.map((item, inx) => {
+      console.log('Appearance onSubmit', rules, item, this.props)
       if (item.key === this.props.data) {
         merged = { ...rules[inx], appearance: response };
         if (item.key === merged.key) {
@@ -202,7 +202,7 @@ class KpiAppearance extends Component {
 
   render() {
     const { store } = this.props;
-    // console.log('Store > kpiAppearance', toJS(store.get('kpitile')));
+    console.log('Store > kpiAppearance', toJS(store.get('kpitile')), this.props);
 
     const response = toJS(store.get('kpitile'));
     const result = response.map((item) => {

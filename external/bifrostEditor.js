@@ -323,7 +323,7 @@ function (_Component) {
 
     _this.state = {
       onState: 'second',
-      tabSelected: 'general',
+      tabSelected: 'appearance',
       key: '',
       component: ''
     };
@@ -427,13 +427,14 @@ function (_Component) {
       // }
       //   const listItems = todoEntries.map(this.createTasks);
 
-      console.log('this.props this.props Render', this.props, this.props.key);
-      var list = [{
-        name: 'General',
-        code: 'general',
-        status: true,
-        colorCode: '#f3c907'
-      }, {
+      console.log('this.props this.props Render', this.props);
+      var list = [//   {
+      //     name: 'General',
+      //     code: 'general',
+      //     status: true,
+      //     colorCode: '#f3c907',
+      //   },
+      {
         name: 'Appearance',
         code: 'appearance',
         status: true,
@@ -444,7 +445,11 @@ function (_Component) {
         status: true,
         colorCode: '#f3c907'
       }];
-      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, this.state.onState === 'second' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        style: {
+          marginTop: 25
+        }
+      }, this.state.onState === 'second' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         style: {
           display: 'flex',
           flexDirection: 'column'
@@ -453,27 +458,14 @@ function (_Component) {
         list: list,
         selected: this.state.tabSelected,
         onSelect: this.ontabSelected
-      }), this.state.tabSelected === 'general' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-        className: "vdt-general"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_KpiGeneral__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        store: this.props.store,
-        editorData: CommonComponent,
-        expand: this.expand,
-        data: this.props.key,
-        onSubmit: function onSubmit(key) {
-          return _this2.setState({
-            tabSelected: 'appearance',
-            key: key
-          });
-        }
-      })), this.state.tabSelected === 'appearance' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+      }), this.state.tabSelected === 'appearance' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "vdt-appearance"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_KpiAppearance__WEBPACK_IMPORTED_MODULE_8__["default"], {
         store: this.props.store,
-        component: this.state.component,
+        component: this.props.component,
         editorData: CommonComponent,
         expand: this.expand,
-        data: this.state.key,
+        data: this.props.data,
         onSubmit: function onSubmit(key) {
           return _this2.setState({
             tabSelected: 'data',
@@ -484,9 +476,9 @@ function (_Component) {
         className: "vdt-data"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_KpiData__WEBPACK_IMPORTED_MODULE_7__["default"], {
         store: this.props.store,
-        data: this.state.key,
+        data: this.props.data,
         dataView: this.props.dataView,
-        component: this.state.component,
+        component: this.props.component,
         editorData: CommonComponent,
         expand: this.expand,
         close: function close() {
@@ -519,19 +511,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-/* harmony import */ var _CommonComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CommonComponent */ "./components/Customize/CommonComponent.jsx");
-/* harmony import */ var _Shared_MenuList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Shared/MenuList */ "./components/Shared/MenuList.jsx");
-/* harmony import */ var _Shared_FormPanel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Shared/FormPanel */ "./components/Shared/FormPanel.jsx");
-/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/elements/Button */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Button.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _styles_DataTab_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../styles/DataTab.css */ "./styles/DataTab.css");
-/* harmony import */ var _styles_DataTab_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_styles_DataTab_css__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _visualbi_bifrost_editor_css_Editor_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @visualbi/bifrost-editor/css/Editor.css */ "./node_modules/@visualbi/bifrost-editor/css/Editor.css");
-/* harmony import */ var _visualbi_bifrost_editor_css_Editor_css__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_css_Editor_css__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _styles_NodeNavigator_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../styles/NodeNavigator.css */ "./styles/NodeNavigator.css");
-/* harmony import */ var _styles_NodeNavigator_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_styles_NodeNavigator_css__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _CommonComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CommonComponent */ "./components/Customize/CommonComponent.jsx");
+/* harmony import */ var _Shared_MenuList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Shared/MenuList */ "./components/Shared/MenuList.jsx");
+/* harmony import */ var _Shared_FormPanel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Shared/FormPanel */ "./components/Shared/FormPanel.jsx");
+/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/elements/Button */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Button.js");
+/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
+/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _styles_DataTab_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../styles/DataTab.css */ "./styles/DataTab.css");
+/* harmony import */ var _styles_DataTab_css__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_styles_DataTab_css__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _visualbi_bifrost_editor_css_Editor_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @visualbi/bifrost-editor/css/Editor.css */ "./node_modules/@visualbi/bifrost-editor/css/Editor.css");
+/* harmony import */ var _visualbi_bifrost_editor_css_Editor_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_css_Editor_css__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _styles_NodeNavigator_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../styles/NodeNavigator.css */ "./styles/NodeNavigator.css");
+/* harmony import */ var _styles_NodeNavigator_css__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_styles_NodeNavigator_css__WEBPACK_IMPORTED_MODULE_12__);
 
 
 
@@ -560,59 +553,49 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
  // import '../../styles/VDT.css';
 
 
-
-var dataMenu = [{
-  id: 1,
-  title: 'Title',
-  description: 'Basic dimension data display',
-  icon: 'icon icon--General',
-  storeKey: 'general'
-}, {
-  id: 2,
-  title: 'Primary KPI',
-  description: 'Basic Measure and dimension data display',
-  icon: 'icon icon--General',
-  storeKey: 'general'
-}, {
-  id: 3,
-  title: 'Secondary KPI',
-  description: 'Basic Measure and dimension data display',
-  icon: 'icon icon--StatusBar',
-  storeKey: 'statusBar'
-}, {
-  id: 4,
-  title: 'SparkLine Chart',
-  description: 'Display chart as per Measure and Dimension data',
-  icon: 'icon icon--Visualization',
-  storeKey: 'visualization'
-}, {
-  id: 5,
-  title: 'Icon',
-  description: 'Basic display Icon',
-  icon: 'icon icon--Colors',
-  storeKey: 'colors'
-}, {
-  id: 6,
-  title: 'Image',
-  description: 'Basic display Image',
-  icon: 'icon icon--Colors',
-  storeKey: 'colors'
-}, {
-  id: 7,
-  title: 'Image',
-  description: 'Basic display Image',
-  icon: 'icon icon--Colors',
-  storeKey: 'colors'
-}, {
-  id: 8,
-  title: 'Image',
-  description: 'Basic display Image',
-  icon: 'icon icon--Colors',
-  storeKey: 'colors'
-}];
+ // const dataMenu = [
+//     {
+//         id: 1,
+//         title: 'Title',
+//         description: 'Basic dimension data display',
+//         icon: 'icon icon--General',
+//         storeKey: 'title'
+//     }, {
+//       id: 2,
+//       title: 'Primary KPI',
+//       description: 'Basic Measure and dimension data display',
+//       icon: 'icon icon--General',
+//       storeKey: 'primarykpi'
+//     }, {
+//       id: 3,
+//       title: 'Secondary KPI',
+//       description: 'Basic Measure and dimension data display',
+//       icon: 'icon icon--StatusBar',
+//       storeKey: 'secondarykpi'
+//     }, {
+//       id: 4,
+//       title: 'SparkLine Chart',
+//       description: 'Display chart as per Measure and Dimension data',
+//       icon: 'icon icon--Visualization',
+//       storeKey: 'sparklinechart'
+//     }, {
+//       id: 5,
+//       title: 'Icon',
+//       description: 'Basic display Icon',
+//       icon: 'icon icon--Colors',
+//       storeKey: 'icon'
+//     }, {
+//         id: 6,
+//         title: 'Image',
+//         description: 'Basic display Image',
+//         icon: 'icon icon--Colors',
+//         storeKey: 'image'
+//     }
+//   ];
 
 var CustomizeMenu =
 /*#__PURE__*/
@@ -626,9 +609,6 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CustomizeMenu).call(this, props));
     _this.state = {
-      onState: 'first',
-      tabSelected: 'general',
-      component: '',
       view: 'first',
       storeKey: '',
       title: '',
@@ -643,16 +623,30 @@ function (_Component) {
   _createClass(CustomizeMenu, [{
     key: "onClick",
     value: function onClick(view, menuItem) {
+      var storeKey, title, id;
+      var store = this.props.store;
+      var itemArray = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile'));
       console.log('view menuItem', view, menuItem);
-      var storeKey = dataMenu[menuItem - 1].storeKey;
-      var title = dataMenu[menuItem - 1].title;
-      var id = dataMenu[menuItem - 1].id;
+      itemArray.map(function (item) {
+        storeKey = item.text;
+        title = item.title;
+        id = item.id;
+      }); // const storeKey = dataMenu[menuItem - 1].storeKey;
+      // const title = dataMenu[menuItem - 1].title;
+      // const id = dataMenu[menuItem - 1].id;
+
       this.setState({
         view: view,
         storeKey: storeKey,
         title: title,
         id: id
-      });
+      }); // itemArray.push(
+      //     {
+      //     text: storeKey,
+      //     id: Date.now(),
+      //     }
+      // );
+      // this.props.store.set('kpitile', itemArray);
     }
   }, {
     key: "onSubmit",
@@ -676,73 +670,57 @@ function (_Component) {
       var _this2 = this;
 
       var view = this.state.view;
-      var store = this.props.store;
-      console.log('datastore in CustomizeMenu', this.props, store, this.state.id); // const { treeHierachical } = TreeStore; // Store does not update without this statement, TODO
+      var _this$props = this.props,
+          store = _this$props.store,
+          dataView = _this$props.dataView;
+      var kpitileArray = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile'));
+      console.log('datastore in CustomizeMenu', this.props, store, this.state); // const { treeHierachical } = TreeStore; // Store does not update without this statement, TODO
 
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "vdt-data-view",
         style: {
           marginBottom: '20px'
         }
-      }, view === 'first' && dataMenu.map(function (data) {
-        return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Shared_MenuList__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }, view === 'first' && kpitileArray.map(function (data) {
+        return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Shared_MenuList__WEBPACK_IMPORTED_MODULE_6__["default"], {
           data: data,
           onClick: _this2.onClick
         });
-      }), view === 'second' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Shared_FormPanel__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      }), view === 'second' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Shared_FormPanel__WEBPACK_IMPORTED_MODULE_7__["default"], {
         onSubmit: this.onSubmit,
         onBack: this.onBack,
         submitButtonRender: true,
         title: this.state.title
-      }, this.state.id === 1 && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_CommonComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_CommonComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
         store: store,
-        title: "Title",
-        key: this.state.id
-      }), this.state.id === 2 && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_CommonComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        store: store,
-        title: "Primary KPI"
-      }), this.state.id === 3 && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_CommonComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        store: store,
-        title: "Secondary KPI"
-      }), this.state.id === 4 && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_CommonComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        store: store,
-        title: "SparkLine Chart"
-      }), this.state.id === 5 && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_CommonComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        store: store,
-        title: "Icon"
-      }), this.state.id === 6 && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_CommonComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        store: store,
-        title: "Image"
-      }), this.state.id === 7 && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_CommonComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        store: store,
-        title: "Image"
-      }), this.state.id === 8 && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_CommonComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        store: store,
-        title: "Image"
+        title: this.state.title,
+        data: this.state.id,
+        component: this.state.storeKey,
+        dataView: dataView
       })), view === 'first' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "node-toolbar",
         style: {
           position: 'fixed',
           width: '320px'
         }
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_7___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_8___default.a, {
         className: "btn-clear",
-        onClick: this.expandAll
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_8___default.a, {
+        onClick: this.onClick
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_9___default.a, {
         alignItems: "center"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
-        className: "icon icon--Expand"
-      }), "Expand")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_7___default.a, {
+        className: "icon icon--Add"
+      }), "Add")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_8___default.a, {
         className: "btn-clear",
         onClick: this.collapseAll
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_8___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_9___default.a, {
         alignItems: "center"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
         className: "icon icon--Collapse"
-      }), "Collapse")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_7___default.a, {
+      }), "Collapse")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_8___default.a, {
         className: "btn-clear add-node-btn",
         onClick: this.confirmResetHandler
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_8___default.a, null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_9___default.a, null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
         className: "icon icon--Refresh",
         style: {
           color: '#e81123'
@@ -1011,6 +989,8 @@ function (_Component) {
       var store = this.props.store;
       var rules = Object(mobx__WEBPACK_IMPORTED_MODULE_9__["toJS"])(store.get('kpitile'));
       var result = rules.map(function (item, inx) {
+        console.log('Appearance onSubmit', rules, item, _this2.props);
+
         if (item.key === _this2.props.data) {
           merged = _objectSpread({}, rules[inx], {
             appearance: response
@@ -1041,8 +1021,8 @@ function (_Component) {
     value: function render() {
       var _this3 = this;
 
-      var store = this.props.store; // console.log('Store > kpiAppearance', toJS(store.get('kpitile')));
-
+      var store = this.props.store;
+      console.log('Store > kpiAppearance', Object(mobx__WEBPACK_IMPORTED_MODULE_9__["toJS"])(store.get('kpitile')), this.props);
       var response = Object(mobx__WEBPACK_IMPORTED_MODULE_9__["toJS"])(store.get('kpitile'));
       var result = response.map(function (item) {
         if (item.key === _this3.props.data) {
@@ -1798,10 +1778,16 @@ function (_Component) {
         alignItems: "center",
         className: className
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h3", {
-        className: "section-header"
+        className: "section-header",
+        style: {
+          marginTop: 40
+        }
       }, title), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         onClick: onBack,
-        className: "menu-data-view-img"
+        className: "menu-data-view-img",
+        style: {
+          marginTop: 20
+        }
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", null, "Back"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
         onClick: onBack,
         className: "icon icon--ChevronLeft",
@@ -53029,11 +53015,15 @@ function (_Component) {
   _createClass(CustomizePanel, [{
     key: "render",
     value: function render() {
-      var store = this.props.store;
+      var _this$props = this.props,
+          store = _this$props.store,
+          dataView = _this$props.dataView;
+      console.log('Customize Panel', this.props);
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(mobx_react__WEBPACK_IMPORTED_MODULE_3__["Provider"], {
         dataStore: this.dataStore
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Customize_CustomizeMenu__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        store: store
+        store: store,
+        dataView: dataView
       }));
     }
   }], [{

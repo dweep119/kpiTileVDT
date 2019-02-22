@@ -26,11 +26,11 @@ class CustomizePanel extends Component {
   }
 
   render() {
-    const { store } = this.props;
-
+    const { store, dataView } = this.props;
+    console.log('Customize Panel', this.props)
     return (
       <Provider dataStore={this.dataStore}>
-        <CustomizeMenu store={store} />
+        <CustomizeMenu store={store} dataView={dataView} />
       </Provider>
     );
   }

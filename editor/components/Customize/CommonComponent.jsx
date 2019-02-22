@@ -19,7 +19,7 @@ class CommonComponent extends Component {
     //   this.proceed = this.proceed.bind(this);
       this.state = {
         onState: 'second',
-        tabSelected: 'general',
+        tabSelected: 'appearance',
         key: '',
         component: ''
       };
@@ -124,14 +124,15 @@ class CommonComponent extends Component {
       //   todoEntries.shift();
       // }
     //   const listItems = todoEntries.map(this.createTasks);
-      console.log('this.props this.props Render', this.props, this.props.key);
-      const list = [{
-        name: 'General',
-        code: 'general',
-        status: true,
-        colorCode: '#f3c907',
+      console.log('this.props this.props Render', this.props);
+      const list = [
+    //   {
+    //     name: 'General',
+    //     code: 'general',
+    //     status: true,
+    //     colorCode: '#f3c907',
   
-      },
+    //   },
       {
         name: 'Appearance',
         code: 'appearance',
@@ -146,7 +147,7 @@ class CommonComponent extends Component {
       }];
   
       return (  
-          <div>
+          <div  style={{marginTop:25}}>
             {/* {
                 this.state.onState === 'first' && (
                 <div>
@@ -188,7 +189,7 @@ class CommonComponent extends Component {
               <div style={{ display: 'flex', flexDirection: 'column' }}>
   
                 <Tabs list={list} selected={this.state.tabSelected} onSelect={this.ontabSelected} />
-                {this.state.tabSelected === 'general' && (
+                {/* {this.state.tabSelected === 'general' && (
                 <div className="vdt-general">
                   <GeneralComponent
                     store={this.props.store}
@@ -198,15 +199,15 @@ class CommonComponent extends Component {
                     onSubmit={key => this.setState({ tabSelected: 'appearance', key })}
                   />
                 </div>
-                )}
+                )} */}
                 {this.state.tabSelected === 'appearance' && (
                 <div className="vdt-appearance">
                   <AppearanceComponent
                     store={this.props.store}
-                    component={this.state.component}
+                    component={this.props.component}
                     editorData={CommonComponent}
                     expand={this.expand}
-                    data={this.state.key}
+                    data={this.props.data}
                     onSubmit={key => this.setState({ tabSelected: 'data', key })}
                   />
                 </div>
@@ -215,9 +216,9 @@ class CommonComponent extends Component {
                 <div className="vdt-data">
                   <DataComponent
                     store={this.props.store}
-                    data={this.state.key}
+                    data={this.props.data}
                     dataView={this.props.dataView}
-                    component={this.state.component}
+                    component={this.props.component}
                     editorData={CommonComponent}
                     expand={this.expand}
                     close={() => this.props.onClose()}

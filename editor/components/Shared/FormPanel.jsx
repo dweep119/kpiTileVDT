@@ -10,9 +10,9 @@ export default class FormPanel extends Component {
     return (
       <div>
         <Flex flexDirection="column" className="menu-data-view">
-          <Flex justifyContent="space-between" alignItems="center" className={className}>
-            <h3 className="section-header">{title}</h3>
-            <div onClick={onBack} className="menu-data-view-img">
+          <Flex justifyContent="space-between" alignItems="center" className={className} >
+            <h3 className="section-header" style={{marginTop:40}} >{title}</h3>
+            <div onClick={onBack} className="menu-data-view-img" style={{marginTop:20}} >
               <span>Back</span>
               <i
                 onClick={onBack}

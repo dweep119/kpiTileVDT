@@ -43,12 +43,19 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
         private element: HTMLElement;
         private chartContainer: HTMLElement;
         private visualInstance: any;
+        private gridsterContainer: HTMLElement;
 
         constructor(options: VisualConstructorOptions) {
             super(options)
             this.visualInstance = options.host;
+            this.element = options.element;
             console.log('Visual constructor options', options);
 
+            this.gridsterContainer = document.createElement("div");
+            this.gridsterContainer.setAttribute("class", "gridster");
+            this.gridsterContainer.style.border = "solid";
+
+            this.element.appendChild(this.gridsterContainer);
             this.initComponent(this.render, {
 				editor:true,
 				getEditorConfiguration: this.getEditorConfiguration,
@@ -224,7 +231,7 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
             
             let dataView = options.data,
                 settings: any = options.settings;
-            this.chartContainer = options.element;
+            // this.chartContainer = options.element;
             if (dataView.categorical.dimensions.length < 1 || dataView.categorical.measures.length < 1) {
                 bifrost.UIIndicators.showErrorMessage(options.element, "All three Image Field, Attribute Field and Measure Data are required", "");
                 return;
@@ -233,16 +240,13 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
             let kpitile = _.attempt(JSON.parse, settings.editor.kpitile);
             let kpieditor = _.attempt(JSON.parse, settings.editor.kpieditor);
 
-            let gridsterContainer: HTMLElement = document.createElement("div");
-                gridsterContainer.setAttribute("class", "gridster");
-                gridsterContainer.style.border = "solid";
-                gridsterContainer.style.left = "320px";
+                // gridsterContainer.style.left = "320px";
 
             let amount = _.sum(options.data.categorical.measures[0].values);
                 amount = _.ceil(amount);
                 amount = this.numberWithCommas(amount);
 
-            this.chartContainer.appendChild(gridsterContainer);
+            // this.chartContainer.appendChild(this.gridsterContainer);
 
             let kpitileSettings = {
                 widget_base_dimensions: [settings.kpisettings.width, settings.kpisettings.height],
@@ -316,7 +320,7 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
                     kpitileSettings.draggable.enabled = true;
                     kpitileSettings.resize.enabled = true;
                 }
-                a = new gridster(gridsterContainer, kpitileSettings);
+                a = new gridster(this.gridsterContainer, kpitileSettings);
                 if (!kpitileSettings.draggable.enabled) {
                     a.disable();
                 }
@@ -386,7 +390,7 @@ module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  
                     }
                 });
             }
-            // a = new gridster(gridsterContainer, kpitileSettings);
+            // a = new gridster(this.gridsterContainer, kpitileSettings);
 
             // a.add_widget('<div class="ddd" style=" background: #f5f5f5 "><div style="margin: 25px;padding: 1em;text-align: center;"><div class="value-text mb-md">' + amount + '</div><div class="label-text-md">' + options.data.categorical.measures[0].label + '</div></div></div>', 1, 1, 3, 3);
             
