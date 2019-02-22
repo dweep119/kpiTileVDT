@@ -416,11 +416,9 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var store = this.props.store;
-      var obj = {
-        enable: true
-      };
-      store.set('kpieditor', obj);
+      var store = this.props.store; //   const obj = { enable: true };
+      //   store.set('kpieditor', obj);
+
       var todoEntries = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile'));
       console.log("toJS(store.get('kpitile'))", todoEntries); // if (todoEntries[0].icon === "icon-check") {
       //   todoEntries.shift();
@@ -616,7 +614,6 @@ function (_Component) {
     };
     _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
     _this.onBack = _this.onBack.bind(_assertThisInitialized(_this));
-    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -628,9 +625,11 @@ function (_Component) {
       var itemArray = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile'));
       console.log('view menuItem', view, menuItem);
       itemArray.map(function (item) {
-        storeKey = item.text;
-        title = item.title;
-        id = item.id;
+        if (item.id === menuItem) {
+          storeKey = item.text;
+          title = item.title;
+          id = item.id;
+        }
       }); // const storeKey = dataMenu[menuItem - 1].storeKey;
       // const title = dataMenu[menuItem - 1].title;
       // const id = dataMenu[menuItem - 1].id;
@@ -647,16 +646,14 @@ function (_Component) {
       //     }
       // );
       // this.props.store.set('kpitile', itemArray);
-    }
-  }, {
-    key: "onSubmit",
-    value: function onSubmit() {
-      var store = this.props.store;
-      var storeKey = this.state.storeKey;
-      var menuData = appearance[storeKey];
-      store.set(storeKey, menuData);
-      this.onBack();
-    }
+    } //   onSubmit() {
+    //     const { store } = this.props;
+    //     const { storeKey } = this.state;
+    //     const menuData = appearance[storeKey];
+    //     store.set(storeKey, menuData);
+    //     this.onBack();
+    //   }
+
   }, {
     key: "onBack",
     value: function onBack() {
@@ -672,7 +669,8 @@ function (_Component) {
       var view = this.state.view;
       var _this$props = this.props,
           store = _this$props.store,
-          dataView = _this$props.dataView;
+          dataView = _this$props.dataView,
+          onClose = _this$props.onClose;
       var kpitileArray = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile'));
       console.log('datastore in CustomizeMenu', this.props, store, this.state); // const { treeHierachical } = TreeStore; // Store does not update without this statement, TODO
 
@@ -689,14 +687,14 @@ function (_Component) {
       }), view === 'second' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Shared_FormPanel__WEBPACK_IMPORTED_MODULE_7__["default"], {
         onSubmit: this.onSubmit,
         onBack: this.onBack,
-        submitButtonRender: true,
         title: this.state.title
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_CommonComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
         store: store,
         title: this.state.title,
         data: this.state.id,
         component: this.state.storeKey,
-        dataView: dataView
+        dataView: dataView,
+        onClose: onClose
       })), view === 'first' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "node-toolbar",
         style: {
@@ -991,12 +989,12 @@ function (_Component) {
       var result = rules.map(function (item, inx) {
         console.log('Appearance onSubmit', rules, item, _this2.props);
 
-        if (item.key === _this2.props.data) {
+        if (item.id === _this2.props.data) {
           merged = _objectSpread({}, rules[inx], {
             appearance: response
           });
 
-          if (item.key === merged.key) {
+          if (item.id === merged.id) {
             item = merged;
           }
         }
@@ -1025,7 +1023,7 @@ function (_Component) {
       console.log('Store > kpiAppearance', Object(mobx__WEBPACK_IMPORTED_MODULE_9__["toJS"])(store.get('kpitile')), this.props);
       var response = Object(mobx__WEBPACK_IMPORTED_MODULE_9__["toJS"])(store.get('kpitile'));
       var result = response.map(function (item) {
-        if (item.key === _this3.props.data) {
+        if (item.id === _this3.props.data) {
           if (item.appearance) {
             // fields={formFields}
             var fields = formFields.filter(function (i) {
@@ -1284,12 +1282,12 @@ function (_Component) {
       var store = this.props.store;
       var rules = Object(mobx__WEBPACK_IMPORTED_MODULE_9__["toJS"])(store.get('kpitile'));
       var result = rules.map(function (item, inx) {
-        if (item.key === _this2.props.data) {
+        if (item.id === _this2.props.data) {
           merged = _objectSpread({}, rules[inx], {
             data: response
           });
 
-          if (item.key === merged.key) {
+          if (item.id === merged.id) {
             item = merged;
           }
         }
@@ -1319,8 +1317,9 @@ function (_Component) {
 
       var store = this.props.store;
       var response = Object(mobx__WEBPACK_IMPORTED_MODULE_9__["toJS"])(store.get('kpitile'));
+      console.log('Data Index.js ', this.props, response);
       var result = response.map(function (item) {
-        if (item.key === _this3.props.data) {
+        if (item.id === _this3.props.data) {
           if (item.data) {
             // fields={formFields}
             var _fields = formFields.filter(function (i) {
@@ -1331,6 +1330,7 @@ function (_Component) {
                       if (i.name === 'dimension') {
                         _this3.props.dataView.categorical.dimensions.map(function (x, y) {
                           if (x.label === item.data[k]) {
+                            console.log('x.label === item.data[k]', x.label, item.data[k], y, _this3.props.dataView.categorical.dimensions[y].label);
                             i.defaultValue = _this3.props.dataView.categorical.dimensions[y].label;
                             i.controlProps = {
                               options: _this3.props.dataView.categorical.dimensions
@@ -1347,16 +1347,21 @@ function (_Component) {
                           }
                         });
                       } else {
+                        console.log('Hello Hii');
                         i.defaultValue = item.data[k];
                       }
                     }
                   });
                 }
 
+                console.log('@@@@@@@@@@@@@iii', i);
                 return i;
               }
+
+              console.log('@@@@@@@@@@@@@iii after return', i);
             });
 
+            console.log('@@@@@@@@@@@@@', _fields);
             return _fields;
           }
         }
@@ -53017,13 +53022,19 @@ function (_Component) {
     value: function render() {
       var _this$props = this.props,
           store = _this$props.store,
-          dataView = _this$props.dataView;
+          dataView = _this$props.dataView,
+          onClose = _this$props.onClose;
+      var obj = {
+        enable: true
+      };
+      store.set('kpieditor', obj);
       console.log('Customize Panel', this.props);
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(mobx_react__WEBPACK_IMPORTED_MODULE_3__["Provider"], {
         dataStore: this.dataStore
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Customize_CustomizeMenu__WEBPACK_IMPORTED_MODULE_8__["default"], {
         store: store,
-        dataView: dataView
+        dataView: dataView,
+        onClose: onClose
       }));
     }
   }], [{

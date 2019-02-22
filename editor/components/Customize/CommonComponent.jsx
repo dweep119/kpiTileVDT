@@ -116,8 +116,8 @@ class CommonComponent extends Component {
   
     render() {
       const { store } = this.props;
-      const obj = { enable: true };
-      store.set('kpieditor', obj);
+    //   const obj = { enable: true };
+    //   store.set('kpieditor', obj);
       const todoEntries = toJS(store.get('kpitile'));
       console.log("toJS(store.get('kpitile'))", todoEntries);
       // if (todoEntries[0].icon === "icon-check") {

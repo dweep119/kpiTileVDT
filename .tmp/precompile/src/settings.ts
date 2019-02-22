@@ -27,8 +27,8 @@
 module powerbi.extensibility.visual.kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662  {
     "use strict";
 
-    const kpitile = [{"title":"Title","icon": "icon icon--General","text":"title","id":1550827454452,"general":{"name":"Dwep","sizex":"4","sizey":"1","col":"2","row":"1"},"appearance":{"fontFamily":"Times New Roman","fontColor":"rgba(255,255,255,1)","fontSize":"25","fontWeight":"bold","backgroundColor":"rgba(20,36,111,1)","textAlign":"center"},"data":{"dimension":"Business Area","customText":"hii"}},
-    {"title":"Primary KPI","icon": "icon icon--StatusBar","text":"primarykpi","id":1550827549892,"general":{"name":"PK","sizex":"4","sizey":"3","col":"2","row":"2"},"appearance":{"fontFamily":"Helvetica","fontColor":"rgba(255,255,255,1)","fontSize":"25","fontWeight":"normal","backgroundColor":"rgba(239,235,13,1)","textAlign":"center"},"data":{"measure":"Actual","comparisonMeasure":"Amount","function":"avg"}}];
+    const kpitile = [{"title":"Title","icon": "icon icon--General","description": "Basic dimension data display","text":"title","id":1550827454452,"general":{"name":"Dwep","sizex":"4","sizey":"1","col":"2","row":"1"},"appearance":{"fontFamily":"Times New Roman","fontColor":"rgba(255,255,255,1)","fontSize":"25","fontWeight":"bold","backgroundColor":"rgba(20,36,111,1)","textAlign":"center"},"data":{"dimension":"Business Area","customText":"hii"}},
+    {"title":"Primary KPI","icon": "icon icon--StatusBar","description": "Basic Measure and dimension data display","text":"primarykpi","id":1550827549892,"general":{"name":"PK","sizex":"4","sizey":"3","col":"2","row":"2"},"appearance":{"fontFamily":"Helvetica","fontColor":"rgba(255,255,255,1)","fontSize":"25","fontWeight":"normal","backgroundColor":"rgba(239,235,13,1)","textAlign":"center"},"data":{"measure":"Actual","comparisonMeasure":"Amount","function":"avg"}}];
 
     import DataViewObjectsParser = powerbi.extensibility.utils.dataview.DataViewObjectsParser;
 

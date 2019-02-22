@@ -25133,11 +25133,9 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var store = this.props.store;
-      var obj = {
-        enable: true
-      };
-      store.set('kpieditor', obj);
+      var store = this.props.store; //   const obj = { enable: true };
+      //   store.set('kpieditor', obj);
+
       var todoEntries = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile'));
       console.log("toJS(store.get('kpitile'))", todoEntries); // if (todoEntries[0].icon === "icon-check") {
       //   todoEntries.shift();
@@ -25333,7 +25331,6 @@ function (_Component) {
     };
     _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
     _this.onBack = _this.onBack.bind(_assertThisInitialized(_this));
-    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -25345,9 +25342,11 @@ function (_Component) {
       var itemArray = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile'));
       console.log('view menuItem', view, menuItem);
       itemArray.map(function (item) {
-        storeKey = item.text;
-        title = item.title;
-        id = item.id;
+        if (item.id === menuItem) {
+          storeKey = item.text;
+          title = item.title;
+          id = item.id;
+        }
       }); // const storeKey = dataMenu[menuItem - 1].storeKey;
       // const title = dataMenu[menuItem - 1].title;
       // const id = dataMenu[menuItem - 1].id;
@@ -25364,16 +25363,14 @@ function (_Component) {
       //     }
       // );
       // this.props.store.set('kpitile', itemArray);
-    }
-  }, {
-    key: "onSubmit",
-    value: function onSubmit() {
-      var store = this.props.store;
-      var storeKey = this.state.storeKey;
-      var menuData = appearance[storeKey];
-      store.set(storeKey, menuData);
-      this.onBack();
-    }
+    } //   onSubmit() {
+    //     const { store } = this.props;
+    //     const { storeKey } = this.state;
+    //     const menuData = appearance[storeKey];
+    //     store.set(storeKey, menuData);
+    //     this.onBack();
+    //   }
+
   }, {
     key: "onBack",
     value: function onBack() {
@@ -25389,7 +25386,8 @@ function (_Component) {
       var view = this.state.view;
       var _this$props = this.props,
           store = _this$props.store,
-          dataView = _this$props.dataView;
+          dataView = _this$props.dataView,
+          onClose = _this$props.onClose;
       var kpitileArray = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile'));
       console.log('datastore in CustomizeMenu', this.props, store, this.state); // const { treeHierachical } = TreeStore; // Store does not update without this statement, TODO
 
@@ -25406,14 +25404,14 @@ function (_Component) {
       }), view === 'second' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Shared_FormPanel__WEBPACK_IMPORTED_MODULE_7__["default"], {
         onSubmit: this.onSubmit,
         onBack: this.onBack,
-        submitButtonRender: true,
         title: this.state.title
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_CommonComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
         store: store,
         title: this.state.title,
         data: this.state.id,
         component: this.state.storeKey,
-        dataView: dataView
+        dataView: dataView,
+        onClose: onClose
       })), view === 'first' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "node-toolbar",
         style: {
@@ -25708,12 +25706,12 @@ function (_Component) {
       var result = rules.map(function (item, inx) {
         console.log('Appearance onSubmit', rules, item, _this2.props);
 
-        if (item.key === _this2.props.data) {
+        if (item.id === _this2.props.data) {
           merged = _objectSpread({}, rules[inx], {
             appearance: response
           });
 
-          if (item.key === merged.key) {
+          if (item.id === merged.id) {
             item = merged;
           }
         }
@@ -25742,7 +25740,7 @@ function (_Component) {
       console.log('Store > kpiAppearance', Object(mobx__WEBPACK_IMPORTED_MODULE_9__["toJS"])(store.get('kpitile')), this.props);
       var response = Object(mobx__WEBPACK_IMPORTED_MODULE_9__["toJS"])(store.get('kpitile'));
       var result = response.map(function (item) {
-        if (item.key === _this3.props.data) {
+        if (item.id === _this3.props.data) {
           if (item.appearance) {
             // fields={formFields}
             var fields = formFields.filter(function (i) {
@@ -26001,12 +25999,12 @@ function (_Component) {
       var store = this.props.store;
       var rules = Object(mobx__WEBPACK_IMPORTED_MODULE_9__["toJS"])(store.get('kpitile'));
       var result = rules.map(function (item, inx) {
-        if (item.key === _this2.props.data) {
+        if (item.id === _this2.props.data) {
           merged = _objectSpread({}, rules[inx], {
             data: response
           });
 
-          if (item.key === merged.key) {
+          if (item.id === merged.id) {
             item = merged;
           }
         }
@@ -26036,8 +26034,9 @@ function (_Component) {
 
       var store = this.props.store;
       var response = Object(mobx__WEBPACK_IMPORTED_MODULE_9__["toJS"])(store.get('kpitile'));
+      console.log('Data Index.js ', this.props, response);
       var result = response.map(function (item) {
-        if (item.key === _this3.props.data) {
+        if (item.id === _this3.props.data) {
           if (item.data) {
             // fields={formFields}
             var _fields = formFields.filter(function (i) {
@@ -26048,6 +26047,7 @@ function (_Component) {
                       if (i.name === 'dimension') {
                         _this3.props.dataView.categorical.dimensions.map(function (x, y) {
                           if (x.label === item.data[k]) {
+                            console.log('x.label === item.data[k]', x.label, item.data[k], y, _this3.props.dataView.categorical.dimensions[y].label);
                             i.defaultValue = _this3.props.dataView.categorical.dimensions[y].label;
                             i.controlProps = {
                               options: _this3.props.dataView.categorical.dimensions
@@ -26064,16 +26064,21 @@ function (_Component) {
                           }
                         });
                       } else {
+                        console.log('Hello Hii');
                         i.defaultValue = item.data[k];
                       }
                     }
                   });
                 }
 
+                console.log('@@@@@@@@@@@@@iii', i);
                 return i;
               }
+
+              console.log('@@@@@@@@@@@@@iii after return', i);
             });
 
+            console.log('@@@@@@@@@@@@@', _fields);
             return _fields;
           }
         }
@@ -77734,13 +77739,19 @@ function (_Component) {
     value: function render() {
       var _this$props = this.props,
           store = _this$props.store,
-          dataView = _this$props.dataView;
+          dataView = _this$props.dataView,
+          onClose = _this$props.onClose;
+      var obj = {
+        enable: true
+      };
+      store.set('kpieditor', obj);
       console.log('Customize Panel', this.props);
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(mobx_react__WEBPACK_IMPORTED_MODULE_3__["Provider"], {
         dataStore: this.dataStore
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Customize_CustomizeMenu__WEBPACK_IMPORTED_MODULE_8__["default"], {
         store: store,
-        dataView: dataView
+        dataView: dataView,
+        onClose: onClose
       }));
     }
   }], [{
@@ -80445,8 +80456,8 @@ var powerbi;
             var kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662;
             (function (kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662) {
                 "use strict";
-                var kpitile = [{ "title": "Title", "icon": "icon icon--General", "text": "title", "id": 1550827454452, "general": { "name": "Dwep", "sizex": "4", "sizey": "1", "col": "2", "row": "1" }, "appearance": { "fontFamily": "Times New Roman", "fontColor": "rgba(255,255,255,1)", "fontSize": "25", "fontWeight": "bold", "backgroundColor": "rgba(20,36,111,1)", "textAlign": "center" }, "data": { "dimension": "Business Area", "customText": "hii" } },
-                    { "title": "Primary KPI", "icon": "icon icon--StatusBar", "text": "primarykpi", "id": 1550827549892, "general": { "name": "PK", "sizex": "4", "sizey": "3", "col": "2", "row": "2" }, "appearance": { "fontFamily": "Helvetica", "fontColor": "rgba(255,255,255,1)", "fontSize": "25", "fontWeight": "normal", "backgroundColor": "rgba(239,235,13,1)", "textAlign": "center" }, "data": { "measure": "Actual", "comparisonMeasure": "Amount", "function": "avg" } }];
+                var kpitile = [{ "title": "Title", "icon": "icon icon--General", "description": "Basic dimension data display", "text": "title", "id": 1550827454452, "general": { "name": "Dwep", "sizex": "4", "sizey": "1", "col": "2", "row": "1" }, "appearance": { "fontFamily": "Times New Roman", "fontColor": "rgba(255,255,255,1)", "fontSize": "25", "fontWeight": "bold", "backgroundColor": "rgba(20,36,111,1)", "textAlign": "center" }, "data": { "dimension": "Business Area", "customText": "hii" } },
+                    { "title": "Primary KPI", "icon": "icon icon--StatusBar", "description": "Basic Measure and dimension data display", "text": "primarykpi", "id": 1550827549892, "general": { "name": "PK", "sizex": "4", "sizey": "3", "col": "2", "row": "2" }, "appearance": { "fontFamily": "Helvetica", "fontColor": "rgba(255,255,255,1)", "fontSize": "25", "fontWeight": "normal", "backgroundColor": "rgba(239,235,13,1)", "textAlign": "center" }, "data": { "measure": "Actual", "comparisonMeasure": "Amount", "function": "avg" } }];
                 var DataViewObjectsParser = powerbi.extensibility.utils.dataview.DataViewObjectsParser;
                 var VisualSettings = (function (_super) {
                     __extends(VisualSettings, _super);
@@ -80583,12 +80594,12 @@ var powerbi;
                         };
                         _this.titleFun = function (kpi) {
                             if (kpi.appearance && kpi.general && kpi.data) {
-                                return ('<div id=" ' + kpi.key + ' "><div class="title-style" style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '; color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">' + kpi.data.dimension + '</div></div>');
+                                return ('<div id=" ' + kpi.id + ' "><div class="title-style" style="padding: 25px; height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '; color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">' + kpi.data.dimension + '</div></div>');
                             }
                             else if (kpi.appearance && kpi.general) {
-                                return ('<div id=" ' + kpi.key + ' "><div class="title-style" style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '; color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Apple Products</div></div>');
+                                return ('<div id=" ' + kpi.id + ' "><div class="title-style" style="padding: 25px; height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '; color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Apple Products</div></div>');
                             }
-                            return ('<div id=" ' + kpi.key + ' "><div class="title-style" style="height: 100%;text-align: left;background-color: #4A90E2;font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Apple Products</div></div>');
+                            return ('<div id=" ' + kpi.id + ' "><div class="title-style" style="padding: 25px; height: 100%;text-align: left;background-color: #4A90E2;font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Apple Products</div></div>');
                         };
                         _this.primaryKPIFun = function (options, kpi) {
                             var amount, amount1, imgsrc, imgsrc1;
@@ -80640,7 +80651,7 @@ var powerbi;
                             });
                             if (kpi.appearance && kpi.general && kpi.data) {
                                 console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', amount, amount1, imgsrc, imgsrc1);
-                                return ('<div id=" ' + kpi.key + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
+                                return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
                                     '<div class="value-text mb" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">$' + amount + '<img src=" ' + imgsrc + ' " alt="" style="height: 25px;width: 15px;" class="icon-sm mx" /></div>' +
                                     '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">' + kpi.data.measure + '</div>' +
                                     // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
@@ -80649,7 +80660,7 @@ var powerbi;
                                     '</div></div>');
                             }
                             else if (kpi.appearance && kpi.general) {
-                                return ('<div id=" ' + kpi.key + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
+                                return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
                                     '<div class="value-text mb" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">$78,900<img src="https://i.imgur.com/uHvo5kW.png" alt="" style="height: 25px;width: 15px;" class="icon-sm mx" /></div>' +
                                     '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Macbook Pro</div>' +
                                     // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
@@ -80657,7 +80668,7 @@ var powerbi;
                                     '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Macbook Pro</div>' +
                                     '</div></div>');
                             }
-                            return ('<div id=" ' + kpi.key + ' "><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> ' +
+                            return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> ' +
                                 '<div class="value-text mb" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">$78,900<img src="https://i.imgur.com/uHvo5kW.png" alt="" style="height: 25px;width: 15px;" class="icon-sm mx" /></div>' +
                                 '<div class="label-text-md mb-md" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Macbook Pro</div>' +
                                 '<div class="label-text-sm" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">$24,900<img src="https://i.imgur.com/IJRKq5P.png" alt="" style="height: 25px;width: 15px;" class="icon-sm mx" /></div>' +
@@ -80685,20 +80696,20 @@ var powerbi;
                                 }
                             });
                             if (kpi.appearance && kpi.general && kpi.data) {
-                                return ('<div id=" ' + kpi.key + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
+                                return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
                                     '<div class="value-text mb" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">$' + amount + '<img src="up-arrow.png" alt="" class="icon-sm mx" /></div>' +
                                     '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">' + kpi.data.measure + '</div>' +
                                     // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
                                     '</div></div>');
                             }
                             else if (kpi.appearance && kpi.general) {
-                                return ('<div id=" ' + kpi.key + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
+                                return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> ' +
                                     '<div class="value-text mb" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">$78,900<img src="up-arrow.png" alt="" class="icon-sm mx" /></div>' +
                                     '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Macbook Pro</div>' +
                                     // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
                                     '</div></div>');
                             }
-                            return ('<div id=" ' + kpi.key + ' "><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> ' +
+                            return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> ' +
                                 '<div class="value-text mb" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">$78,900<img src="up-arrow.png" alt="" class="icon-sm mx" /></div>' +
                                 '<div class="label-text-md mb-md" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Macbook Pro</div>' +
                                 // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
@@ -80707,27 +80718,27 @@ var powerbi;
                         };
                         _this.imageFun = function (kpi) {
                             if (kpi.appearance && kpi.general && kpi.data) {
-                                return ('<div id=" ' + kpi.key + ' "><div style="height: 100px;width: 100px;background: ' + kpi.appearance.backgroundColor + '"><img src="' + kpi.data.imageSource + '" alt="" height="100px" width="100px"></div></div>');
+                                return ('<div id=" ' + kpi.id + ' "><div style="height: 100px;width: 100px;background: ' + kpi.appearance.backgroundColor + '"><img src="' + kpi.data.imageSource + '" alt="" height="100px" width="100px"></div></div>');
                             }
                             else if (kpi.appearance && kpi.general) {
-                                return ('<div id=" ' + kpi.key + ' "><div style="height: 100px;width: 100px;background: ' + kpi.appearance.backgroundColor + '"><img src="https://image.flaticon.com/icons/svg/858/858699.svg" alt="" height="100px" width="100px"></div></div>');
+                                return ('<div id=" ' + kpi.id + ' "><div style="height: 100px;width: 100px;background: ' + kpi.appearance.backgroundColor + '"><img src="https://image.flaticon.com/icons/svg/858/858699.svg" alt="" height="100px" width="100px"></div></div>');
                             }
-                            return ('<div id=" ' + kpi.key + ' "><div style="height: 100px;width: 100px;"><img src="https://image.flaticon.com/icons/svg/858/858699.svg" alt="" height="100px" width="100px"></div></div>');
+                            return ('<div id=" ' + kpi.id + ' "><div style="height: 100px;width: 100px;"><img src="https://image.flaticon.com/icons/svg/858/858699.svg" alt="" height="100px" width="100px"></div></div>');
                         };
                         _this.iconFun = function (kpi) {
                             if (kpi.appearance && kpi.general && kpi.data) {
-                                return ('<div id=" ' + kpi.key + ' " style="height: 60px;width: 60px;"><div class="ddd wrap d-flex flex-col align-l align-x" style=" background: ' + kpi.appearance.backgroundColor + ';padding: 8px; "><img src=" ' + kpi.data.iconSource + ' " alt="" height="42" width="42"></div></div>');
+                                return ('<div id=" ' + kpi.id + ' " style="height: 60px;width: 60px;"><div class="ddd wrap d-flex flex-col align-l align-x" style=" background: ' + kpi.appearance.backgroundColor + ';padding: 8px; "><img src=" ' + kpi.data.iconSource + ' " alt="" height="42" width="42"></div></div>');
                             }
                             else if (kpi.appearance && kpi.general) {
-                                return ('<div id=" ' + kpi.key + ' "><div style="background: ' + kpi.appearance.backgroundColor + '"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-c-512.png" alt="" height="100px" width="100px"></div></div>');
+                                return ('<div id=" ' + kpi.id + ' "><div style="background: ' + kpi.appearance.backgroundColor + '"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-c-512.png" alt="" height="100px" width="100px"></div></div>');
                             }
-                            return ('<div id=" ' + kpi.key + ' "><div><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-c-512.png" alt="" height="100px" width="100px"></div></div>');
+                            return ('<div id=" ' + kpi.id + ' "><div><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-c-512.png" alt="" height="100px" width="100px"></div></div>');
                         };
                         _this.sparklinechartFun = function (kpi) {
                             if (kpi.appearance && kpi.general) {
-                                return ('<div id=" ' + kpi.key + ' "><div class="inner-tab" id="container" style="height: 100%;border-right: 1px solid #eeeeee;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '" ></div></div>');
+                                return ('<div id=" ' + kpi.id + ' "><div class="inner-tab" id="container" style="height: 100%;border-right: 1px solid #eeeeee;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '" ></div></div>');
                             }
-                            return ('<div id=" ' + kpi.key + ' "><div class="inner-tab" id="container" style="height: 100%;border-right: 1px solid #eeeeee;text-align: center;background-color: #4A90E2;" ></div></div>');
+                            return ('<div id=" ' + kpi.id + ' "><div class="inner-tab" id="container" style="height: 100%;border-right: 1px solid #eeeeee;text-align: center;background-color: #4A90E2;" ></div></div>');
                         };
                         _this.visualInstance = options.host;
                         _this.element = options.element;
@@ -80751,8 +80762,8 @@ var powerbi;
                         var self = this;
                         var dataView = options.data, settings = options.settings;
                         // this.chartContainer = options.element;
-                        if (dataView.categorical.dimensions.length < 1 || dataView.categorical.measures.length < 1) {
-                            kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662.bifrost.UIIndicators.showErrorMessage(options.element, "All three Image Field, Attribute Field and Measure Data are required", "");
+                        if (dataView.categorical.dimensions.length < 2 || dataView.categorical.measures.length < 2) {
+                            kpiTileVDTDAAAAECA2A9B4BB0920B352B6793C662.bifrost.UIIndicators.showErrorMessage(options.element, "Two Measures and Two Category Fields are required", "");
                             return;
                         }
                         console.log('Render', options, this.visualInstance);
@@ -80839,7 +80850,7 @@ var powerbi;
                                 a.disable();
                             }
                             kpitile.map(function (kpi) {
-                                if (position.id === kpi.key && kpi.general) {
+                                if (position.id === kpi.id && kpi.general) {
                                     console.log('Inside If id is same', position, kpi);
                                     kpi.general.sizex = position.sizex;
                                     kpi.general.sizey = position.sizey;
@@ -80853,7 +80864,7 @@ var powerbi;
                                 if (kpi.text === "title") {
                                     titleVar = _this.titleFun(kpi);
                                     if (kpi.general) {
-                                        a.remove_widget(document.getElementById(kpi.key), function (remove) {
+                                        a.remove_widget(document.getElementById(kpi.id), function (remove) {
                                             console.log('remove', remove);
                                         });
                                         a.add_widget(titleVar, kpi.general.sizex, kpi.general.sizey, kpi.general.col, kpi.general.row);
@@ -80867,7 +80878,7 @@ var powerbi;
                                     primaryKPIVar = _this.primaryKPIFun(options, kpi);
                                     console.log('after primarykpiFuncrion call', primaryKPIVar, kpi);
                                     if (kpi.general) {
-                                        a.remove_widget(document.getElementById(kpi.key), function (remove) {
+                                        a.remove_widget(document.getElementById(kpi.id), function (remove) {
                                             console.log('remove', remove);
                                         });
                                         console.log('after remove', kpi);
@@ -80881,7 +80892,7 @@ var powerbi;
                                 else if (kpi.text === "secondarykpi") {
                                     secondaryKPIVar = _this.secondaryKPIFun(options, kpi);
                                     if (kpi.general) {
-                                        a.remove_widget(document.getElementById(kpi.key), function (remove) {
+                                        a.remove_widget(document.getElementById(kpi.id), function (remove) {
                                             console.log('remove', remove);
                                         });
                                         a.add_widget(secondaryKPIVar, kpi.general.sizex, kpi.general.sizey, kpi.general.col, kpi.general.row);
@@ -80901,7 +80912,7 @@ var powerbi;
                                 else if (kpi.text === "sparklinechart") {
                                     sparkLineChartVar = _this.sparklinechartFun(kpi);
                                     if (kpi.general) {
-                                        a.remove_widget(document.getElementById(kpi.key), function (remove) {
+                                        a.remove_widget(document.getElementById(kpi.id), function (remove) {
                                             console.log('remove', remove);
                                         });
                                         a.add_widget(sparkLineChartVar, kpi.general.sizex, kpi.general.sizey, kpi.general.col, kpi.general.row);

@@ -141,9 +141,9 @@ class KpiData extends Component {
     const { store } = this.props;
     const rules = toJS(store.get('kpitile'));
     const result = rules.map((item, inx) => {
-      if (item.key === this.props.data) {
+      if (item.id === this.props.data) {
         merged = { ...rules[inx], data: response };
-        if (item.key === merged.key) {
+        if (item.id === merged.id) {
           item = merged;
         }
       }
@@ -167,8 +167,9 @@ class KpiData extends Component {
   render() {
     const { store } = this.props;
     const response = toJS(store.get('kpitile'));
+    console.log('Data Index.js ', this.props, response);
     const result = response.map((item) => {
-      if (item.key === this.props.data) {
+      if (item.id === this.props.data) {
         if (item.data) {
           // fields={formFields}
           const fields = formFields.filter((i) => {
@@ -179,6 +180,7 @@ class KpiData extends Component {
                     if (i.name === 'dimension') {
                       this.props.dataView.categorical.dimensions.map((x, y) => {
                         if (x.label === item.data[k]) {
+                          console.log('x.label === item.data[k]',x.label, item.data[k], y, this.props.dataView.categorical.dimensions[y].label)
                           i.defaultValue = this.props.dataView.categorical.dimensions[y].label;
                           i.controlProps = {
                             options: this.props.dataView.categorical.dimensions
@@ -195,14 +197,18 @@ class KpiData extends Component {
                         }
                       });
                     } else {
+                      console.log('Hello Hii')
                       i.defaultValue = item.data[k];
                     }
                   }
                 });
               }
+              console.log('@@@@@@@@@@@@@iii', i)
               return i;
             }
+            console.log('@@@@@@@@@@@@@iii after return', i)
           });
+          console.log('@@@@@@@@@@@@@', fields)
           return fields;
         }
       }

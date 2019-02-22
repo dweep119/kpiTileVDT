@@ -66,7 +66,6 @@ class CustomizeMenu extends Component {
         
     this.onClick = this.onClick.bind(this);
     this.onBack = this.onBack.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onClick(view, menuItem) {
@@ -75,9 +74,11 @@ class CustomizeMenu extends Component {
     const itemArray = toJS(store.get('kpitile'));
     console.log('view menuItem', view, menuItem);
     itemArray.map(item => {
-        storeKey = item.text;
-        title = item.title;
-        id = item.id;
+        if (item.id === menuItem) {
+            storeKey = item.text;
+            title = item.title;
+            id = item.id;
+        }
     });
     // const storeKey = dataMenu[menuItem - 1].storeKey;
     // const title = dataMenu[menuItem - 1].title;
@@ -97,14 +98,14 @@ class CustomizeMenu extends Component {
     // this.props.store.set('kpitile', itemArray);
   }
 
-  onSubmit() {
-    const { store } = this.props;
-    const { storeKey } = this.state;
-    const menuData = appearance[storeKey];
+//   onSubmit() {
+//     const { store } = this.props;
+//     const { storeKey } = this.state;
+//     const menuData = appearance[storeKey];
 
-    store.set(storeKey, menuData);
-    this.onBack();
-  }
+//     store.set(storeKey, menuData);
+//     this.onBack();
+//   }
 
   onBack() {
     this.setState({ view: 'first' });
@@ -112,7 +113,7 @@ class CustomizeMenu extends Component {
 
   render() {
     const { view } = this.state;
-    const { store, dataView } = this.props;
+    const { store, dataView, onClose } = this.props;
     const kpitileArray = toJS(store.get('kpitile'));
     console.log('datastore in CustomizeMenu', this.props, store, this.state)
     // const { treeHierachical } = TreeStore; // Store does not update without this statement, TODO
@@ -124,8 +125,8 @@ class CustomizeMenu extends Component {
         
         {view === 'second'
           && (
-            <FormPanel onSubmit={this.onSubmit} onBack={this.onBack} submitButtonRender title={this.state.title}>
-                { <CommonComponent store={store} title={this.state.title} data={this.state.id} component={this.state.storeKey} dataView={dataView}/> }
+            <FormPanel onSubmit={this.onSubmit} onBack={this.onBack} title={this.state.title}>
+                { <CommonComponent store={store} title={this.state.title} data={this.state.id} component={this.state.storeKey} dataView={dataView} onClose={onClose} /> }
             </FormPanel>
           )
         }

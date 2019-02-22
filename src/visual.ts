@@ -86,11 +86,11 @@ module powerbi.extensibility.visual {
 
         private titleFun = (kpi) => {
             if (kpi.appearance && kpi.general && kpi.data) {
-                return ('<div id=" ' + kpi.key + ' "><div class="title-style" style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '; color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">' + kpi.data.dimension + '</div></div>');
+                return ('<div id=" ' + kpi.id + ' "><div class="title-style" style="padding: 25px; height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '; color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">' + kpi.data.dimension + '</div></div>');
             } else if (kpi.appearance && kpi.general) {
-                return ('<div id=" ' + kpi.key + ' "><div class="title-style" style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '; color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Apple Products</div></div>');
+                return ('<div id=" ' + kpi.id + ' "><div class="title-style" style="padding: 25px; height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '; color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Apple Products</div></div>');
             }
-            return ('<div id=" ' + kpi.key + ' "><div class="title-style" style="height: 100%;text-align: left;background-color: #4A90E2;font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Apple Products</div></div>');
+            return ('<div id=" ' + kpi.id + ' "><div class="title-style" style="padding: 25px; height: 100%;text-align: left;background-color: #4A90E2;font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Apple Products</div></div>');
         }
 
         private primaryKPIFun = (options, kpi) => {
@@ -136,7 +136,7 @@ module powerbi.extensibility.visual {
             });
             if (kpi.appearance && kpi.general && kpi.data) {
                 console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', amount, amount1, imgsrc, imgsrc1);
-                return ('<div id=" ' + kpi.key + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> '+
+                return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> '+
                 '<div class="value-text mb" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">$' + amount + '<img src=" ' + imgsrc + ' " alt="" style="height: 25px;width: 15px;" class="icon-sm mx" /></div>'+
                 '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">' + kpi.data.measure + '</div>'+
                 // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
@@ -144,7 +144,7 @@ module powerbi.extensibility.visual {
                 '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">' + kpi.data.comparisonMeasure + '</div>'+
               '</div></div>');
             } else if (kpi.appearance && kpi.general) {
-                return ('<div id=" ' + kpi.key + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> '+
+                return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> '+
                 '<div class="value-text mb" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">$78,900<img src="https://i.imgur.com/uHvo5kW.png" alt="" style="height: 25px;width: 15px;" class="icon-sm mx" /></div>'+
                 '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Macbook Pro</div>'+
                 // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
@@ -152,7 +152,7 @@ module powerbi.extensibility.visual {
                 '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Macbook Pro</div>'+
               '</div></div>');
             }
-            return ('<div id=" ' + kpi.key + ' "><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> '+
+            return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> '+
             '<div class="value-text mb" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">$78,900<img src="https://i.imgur.com/uHvo5kW.png" alt="" style="height: 25px;width: 15px;" class="icon-sm mx" /></div>'+
             '<div class="label-text-md mb-md" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Macbook Pro</div>'+
             '<div class="label-text-sm" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">$24,900<img src="https://i.imgur.com/IJRKq5P.png" alt="" style="height: 25px;width: 15px;" class="icon-sm mx" /></div>'+
@@ -178,19 +178,19 @@ module powerbi.extensibility.visual {
                 }
             });
             if (kpi.appearance && kpi.general && kpi.data) {
-                return ('<div id=" ' + kpi.key + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> '+
+                return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> '+
                 '<div class="value-text mb" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">$' + amount + '<img src="up-arrow.png" alt="" class="icon-sm mx" /></div>'+
                 '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">' + kpi.data.measure + '</div>'+
                 // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
               '</div></div>');
             } else if (kpi.appearance && kpi.general) {
-                return ('<div id=" ' + kpi.key + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> '+
+                return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '"> '+
                 '<div class="value-text mb" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">$78,900<img src="up-arrow.png" alt="" class="icon-sm mx" /></div>'+
                 '<div class="label-text-md mb-md" style="color: ' + kpi.appearance.fontColor + '; font-size: ' + kpi.appearance.fontSize + 'px; font-weight: ' + kpi.appearance.fontWeight + '; font-family: ' + kpi.appearance.fontFamily + '">Macbook Pro</div>'+
                 // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
               '</div></div>');
             }
-            return ('<div id=" ' + kpi.key + ' "><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> '+
+            return ('<div id=" ' + kpi.id + ' "><div class="inner-wrap"  style="height: 100%;text-align:center;background-color: #4A90E2"> '+
             '<div class="value-text mb" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">$78,900<img src="up-arrow.png" alt="" class="icon-sm mx" /></div>'+
             '<div class="label-text-md mb-md" style="font-family: Arial;font-size: 20px;font-weight: normal;color: black;">Macbook Pro</div>'+
             // '<div class="label-text-sm mb">Total sales 2017-18</div>'+
@@ -200,27 +200,27 @@ module powerbi.extensibility.visual {
 
         private imageFun = (kpi) => {
             if (kpi.appearance && kpi.general && kpi.data) {
-                return ('<div id=" ' + kpi.key + ' "><div style="height: 100px;width: 100px;background: ' + kpi.appearance.backgroundColor + '"><img src="' + kpi.data.imageSource + '" alt="" height="100px" width="100px"></div></div>');
+                return ('<div id=" ' + kpi.id + ' "><div style="height: 100px;width: 100px;background: ' + kpi.appearance.backgroundColor + '"><img src="' + kpi.data.imageSource + '" alt="" height="100px" width="100px"></div></div>');
             } else if (kpi.appearance && kpi.general) {
-                return ('<div id=" ' + kpi.key + ' "><div style="height: 100px;width: 100px;background: ' + kpi.appearance.backgroundColor + '"><img src="https://image.flaticon.com/icons/svg/858/858699.svg" alt="" height="100px" width="100px"></div></div>');
+                return ('<div id=" ' + kpi.id + ' "><div style="height: 100px;width: 100px;background: ' + kpi.appearance.backgroundColor + '"><img src="https://image.flaticon.com/icons/svg/858/858699.svg" alt="" height="100px" width="100px"></div></div>');
             }
-            return ('<div id=" ' + kpi.key + ' "><div style="height: 100px;width: 100px;"><img src="https://image.flaticon.com/icons/svg/858/858699.svg" alt="" height="100px" width="100px"></div></div>');
+            return ('<div id=" ' + kpi.id + ' "><div style="height: 100px;width: 100px;"><img src="https://image.flaticon.com/icons/svg/858/858699.svg" alt="" height="100px" width="100px"></div></div>');
         }
 
         private iconFun = (kpi) => {
             if (kpi.appearance && kpi.general && kpi.data) {
-                return ('<div id=" ' + kpi.key + ' " style="height: 60px;width: 60px;"><div class="ddd wrap d-flex flex-col align-l align-x" style=" background: ' + kpi.appearance.backgroundColor + ';padding: 8px; "><img src=" ' + kpi.data.iconSource + ' " alt="" height="42" width="42"></div></div>');
+                return ('<div id=" ' + kpi.id + ' " style="height: 60px;width: 60px;"><div class="ddd wrap d-flex flex-col align-l align-x" style=" background: ' + kpi.appearance.backgroundColor + ';padding: 8px; "><img src=" ' + kpi.data.iconSource + ' " alt="" height="42" width="42"></div></div>');
             } else if (kpi.appearance && kpi.general) {
-                return ('<div id=" ' + kpi.key + ' "><div style="background: ' + kpi.appearance.backgroundColor + '"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-c-512.png" alt="" height="100px" width="100px"></div></div>');
+                return ('<div id=" ' + kpi.id + ' "><div style="background: ' + kpi.appearance.backgroundColor + '"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-c-512.png" alt="" height="100px" width="100px"></div></div>');
             }
-            return ('<div id=" ' + kpi.key + ' "><div><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-c-512.png" alt="" height="100px" width="100px"></div></div>');
+            return ('<div id=" ' + kpi.id + ' "><div><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-c-512.png" alt="" height="100px" width="100px"></div></div>');
         }
 
         private sparklinechartFun = (kpi) => {
             if (kpi.appearance && kpi.general) {
-                return ('<div id=" ' + kpi.key + ' "><div class="inner-tab" id="container" style="height: 100%;border-right: 1px solid #eeeeee;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '" ></div></div>');
+                return ('<div id=" ' + kpi.id + ' "><div class="inner-tab" id="container" style="height: 100%;border-right: 1px solid #eeeeee;text-align: ' + kpi.appearance.textAlign + ';background: ' + kpi.appearance.backgroundColor + '" ></div></div>');
             }
-            return ('<div id=" ' + kpi.key + ' "><div class="inner-tab" id="container" style="height: 100%;border-right: 1px solid #eeeeee;text-align: center;background-color: #4A90E2;" ></div></div>');
+            return ('<div id=" ' + kpi.id + ' "><div class="inner-tab" id="container" style="height: 100%;border-right: 1px solid #eeeeee;text-align: center;background-color: #4A90E2;" ></div></div>');
         }
 
 
@@ -232,8 +232,8 @@ module powerbi.extensibility.visual {
             let dataView = options.data,
                 settings: any = options.settings;
             // this.chartContainer = options.element;
-            if (dataView.categorical.dimensions.length < 1 || dataView.categorical.measures.length < 1) {
-                bifrost.UIIndicators.showErrorMessage(options.element, "All three Image Field, Attribute Field and Measure Data are required", "");
+            if (dataView.categorical.dimensions.length < 2 || dataView.categorical.measures.length < 2) {
+                bifrost.UIIndicators.showErrorMessage(options.element, "Two Measures and Two Category Fields are required", "");
                 return;
             }
             console.log('Render', options, this.visualInstance);
@@ -325,7 +325,7 @@ module powerbi.extensibility.visual {
                     a.disable();
                 }
                 kpitile.map(kpi => {
-                    if (position.id === kpi.key && kpi.general) {
+                    if (position.id === kpi.id && kpi.general) {
                         console.log('Inside If id is same', position , kpi)
                         kpi.general.sizex = position.sizex;
                         kpi.general.sizey = position.sizey;
@@ -339,7 +339,7 @@ module powerbi.extensibility.visual {
                     if (kpi.text === "title") {
                         titleVar = this.titleFun(kpi);
                         if (kpi.general) {
-                            a.remove_widget(document.getElementById(kpi.key), remove => {
+                            a.remove_widget(document.getElementById(kpi.id), remove => {
                                 console.log('remove', remove);
                             });
                             a.add_widget(titleVar, kpi.general.sizex, kpi.general.sizey, kpi.general.col, kpi.general.row);
@@ -351,7 +351,7 @@ module powerbi.extensibility.visual {
                         primaryKPIVar = this.primaryKPIFun(options, kpi);
                         console.log('after primarykpiFuncrion call', primaryKPIVar, kpi)
                         if (kpi.general) {
-                            a.remove_widget(document.getElementById(kpi.key), remove => {
+                            a.remove_widget(document.getElementById(kpi.id), remove => {
                                 console.log('remove', remove);
                             });
                             console.log('after remove', kpi)
@@ -363,7 +363,7 @@ module powerbi.extensibility.visual {
                     } else if (kpi.text === "secondarykpi") {
                         secondaryKPIVar = this.secondaryKPIFun(options, kpi);
                         if (kpi.general) {
-                            a.remove_widget(document.getElementById(kpi.key), remove => {
+                            a.remove_widget(document.getElementById(kpi.id), remove => {
                                 console.log('remove', remove);
                             });
                             a.add_widget(secondaryKPIVar, kpi.general.sizex, kpi.general.sizey, kpi.general.col, kpi.general.row);
@@ -379,7 +379,7 @@ module powerbi.extensibility.visual {
                     } else if (kpi.text === "sparklinechart") {
                         sparkLineChartVar = this.sparklinechartFun(kpi);
                         if (kpi.general) {
-                            a.remove_widget(document.getElementById(kpi.key), remove => {
+                            a.remove_widget(document.getElementById(kpi.id), remove => {
                                 console.log('remove', remove);
                             });
                             a.add_widget(sparkLineChartVar, kpi.general.sizex, kpi.general.sizey, kpi.general.col, kpi.general.row);

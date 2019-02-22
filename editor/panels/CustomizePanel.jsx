@@ -26,11 +26,13 @@ class CustomizePanel extends Component {
   }
 
   render() {
-    const { store, dataView } = this.props;
+    const { store, dataView, onClose } = this.props;
+    const obj = { enable: true };
+      store.set('kpieditor', obj);
     console.log('Customize Panel', this.props)
     return (
       <Provider dataStore={this.dataStore}>
-        <CustomizeMenu store={store} dataView={dataView} />
+        <CustomizeMenu store={store} dataView={dataView} onClose={onClose} />
       </Provider>
     );
   }
