@@ -145,7 +145,6 @@ class KpiGeneral extends Component {
       return item;
     });
     store.set('kpitile', result);
-    this.props.onSubmit(this.props.data);
   }
 
   onError(errors) {
@@ -185,7 +184,7 @@ class KpiGeneral extends Component {
         <Form
           fields={_.flattenDeep(result[0])}
           onSubmit={this.onSubmit}
-          submitButton={<Button>Next</Button>}
+          // submitButton={<Button>Save</Button>}
           onError={this.onError}
           onFieldsChange={this.onFieldsChange}
           onClear={() => {}}

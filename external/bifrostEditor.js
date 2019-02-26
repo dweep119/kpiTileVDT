@@ -524,7 +524,6 @@ function (_Component) {
       });
       console.log('Result KPIAppearence', result);
       store.set('kpitile', result);
-      this.props.onSubmit(this.props.data);
     }
   }, {
     key: "onError",
@@ -571,8 +570,8 @@ function (_Component) {
       });
       return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_11___default.a, {
         fields: lodash__WEBPACK_IMPORTED_MODULE_16___default.a.flattenDeep(result[0]),
-        onSubmit: this.onSubmit,
-        submitButton: react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_14___default.a, null, "Next"),
+        onSubmit: this.onSubmit // submitButton={<Button>Save</Button>}
+        ,
         onError: this.onError,
         onFieldsChange: this.onFieldsChange,
         onClear: function onClear() {} // showClearButton={true}
@@ -712,13 +711,7 @@ function (_Component) {
         store: this.props.store,
         editorData: CommonComponent,
         expand: this.expand,
-        data: this.props.data,
-        onSubmit: function onSubmit(key) {
-          return _this2.setState({
-            tabSelected: 'appearance',
-            key: key
-          });
-        }
+        data: this.props.data
       })), this.state.tabSelected === 'appearance' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "vdt-appearance"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Appearance__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -726,13 +719,7 @@ function (_Component) {
         component: this.props.component,
         editorData: CommonComponent,
         expand: this.expand,
-        data: this.props.data,
-        onSubmit: function onSubmit(key) {
-          return _this2.setState({
-            tabSelected: 'data',
-            key: key
-          });
-        }
+        data: this.props.data
       })), this.state.tabSelected === 'data' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "vdt-data"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Data__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -856,7 +843,8 @@ function (_Component) {
       showModal: false,
       selectedTitle: '',
       selectedId: 0,
-      selectedText: ''
+      selectedText: '',
+      key: ''
     };
     _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
     _this.onBack = _this.onBack.bind(_assertThisInitialized(_this));
@@ -910,35 +898,40 @@ function (_Component) {
           id = _this$state.id,
           title = _this$state.title,
           description = _this$state.description;
-      var itemArray = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile')); // if (icon === )
+      var itemArray = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile'));
 
-      var obj = {
-        'text': text,
-        'id': id,
-        'title': title,
-        'description': description
-      };
-      itemArray.push(obj);
+      if (id !== 0) {
+        var obj = {
+          'text': text,
+          'id': id,
+          'title': title,
+          'description': description
+        };
+        itemArray.push(obj);
+        store.set('kpitile', itemArray);
+        this.setState({
+          showModal: false
+        });
+      }
+
       console.log('addOnClick', itemArray);
-      store.set('kpitile', itemArray);
-      this.setState({
-        showModal: false
-      });
     }
   }, {
     key: "onFieldsChange",
     value: function onFieldsChange(e, j) {
+      console.log('onFieldsChange e, j', j, this.state);
       this.setState({
         text: j.description,
         id: Date.now(),
         title: j.title,
-        description: j.subtitle
+        description: j.subtitle,
+        key: j.className
       });
-      console.log('onFieldsChange e, j', e, j, this.state);
     }
   }, {
     key: "verticalTab",
     value: function verticalTab() {
+      console.log('this.state.key', this.state.key);
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: ""
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
@@ -947,14 +940,16 @@ function (_Component) {
         secondary: true,
         size: "sm",
         className: "finish-button",
-        onClick: this.submit
+        onClick: this.submit,
+        disabled: this.state.key === ''
       }, "Submit")));
     }
   }, {
     key: "onClose",
     value: function onClose() {
       this.setState({
-        showModal: false
+        showModal: false,
+        key: ''
       });
     }
   }, {
@@ -1034,14 +1029,14 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_13___default.a, {
         label: "Select KPI Tile"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_10___default.a, {
-        flexWrap: "wrap",
-        justifyContent: "center"
+        flexWrap: "wrap"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Tile__WEBPACK_IMPORTED_MODULE_14___default.a, {
         title: "Title",
         key: "title",
         subtitle: "Containing primitive value from a data source",
         icon: "DataSource",
-        description: "title" // secondary={nodeData.cMeth === ''}
+        description: "title",
+        className: "kpi-title" === this.state.key ? 'active' : 'kpi-title' // secondary={nodeData.cMeth === ''}
         ,
         onClick: function onClick(e, j) {
           return _this3.onFieldsChange(e, j);
@@ -1051,41 +1046,56 @@ function (_Component) {
         key: "primarykpi",
         subtitle: "Containing customizable data format and value",
         icon: "Custom",
-        description: "primarykpi" // secondary={nodeData.cMeth === 'C'}
-        // onClick={(e, j) => this.onFieldsChange({ cMeth: { value: 'C' } })}
-
+        description: "primarykpi",
+        className: "kpi-primarykpi" === this.state.key ? 'active' : 'kpi-primarykpi' // secondary={nodeData.cMeth === 'C'}
+        ,
+        onClick: function onClick(e, j) {
+          return _this3.onFieldsChange(e, j);
+        }
       }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Tile__WEBPACK_IMPORTED_MODULE_14___default.a, {
         title: "Secondary KPI",
         key: "secondarykpi",
         subtitle: "Containing a calculation based on other nodes",
         icon: "Calculator",
-        description: "secondarykpi" // secondary={nodeData.cMeth === 'F' || nodeData.cMeth === 'A' || nodeData.cMeth === 'S' || nodeData.cMeth === 'M' || nodeData.cMeth === 'D'}
-        // onClick={(e, j) => this.onFieldsChange({ cMeth: { value: 'A' } })}
-
+        description: "secondarykpi",
+        className: "kpi-secondarykpi" === this.state.key ? 'active' : 'kpi-secondarykpi' // secondary={nodeData.cMeth === 'F' || nodeData.cMeth === 'A' || nodeData.cMeth === 'S' || nodeData.cMeth === 'M' || nodeData.cMeth === 'D'}
+        ,
+        onClick: function onClick(e, j) {
+          return _this3.onFieldsChange(e, j);
+        }
       }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Tile__WEBPACK_IMPORTED_MODULE_14___default.a, {
         title: "SparkLine Chart",
         key: "sparklinechart",
         subtitle: "Containing primitive value from a data source",
         icon: "DataSource",
-        description: "sparklinechart" // secondary={nodeData.cMeth === ''}
-        // onClick={(e, j) => this.onFieldsChange({ cMeth: { value: '' } })}
-
+        description: "sparklinechart",
+        className: "kpi-sparklinechart" === this.state.key ? 'active' : 'kpi-sparklinechart' // secondary={nodeData.cMeth === ''}
+        ,
+        onClick: function onClick(e, j) {
+          return _this3.onFieldsChange(e, j);
+        }
       }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Tile__WEBPACK_IMPORTED_MODULE_14___default.a, {
         title: "Icon",
         key: "icon",
         subtitle: "Containing customizable data format and value",
         icon: "Custom",
-        description: "icon" // secondary={nodeData.cMeth === 'C'}
-        // onClick={(e, j) => this.onFieldsChange({ cMeth: { value: 'C' } })}
-
+        description: "icon",
+        className: "kpi-icon" === this.state.key ? 'active' : 'kpi-icon' // secondary={nodeData.cMeth === 'C'}
+        ,
+        onClick: function onClick(e, j) {
+          return _this3.onFieldsChange(e, j);
+        }
       }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Tile__WEBPACK_IMPORTED_MODULE_14___default.a, {
         title: "Image",
         key: "image",
         subtitle: "Containing a calculation based on other nodes",
         icon: "Calculator",
-        description: "image" // secondary={nodeData.cMeth === 'F' || nodeData.cMeth === 'A' || nodeData.cMeth === 'S' || nodeData.cMeth === 'M' || nodeData.cMeth === 'D'}
-        // onClick={(e, j) => this.onFieldsChange({ cMeth: { value: 'A' } })}
-
+        description: "image",
+        className: "kpi-image" === this.state.key ? 'active' : 'kpi-image' // secondary={nodeData.cMeth === 'F' || nodeData.cMeth === 'A' || nodeData.cMeth === 'S' || nodeData.cMeth === 'M' || nodeData.cMeth === 'D'}
+        ,
+        onClick: function onClick(e, j) {
+          return _this3.onFieldsChange(e, j);
+        }
       })))))))));
     }
   }]);
@@ -1664,7 +1674,6 @@ function (_Component) {
         return item;
       });
       store.set('kpitile', result);
-      this.props.onSubmit(this.props.data);
     }
   }, {
     key: "onError",
@@ -1709,8 +1718,8 @@ function (_Component) {
       });
       return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_visualbi_bifrost_editor_dist_forms_Form__WEBPACK_IMPORTED_MODULE_11___default.a, {
         fields: lodash__WEBPACK_IMPORTED_MODULE_15___default.a.flattenDeep(result[0]),
-        onSubmit: this.onSubmit,
-        submitButton: react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_14___default.a, null, "Next"),
+        onSubmit: this.onSubmit // submitButton={<Button>Save</Button>}
+        ,
         onError: this.onError,
         onFieldsChange: this.onFieldsChange,
         onClear: function onClear() {} // showClearButton={true}
@@ -20385,7 +20394,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 
 // module
-exports.push([module.i, "/* VDT Modal Css */\n.modal-container {\n    max-height: none;\n    height: 540px !important;\n    z-index: 10 !important;\n}\n.modal-nodetype-inside:first-of-type{\n    margin-right: 10px;\n\n}\n\n.finish-button{\n    margin-right: 10px !important;\n}\n\n.modal-body{\n    padding: 0.8rem !important;\n    height: 100%;\n}\n\n.node-config-modal .modal-body {\n    overflow-y: hidden;\n}\n\n.modal-nodetype-div{\n    display: flex;\n    flex-direction: row;\n}\n.modal-nodetype-inside{\n    display: flex;\n    flex-direction: column;\n    width: 100%;\n}\n.modal-nodetype-Type{\n    display: flex;\n    padding: 10px;\n    border: 1px solid #80808040;\n    margin: 5px;\n    border-radius: 2px;\n}\n.modal-nodetype-Type-active{\n    display: flex;\n    padding: 10px;\n    border: 1px solid black;\n    margin: 5px;\n    border-radius: 2px;\n}\n\n\n.modal-node-description{    \n    display: -webkit-box;\n    -webkit-line-clamp: 2;\n    -webkit-box-orient: vertical;\n    font-size: 10px;\n    overflow: hidden;\n}\n\n.modal-menu-img-icon{\n    display: flex;\n    align-items: center;\n    padding-right: 10px;\n}\n\n.button-margin{\n   margin: 5px;\n}\n\n.modal-general .tile .tile-icon {\n    margin-right: 18px;\n}\n\n.modal-general-view{\n    display: flex;\n    flex-direction: row;\n    padding-top: 20px;\n    padding-bottom: 10px;\n}\n.modal-general{\n    display: flex;\n    flex-direction: column;\n}\n.menu-title{\n    font-size: 17px;\n}\n.vertical-tab-menu{\n    display: flex;\n    flex-direction: column;\n    width: 50%;\n    border-right: 1px solid #d4d4d4;\n\n}\n.vertical-menu-name{\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    color: black;\n    padding: 5px 0;\n    padding-left: 20px;\n    cursor: pointer;\n}\n.vertical-menu-name-active{\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    color: black;\n    background: #eaeaea;\n    padding: 8px 0;\n    padding-left: 20px;\n       \n}\n\n.verticalMenu-radio-active{\n    height: 10px;\n    width: 10px;\n    border: 1.4px solid black;\n    border-radius: 20px;\n}\n\n.verticalMenu-radio{\n    height: 10px;\n    width: 10px;\n    border: 1.4px solid #d4d4d4;\n    border-radius: 20px;\n    background-color: #d4d4d4;\n}\n.menu-text{\n    font-size: 14px;\n    color: #515151;\n}\n\n.vertical-form{\n    height: 100%;\n    width: 100%;\n    display: flex;\n    padding: 0 18px 0 14px;\n    flex-direction: column;\n    position: relative;\n    overflow-y: auto;\n}\n.vertical-form .form-group  {\n    padding: 0px;\n    margin: 0 0 18px 0 !important;\n}\n\n.menu-title{\n    font-size: 16px;\n    font-weight: 300;\n}\n\n.radio-select{\n    display: flex;\n    flex-direction: row;\n}\n.radio-select-name{\n    font-size: 11px;\n}\n\n.decimail-value{\n    display: flex;\n    font-size: 12px;\n    align-items: center;\n}\n\n.decimail-value>div{\n    display: flex;\n    width: 100%;\n    justify-content: space-evenly;\n    align-items: center;\n    padding-left: 20px;\n }\n\n .increment-decrement-button{\n     border: 1px solid black;\n     padding: 0px 5px;\n }\n.value-format-menu{\n    display: flex;\n    flex-direction: column;\n}\n.decimal-value-name{\n    width:60%;\n    text-align: center;\n    border:1px solid #d4d4d4; \n}\n.decimail-value-prefix{\n    display: flex;\n    justify-content: space-around;\n    flex-direction: column;\n}\n\n\n.feature-menu{\n    display: flex;\n    flex-wrap: wrap;\n}\n\n.modal-container .modal-header {\n    border-bottom: none;\n    padding-bottom: 0 !important;\n}\n\n.modal-header h4 {\n    font-size: 21px !important;\n    font-weight: 200 !important;\n    color: #333333 !important;\n    text-transform: initial !important;\n    margin-left: 0.2rem !important;\n    margin-top: 5px !important;\n}\n\n.modal-header .icon {\n    cursor: pointer;\n}\n.menu-title label{\n    padding-left: 0 !important;\n    text-transform: uppercase;\n    font-weight: 500;\n    font-size: 12px !important;\n}\n.modal-nodetype-inside .tile {\n    height: 96px;\n}\n.modal-nodetype-div {\n    margin-bottom: 0.3rem;\n}\n\n/*vertical form elements*/\n.vertical-form .form-label:first-of-type {\n    margin-top: 0 !important;\n}\n/* .form-footer-button {\n    position: absolute;\n    bottom: 0px;\n    right: 18px;\n} */\n.vertical-form form {\n    margin-bottom: 36px;\n}\n.modal-buttons {\n    position: absolute;\n    bottom: 20px;\n    right: 18px;\n}\n\n.desc {\n    display: inline;\n}\n.learn-more {\n    display: inline;\n    color: #0078d4;\n    position: absolute;\n    right: 0;\n}\n.textarea {\n    margin-top: 14px !important;\n    height: 300px;\n}\n.long-note {\n    margin-top: 0px !important;\n}\n.bf-editor-tile {\n    margin: 10px 0 !important;\n    width: 160px;\n}\n.modal-container .bf-editor-tile {\n    margin: 5px 10px 10px 0 !important;\n}\n.calc-btn:hover, .calc-btn::selection {\n    background-color: #f4f4f4;\n}\n\n.calc-btn .icon{\n    font-size: 22px;\n}\n.vertical-form form .calc-label {\n    margin-bottom: 0 !important;\n}\n.vertical-form .sublabel label {\n    font-size: 12px !important;\n    line-height: 12px;\n}\n\n.import-export-padding {\n    padding: 20px;\n    padding-top: 0;\n}\n\n.import-export-button-padding{\n    padding: 20px;\n    padding-right: 0;\n\n}\n\n.node-config-submit {\n    position: absolute;\n    bottom: 15px;\n    right: 21px;\n}\n\n.confirm-tree-reset .modal-container {\n    height: 180px !important;\n}\n\n.confirm-tree-reset .confirm-reset-msg, .delete-node-error .confirm-reset-msg  {\n    padding-left: 4px;\n    color: #615c5c;\n    font-size: 14px;\n}\n\n.confirm-tree-reset .confirm-reset-btn, .delete-node-error .confirm-reset-btn  {\n    position: absolute;\n    bottom: 20px;\n    right: 20px;\n}\n\n.confirm-tree-reset .confirm-button, .delete-node-error .confirm-button  {\n    margin-left: 6px;\n}\n", ""]);
+exports.push([module.i, "/* VDT Modal Css */\n.modal-container {\n    max-height: none;\n    height: 540px !important;\n    z-index: 10 !important;\n}\n.modal-nodetype-inside:first-of-type{\n    margin-right: 10px;\n\n}\n\n.finish-button{\n    margin-right: 10px !important;\n}\n\n.modal-body{\n    padding: 0.8rem !important;\n    height: 100%;\n}\n\n.node-config-modal .modal-body {\n    overflow-y: hidden;\n}\n\n.modal-nodetype-div{\n    display: flex;\n    flex-direction: row;\n}\n.modal-nodetype-inside{\n    display: flex;\n    flex-direction: column;\n    width: 100%;\n}\n.modal-nodetype-Type{\n    display: flex;\n    padding: 10px;\n    border: 1px solid #80808040;\n    margin: 5px;\n    border-radius: 2px;\n}\n.modal-nodetype-Type-active{\n    display: flex;\n    padding: 10px;\n    border: 1px solid black;\n    margin: 5px;\n    border-radius: 2px;\n}\n\n\n.modal-node-description{    \n    display: -webkit-box;\n    -webkit-line-clamp: 2;\n    -webkit-box-orient: vertical;\n    font-size: 10px;\n    overflow: hidden;\n}\n\n.modal-menu-img-icon{\n    display: flex;\n    align-items: center;\n    padding-right: 10px;\n}\n\n.button-margin{\n   margin: 5px;\n}\n\n.modal-general .tile .tile-icon {\n    margin-right: 18px;\n}\n\n.modal-general-view{\n    display: flex;\n    flex-direction: row;\n    padding-top: 20px;\n    padding-bottom: 10px;\n}\n.modal-general{\n    display: flex;\n    flex-direction: column;\n}\n.menu-title{\n    font-size: 17px;\n}\n.vertical-tab-menu{\n    display: flex;\n    flex-direction: column;\n    width: 50%;\n    border-right: 1px solid #d4d4d4;\n\n}\n.vertical-menu-name{\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    color: black;\n    padding: 5px 0;\n    padding-left: 20px;\n    cursor: pointer;\n}\n.vertical-menu-name-active{\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    color: black;\n    background: #eaeaea;\n    padding: 8px 0;\n    padding-left: 20px;\n       \n}\n\n.verticalMenu-radio-active{\n    height: 10px;\n    width: 10px;\n    border: 1.4px solid black;\n    border-radius: 20px;\n}\n\n.verticalMenu-radio{\n    height: 10px;\n    width: 10px;\n    border: 1.4px solid #d4d4d4;\n    border-radius: 20px;\n    background-color: #d4d4d4;\n}\n.menu-text{\n    font-size: 14px;\n    color: #515151;\n}\n\n.vertical-form{\n    height: 100%;\n    width: 100%;\n    display: flex;\n    padding: 0 18px 0 14px;\n    flex-direction: column;\n    position: relative;\n    overflow-y: auto;\n}\n.vertical-form .form-group  {\n    padding: 0px;\n    margin: 0 0 18px 0 !important;\n}\n\n.menu-title{\n    font-size: 16px;\n    font-weight: 300;\n}\n\n.radio-select{\n    display: flex;\n    flex-direction: row;\n}\n.radio-select-name{\n    font-size: 11px;\n}\n\n.decimail-value{\n    display: flex;\n    font-size: 12px;\n    align-items: center;\n}\n\n.decimail-value>div{\n    display: flex;\n    width: 100%;\n    justify-content: space-evenly;\n    align-items: center;\n    padding-left: 20px;\n }\n\n .increment-decrement-button{\n     border: 1px solid black;\n     padding: 0px 5px;\n }\n.value-format-menu{\n    display: flex;\n    flex-direction: column;\n}\n.decimal-value-name{\n    width:60%;\n    text-align: center;\n    border:1px solid #d4d4d4; \n}\n.decimail-value-prefix{\n    display: flex;\n    justify-content: space-around;\n    flex-direction: column;\n}\n\n\n.feature-menu{\n    display: flex;\n    flex-wrap: wrap;\n}\n\n.modal-container .modal-header {\n    border-bottom: none;\n    padding-bottom: 0 !important;\n}\n\n.modal-header h4 {\n    font-size: 21px !important;\n    font-weight: 200 !important;\n    color: #333333 !important;\n    text-transform: initial !important;\n    margin-left: 0.2rem !important;\n    margin-top: 5px !important;\n}\n\n.modal-header .icon {\n    cursor: pointer;\n}\n.menu-title label{\n    padding-left: 0 !important;\n    text-transform: uppercase;\n    font-weight: 500;\n    font-size: 12px !important;\n}\n.modal-nodetype-inside .tile {\n    height: 96px;\n}\n.modal-nodetype-div {\n    margin-bottom: 0.3rem;\n}\n\n/*vertical form elements*/\n.vertical-form .form-label:first-of-type {\n    margin-top: 0 !important;\n}\n/* .form-footer-button {\n    position: absolute;\n    bottom: 0px;\n    right: 18px;\n} */\n.vertical-form form {\n    margin-bottom: 36px;\n}\n.modal-buttons {\n    position: absolute;\n    bottom: 20px;\n    right: 18px;\n}\n\n.desc {\n    display: inline;\n}\n.learn-more {\n    display: inline;\n    color: #0078d4;\n    position: absolute;\n    right: 0;\n}\n.textarea {\n    margin-top: 14px !important;\n    height: 300px;\n}\n.long-note {\n    margin-top: 0px !important;\n}\n.bf-editor-tile {\n    margin: 10px 0 !important;\n    width: 182px;\n}\n.modal-container .bf-editor-tile {\n    margin: 0px 5px 5px 0px !important;\n}\n.calc-btn:hover, .calc-btn::selection {\n    background-color: #f4f4f4;\n}\n\n.calc-btn .icon{\n    font-size: 22px;\n}\n.vertical-form form .calc-label {\n    margin-bottom: 0 !important;\n}\n.vertical-form .sublabel label {\n    font-size: 12px !important;\n    line-height: 12px;\n}\n\n.import-export-padding {\n    padding: 20px;\n    padding-top: 0;\n}\n\n.import-export-button-padding{\n    padding: 20px;\n    padding-right: 0;\n\n}\n\n.node-config-submit {\n    position: absolute;\n    bottom: 15px;\n    right: 21px;\n}\n\n.confirm-tree-reset .modal-container {\n    height: 180px !important;\n}\n\n.confirm-tree-reset .confirm-reset-msg, .delete-node-error .confirm-reset-msg  {\n    padding-left: 4px;\n    color: #615c5c;\n    font-size: 14px;\n}\n\n.confirm-tree-reset .confirm-reset-btn, .delete-node-error .confirm-reset-btn  {\n    position: absolute;\n    bottom: 20px;\n    right: 20px;\n}\n\n.confirm-tree-reset .confirm-button, .delete-node-error .confirm-button  {\n    margin-left: 6px;\n}\n\n.tile.bf-editor-tile.active {\n    border: 1px solid #0078d4\n}\n", ""]);
 
 // exports
 
@@ -41793,7 +41802,7 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v16.8.2
+/** @license React v16.8.3
  * react-dom.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -44278,7 +44287,7 @@ if(!is(newState,hook.memoizedState)){markWorkInProgressReceivedUpdate();}hook.me
 // the base state unless the queue is empty.
 // TODO: Not sure if this is the desired semantics, but it's what we
 // do for gDSFP. I can't remember why.
-if(hook.baseUpdate===queue.last){hook.baseState=newState;}return[newState,_dispatch];}}return[hook.memoizedState,_dispatch];}// The last update in the entire queue
+if(hook.baseUpdate===queue.last){hook.baseState=newState;}queue.eagerReducer=reducer;queue.eagerState=newState;return[newState,_dispatch];}}return[hook.memoizedState,_dispatch];}// The last update in the entire queue
 var last=queue.last;// The last update that is part of the base state.
 var baseUpdate=hook.baseUpdate;var baseState=hook.baseState;// Find the first unprocessed update.
 var first=void 0;if(baseUpdate!==null){if(last!==null){// For the first update, the queue is a circular linked list where
@@ -45592,7 +45601,7 @@ return null;}return findFiberByHostInstance(instance);}}));}// This file intenti
 function createPortal$1(children,containerInfo,// TODO: figure out the API for cross-renderer implementation.
 implementation){var key=arguments.length>3&&arguments[3]!==undefined?arguments[3]:null;return{// This tag allow us to uniquely identify this as a React Portal
 $$typeof:REACT_PORTAL_TYPE,key:key==null?null:''+key,children:children,containerInfo:containerInfo,implementation:implementation};}// TODO: this is special because it gets imported during build.
-var ReactVersion='16.8.2';// TODO: This type is shared between the reconciler and ReactDOM, but will
+var ReactVersion='16.8.3';// TODO: This type is shared between the reconciler and ReactDOM, but will
 // eventually be lifted out to the renderer.
 var ReactCurrentOwner=ReactSharedInternals.ReactCurrentOwner;var topLevelUpdateWarnings=void 0;var warnOnInvalidCallback=void 0;var didWarnAboutUnstableCreatePortal=false;{if(typeof Map!=='function'||// $FlowIssue Flow incorrectly thinks Map has no prototype
 Map.prototype==null||typeof Map.prototype.forEach!=='function'||typeof Set!=='function'||// $FlowIssue Flow incorrectly thinks Set has no prototype
@@ -48119,7 +48128,7 @@ if (false) {} else {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v16.8.2
+/** @license React v16.8.3
  * react-is.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -49642,7 +49651,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v16.8.2
+/** @license React v16.8.3
  * react.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -49661,7 +49670,7 @@ if (true) {
     var checkPropTypes = __webpack_require__(/*! prop-types/checkPropTypes */ "./node_modules/prop-types/checkPropTypes.js"); // TODO: this is special because it gets imported during build.
 
 
-    var ReactVersion = '16.8.2'; // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+    var ReactVersion = '16.8.3'; // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
     // nor polyfill, then a plain number is used for performance.
 
     var hasSymbol = typeof Symbol === 'function' && Symbol.for;
@@ -51590,7 +51599,7 @@ if (false) {} else {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v0.13.2
+/** @license React v0.13.3
  * scheduler-tracing.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -51988,7 +51997,7 @@ if (true) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global) {/** @license React v0.13.2
+/* WEBPACK VAR INJECTION */(function(global) {/** @license React v0.13.3
  * scheduler.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.

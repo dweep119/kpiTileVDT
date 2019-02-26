@@ -69,7 +69,6 @@ class CommonComponent extends Component {
                     editorData={CommonComponent}
                     expand={this.expand}
                     data={this.props.data}
-                    onSubmit={key => this.setState({ tabSelected: 'appearance', key })}
                   />
                 </div>
                 )}
@@ -81,7 +80,6 @@ class CommonComponent extends Component {
                     editorData={CommonComponent}
                     expand={this.expand}
                     data={this.props.data}
-                    onSubmit={key => this.setState({ tabSelected: 'data', key })}
                   />
                 </div>
                 )}

@@ -260,10 +260,10 @@
 }
 .bf-editor-tile {
     margin: 10px 0 !important;
-    width: 160px;
+    width: 182px;
 }
 .modal-container .bf-editor-tile {
-    margin: 5px 10px 10px 0 !important;
+    margin: 0px 5px 5px 0px !important;
 }
 .calc-btn:hover, .calc-btn::selection {
     background-color: #f4f4f4;
@@ -315,4 +315,8 @@
 
 .confirm-tree-reset .confirm-button, .delete-node-error .confirm-button  {
     margin-left: 6px;
+}
+
+.tile.bf-editor-tile.active {
+    border: 1px solid #0078d4
 }

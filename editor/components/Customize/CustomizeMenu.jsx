@@ -17,7 +17,7 @@ import Tile from '@visualbi/bifrost-editor/dist/elements/Tile';
 import '../../styles/DataTab.css';
 import '../../styles/Modal.css';
 import '../../styles/NodeNavigator.css';
-import '@visualbi/bifrost-editor/css/Editor.css';
+import '@visualbi/bifrost-editor/css/Editor.css'
 
 class CustomizeMenu extends Component {
 	constructor(props) {
@@ -31,7 +31,8 @@ class CustomizeMenu extends Component {
 			showModal: false,
 			selectedTitle: '',
 			selectedId: 0,
-			selectedText: ''
+			selectedText: '',
+			key: ''
 		};
         
 		this.onClick = this.onClick.bind(this);
@@ -71,34 +72,37 @@ class CustomizeMenu extends Component {
 		const { store } = this.props;
 		const { text, id, title, description } = this.state;
 		const itemArray = toJS(store.get('kpitile'));
-		// if (icon === )
-		const obj = {
-			'text' : text,
-			'id': id,
-			'title': title,
-			'description': description
+		if (id !== 0 ) {
+			const obj = {
+				'text' : text,
+				'id': id,
+				'title': title,
+				'description': description
+			}
+			itemArray.push(obj)
+			store.set('kpitile', itemArray);
+			this.setState({showModal: false})
 		}
-		itemArray.push(obj)
 		console.log('addOnClick', itemArray);
-		store.set('kpitile', itemArray);
-		this.setState({showModal: false})
 	}
 
 	onFieldsChange (e, j) {
+		console.log('onFieldsChange e, j', j, this.state);
 		this.setState({
 			text: j.description,
 			id: Date.now(),
 			title: j.title,
 			description: j.subtitle,
+			key: j.className
 		})
-		console.log('onFieldsChange e, j', e, j, this.state);
 	}
 
 	verticalTab () {
+		console.log('this.state.key', this.state.key)
     return (
       <div className="">
         <div className="node-config-submit">
-          <Button secondary size="sm" className="finish-button" onClick={this.submit}>Submit</Button>
+          <Button secondary size="sm" className="finish-button" onClick={this.submit} disabled={this.state.key === ''} >Submit</Button>
           {/* <Button primary size="sm" onClick={this.onNext} disabled={selected === 'business-defination'}>Next</Button> */}
         </div>
       </div>
@@ -106,7 +110,7 @@ class CustomizeMenu extends Component {
   }
 
 	onClose () {
-		this.setState({showModal: false})		
+		this.setState({showModal: false, key: ''})		
 	}
   render() {
     const { view, showModal, selectedId, selectedTitle, selectedText } = this.state;
@@ -155,13 +159,14 @@ class CustomizeMenu extends Component {
 							<div className="vertical-form">
 							<Box className="menu-title">
 								<FormGroup label="Select KPI Tile">
-								<Flex flexWrap="wrap" justifyContent="center">
+								<Flex flexWrap="wrap">
 									<Tile
 									title="Title"
 									key="title"
 									subtitle="Containing primitive value from a data source"
 									icon="DataSource"
 									description="title"
+									className={"kpi-title" === this.state.key ? 'active' : 'kpi-title'}
 									// secondary={nodeData.cMeth === ''}
 									onClick={(e, j) => this.onFieldsChange(e, j)}
 									/>
@@ -171,8 +176,9 @@ class CustomizeMenu extends Component {
 									subtitle="Containing customizable data format and value"
 									icon="Custom"
 									description="primarykpi"
+									className={"kpi-primarykpi" === this.state.key? 'active': 'kpi-primarykpi'}
 									// secondary={nodeData.cMeth === 'C'}
-									// onClick={(e, j) => this.onFieldsChange({ cMeth: { value: 'C' } })}
+									onClick={(e, j) => this.onFieldsChange(e, j)}
 									/>
 									<Tile
 									title="Secondary KPI"
@@ -180,8 +186,9 @@ class CustomizeMenu extends Component {
 									subtitle="Containing a calculation based on other nodes"
 									icon="Calculator"
 									description="secondarykpi"
+									className={"kpi-secondarykpi" === this.state.key? 'active': 'kpi-secondarykpi'}
 									// secondary={nodeData.cMeth === 'F' || nodeData.cMeth === 'A' || nodeData.cMeth === 'S' || nodeData.cMeth === 'M' || nodeData.cMeth === 'D'}
-									// onClick={(e, j) => this.onFieldsChange({ cMeth: { value: 'A' } })}
+									onClick={(e, j) => this.onFieldsChange(e, j)}
 									/>
 
 									<Tile
@@ -190,8 +197,9 @@ class CustomizeMenu extends Component {
 									subtitle="Containing primitive value from a data source"
 									icon="DataSource"
 									description="sparklinechart"
+									className={"kpi-sparklinechart" === this.state.key? 'active': 'kpi-sparklinechart'}
 									// secondary={nodeData.cMeth === ''}
-									// onClick={(e, j) => this.onFieldsChange({ cMeth: { value: '' } })}
+									onClick={(e, j) => this.onFieldsChange(e, j)}
 									/>
 									<Tile
 									title="Icon"
@@ -199,8 +207,9 @@ class CustomizeMenu extends Component {
 									subtitle="Containing customizable data format and value"
 									icon="Custom"
 									description="icon"
+									className={"kpi-icon" === this.state.key? 'active': 'kpi-icon'}
 									// secondary={nodeData.cMeth === 'C'}
-									// onClick={(e, j) => this.onFieldsChange({ cMeth: { value: 'C' } })}
+									onClick={(e, j) => this.onFieldsChange(e, j)}
 									/>
 									<Tile
 									title="Image"
@@ -208,8 +217,9 @@ class CustomizeMenu extends Component {
 									subtitle="Containing a calculation based on other nodes"
 									icon="Calculator"
 									description="image"
+									className={"kpi-image" === this.state.key? 'active': 'kpi-image'}
 									// secondary={nodeData.cMeth === 'F' || nodeData.cMeth === 'A' || nodeData.cMeth === 'S' || nodeData.cMeth === 'M' || nodeData.cMeth === 'D'}
-									// onClick={(e, j) => this.onFieldsChange({ cMeth: { value: 'A' } })}
+									onClick={(e, j) => this.onFieldsChange(e, j)}
 									/>
 
 								</Flex>
@@ -226,4 +236,4 @@ class CustomizeMenu extends Component {
 }
 
   export default inject('dataStore')(observer(CustomizeMenu));
-//   export default withPanel(observer(CustomizeMenu), panelConfig);
+//   export default withPanel(observer(CustomizeMenu), panelConfig); 
