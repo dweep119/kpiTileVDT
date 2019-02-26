@@ -129,8 +129,8 @@
 }
 
 .vertical-form{
-    height: 400px;
-    width: 80%;
+    height: 100%;
+    width: 100%;
     display: flex;
     padding: 0 18px 0 14px;
     flex-direction: column;
@@ -260,9 +260,10 @@
 }
 .bf-editor-tile {
     margin: 10px 0 !important;
+    width: 160px;
 }
 .modal-container .bf-editor-tile {
-    margin: 5px 0 10px 0 !important;
+    margin: 5px 10px 10px 0 !important;
 }
 .calc-btn:hover, .calc-btn::selection {
     background-color: #f4f4f4;

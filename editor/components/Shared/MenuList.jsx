@@ -17,6 +17,9 @@ const MenuList = (props) => {
       <div className="vdt-data-menu-front-img">
         <i className="icon icon--ChevronRight" />
       </div>
+      {/* <div className="vdt-data-menu-front-img">
+        <i className="icon icon--Delete" />
+      </div> */}
     </div>
   );
 };

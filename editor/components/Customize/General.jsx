@@ -9,19 +9,6 @@ import _ from 'lodash';
 
 const formFields = [
   {
-    name: 'name',
-    label: 'Name',
-    defaultValue: 'Name1',
-    tooltip: 'Set a Name for your visualization',
-    control: Input,
-    controlProps: {
-      placeholder: 'Name',
-    },
-    rules: [{
-      required: true,
-      message: 'Name is required',
-    }]
-  }, {
     name: 'sizex',
     label: 'Widget Size X',
     tooltip: 'Set Widget Size-X',
@@ -149,9 +136,9 @@ class KpiGeneral extends Component {
     const { store } = this.props;
     const rules = toJS(store.get('kpitile'));
     const result = rules.map((item, inx) => {
-      if (item.key === this.props.data) {
+      if (item.id === this.props.data) {
         merged = { ...rules[inx], general: response };
-        if (item.key === merged.key) {
+        if (item.id === merged.id) {
           item = merged;
         }
       }
@@ -174,7 +161,7 @@ class KpiGeneral extends Component {
     const response = toJS(store.get('kpitile'));
     console.log('KPI GENERAL', response, this.props);
     const result = response.map((item) => {
-      if (item.key === this.props.data) {
+      if (item.id === this.props.data) {
         if (item.general) {
           // fields={formFields}
           const fields = formFields.filter((i) => {

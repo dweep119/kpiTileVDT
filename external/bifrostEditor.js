@@ -255,489 +255,10 @@ var removeEditor = function removeEditor(element) {
 
 /***/ }),
 
-/***/ "./components/Customize/CommonComponent.jsx":
-/*!**************************************************!*\
-  !*** ./components/Customize/CommonComponent.jsx ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es7.symbol.async-iterator */ "./node_modules/core-js/modules/es7.symbol.async-iterator.js");
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _Shared_Tabs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Shared/Tabs */ "./components/Shared/Tabs.jsx");
-/* harmony import */ var _KpiGeneral__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../KpiGeneral */ "./components/KpiGeneral/index.jsx");
-/* harmony import */ var _KpiData__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../KpiData */ "./components/KpiData/index.jsx");
-/* harmony import */ var _KpiAppearance__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../KpiAppearance */ "./components/KpiAppearance/index.jsx");
-/* harmony import */ var _styles_DataTab_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../styles/DataTab.css */ "./styles/DataTab.css");
-/* harmony import */ var _styles_DataTab_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_styles_DataTab_css__WEBPACK_IMPORTED_MODULE_9__);
-
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-
-
-
-var options = 'title'; // const scaling = [{ key: 'title', label: 'Title' }, { key: 'primarykpi', label: 'Primary KPI' }, { key: 'secondarykpi', label: 'Secondary KPI' }, { key: 'sparklinechart', label: 'SparkLine Chart' }, { key: 'icon', label: 'Icon' }, { key: 'image', label: 'Image' }];
-
-var CommonComponent =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(CommonComponent, _Component);
-
-  function CommonComponent(props) {
-    var _this;
-
-    _classCallCheck(this, CommonComponent);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(CommonComponent).call(this, props)); //   this.proceed = this.proceed.bind(this);
-
-    _this.state = {
-      onState: 'second',
-      tabSelected: 'appearance',
-      key: '',
-      component: ''
-    };
-    _this.ontabSelected = _this.ontabSelected.bind(_assertThisInitialized(_this)); //   this.createTasks = this.createTasks.bind(this);
-    //   this.addItem = this.addItem.bind(this);
-    //   this.deleteItem = this.deleteItem.bind(this);
-    //   this.onChange = this.onChange.bind(this);
-
-    return _this;
-  } // delete(key) {
-  //   this.props.delete(key);
-  // }
-  // createTasks(item) {
-  //   return (
-  //     <div className="list-style">
-  //       <span key={item.key} style={{ textTransform: 'capitalize' }}>{item.text}</span>
-  //       <div>
-  //         <i style={{ margin: '0px 10px' }} className="material-icons" onClick={() => this.proceed(item.key, item.text)}>settings</i>
-  //         <i style={{ margin: '0px 10px' }} className="material-icons" onClick={() => this.deleteItem(item.key)}>delete</i>
-  //       </div>
-  //     </div>
-  //   );
-  // }
-  // addItem() {
-  //   const { store } = this.props;
-  //   const itemArray = toJS(store.get('kpitile'));
-  //   console.log('AddItem itemArray', itemArray);
-  //   // if (itemArray.length !== 0) {
-  //   //   if (itemArray[0].icon === "icon-check") {
-  //   //     itemArray.shift();
-  //   //   }
-  //   // }
-  //   if (options !== '') {
-  //     itemArray.push(
-  //       {
-  //         text: options,
-  //         key: Date.now(),
-  //       }
-  //     );
-  //     options = '';
-  //   }
-  //   console.log('itemArrayi', itemArray);
-  //   // let obj = {
-  //   //   "widget":
-  //   // }
-  //   // const rules = _.reverse(itemArray);
-  //   // this.setState({
-  //   //   items: itemArray
-  //   // });
-  //   console.log('itemArray TodoList itemArray', itemArray);
-  //   store.set('kpitile', itemArray);
-  //   // e.preventDefault();
-  // }
-  // deleteItem(key) {
-  //   console.log('deleteItem deleteItem deleteItem', key);
-  //   const { store } = this.props;
-  //   const rules = toJS(store.get('kpitile'));
-  //   const filteredItems = rules.filter(item => (item.key !== key));
-  //   // this.setState({
-  //   //   items: filteredItems
-  //   // });
-  //   store.set('kpitile', filteredItems);
-  // }
-  // onSubmit(response) {
-  //   // this.setState({ selection: response });
-  // }
-  // proceed(val, name) {
-  //   // console.log('proceed proceed', val, name);
-  //   this.setState({
-  //     onState: 'second',
-  //     key: val,
-  //     component: name
-  //   });
-  // }
-
-
-  _createClass(CommonComponent, [{
-    key: "ontabSelected",
-    value: function ontabSelected(code) {
-      this.setState({
-        tabSelected: code
-      });
-    } // onChange(v) {
-    //   options = v;
-    //   console.log('OnChange TodoList', options);
-    // }
-
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var store = this.props.store; //   const obj = { enable: true };
-      //   store.set('kpieditor', obj);
-
-      var todoEntries = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile'));
-      console.log("toJS(store.get('kpitile'))", todoEntries); // if (todoEntries[0].icon === "icon-check") {
-      //   todoEntries.shift();
-      // }
-      //   const listItems = todoEntries.map(this.createTasks);
-
-      console.log('this.props this.props Render', this.props);
-      var list = [//   {
-      //     name: 'General',
-      //     code: 'general',
-      //     status: true,
-      //     colorCode: '#f3c907',
-      //   },
-      {
-        name: 'Appearance',
-        code: 'appearance',
-        status: true,
-        colorCode: '#f3c907'
-      }, {
-        name: 'Data',
-        code: 'data',
-        status: true,
-        colorCode: '#f3c907'
-      }];
-      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-        style: {
-          marginTop: 25
-        }
-      }, this.state.onState === 'second' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-        style: {
-          display: 'flex',
-          flexDirection: 'column'
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Shared_Tabs__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        list: list,
-        selected: this.state.tabSelected,
-        onSelect: this.ontabSelected
-      }), this.state.tabSelected === 'appearance' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-        className: "vdt-appearance"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_KpiAppearance__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        store: this.props.store,
-        component: this.props.component,
-        editorData: CommonComponent,
-        expand: this.expand,
-        data: this.props.data,
-        onSubmit: function onSubmit(key) {
-          return _this2.setState({
-            tabSelected: 'data',
-            key: key
-          });
-        }
-      })), this.state.tabSelected === 'data' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-        className: "vdt-data"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_KpiData__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        store: this.props.store,
-        data: this.props.data,
-        dataView: this.props.dataView,
-        component: this.props.component,
-        editorData: CommonComponent,
-        expand: this.expand,
-        close: function close() {
-          return _this2.props.onClose();
-        }
-      }))));
-    }
-  }]);
-
-  return CommonComponent;
-}(react__WEBPACK_IMPORTED_MODULE_2__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["inject"])('dataStore')(Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(CommonComponent))); //   export default withPanel(observer(CommonComponent), panelConfig);
-
-/***/ }),
-
-/***/ "./components/Customize/CustomizeMenu.jsx":
-/*!************************************************!*\
-  !*** ./components/Customize/CustomizeMenu.jsx ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es7.symbol.async-iterator */ "./node_modules/core-js/modules/es7.symbol.async-iterator.js");
-/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
-/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _CommonComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CommonComponent */ "./components/Customize/CommonComponent.jsx");
-/* harmony import */ var _Shared_MenuList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Shared/MenuList */ "./components/Shared/MenuList.jsx");
-/* harmony import */ var _Shared_FormPanel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Shared/FormPanel */ "./components/Shared/FormPanel.jsx");
-/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/elements/Button */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Button.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
-/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _styles_DataTab_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../styles/DataTab.css */ "./styles/DataTab.css");
-/* harmony import */ var _styles_DataTab_css__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_styles_DataTab_css__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _visualbi_bifrost_editor_css_Editor_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @visualbi/bifrost-editor/css/Editor.css */ "./node_modules/@visualbi/bifrost-editor/css/Editor.css");
-/* harmony import */ var _visualbi_bifrost_editor_css_Editor_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_css_Editor_css__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _styles_NodeNavigator_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../styles/NodeNavigator.css */ "./styles/NodeNavigator.css");
-/* harmony import */ var _styles_NodeNavigator_css__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_styles_NodeNavigator_css__WEBPACK_IMPORTED_MODULE_12__);
-
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-
-
-
- // import '../../styles/VDT.css';
-
-
- // const dataMenu = [
-//     {
-//         id: 1,
-//         title: 'Title',
-//         description: 'Basic dimension data display',
-//         icon: 'icon icon--General',
-//         storeKey: 'title'
-//     }, {
-//       id: 2,
-//       title: 'Primary KPI',
-//       description: 'Basic Measure and dimension data display',
-//       icon: 'icon icon--General',
-//       storeKey: 'primarykpi'
-//     }, {
-//       id: 3,
-//       title: 'Secondary KPI',
-//       description: 'Basic Measure and dimension data display',
-//       icon: 'icon icon--StatusBar',
-//       storeKey: 'secondarykpi'
-//     }, {
-//       id: 4,
-//       title: 'SparkLine Chart',
-//       description: 'Display chart as per Measure and Dimension data',
-//       icon: 'icon icon--Visualization',
-//       storeKey: 'sparklinechart'
-//     }, {
-//       id: 5,
-//       title: 'Icon',
-//       description: 'Basic display Icon',
-//       icon: 'icon icon--Colors',
-//       storeKey: 'icon'
-//     }, {
-//         id: 6,
-//         title: 'Image',
-//         description: 'Basic display Image',
-//         icon: 'icon icon--Colors',
-//         storeKey: 'image'
-//     }
-//   ];
-
-var CustomizeMenu =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(CustomizeMenu, _Component);
-
-  function CustomizeMenu(props) {
-    var _this;
-
-    _classCallCheck(this, CustomizeMenu);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(CustomizeMenu).call(this, props));
-    _this.state = {
-      view: 'first',
-      storeKey: '',
-      title: '',
-      id: 0
-    };
-    _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
-    _this.onBack = _this.onBack.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(CustomizeMenu, [{
-    key: "onClick",
-    value: function onClick(view, menuItem) {
-      var storeKey, title, id;
-      var store = this.props.store;
-      var itemArray = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile'));
-      console.log('view menuItem', view, menuItem);
-      itemArray.map(function (item) {
-        if (item.id === menuItem) {
-          storeKey = item.text;
-          title = item.title;
-          id = item.id;
-        }
-      }); // const storeKey = dataMenu[menuItem - 1].storeKey;
-      // const title = dataMenu[menuItem - 1].title;
-      // const id = dataMenu[menuItem - 1].id;
-
-      this.setState({
-        view: view,
-        storeKey: storeKey,
-        title: title,
-        id: id
-      }); // itemArray.push(
-      //     {
-      //     text: storeKey,
-      //     id: Date.now(),
-      //     }
-      // );
-      // this.props.store.set('kpitile', itemArray);
-    } //   onSubmit() {
-    //     const { store } = this.props;
-    //     const { storeKey } = this.state;
-    //     const menuData = appearance[storeKey];
-    //     store.set(storeKey, menuData);
-    //     this.onBack();
-    //   }
-
-  }, {
-    key: "onBack",
-    value: function onBack() {
-      this.setState({
-        view: 'first'
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var view = this.state.view;
-      var _this$props = this.props,
-          store = _this$props.store,
-          dataView = _this$props.dataView,
-          onClose = _this$props.onClose;
-      var kpitileArray = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile'));
-      console.log('datastore in CustomizeMenu', this.props, store, this.state); // const { treeHierachical } = TreeStore; // Store does not update without this statement, TODO
-
-      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-        className: "vdt-data-view",
-        style: {
-          marginBottom: '20px'
-        }
-      }, view === 'first' && kpitileArray.map(function (data) {
-        return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Shared_MenuList__WEBPACK_IMPORTED_MODULE_6__["default"], {
-          data: data,
-          onClick: _this2.onClick
-        });
-      }), view === 'second' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Shared_FormPanel__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        onSubmit: this.onSubmit,
-        onBack: this.onBack,
-        title: this.state.title
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_CommonComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        store: store,
-        title: this.state.title,
-        data: this.state.id,
-        component: this.state.storeKey,
-        dataView: dataView,
-        onClose: onClose
-      })), view === 'first' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-        className: "node-toolbar",
-        style: {
-          position: 'fixed',
-          width: '320px'
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_8___default.a, {
-        className: "btn-clear",
-        onClick: this.onClick
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_9___default.a, {
-        alignItems: "center"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
-        className: "icon icon--Add"
-      }), "Add")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_8___default.a, {
-        className: "btn-clear",
-        onClick: this.collapseAll
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_9___default.a, {
-        alignItems: "center"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
-        className: "icon icon--Collapse"
-      }), "Collapse")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_8___default.a, {
-        className: "btn-clear add-node-btn",
-        onClick: this.confirmResetHandler
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_9___default.a, null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
-        className: "icon icon--Refresh",
-        style: {
-          color: '#e81123'
-        }
-      }), "Reset"))));
-    }
-  }]);
-
-  return CustomizeMenu;
-}(react__WEBPACK_IMPORTED_MODULE_2__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["inject"])('dataStore')(Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(CustomizeMenu))); //   export default withPanel(observer(CustomizeMenu), panelConfig);
-
-/***/ }),
-
-/***/ "./components/KpiAppearance/index.jsx":
-/*!********************************************!*\
-  !*** ./components/KpiAppearance/index.jsx ***!
-  \********************************************/
+/***/ "./components/Customize/Appearance.jsx":
+/*!*********************************************!*\
+  !*** ./components/Customize/Appearance.jsx ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1067,10 +588,519 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./components/KpiData/index.jsx":
-/*!**************************************!*\
-  !*** ./components/KpiData/index.jsx ***!
-  \**************************************/
+/***/ "./components/Customize/CommonComponent.jsx":
+/*!**************************************************!*\
+  !*** ./components/Customize/CommonComponent.jsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es7.symbol.async-iterator */ "./node_modules/core-js/modules/es7.symbol.async-iterator.js");
+/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
+/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _Shared_Tabs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Shared/Tabs */ "./components/Shared/Tabs.jsx");
+/* harmony import */ var _General__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./General */ "./components/Customize/General.jsx");
+/* harmony import */ var _Data__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Data */ "./components/Customize/Data.jsx");
+/* harmony import */ var _Appearance__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Appearance */ "./components/Customize/Appearance.jsx");
+
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+ // let options = 'title';
+// const scaling = [{ key: 'title', label: 'Title' }, { key: 'primarykpi', label: 'Primary KPI' }, { key: 'secondarykpi', label: 'Secondary KPI' }, { key: 'sparklinechart', label: 'SparkLine Chart' }, { key: 'icon', label: 'Icon' }, { key: 'image', label: 'Image' }];
+
+var CommonComponent =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(CommonComponent, _Component);
+
+  function CommonComponent(props) {
+    var _this;
+
+    _classCallCheck(this, CommonComponent);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CommonComponent).call(this, props)); //   this.proceed = this.proceed.bind(this);
+
+    _this.state = {
+      onState: 'second',
+      tabSelected: 'general',
+      key: '',
+      component: ''
+    };
+    _this.ontabSelected = _this.ontabSelected.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(CommonComponent, [{
+    key: "ontabSelected",
+    value: function ontabSelected(code) {
+      this.setState({
+        tabSelected: code
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var store = this.props.store;
+      var todoEntries = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile'));
+      console.log("toJS(store.get('kpitile'))", todoEntries);
+      console.log('this.props this.props Render', this.props);
+      var list = [{
+        name: 'General',
+        code: 'general',
+        status: true,
+        colorCode: '#f3c907'
+      }, {
+        name: 'Appearance',
+        code: 'appearance',
+        status: true,
+        colorCode: '#f3c907'
+      }, {
+        name: 'Data',
+        code: 'data',
+        status: true,
+        colorCode: '#f3c907'
+      }];
+      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        style: {
+          marginTop: 25
+        }
+      }, this.state.onState === 'second' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        style: {
+          display: 'flex',
+          flexDirection: 'column'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Shared_Tabs__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        list: list,
+        selected: this.state.tabSelected,
+        onSelect: this.ontabSelected
+      }), this.state.tabSelected === 'general' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: "vdt-general"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_General__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        store: this.props.store,
+        editorData: CommonComponent,
+        expand: this.expand,
+        data: this.props.data,
+        onSubmit: function onSubmit(key) {
+          return _this2.setState({
+            tabSelected: 'appearance',
+            key: key
+          });
+        }
+      })), this.state.tabSelected === 'appearance' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: "vdt-appearance"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Appearance__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        store: this.props.store,
+        component: this.props.component,
+        editorData: CommonComponent,
+        expand: this.expand,
+        data: this.props.data,
+        onSubmit: function onSubmit(key) {
+          return _this2.setState({
+            tabSelected: 'data',
+            key: key
+          });
+        }
+      })), this.state.tabSelected === 'data' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: "vdt-data"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Data__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        store: this.props.store,
+        data: this.props.data,
+        dataView: this.props.dataView,
+        component: this.props.component,
+        editorData: CommonComponent,
+        expand: this.expand,
+        close: function close() {
+          return _this2.props.onClose();
+        }
+      }))));
+    }
+  }]);
+
+  return CommonComponent;
+}(react__WEBPACK_IMPORTED_MODULE_2__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["inject"])('dataStore')(Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(CommonComponent))); //   export default withPanel(observer(CommonComponent), panelConfig);
+
+/***/ }),
+
+/***/ "./components/Customize/CustomizeMenu.jsx":
+/*!************************************************!*\
+  !*** ./components/Customize/CustomizeMenu.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es7.symbol.async-iterator */ "./node_modules/core-js/modules/es7.symbol.async-iterator.js");
+/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
+/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _CommonComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CommonComponent */ "./components/Customize/CommonComponent.jsx");
+/* harmony import */ var _Shared_MenuList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Shared/MenuList */ "./components/Shared/MenuList.jsx");
+/* harmony import */ var _Shared_FormPanel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Shared/FormPanel */ "./components/Shared/FormPanel.jsx");
+/* harmony import */ var _General__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./General */ "./components/Customize/General.jsx");
+/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/elements/Button */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Button.js");
+/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js");
+/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Modal__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Modal */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Modal.js");
+/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Modal__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Modal__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/layout/Box */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Box.js");
+/* harmony import */ var _visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/forms/FormGroup */ "./node_modules/@visualbi/bifrost-editor/dist/forms/FormGroup.js");
+/* harmony import */ var _visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Tile__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @visualbi/bifrost-editor/dist/elements/Tile */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Tile.js");
+/* harmony import */ var _visualbi_bifrost_editor_dist_elements_Tile__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_dist_elements_Tile__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _styles_DataTab_css__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../styles/DataTab.css */ "./styles/DataTab.css");
+/* harmony import */ var _styles_DataTab_css__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_styles_DataTab_css__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _styles_Modal_css__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../styles/Modal.css */ "./styles/Modal.css");
+/* harmony import */ var _styles_Modal_css__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_styles_Modal_css__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _styles_NodeNavigator_css__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../styles/NodeNavigator.css */ "./styles/NodeNavigator.css");
+/* harmony import */ var _styles_NodeNavigator_css__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_styles_NodeNavigator_css__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _visualbi_bifrost_editor_css_Editor_css__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @visualbi/bifrost-editor/css/Editor.css */ "./node_modules/@visualbi/bifrost-editor/css/Editor.css");
+/* harmony import */ var _visualbi_bifrost_editor_css_Editor_css__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_visualbi_bifrost_editor_css_Editor_css__WEBPACK_IMPORTED_MODULE_18__);
+
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var CustomizeMenu =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(CustomizeMenu, _Component);
+
+  function CustomizeMenu(props) {
+    var _this;
+
+    _classCallCheck(this, CustomizeMenu);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CustomizeMenu).call(this, props));
+    _this.state = {
+      view: 'first',
+      text: '',
+      id: 0,
+      title: '',
+      description: '',
+      showModal: false,
+      selectedTitle: '',
+      selectedId: 0,
+      selectedText: ''
+    };
+    _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
+    _this.onBack = _this.onBack.bind(_assertThisInitialized(_this));
+    _this.addOnClick = _this.addOnClick.bind(_assertThisInitialized(_this));
+    _this.submit = _this.submit.bind(_assertThisInitialized(_this));
+    _this.onFieldsChange = _this.onFieldsChange.bind(_assertThisInitialized(_this));
+    _this.verticalTab = _this.verticalTab.bind(_assertThisInitialized(_this));
+    _this.onClose = _this.onClose.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(CustomizeMenu, [{
+    key: "onClick",
+    value: function onClick(view, menuItem) {
+      var _this2 = this;
+
+      var store = this.props.store;
+      var itemArray = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile'));
+      console.log('view menuItem', view, menuItem);
+      itemArray.map(function (item) {
+        if (item.id === menuItem) {
+          _this2.setState({
+            view: view,
+            selectedTitle: item.title,
+            selectedId: item.id,
+            selectedText: item.text
+          });
+        }
+      });
+    }
+  }, {
+    key: "onBack",
+    value: function onBack() {
+      this.setState({
+        view: 'first'
+      });
+    }
+  }, {
+    key: "addOnClick",
+    value: function addOnClick() {
+      this.setState({
+        showModal: true
+      });
+    }
+  }, {
+    key: "submit",
+    value: function submit() {
+      var store = this.props.store;
+      var _this$state = this.state,
+          text = _this$state.text,
+          id = _this$state.id,
+          title = _this$state.title,
+          description = _this$state.description;
+      var itemArray = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile')); // if (icon === )
+
+      var obj = {
+        'text': text,
+        'id': id,
+        'title': title,
+        'description': description
+      };
+      itemArray.push(obj);
+      console.log('addOnClick', itemArray);
+      store.set('kpitile', itemArray);
+      this.setState({
+        showModal: false
+      });
+    }
+  }, {
+    key: "onFieldsChange",
+    value: function onFieldsChange(e, j) {
+      this.setState({
+        text: j.description,
+        id: Date.now(),
+        title: j.title,
+        description: j.subtitle
+      });
+      console.log('onFieldsChange e, j', e, j, this.state);
+    }
+  }, {
+    key: "verticalTab",
+    value: function verticalTab() {
+      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: ""
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: "node-config-submit"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_9___default.a, {
+        secondary: true,
+        size: "sm",
+        className: "finish-button",
+        onClick: this.submit
+      }, "Submit")));
+    }
+  }, {
+    key: "onClose",
+    value: function onClose() {
+      this.setState({
+        showModal: false
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var _this$state2 = this.state,
+          view = _this$state2.view,
+          showModal = _this$state2.showModal,
+          selectedId = _this$state2.selectedId,
+          selectedTitle = _this$state2.selectedTitle,
+          selectedText = _this$state2.selectedText;
+      var _this$props = this.props,
+          store = _this$props.store,
+          dataView = _this$props.dataView,
+          onClose = _this$props.onClose;
+      var kpitileArray = Object(mobx__WEBPACK_IMPORTED_MODULE_4__["toJS"])(store.get('kpitile'));
+      console.log('datastore in CustomizeMenu', this.props, store, this.state, kpitileArray); // const { treeHierachical } = TreeStore; // Store does not update without this statement, TODO
+
+      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: "vdt-data-view",
+        style: {
+          marginBottom: '20px'
+        }
+      }, view === 'first' && kpitileArray.map(function (data) {
+        return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Shared_MenuList__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          data: data,
+          onClick: _this3.onClick
+        });
+      }), view === 'second' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Shared_FormPanel__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        onSubmit: this.onSubmit,
+        onBack: this.onBack,
+        title: selectedTitle
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_CommonComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        store: store,
+        title: selectedTitle,
+        data: selectedId,
+        component: selectedText,
+        dataView: dataView,
+        onClose: onClose
+      })), view === 'first' && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: "node-toolbar",
+        style: {
+          position: 'fixed',
+          width: '320px'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_9___default.a, {
+        className: "btn-clear",
+        onClick: this.addOnClick
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_10___default.a, {
+        alignItems: "center"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
+        className: "icon icon--Add"
+      }), "Add")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Button__WEBPACK_IMPORTED_MODULE_9___default.a, {
+        className: "btn-clear add-node-btn",
+        onClick: this.confirmResetHandler
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_10___default.a, null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
+        className: "icon icon--Refresh",
+        style: {
+          color: '#e81123'
+        }
+      }), "Reset"))), showModal === true && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Modal__WEBPACK_IMPORTED_MODULE_11___default.a, {
+        className: "node-config-modal",
+        title: "Add new KPI Tile",
+        size: "large",
+        open: showModal,
+        onClose: this.onClose
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: "modal-general"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: "modal-general-view"
+      }, this.verticalTab(), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: "vertical-form"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Box__WEBPACK_IMPORTED_MODULE_12___default.a, {
+        className: "menu-title"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_forms_FormGroup__WEBPACK_IMPORTED_MODULE_13___default.a, {
+        label: "Select KPI Tile"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_layout_Flex__WEBPACK_IMPORTED_MODULE_10___default.a, {
+        flexWrap: "wrap",
+        justifyContent: "center"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Tile__WEBPACK_IMPORTED_MODULE_14___default.a, {
+        title: "Title",
+        key: "title",
+        subtitle: "Containing primitive value from a data source",
+        icon: "DataSource",
+        description: "title" // secondary={nodeData.cMeth === ''}
+        ,
+        onClick: function onClick(e, j) {
+          return _this3.onFieldsChange(e, j);
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Tile__WEBPACK_IMPORTED_MODULE_14___default.a, {
+        title: "Primary KPI",
+        key: "primarykpi",
+        subtitle: "Containing customizable data format and value",
+        icon: "Custom",
+        description: "primarykpi" // secondary={nodeData.cMeth === 'C'}
+        // onClick={(e, j) => this.onFieldsChange({ cMeth: { value: 'C' } })}
+
+      }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Tile__WEBPACK_IMPORTED_MODULE_14___default.a, {
+        title: "Secondary KPI",
+        key: "secondarykpi",
+        subtitle: "Containing a calculation based on other nodes",
+        icon: "Calculator",
+        description: "secondarykpi" // secondary={nodeData.cMeth === 'F' || nodeData.cMeth === 'A' || nodeData.cMeth === 'S' || nodeData.cMeth === 'M' || nodeData.cMeth === 'D'}
+        // onClick={(e, j) => this.onFieldsChange({ cMeth: { value: 'A' } })}
+
+      }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Tile__WEBPACK_IMPORTED_MODULE_14___default.a, {
+        title: "SparkLine Chart",
+        key: "sparklinechart",
+        subtitle: "Containing primitive value from a data source",
+        icon: "DataSource",
+        description: "sparklinechart" // secondary={nodeData.cMeth === ''}
+        // onClick={(e, j) => this.onFieldsChange({ cMeth: { value: '' } })}
+
+      }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Tile__WEBPACK_IMPORTED_MODULE_14___default.a, {
+        title: "Icon",
+        key: "icon",
+        subtitle: "Containing customizable data format and value",
+        icon: "Custom",
+        description: "icon" // secondary={nodeData.cMeth === 'C'}
+        // onClick={(e, j) => this.onFieldsChange({ cMeth: { value: 'C' } })}
+
+      }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_visualbi_bifrost_editor_dist_elements_Tile__WEBPACK_IMPORTED_MODULE_14___default.a, {
+        title: "Image",
+        key: "image",
+        subtitle: "Containing a calculation based on other nodes",
+        icon: "Calculator",
+        description: "image" // secondary={nodeData.cMeth === 'F' || nodeData.cMeth === 'A' || nodeData.cMeth === 'S' || nodeData.cMeth === 'M' || nodeData.cMeth === 'D'}
+        // onClick={(e, j) => this.onFieldsChange({ cMeth: { value: 'A' } })}
+
+      })))))))));
+    }
+  }]);
+
+  return CustomizeMenu;
+}(react__WEBPACK_IMPORTED_MODULE_2__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["inject"])('dataStore')(Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(CustomizeMenu))); //   export default withPanel(observer(CustomizeMenu), panelConfig);
+
+/***/ }),
+
+/***/ "./components/Customize/Data.jsx":
+/*!***************************************!*\
+  !*** ./components/Customize/Data.jsx ***!
+  \***************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1403,10 +1433,10 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./components/KpiGeneral/index.jsx":
-/*!*****************************************!*\
-  !*** ./components/KpiGeneral/index.jsx ***!
-  \*****************************************/
+/***/ "./components/Customize/General.jsx":
+/*!******************************************!*\
+  !*** ./components/Customize/General.jsx ***!
+  \******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1482,19 +1512,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 var formFields = [{
-  name: 'name',
-  label: 'Name',
-  defaultValue: 'Name1',
-  tooltip: 'Set a Name for your visualization',
-  control: _visualbi_bifrost_editor_dist_forms_Input__WEBPACK_IMPORTED_MODULE_12___default.a,
-  controlProps: {
-    placeholder: 'Name'
-  },
-  rules: [{
-    required: true,
-    message: 'Name is required'
-  }]
-}, {
   name: 'sizex',
   label: 'Widget Size X',
   tooltip: 'Set Widget Size-X',
@@ -1634,12 +1651,12 @@ function (_Component) {
       var store = this.props.store;
       var rules = Object(mobx__WEBPACK_IMPORTED_MODULE_9__["toJS"])(store.get('kpitile'));
       var result = rules.map(function (item, inx) {
-        if (item.key === _this2.props.data) {
+        if (item.id === _this2.props.data) {
           merged = _objectSpread({}, rules[inx], {
             general: response
           });
 
-          if (item.key === merged.key) {
+          if (item.id === merged.id) {
             item = merged;
           }
         }
@@ -1668,7 +1685,7 @@ function (_Component) {
       var response = Object(mobx__WEBPACK_IMPORTED_MODULE_9__["toJS"])(store.get('kpitile'));
       console.log('KPI GENERAL', response, this.props);
       var result = response.map(function (item) {
-        if (item.key === _this3.props.data) {
+        if (item.id === _this3.props.data) {
           if (item.general) {
             // fields={formFields}
             var fields = formFields.filter(function (i) {
@@ -2249,6 +2266,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/@visualbi/bifrost-editor/css/Modal.css":
+/*!*************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/css/Modal.css ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../css-loader!./Modal.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Modal.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/@visualbi/bifrost-editor/css/Navigation.css":
 /*!******************************************************************!*\
   !*** ./node_modules/@visualbi/bifrost-editor/css/Navigation.css ***!
@@ -2318,6 +2365,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../css-loader!./Select.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Select.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/@visualbi/bifrost-editor/css/Tile.css":
+/*!************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/css/Tile.css ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../css-loader!./Tile.css */ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Tile.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -3570,6 +3647,263 @@ Icon.defaultProps = {
 };
 var _default = Icon;
 exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@visualbi/bifrost-editor/dist/elements/Tile.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/dist/elements/Tile.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+__webpack_require__(/*! ../../css/Tile.css */ "./node_modules/@visualbi/bifrost-editor/css/Tile.css");
+
+var _Icon = _interopRequireDefault(__webpack_require__(/*! ../elements/Icon */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Icon.js"));
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+function _interopRequireWildcard(obj) {
+  if (obj && obj.__esModule) {
+    return obj;
+  } else {
+    var newObj = {};
+
+    if (obj != null) {
+      for (var key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+          var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};
+
+          if (desc.get || desc.set) {
+            Object.defineProperty(newObj, key, desc);
+          } else {
+            newObj[key] = obj[key];
+          }
+        }
+      }
+    }
+
+    newObj.default = obj;
+    return newObj;
+  }
+}
+
+function _typeof(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+var Tile =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Tile, _Component);
+
+  function Tile(props) {
+    var _this;
+
+    _classCallCheck(this, Tile);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Tile).call(this, props));
+    _this.onActionClick = _this.onActionClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.onTileClick = _this.onTileClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(Tile, [{
+    key: "onActionClick",
+    value: function onActionClick(e, onClick) {
+      if (onClick) {
+        onClick();
+      }
+
+      e.stopPropagation();
+    }
+  }, {
+    key: "onTileClick",
+    value: function onTileClick(e) {
+      var _this$props = this.props,
+          onClick = _this$props.onClick,
+          key = _this$props.key;
+
+      if (onClick) {
+        onClick(key, this.props);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          icon = _this$props2.icon,
+          actions = _this$props2.actions,
+          color = _this$props2.color,
+          title = _this$props2.title,
+          subtitle = _this$props2.subtitle,
+          description = _this$props2.description,
+          primary = _this$props2.primary,
+          secondary = _this$props2.secondary,
+          disabled = _this$props2.disabled,
+          className = _this$props2.className;
+      var resolvedClassName = (0, _classnames.default)('tile', 'bf-editor-tile', {
+        'tile-primary': primary
+      }, {
+        'tile-secondary': secondary
+      }, {
+        'tile-disabled': disabled
+      }, className);
+      var iconClassName = (0, _classnames.default)('icon', 'mr-2', icon);
+      return _react.default.createElement("div", {
+        className: resolvedClassName,
+        onClick: this.onTileClick
+      }, _react.default.createElement("div", {
+        className: "flex-container"
+      }, _react.default.createElement(_Icon.default, {
+        className: "tile-icon",
+        icon: icon,
+        size: 24
+      }), _react.default.createElement("div", {
+        className: "text-container"
+      }, _react.default.createElement("div", {
+        className: "tile-title"
+      }, title), _react.default.createElement("div", {
+        className: "tile-desc"
+      }, subtitle || description)))); // return (
+      //   <div className="bf-editor-tile tile tile-centered">
+      //     <div style={color ? { backgroundColor: color } : null} className="tile-icon" onClick={this.onTileClick}>
+      //       <i className={`icon ${icon} centered`}></i>
+      //     </div>
+      //     <div className="tile-content">
+      //       <div className="tile-title" onClick={this.onTileClick}>{title}</div>
+      //       <small className="tile-subtitle text-gray">{subtitle}</small>
+      //     </div>
+      //     <div className="tile-action">
+      //       {actions.map(action => (
+      //         <button title={action.title} className={action.className || 'btn btn-link'} onClick={(e) => this.onActionClick(e, action.onClick)}>
+      //           {action.label}
+      //         </button>
+      //       ))}
+      //     </div>
+      //   </div>
+      // );
+    }
+  }]);
+
+  return Tile;
+}(_react.Component);
+
+exports.default = Tile;
+
+_defineProperty(Tile, "defaultProps", {
+  actions: []
+});
 
 /***/ }),
 
@@ -5140,6 +5474,84 @@ var Flex = function Flex(props) {
 };
 
 var _default = Flex;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@visualbi/bifrost-editor/dist/layout/Modal.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@visualbi/bifrost-editor/dist/layout/Modal.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _Flex = _interopRequireDefault(__webpack_require__(/*! ../layout/Flex */ "./node_modules/@visualbi/bifrost-editor/dist/layout/Flex.js"));
+
+var _Button = _interopRequireDefault(__webpack_require__(/*! ../elements/Button */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Button.js"));
+
+var _Icon = _interopRequireDefault(__webpack_require__(/*! ../elements/Icon */ "./node_modules/@visualbi/bifrost-editor/dist/elements/Icon.js"));
+
+__webpack_require__(/*! ../../css/Modal.css */ "./node_modules/@visualbi/bifrost-editor/css/Modal.css");
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+var Modal = function Modal(props) {
+  var open = props.open,
+      onClose = props.onClose,
+      onSubmit = props.onSubmit,
+      title = props.title,
+      size = props.size,
+      children = props.children,
+      className = props.className;
+  var resolvedClassName = (0, _classnames.default)('bf-editor-modal', 'modal', {
+    'modal-sm': size === 'sm'
+  }, {
+    'modal-lg': size === 'lg'
+  }, {
+    'active': open
+  }, className);
+  return _react.default.createElement("div", {
+    className: resolvedClassName
+  }, _react.default.createElement("div", {
+    className: "modal-overlay"
+  }), _react.default.createElement("div", {
+    className: "modal-container"
+  }, _react.default.createElement("div", {
+    className: "modal-header"
+  }, _react.default.createElement(_Flex.default, {
+    justifyContent: "space-between",
+    alignItems: "center"
+  }, _react.default.createElement(_Flex.default, {
+    alignItems: "center"
+  }, _react.default.createElement("h4", null, title)), _react.default.createElement("button", {
+    onClick: onClose,
+    "aria-label": "Close",
+    className: "btn-close"
+  }, _react.default.createElement(_Icon.default, {
+    icon: "Cancel",
+    fontSize: 12
+  })))), _react.default.createElement("div", {
+    className: "modal-body"
+  }, children)));
+};
+
+var _default = Modal;
 exports.default = _default;
 
 /***/ }),
@@ -19808,6 +20220,25 @@ exports.push([module.i, "/* \n  Input.scss \n  - Includes all default styles for
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Modal.css":
+/*!***************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/Modal.css ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "/* \n  Modal.scss \n  - Includes all default styles for the Modal component\n*/\n.modal {\n  align-items: center;\n  bottom: 0;\n  display: none;\n  justify-content: center;\n  left: 0;\n  opacity: 0;\n  overflow: hidden;\n  padding: 0.4rem;\n  position: fixed;\n  right: 0;\n  top: 0; }\n  .modal:target, .modal.active {\n    display: flex;\n    opacity: 1;\n    z-index: 400; }\n    .modal:target .modal-overlay, .modal.active .modal-overlay {\n      background: rgba(255, 255, 255, 0.75);\n      bottom: 0;\n      cursor: default;\n      display: block;\n      left: 0;\n      position: absolute;\n      right: 0;\n      top: 0; }\n    .modal:target .modal-container, .modal.active .modal-container {\n      animation: slide-down .2s ease 1;\n      z-index: 1; }\n  .modal.modal-sm .modal-container {\n    max-width: 320px; }\n  .modal.modal-lg .modal-overlay {\n    background: #f4f4f4; }\n  .modal.modal-lg .modal-container {\n    box-shadow: none;\n    max-width: 960px; }\n\n.modal-container {\n  box-shadow: 0 0.2rem 0.5rem rgba(33, 33, 33, 0.3);\n  background: #ffffff;\n  border-radius: 0.1rem;\n  display: flex;\n  flex-direction: column;\n  max-height: 75vh;\n  max-width: 640px;\n  padding: 0;\n  width: 100%; }\n  .modal-container.modal-fullheight {\n    max-height: 100vh; }\n  .modal-container .modal-header {\n    color: #212121;\n    padding: 0.4rem 0.6rem;\n    border-bottom: 1px #dbdbdb solid; }\n    .modal-container .modal-header .btn-close {\n      background: none;\n      border: 0;\n      outline: 0; }\n    .modal-container .modal-header h4 {\n      font-size: 13px;\n      margin: 0; }\n  .modal-container .modal-body {\n    overflow-y: auto;\n    padding: 0.8rem;\n    position: relative; }\n  .modal-container .modal-footer {\n    padding: 0.8rem;\n    text-align: right; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Navigation.css":
 /*!********************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/Navigation.css ***!
@@ -19859,6 +20290,25 @@ exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-b
 
 // module
 exports.push([module.i, "/* \n  Select.scss \n  - Includes all default styles for the Select component\n*/\n.form-select {\n  appearance: none;\n  border: 0.05rem solid #a6a6a6;\n  border-radius: 0.1rem;\n  color: inherit;\n  font-size: 0.6rem;\n  height: 1.8rem;\n  line-height: 1.2rem;\n  outline: none;\n  margin-top: 0.4rem;\n  padding: 0.25rem 0.4rem;\n  vertical-align: middle;\n  width: 100%;\n  background: transparent; }\n  .form-select:hover {\n    border-color: #333333; }\n  .form-select:focus {\n    border-color: #0078d4; }\n  .form-select::-ms-expand {\n    display: none; }\n  .form-select.select-sm {\n    font-size: 11px;\n    height: 1.4rem;\n    padding: 0.05rem 1.1rem 0.05rem 0.3rem; }\n  .form-select.select-lg {\n    font-size: 16px;\n    height: 2rem;\n    padding: 0.35rem 1.4rem 0.35rem 0.6rem; }\n  .form-select[size], .form-select[multiple] {\n    height: auto;\n    padding: 0.25rem 0.4rem; }\n    .form-select[size] option, .form-select[multiple] option {\n      padding: 0.1rem 0.2rem; }\n\n.has-success .form-select, .form-select.is-success {\n  background: #fdfef2;\n  border-color: #bad80a; }\n  .has-success .form-select:focus, .form-select.is-success:focus {\n    box-shadow: 0 0 0 0.1rem rgba(186, 216, 10, 0.2); }\n\n.has-error .form-select, .form-select.is-error {\n  background: white;\n  border-color: #e81123;\n  color: #e81123; }\n  .has-error .form-select:focus, .form-select.is-error:focus {\n    box-shadow: 0 0 0 0.1rem rgba(232, 17, 35, 0.2); }\n\n.form-select:disabled, .form-select.disabled {\n  background-color: #f7f7f7 !important;\n  cursor: not-allowed;\n  opacity: .5; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/@visualbi/bifrost-editor/css/Tile.css":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/@visualbi/bifrost-editor/css/Tile.css ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "/* \n  Tile.scss \n  - Includes all default styles for the tile component\n*/\n.tile {\n  background-color: #f4f4f4;\n  margin: 10px 0;\n  padding: 1rem; }\n  .tile:hover {\n    background-color: #e7e7e7;\n    cursor: pointer; }\n  .tile:focus, .tile:active {\n    background-color: #f4f4f4;\n    outline: 0; }\n  .tile .flex-container {\n    display: flex;\n    height: 100%;\n    flex-wrap: nowrap;\n    justify-content: center;\n    align-items: flex-start;\n    flex-direction: row;\n    min-width: 100%; }\n    .tile .flex-container .text-container {\n      flex-grow: 1;\n      text-align: left; }\n  .tile .tile-title {\n    margin: 0;\n    margin-bottom: 5px;\n    line-height: 100%;\n    font-weight: 600;\n    color: #333333;\n    font-size: 13px; }\n  .tile .tile-desc {\n    font-weight: 400;\n    font-size: 12px;\n    color: #333333; }\n  .tile .tile-icon {\n    margin-right: 12px;\n    color: #333333; }\n  .tile[disabled], .tile:disabled, .tile.disabled {\n    opacity: .5;\n    pointer-events: none; }\n    .tile[disabled]:hover, .tile:disabled:hover, .tile.disabled:hover {\n      cursor: default; }\n  .tile.tile-primary {\n    background-color: #f2c811;\n    color: #212121; }\n    .tile.tile-primary:focus, .tile.tile-primary:hover {\n      background: #ddb60c; }\n  .tile.tile-secondary {\n    background-color: #0078d4; }\n    .tile.tile-secondary:focus, .tile.tile-secondary:hover {\n      background: #006abb; }\n    .tile.tile-secondary .tile-title, .tile.tile-secondary .tile-desc, .tile.tile-secondary .tile-icon {\n      color: #f4f4f4; }\n  .tile.tile-disabled {\n    background-color: #f4f4f4;\n    color: #a6a6a6; }\n    .tile.tile-disabled:focus, .tile.tile-disabled:hover {\n      cursor: default;\n      background-color: #f4f4f4; }\n    .tile.tile-disabled .tile-title, .tile.tile-disabled .tile-desc, .tile.tile-disabled .tile-icon {\n      color: #a6a6a6; }\n", ""]);
 
 // exports
 
@@ -19917,6 +20367,25 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 // module
 exports.push([module.i, "/* \n  Icon.scss \n  - Includes all basic icons\n*/\n@font-face {\n  font-family: 'FabricMDL2Icons';\n  src: url(" + escape(__webpack_require__(/*! ../fonts/fabric-icons.woff */ "./fonts/fabric-icons.woff")) + ") format(\"woff\"); }\n\n.icon {\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  display: inline-block;\n  font-family: 'FabricMDL2Icons';\n  font-style: normal;\n  font-weight: normal;\n  speak: none;\n  color: #707070; }\n  .icon--Appearance:before {\n    content: \"\\F3F9\";\n  }\n  .icon--Data:before {\n    content: \"\\E9EC\";\n  }\n.icon--Nodes:before {\n  content: \"\\F7DD\";\n}\n.icon--Export:before {\n    content: \"\\EFB8\";\n  }\n.icon--Navigation:before {\n    content: \"\\E816\";\n  }\n.icon--DataSource:before {\n  content: \"\\EFC7\";\n}\n.icon--Calculator:before {\n  content: \"\\E8EF\";\n}\n.icon--Enum:before {\n  content: \"\\EEBF\";\n}\n.icon--Divide::before {\n  content: \"\\F4FC\";\n  display: inline-block;\n  -webkit-transform: rotate(90deg);\n  -moz-transform: rotate(90deg);\n  -o-transform: rotate(90deg);\n  -ms-transform: rotate(90deg);\n  transform: rotate(90deg);\n}\n.icon--Custom:before {\n  content: \"\\E929\";\n}\n.icon--Expand:before {\n    content: \"\\F164\";\n  }\n\n.icon--Collapse:before {\n    content: \"\\F165\";\n  }\n.icon--PageAdd:before{\n  content: \"\\EA1A\";\n}\n\n.icon--SampleData:before{\n  content: \"\\E9F9\";\n}\n\n.icon--DynamicTree:before{\n  content: \"\\E74C\";\n}\n\n.icon--Import:before{\n  content: \"\\E898\";\n}\n\n.icon--NodeMapping:before {\n  content: \"\\E707\"; }\n\n.icon--DataSeries:before {\n    content: \"\\ECDC\"; }\n\n.icon--PeriodsAggregation:before {\n    content: \"\\EC92\"; }\n\n.icon--PrimandSec:before {\n    content: \"\\E81E\"; }\n\n.icon--General:before {\n    content: \"\\E713\"; }\n\n.icon--StatusBar:before {\n    content: \"\\F35C\"; }\n\n.icon--Visualization:before {\n    content: \"\\EB3C\"; }\n\n.icon--Colors:before {\n    content: \"\\E790\"; }\n.icon--FullTree:before {\n  content: \"\\EA52\";\n}\n.icon--TreeSettings:before {\n  content: \"\\EEBF\";\n}\n.icon--GlobalNavButton:before {\n  content: \"\\E700\"; }\n\n.icon--Brightness:before {\n  content: \"\\E706\"; }\n\n.icon--QuickNote:before {\n  content: \"\\E70B\"; }\n\n.icon--ChevronDown:before {\n  content: \"\\E70D\"; }\n\n.icon--ChevronUp:before {\n  content: \"\\E70E\"; }\n\n.icon--Edit:before {\n  content: \"\\E70F\"; }\n\n.icon--Add:before {\n  content: \"\\E710\"; }\n\n.icon--Cancel:before {\n  content: \"\\E711\"; \ncursor: pointer;}\n\n.icon--More:before {\n  content: \"\\E712\"; }\n\n.icon--Settings:before {\n  content: \"\\E713\"; }\n\n.icon--Mail:before {\n  content: \"\\E715\"; }\n\n.icon--People:before {\n  content: \"\\E716\"; }\n\n.icon--Stop:before {\n  content: \"\\E71A\"; }\n\n.icon--Filter:before {\n  content: \"\\E71C\"; }\n\n.icon--AllApps:before {\n  content: \"\\E71D\"; }\n\n.icon--Zoom:before {\n  content: \"\\E71E\"; }\n\n.icon--ZoomOut:before {\n  content: \"\\E71F\"; }\n\n.icon--Search:before {\n  content: \"\\E721\"; }\n\n.icon--Attach:before {\n  content: \"\\E723\"; }\n\n.icon--Send:before {\n  content: \"\\E724\"; }\n\n.icon--Forward:before {\n  content: \"\\E72A\"; }\n\n.icon--Back:before {\n  content: \"\\E72B\"; }\n\n.icon--Refresh:before {\n  content: \"\\E72C\"; }\n\n.icon--Lock:before {\n  content: \"\\E72E\"; }\n\n.icon--Blocked:before {\n  content: \"\\E733\"; }\n\n.icon--FavoriteStar:before {\n  content: \"\\E734\"; }\n\n.icon--FavoriteStarFill:before {\n  content: \"\\E735\"; }\n\n.icon--Checkbox:before {\n  content: \"\\E739\"; }\n\n.icon--CheckboxComposite:before {\n  content: \"\\E73A\"; }\n\n.icon--CheckboxFill:before {\n  content: \"\\E73B\"; }\n\n.icon--CheckboxCompositeReversed:before {\n  content: \"\\E73D\"; }\n\n.icon--CheckMark:before {\n  content: \"\\E73E\"; }\n\n.icon--BackToWindow:before {\n  content: \"\\E73F\"; }\n\n.icon--FullScreen:before {\n  content: \"\\E740\"; }\n\n.icon--Print:before {\n  content: \"\\E749\"; }\n\n.icon--Up:before {\n  content: \"\\E74A\"; }\n\n.icon--Down:before {\n  content: \"\\E74B\"; }\n\n.icon--Delete:before {\n  content: \"\\E74D\"; }\n\n.icon--Save:before {\n  content: \"\\E74E\"; }\n\n.icon--ReturnKey:before {\n  content: \"\\E751\"; }\n\n.icon--Cloud:before {\n  content: \"\\E753\"; }\n\n.icon--Sad:before {\n  content: \"\\E757\"; }\n\n.icon--PageLeft:before {\n  content: \"\\E760\"; }\n\n.icon--PageRight:before {\n  content: \"\\E761\"; }\n\n.icon--KeyboardClassic:before {\n  content: \"\\E765\"; }\n\n.icon--Play:before {\n  content: \"\\E768\"; }\n\n.icon--Pause:before {\n  content: \"\\E769\"; }\n\n.icon--ChevronLeft:before {\n  content: \"\\E76B\"; }\n\n.icon--ChevronRight:before {\n  content: \"\\E76C\"; }\n\n.icon--Emoji2:before {\n  content: \"\\E76E\"; }\n\n.icon--Globe:before {\n  content: \"\\E774\"; }\n\n.icon--Contact:before {\n  content: \"\\E77B\"; }\n\n.icon--Unlock:before {\n  content: \"\\E785\"; }\n\n.icon--AutoEnhanceOn:before {\n  content: \"\\E78D\"; }\n\n.icon--Light:before {\n  content: \"\\E793\"; }\n\n.icon--Redo:before {\n  content: \"\\E7A6\"; }\n\n.icon--Undo:before {\n  content: \"\\E7A7\"; }\n\n.icon--Crop:before {\n  content: \"\\E7A8\"; }\n\n.icon--Warning:before {\n  content: \"\\E7BA\"; }\n\n.icon--Flag:before {\n  content: \"\\E7C1\"; }\n\n.icon--Page:before {\n  content: \"\\E7C3\"; }\n\n.icon--Tab:before {\n  content: \"\\E7E9\"; }\n\n.icon--Pinned:before {\n  content: \"\\E840\"; }\n\n.icon--RevToggleKey:before {\n  content: \"\\E845\"; }\n\n.icon--Previous:before {\n  content: \"\\E892\"; }\n\n.icon--Next:before {\n  content: \"\\E893\"; }\n\n.icon--Clear:before {\n  content: \"\\E894\"; }\n\n.icon--Sync:before {\n  content: \"\\E895\"; }\n\n.icon--Download:before {\n  content: \"\\E896\"; }\n\n.icon--Help:before {\n  content: \"\\E897\"; }\n\n.icon--OpenInNewWindow:before {\n  content: \"\\E8A7\"; }\n\n.icon--Switch:before {\n  content: \"\\E8AB\"; }\n\n.icon--ChromeClose:before {\n  content: \"\\E8BB\"; }\n\n.icon--Message:before {\n  content: \"\\E8BD\"; }\n\n.icon--Copy:before {\n  content: \"\\E8C8\"; }\n\n.icon--Like:before {\n  content: \"\\E8E1\"; }\n\n.icon--AddFriend:before {\n  content: \"\\E8FA\"; }\n\n.icon--Accept:before {\n  content: \"\\E8FB\"; }\n\n.icon--Comment:before {\n  content: \"\\E90A\"; }\n\n.icon--Repair:before {\n  content: \"\\E90F\"; }\n\n.icon--FullCircleMask:before {\n  content: \"\\E91F\"; }\n\n.icon--LocationFill:before {\n  content: \"\\E920\"; }\n\n.icon--FlickDown:before {\n  content: \"\\E935\"; }\n\n.icon--FlickUp:before {\n  content: \"\\E936\"; }\n\n.icon--FlickLeft:before {\n  content: \"\\E937\"; }\n\n.icon--FlickRight:before {\n  content: \"\\E938\"; }\n\n.icon--Code:before {\n  content: \"\\E943\"; }\n\n.icon--Info:before {\n  content: \"\\E946\"; }\n\n.icon--CalculatorMultiply:before {\n  content: \"\\E947\"; }\n\n.icon--CalculatorAddition:before {\n  content: \"\\E948\"; }\n\n.icon--CalculatorSubtract:before {\n  content: \"\\E949\"; }\n\n.icon--CalculatorEqualTo:before {\n  content: \"\\E94E\"; }\n\n.icon--ChevronUpSmall:before {\n  content: \"\\E96D\"; }\n\n.icon--ChevronDownSmall:before {\n  content: \"\\E96E\"; }\n\n.icon--ChevronLeftSmall:before {\n  content: \"\\E96F\"; }\n\n.icon--ChevronRightSmall:before {\n  content: \"\\E970\"; }\n\n.icon--ChevronUpMed:before {\n  content: \"\\E971\"; }\n\n.icon--ChevronDownMed:before {\n  content: \"\\E972\"; }\n\n.icon--ChevronLeftMed:before {\n  content: \"\\E973\"; }\n\n.icon--ChevronRightMed:before {\n  content: \"\\E974\"; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./styles/Modal.css":
+/*!****************************************************!*\
+  !*** ./node_modules/css-loader!./styles/Modal.css ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "/* VDT Modal Css */\n.modal-container {\n    max-height: none;\n    height: 540px !important;\n    z-index: 10 !important;\n}\n.modal-nodetype-inside:first-of-type{\n    margin-right: 10px;\n\n}\n\n.finish-button{\n    margin-right: 10px !important;\n}\n\n.modal-body{\n    padding: 0.8rem !important;\n    height: 100%;\n}\n\n.node-config-modal .modal-body {\n    overflow-y: hidden;\n}\n\n.modal-nodetype-div{\n    display: flex;\n    flex-direction: row;\n}\n.modal-nodetype-inside{\n    display: flex;\n    flex-direction: column;\n    width: 100%;\n}\n.modal-nodetype-Type{\n    display: flex;\n    padding: 10px;\n    border: 1px solid #80808040;\n    margin: 5px;\n    border-radius: 2px;\n}\n.modal-nodetype-Type-active{\n    display: flex;\n    padding: 10px;\n    border: 1px solid black;\n    margin: 5px;\n    border-radius: 2px;\n}\n\n\n.modal-node-description{    \n    display: -webkit-box;\n    -webkit-line-clamp: 2;\n    -webkit-box-orient: vertical;\n    font-size: 10px;\n    overflow: hidden;\n}\n\n.modal-menu-img-icon{\n    display: flex;\n    align-items: center;\n    padding-right: 10px;\n}\n\n.button-margin{\n   margin: 5px;\n}\n\n.modal-general .tile .tile-icon {\n    margin-right: 18px;\n}\n\n.modal-general-view{\n    display: flex;\n    flex-direction: row;\n    padding-top: 20px;\n    padding-bottom: 10px;\n}\n.modal-general{\n    display: flex;\n    flex-direction: column;\n}\n.menu-title{\n    font-size: 17px;\n}\n.vertical-tab-menu{\n    display: flex;\n    flex-direction: column;\n    width: 50%;\n    border-right: 1px solid #d4d4d4;\n\n}\n.vertical-menu-name{\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    color: black;\n    padding: 5px 0;\n    padding-left: 20px;\n    cursor: pointer;\n}\n.vertical-menu-name-active{\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    color: black;\n    background: #eaeaea;\n    padding: 8px 0;\n    padding-left: 20px;\n       \n}\n\n.verticalMenu-radio-active{\n    height: 10px;\n    width: 10px;\n    border: 1.4px solid black;\n    border-radius: 20px;\n}\n\n.verticalMenu-radio{\n    height: 10px;\n    width: 10px;\n    border: 1.4px solid #d4d4d4;\n    border-radius: 20px;\n    background-color: #d4d4d4;\n}\n.menu-text{\n    font-size: 14px;\n    color: #515151;\n}\n\n.vertical-form{\n    height: 100%;\n    width: 100%;\n    display: flex;\n    padding: 0 18px 0 14px;\n    flex-direction: column;\n    position: relative;\n    overflow-y: auto;\n}\n.vertical-form .form-group  {\n    padding: 0px;\n    margin: 0 0 18px 0 !important;\n}\n\n.menu-title{\n    font-size: 16px;\n    font-weight: 300;\n}\n\n.radio-select{\n    display: flex;\n    flex-direction: row;\n}\n.radio-select-name{\n    font-size: 11px;\n}\n\n.decimail-value{\n    display: flex;\n    font-size: 12px;\n    align-items: center;\n}\n\n.decimail-value>div{\n    display: flex;\n    width: 100%;\n    justify-content: space-evenly;\n    align-items: center;\n    padding-left: 20px;\n }\n\n .increment-decrement-button{\n     border: 1px solid black;\n     padding: 0px 5px;\n }\n.value-format-menu{\n    display: flex;\n    flex-direction: column;\n}\n.decimal-value-name{\n    width:60%;\n    text-align: center;\n    border:1px solid #d4d4d4; \n}\n.decimail-value-prefix{\n    display: flex;\n    justify-content: space-around;\n    flex-direction: column;\n}\n\n\n.feature-menu{\n    display: flex;\n    flex-wrap: wrap;\n}\n\n.modal-container .modal-header {\n    border-bottom: none;\n    padding-bottom: 0 !important;\n}\n\n.modal-header h4 {\n    font-size: 21px !important;\n    font-weight: 200 !important;\n    color: #333333 !important;\n    text-transform: initial !important;\n    margin-left: 0.2rem !important;\n    margin-top: 5px !important;\n}\n\n.modal-header .icon {\n    cursor: pointer;\n}\n.menu-title label{\n    padding-left: 0 !important;\n    text-transform: uppercase;\n    font-weight: 500;\n    font-size: 12px !important;\n}\n.modal-nodetype-inside .tile {\n    height: 96px;\n}\n.modal-nodetype-div {\n    margin-bottom: 0.3rem;\n}\n\n/*vertical form elements*/\n.vertical-form .form-label:first-of-type {\n    margin-top: 0 !important;\n}\n/* .form-footer-button {\n    position: absolute;\n    bottom: 0px;\n    right: 18px;\n} */\n.vertical-form form {\n    margin-bottom: 36px;\n}\n.modal-buttons {\n    position: absolute;\n    bottom: 20px;\n    right: 18px;\n}\n\n.desc {\n    display: inline;\n}\n.learn-more {\n    display: inline;\n    color: #0078d4;\n    position: absolute;\n    right: 0;\n}\n.textarea {\n    margin-top: 14px !important;\n    height: 300px;\n}\n.long-note {\n    margin-top: 0px !important;\n}\n.bf-editor-tile {\n    margin: 10px 0 !important;\n    width: 160px;\n}\n.modal-container .bf-editor-tile {\n    margin: 5px 10px 10px 0 !important;\n}\n.calc-btn:hover, .calc-btn::selection {\n    background-color: #f4f4f4;\n}\n\n.calc-btn .icon{\n    font-size: 22px;\n}\n.vertical-form form .calc-label {\n    margin-bottom: 0 !important;\n}\n.vertical-form .sublabel label {\n    font-size: 12px !important;\n    line-height: 12px;\n}\n\n.import-export-padding {\n    padding: 20px;\n    padding-top: 0;\n}\n\n.import-export-button-padding{\n    padding: 20px;\n    padding-right: 0;\n\n}\n\n.node-config-submit {\n    position: absolute;\n    bottom: 15px;\n    right: 21px;\n}\n\n.confirm-tree-reset .modal-container {\n    height: 180px !important;\n}\n\n.confirm-tree-reset .confirm-reset-msg, .delete-node-error .confirm-reset-msg  {\n    padding-left: 4px;\n    color: #615c5c;\n    font-size: 14px;\n}\n\n.confirm-tree-reset .confirm-reset-btn, .delete-node-error .confirm-reset-btn  {\n    position: absolute;\n    bottom: 20px;\n    right: 20px;\n}\n\n.confirm-tree-reset .confirm-button, .delete-node-error .confirm-button  {\n    margin-left: 6px;\n}\n", ""]);
 
 // exports
 
@@ -53247,6 +53716,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../node_modules/css-loader!./Icon.css */ "./node_modules/css-loader/index.js!./styles/Icon.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./styles/Modal.css":
+/*!**************************!*\
+  !*** ./styles/Modal.css ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../node_modules/css-loader!./Modal.css */ "./node_modules/css-loader/index.js!./styles/Modal.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
