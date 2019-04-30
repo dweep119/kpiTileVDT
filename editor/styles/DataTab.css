@@ -34,6 +34,8 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    width: 220px;
+    cursor: auto;
 }
 .vdt-data-menu-img{
     display: flex;
@@ -61,6 +63,8 @@
 .vdt-data-menu-front-img{
     display: flex;
     align-items: center;
+    width: 20px;
+    cursor: pointer;
 }
 .vdt-data-menu-front-img .vdt-front-logo{
     height: 20px;

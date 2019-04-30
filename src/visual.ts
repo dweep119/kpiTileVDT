@@ -226,9 +226,8 @@ module powerbi.extensibility.visual {
 
         public render(options: bifrost.RenderOptions) {
             options.element.innerHTML = '';
-            let a, updatedProperty = {};
-            const self = this;
-            
+            let a;
+            // (window as any).KPI.kpiGrid(options.element)
             let dataView = options.data,
                 settings: any = options.settings;
             // this.chartContainer = options.element;
@@ -255,10 +254,56 @@ module powerbi.extensibility.visual {
                 min_cols: settings.kpisettings.maxCols,
                 max_cols: settings.kpisettings.maxCols,
                 draggable: {
-                    enabled: false
+                    enabled: settings.kpisettings.draggable,
+                    start: function (e, ui) {
+                        console.log('DRAG start', ui, e, ui.$helper[0].dataset);
+                    },
+                    drag: function (e, ui) {
+                        console.log('DRAG drag', ui, e, ui.$helper[0].dataset);
+                    },
+                    stop: function (e, ui) {
+                        position.col = ui.$helper[0].dataset.col;
+                        position.row = ui.$helper[0].dataset.row;
+                        position.sizex = ui.$helper[0].dataset.sizex;
+                        position.sizey = ui.$helper[0].dataset.sizey;
+                        position.id = ui.$helper[0].id;
+                        // let result = kpitile.map(kpi => {
+                        //     if (kpi.text === position.id) {
+                        //         kpi.position = position;
+                        //     }
+                        //     return kpi;
+                        // });
+                        // updatedProperty['kpitile'] = JSON.stringify(result);
+                        // // self.setWidgetFun(kpitile, a, options);
+                        // let host = self.visualInstance;
+                        // host.persistProperties({
+                        //     merge: [
+                        //         {
+                        //             objectName: 'editor',
+                        //             selector: null,
+                        //             properties: updatedProperty
+                        //         } as VisualObjectInstancesToPersist
+                        //     ]
+                        // } as VisualObjectInstancesToPersist);
+                        console.log('DRAG stop', position, kpitile);
+                    }
                 },
                 resize: {
-                    enabled: true
+                    enabled: settings.kpisettings.resize,
+                    start: function (e, ui, $widget) {
+                        console.log('resize start', ui, e, $widget, $widget[0].dataset);
+                    },
+                    resize: function (e, ui, $widget) {
+                        console.log('resize resize', ui, e, $widget, $widget[0].dataset);
+                    },
+                    stop: function (e, ui, $widget) {
+                        position.col = ui.$helper[0].dataset.col;
+                        position.row = ui.$helper[0].dataset.row;
+                        position.sizex = ui.$helper[0].dataset.sizex;
+                        position.sizey = ui.$helper[0].dataset.sizey;
+                        position.id = ui.$helper[0].id;
+                        console.log('resize stop', ui, e, $widget, $widget[0].dataset);
+                    }
                 },
                 collision: {
                     wait_for_mouseup: true
@@ -275,11 +320,11 @@ module powerbi.extensibility.visual {
                 //     kpitileSettings.resize.enabled = true;
                 // }
                 a = new gridster(this.gridsterContainer, kpitileSettings);
-                // if (!kpitileSettings.draggable.enabled) {
-                //     a.disable();
-                // }
+                if (!kpitileSettings.draggable.enabled) {
+                    a.disable();
+                }
                 kpitile.map(kpi => {
-                    if (position.id === kpi.id && kpi.general) {
+                    if (position.id == kpi.id && kpi.general) {
                         console.log('Inside If id is same', position , kpi)
                         kpi.general.sizex = position.sizex;
                         kpi.general.sizey = position.sizey;

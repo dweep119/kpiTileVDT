@@ -42,6 +42,7 @@ class CustomizeMenu extends Component {
 		this.onFieldsChange = this.onFieldsChange.bind(this);
 		this.verticalTab = this.verticalTab.bind(this);
 		this.onClose = this.onClose.bind(this);
+		this.onDeleteClick = this.onDeleteClick.bind(this);
 	}
 
 	onClick(view, menuItem) {
@@ -107,11 +108,26 @@ class CustomizeMenu extends Component {
         </div>
       </div>
     );
-  }
+	}
+	
+	onDeleteClick (key) {
+		console.log('deleteItem deleteItem deleteItem', key)
+		const { store } = this.props;
+		let rules = toJS(store.get('kpitile'));  
+		var filteredItems = rules.filter(function (item) {    
+			return (item.id !== key);  
+		}); 
+
+		this.setState({    
+			items: filteredItems  
+		});
+		store.set('kpitile', filteredItems);
+	}
 
 	onClose () {
 		this.setState({showModal: false, key: ''})		
 	}
+
   render() {
     const { view, showModal, selectedId, selectedTitle, selectedText } = this.state;
     const { store, dataView, onClose } = this.props;
@@ -121,7 +137,7 @@ class CustomizeMenu extends Component {
     return (
       <div className="vdt-data-view" style={{ marginBottom: '20px' }}>
         {view === 'first'
-          && kpitileArray.map(data => <MenuList data={data} onClick={this.onClick} /> )
+          && kpitileArray.map(data => <MenuList data={data} onClick={this.onClick} onDeleteClick={this.onDeleteClick}/> )
         }
         
         {view === 'second'
